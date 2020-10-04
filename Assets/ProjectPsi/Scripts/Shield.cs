@@ -10,9 +10,11 @@ public class Shield : MonoBehaviour
     private ParticleSystem shieldParticles;
     private Transform head;
     private GameObject shield;
+    private Psi psi;
 
     void Start()
     {
+        psi = GlobalVars.playerPsi;
         head = GlobalVars.Get("head").transform;
         shield = GlobalVars.Get("shield");
         shieldCollider = shield.GetComponentInChildren<BoxCollider>();
@@ -63,7 +65,8 @@ public class Shield : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("hit");
+        Debug.Log("hit " + collision.impulse.magnitude);
+        psi.ModifyPsi(collision.impulse.magnitude);
     }
 
     void Activate()

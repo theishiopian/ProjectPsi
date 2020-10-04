@@ -13,9 +13,11 @@ public class Telekinesis : MonoBehaviour
     private Rigidbody target;
     private PhysicsTracker tracker;
     private Quaternion heading;
+    private Psi psi;
 
     private void Start()
     {
+        psi = GlobalVars.playerPsi;
         head = GlobalVars.Get("head").transform;
         tracker = new PhysicsTracker();
     }
@@ -39,7 +41,10 @@ public class Telekinesis : MonoBehaviour
 
             if (triggerAction.GetState(controller))
             {
-                moving = true;
+                if(target != null && target.mass <= psi.GetPsi())
+                {
+                    moving = true;
+                }
             }
             
         }
@@ -48,8 +53,10 @@ public class Telekinesis : MonoBehaviour
             //actual velocity adding
             heading = Quaternion.Euler(0, head.eulerAngles.y, 0);//todo add secondary movement again?
 
-            target.AddForce(Vector3.up * 9.8f, ForceMode.Acceleration);
+            target.AddForce(Vector3.up * 9.8f, ForceMode.Acceleration);//is this needed?
             target.velocity = (tracker.Velocity/*add velocity here, multiply by heading*/) * Time.fixedDeltaTime * 500;
+
+            psi.ModifyPsi(-tracker.Acceleration.magnitude * target.mass);
 
             if (!triggerAction.GetState(controller))
             {
