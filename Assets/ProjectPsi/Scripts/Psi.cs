@@ -20,7 +20,7 @@ public class Psi : MonoBehaviour
     void Update()
     {
         psiActive = psiButton.GetState(controllers);
-        Debug.Log(psiLevel);
+        //Debug.Log(psiLevel);
     }
 
     public bool GetPsiActive()
@@ -36,5 +36,6 @@ public class Psi : MonoBehaviour
     public void ModifyPsi(float amount)
     {
         psiLevel = Mathf.Clamp(psiLevel + amount, 10, 100);//minimum amount 10
+        Debug.Log("psi is now at: " + psiLevel);
     }
 }

@@ -23,7 +23,7 @@ public class TestTurret : MonoBehaviour
         spawner = transform.GetChild(0);
         timer = interval;
 
-        InvokeRepeating("Cleanup", 5, 3);
+        InvokeRepeating("Cleanup", interval, interval);
     }
 
     // Update is called once per frame
@@ -48,7 +48,7 @@ public class TestTurret : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(!collision.collider.CompareTag("projectile"))
+        if(!collision.collider.CompareTag("projectile"))//dont hit self with own bullets
         {
             float force = collision.impulse.magnitude / Time.fixedDeltaTime;
             health -= (int)force;
@@ -65,7 +65,11 @@ public class TestTurret : MonoBehaviour
 
     private void Cleanup()
     {
-        Destroy(bullets[0]);
-        bullets.Remove(bullets[0]);
+        if (bullets.Count > 0)
+        {
+            Destroy(bullets[0]);
+            bullets.Remove(bullets[0]);
+        }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using Valve.VR;
 
 public class Shield : MonoBehaviour
@@ -63,11 +64,11 @@ public class Shield : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnShieldTrigger(Collider collider)
     {
-        Debug.Log("hit " + collision.impulse.magnitude);
-        psi.ModifyPsi(collision.impulse.magnitude);
-        //TODO implement projectile snaring
+        Debug.Log("hit");
+        psi.ModifyPsi(collider.GetComponent<Rigidbody>().velocity.magnitude);
+        collider.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
     void Activate()
