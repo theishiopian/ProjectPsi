@@ -67,6 +67,7 @@ public class Shield : MonoBehaviour
     {
         Debug.Log("hit " + collision.impulse.magnitude);
         psi.ModifyPsi(collision.impulse.magnitude);
+        //TODO implement projectile snaring
     }
 
     void Activate()

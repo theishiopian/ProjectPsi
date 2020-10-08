@@ -14,6 +14,7 @@ public class TestTurret : MonoBehaviour
     private Transform spawner;
     private float timer;
     private bool isAlive = true;
+    private List<GameObject> bullets = new List<GameObject>();
     
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,8 @@ public class TestTurret : MonoBehaviour
         target = GlobalVars.Get("head");
         spawner = transform.GetChild(0);
         timer = interval;
+
+        InvokeRepeating("Cleanup", 5, 3);
     }
 
     // Update is called once per frame
@@ -37,7 +40,7 @@ public class TestTurret : MonoBehaviour
                 GameObject b = Instantiate(prefab, spawner.position, Quaternion.identity);
 
                 b.GetComponent<Rigidbody>().AddForce(heading.normalized * force, ForceMode.Impulse);
-
+                bullets.Add(b);
                 timer = interval;
             }
         }
@@ -58,5 +61,11 @@ public class TestTurret : MonoBehaviour
             //Debug.Log("turret done deaded inside");
             this.GetComponent<MeshRenderer>().material = deaded;
         }
+    }
+
+    private void Cleanup()
+    {
+        Destroy(bullets[0]);
+        bullets.Remove(bullets[0]);
     }
 }
