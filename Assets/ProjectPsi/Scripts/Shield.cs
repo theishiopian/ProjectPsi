@@ -64,11 +64,22 @@ public class Shield : MonoBehaviour
         }
     }
 
-    public void OnShieldTrigger(Collider collider)
+    //haha funny fake events
+    public void OnShieldEnter(Collider collider)
     {
         Debug.Log("hit");
         psi.ModifyPsi(collider.GetComponent<Rigidbody>().velocity.magnitude);
         collider.GetComponent<Rigidbody>().velocity = Vector3.zero;
+    }
+
+    public void OnShieldExit(Collider collider)
+    {
+        collider.GetComponent<Rigidbody>().useGravity = true;
+    }
+
+    public void OnShieldStay(Collider collider)
+    {
+        collider.GetComponent<Rigidbody>().useGravity = false;
     }
 
     void Activate()
