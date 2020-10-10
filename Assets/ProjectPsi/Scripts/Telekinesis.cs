@@ -14,12 +14,14 @@ public class Telekinesis : MonoBehaviour
     private PhysicsTracker tracker;
     private Quaternion heading;
     private Psi psi;
+    private Rigidbody cameraRigBody;
 
     private void Start()
     {
         psi = GlobalVars.playerPsi;
         head = GlobalVars.Get("head").transform;
         tracker = new PhysicsTracker();
+        cameraRigBody = GlobalVars.Get("player_rig").GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
@@ -54,7 +56,7 @@ public class Telekinesis : MonoBehaviour
             heading = Quaternion.Euler(0, head.eulerAngles.y, 0);//todo add secondary movement again?
 
             target.AddForce(Vector3.up * 9.8f, ForceMode.Acceleration);//is this needed?
-            target.velocity = (tracker.Velocity/*add velocity here, multiply by heading*/) * Time.fixedDeltaTime * 500;
+            target.velocity = ((tracker.Velocity/*add micro velocity here, multiply by heading*/) * Time.fixedDeltaTime * 500) - (cameraRigBody.velocity * 4.5f);//why tf is it 4.5???
 
             psi.ModifyPsi(-tracker.Acceleration.magnitude * target.mass);
 

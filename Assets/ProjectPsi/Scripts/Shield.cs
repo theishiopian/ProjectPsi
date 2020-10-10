@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 
@@ -64,22 +65,33 @@ public class Shield : MonoBehaviour
         }
     }
 
+    private Rigidbody rbShieldCache;
+    private List<Rigidbody> frozenBodies = new List<Rigidbody>();
+
     //haha funny fake events
     public void OnShieldEnter(Collider collider)
     {
         Debug.Log("hit");
-        psi.ModifyPsi(collider.GetComponent<Rigidbody>().velocity.magnitude);
-        collider.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        
+        rbShieldCache = collider.GetComponent<Rigidbody>();
+        psi.ModifyPsi(rbShieldCache.velocity.magnitude);
+        rbShieldCache.useGravity = false;
+        rbShieldCache.velocity = Vector3.zero;
+        frozenBodies.Add(rbShieldCache);
     }
 
     public void OnShieldExit(Collider collider)
     {
-        collider.GetComponent<Rigidbody>().useGravity = true;
+        rbShieldCache = collider.GetComponent<Rigidbody>();
+        rbShieldCache.useGravity = true;
+
+        frozenBodies.Remove(rbShieldCache);
+
     }
 
     public void OnShieldStay(Collider collider)
     {
-        collider.GetComponent<Rigidbody>().useGravity = false;
+        //particles?
     }
 
     void Activate()
@@ -93,5 +105,10 @@ public class Shield : MonoBehaviour
         shieldCollider.enabled = false;
         shieldParticles.Stop();
         shieldParticles.Clear();
+        foreach(Rigidbody b in frozenBodies)
+        {
+            if(b!=null)b.useGravity = true;
+        }
+        frozenBodies.Clear();
     }
 }
