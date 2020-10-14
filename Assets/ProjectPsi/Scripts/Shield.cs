@@ -29,7 +29,7 @@ public class Shield : MonoBehaviour
 
     void Update()
     {
-        if (triggerAction.GetState(controller))
+        if (triggerAction.GetState(controller))//todo  psi button
         {
             //activate
             if(!active)

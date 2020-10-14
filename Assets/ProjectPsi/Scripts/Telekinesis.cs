@@ -41,7 +41,7 @@ public class Telekinesis : MonoBehaviour
                 }
             }
 
-            if (triggerAction.GetState(controller))
+            if (triggerAction.GetState(controller))//todo psi button
             {
                 if(target != null && target.mass <= psi.GetPsi())
                 {
