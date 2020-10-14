@@ -35,7 +35,7 @@ public class TestTurret : MonoBehaviour
 
             if (timer <= 0)
             {
-                Vector3 heading = target.transform.position - transform.position;
+                Vector3 heading = target.transform.position - (transform.position + Vector3.up);
 
                 GameObject b = Instantiate(prefab, spawner.position, Quaternion.identity);
 
@@ -52,7 +52,7 @@ public class TestTurret : MonoBehaviour
         {
             float force = collision.impulse.magnitude / Time.fixedDeltaTime;
             health -= (int)force;
-            //Debug.Log("impact of " + force + " detected by turret, health at " + health);
+            Debug.Log("impact of " + force + " detected by turret, health at " + health);
         }
 
         if(health <= 0)

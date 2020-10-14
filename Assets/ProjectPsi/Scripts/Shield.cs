@@ -92,6 +92,14 @@ public class Shield : MonoBehaviour
     public void OnShieldStay(Collider collider)
     {
         //particles?
+        foreach(Rigidbody body in frozenBodies)
+        {
+            if(body != null)
+            {
+                body.useGravity = false;
+                body.velocity = Vector3.zero;
+            }
+        }
     }
 
     void Activate()
