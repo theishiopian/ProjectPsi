@@ -33,15 +33,9 @@ public class OverlayController : MonoBehaviour
             //colorEffects.contrast
 
             health.GetHealth();
-            colorEffects.saturation.value = ReMap(health.GetHealth(), 0, 100, -100, 0);
+            colorEffects.saturation.value = health.GetHealth().ReMap(0, 100, -100, 0);
 
-            colorEffects.contrast.value = ReMap(psi.GetPsi(), 10, 100, 0, 100);
+            colorEffects.contrast.value = psi.GetPsi().ReMap(10, 100, 0, 100);
         }
-    }
-
-    //todo make extension method
-    private float ReMap(float input, float inputMin, float inputMax, float min, float max)
-    {
-        return min + (input - inputMin) * (max - min) / (inputMax - inputMin);
     }
 }
