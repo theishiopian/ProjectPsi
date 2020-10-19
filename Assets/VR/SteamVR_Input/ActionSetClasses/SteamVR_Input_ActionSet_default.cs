@@ -113,27 +113,19 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Vector2 TelekinesisAdjust
+        public virtual SteamVR_Action_Boolean Psi_Button
         {
             get
             {
-                return SteamVR_Actions.default_TelekinesisAdjust;
+                return SteamVR_Actions.default_Psi_Button;
             }
         }
         
-        public virtual SteamVR_Action_Boolean ThumbPad
+        public virtual SteamVR_Action_Boolean Trigger
         {
             get
             {
-                return SteamVR_Actions.default_ThumbPad;
-            }
-        }
-        
-        public virtual SteamVR_Action_Boolean PsiButton
-        {
-            get
-            {
-                return SteamVR_Actions.default_PsiButton;
+                return SteamVR_Actions.default_Trigger;
             }
         }
         

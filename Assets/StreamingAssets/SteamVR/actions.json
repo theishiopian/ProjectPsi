@@ -55,15 +55,12 @@
       "requirement": "mandatory"
     },
     {
-      "name": "/actions/default/in/TelekinesisAdjust",
-      "type": "vector2"
+      "name": "/actions/default/in/Psi Button",
+      "type": "boolean",
+      "requirement": "mandatory"
     },
     {
-      "name": "/actions/default/in/ThumbPad",
-      "type": "boolean"
-    },
-    {
-      "name": "/actions/default/in/PsiButton",
+      "name": "/actions/default/in/Trigger",
       "type": "boolean",
       "requirement": "mandatory"
     },
