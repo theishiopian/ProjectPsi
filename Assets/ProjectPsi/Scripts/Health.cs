@@ -30,6 +30,11 @@ public class Health : MonoBehaviour
         {
             ModifyHealth(Time.deltaTime * 10);
         }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            ModifyHealth(-10);
+        }
     }
 
     public float GetHealth()
@@ -40,6 +45,6 @@ public class Health : MonoBehaviour
     public void ModifyHealth(float amount)
     {
         health = Mathf.Clamp(health + amount, 0 ,100);
-        timer = regenerationDelay;
+        if(amount < 0)timer = regenerationDelay;
     }
 }

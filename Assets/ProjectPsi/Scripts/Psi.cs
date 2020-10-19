@@ -11,7 +11,7 @@ public class Psi : MonoBehaviour
 
     private bool psiActive = false;
     private float psiLevel = 10;
-    private ParticleSystem particles;
+    //private ParticleSystem particles;
     private GameObject head;
 
     private void Awake()
@@ -23,8 +23,8 @@ public class Psi : MonoBehaviour
     private void Start()
     {
         head = GlobalVars.Get("head");
-        particles = GetComponentInChildren<ParticleSystem>();
-        Debug.Log(particles);
+        //particles = GetComponentInChildren<ParticleSystem>();
+        //Debug.Log(particles);
     }
 
     void Update()
@@ -35,8 +35,18 @@ public class Psi : MonoBehaviour
 
         transform.position = pos;
 
-        particles.emissionRate = psiLevel - 10;
+        //particles.emissionRate = psiLevel - 10;
         //Debug.Log(psiLevel);
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            ModifyPsi(10);
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightShift))
+        {
+            ModifyPsi(-10);
+        }
     }
 
     public bool GetPsiActive()
