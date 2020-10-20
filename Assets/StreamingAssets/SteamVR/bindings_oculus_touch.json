@@ -287,7 +287,7 @@
                },
                "mode" : "dpad",
                "parameters" : {
-                  "sub_mode" : "click"
+                  "sub_mode" : "touch"
                },
                "path" : "/user/hand/right/input/joystick"
             }
