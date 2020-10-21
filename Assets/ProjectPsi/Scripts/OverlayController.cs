@@ -22,7 +22,7 @@ public class OverlayController : MonoBehaviour
         psi = GlobalVars.playerPsi;
     }
 
-    //float oldHealth = 100; //use this for damage indication
+    float oldHealth = 100; //use this for damage indication
 
     // Update is called once per frame
     float hbIntensity = 0;
@@ -45,9 +45,16 @@ public class OverlayController : MonoBehaviour
             {
                 hbIntensity = 1;
             }
+
+            if(health.GetHealth() < oldHealth)
+            {
+                //do chroma here
+                Debug.Log("damage");
+            }
         }
 
         HeartBeat();
+        oldHealth = health.GetHealth();
     }
 
     private bool GetEffects()
