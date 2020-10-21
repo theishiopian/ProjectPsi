@@ -22,7 +22,7 @@ public class OverlayController : MonoBehaviour
         psi = GlobalVars.playerPsi;
     }
 
-    float oldHealth = 100;
+    //float oldHealth = 100; //use this for damage indication
 
     // Update is called once per frame
     float hbIntensity = 0;
