@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.projectpsi.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "D:\\Protected Storage\\Unity\\Projects\\Project Psi\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "D:\\Protected Storage\\Unity\\Projects\\ProjectPsi\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "Project Psi [Testing]"
