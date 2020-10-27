@@ -16,7 +16,9 @@ public class Shield : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(GlobalVars.playerPsi);
         psi = GlobalVars.playerPsi;
+        Debug.Log(psi);
         head = GlobalVars.Get("head").transform;
         shield = GlobalVars.Get("shield");
         shieldCollider = shield.GetComponentInChildren<BoxCollider>();
@@ -74,6 +76,7 @@ public class Shield : MonoBehaviour
         Debug.Log("hit");
         
         rbShieldCache = collider.GetComponent<Rigidbody>();
+        //Debug.Log(psi);
         psi.ModifyPsi(rbShieldCache.velocity.magnitude);
         rbShieldCache.useGravity = false;
         rbShieldCache.velocity = Vector3.zero;

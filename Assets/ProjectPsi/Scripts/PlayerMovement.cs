@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private bool snapRight, shouldTurnRight;
     private bool teleport, shouldTeleport;
     private Vector3 moveDirection;
-    private new CapsuleCollider collider;
+    [SerializeField]private new CapsuleCollider collider;
     private Rigidbody body;
 
     private void Start()
@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         head = GlobalVars.Get("head").transform;
         leftHand = GlobalVars.Get("left_hand").transform;
         rightHand = GlobalVars.Get("right_hand").transform;
-        collider = GetComponent<CapsuleCollider>();
+        //collider = GetComponent<CapsuleCollider>();
         body = GetComponent<Rigidbody>();
     }
 
@@ -39,12 +39,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //Debug.Log(body.velocity.magnitude);
         UpdateCollider();
         UpdateInput();
 
         moveDirection = Quaternion.AngleAxis(GetAngle(joystickInput) + (useHand ? leftHand : head).transform.rotation.eulerAngles.y, Vector3.up) * Vector3.forward;//get the angle of the touch and correct it for the rotation of the controller
-        
-        if (body.velocity.magnitude < speed && joystickInput.magnitude > deadzone)
+        //Debug.Log(moveDirection);
+        if (body.velocity.magnitude<speed &&   joystickInput.magnitude > deadzone)
         {
             body.AddForce(moveDirection * 30, ForceMode.Acceleration);
         }
@@ -109,6 +110,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateCollider()
     {
+        //Debug.Log(head);
+        //Debug.Log(collider);
         collider.height = head.localPosition.y;
         collider.center = new Vector3(head.localPosition.x, head.localPosition.y / 2, head.localPosition.z);
     }

@@ -17,7 +17,7 @@ public class Psi : MonoBehaviour
     private void Awake()
     {
         GlobalVars.playerPsi = this;
-        
+        //Debug.Log(GlobalVars.playerPsi);
     }
 
     private void Start()
