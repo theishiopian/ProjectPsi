@@ -5,9 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - projectile
-  - FxTemporaire
   - Grabbable
   - Walkable
+  - Item
+  - Hands
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Overlay
   - Hands
   - Body
-  - 
+  - Items
   - 
   - 
   - 

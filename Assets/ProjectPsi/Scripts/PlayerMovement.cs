@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private bool snapRight, shouldTurnRight;
     private bool teleport, shouldTeleport;
     private Vector3 moveDirection;
-    [SerializeField]private new CapsuleCollider collider;
+    private new CapsuleCollider collider;
     private Rigidbody body;
 
     private void Start()
@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         head = GlobalVars.Get("head").transform;
         leftHand = GlobalVars.Get("left_hand").transform;
         rightHand = GlobalVars.Get("right_hand").transform;
-        //collider = GetComponent<CapsuleCollider>();
+        collider = GetComponent<CapsuleCollider>();
         body = GetComponent<Rigidbody>();
     }
 

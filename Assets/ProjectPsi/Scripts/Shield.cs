@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 
-public class Shield : MonoBehaviour
+public class Shield : MonoBehaviour, ITriggerListener
 {
     public SteamVR_Input_Sources controller;
     public SteamVR_Action_Boolean triggerAction;//todo accessibility mode?
@@ -16,9 +16,7 @@ public class Shield : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(GlobalVars.playerPsi);
         psi = GlobalVars.playerPsi;
-        Debug.Log(psi);
         head = GlobalVars.Get("head").transform;
         shield = GlobalVars.Get("shield");
         shieldCollider = shield.GetComponentInChildren<BoxCollider>();
@@ -71,7 +69,7 @@ public class Shield : MonoBehaviour
     private List<Rigidbody> frozenBodies = new List<Rigidbody>();
 
     //haha funny fake events
-    public void OnShieldEnter(Collider collider)
+    public void OnEnter(Collider collider)
     {
         Debug.Log("hit");
         
@@ -83,7 +81,7 @@ public class Shield : MonoBehaviour
         frozenBodies.Add(rbShieldCache);
     }
 
-    public void OnShieldExit(Collider collider)
+    public void OnExit(Collider collider)
     {
         rbShieldCache = collider.GetComponent<Rigidbody>();
         rbShieldCache.useGravity = true;
@@ -92,7 +90,7 @@ public class Shield : MonoBehaviour
 
     }
 
-    public void OnShieldStay(Collider collider)
+    public void OnStay(Collider collider)
     {
         //particles?
         foreach(Rigidbody body in frozenBodies)
