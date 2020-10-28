@@ -4,30 +4,38 @@ using UnityEngine;
 
 public class Pocket : MonoBehaviour, ITriggerListener
 {
+    public Valve.VR.InteractionSystem.Hand otherHand;
+
     private GameObject icon;
 
     private GameObject storedItem = null;
 
     private Transform parent;
 
+    private bool otherHandHoldingItem = false;
+
     private void Start()
     {
         icon = transform.Find("PocketIcon").gameObject;
-        Debug.Log(icon);
         parent = transform.Find("PocketParent");
+        icon.SetActive(false);
+    }
+
+    private void Update()
+    {
+        icon.SetActive(otherHand.currentAttachedObject != null);
+        //Debug.Log(otherHand.gameObject);
     }
 
     public void OnEnter(Collider other)
     {
-        Debug.Log("entered");
-        icon.SetActive(true);
+        //Debug.Log("entered");
         icon.transform.localScale = Vector3.one * 1.3f * 0.1f;
     }
 
     public void OnExit(Collider other)
     {
-        Debug.Log("exited");
-        icon.SetActive(true);
+        //Debug.Log("exited");
         icon.transform.localScale = Vector3.one * 0.1f;
     }
 
@@ -44,14 +52,9 @@ public class Pocket : MonoBehaviour, ITriggerListener
         {
             if (storedItem.GetComponent<Item>().isHeld)
             {
-                icon.SetActive(true);
                 storedItem.transform.parent = null;
                 storedItem.GetComponent<Rigidbody>().isKinematic = false;
                 storedItem = null;
-            }
-            else
-            {
-                icon.SetActive(false);
             }
         }
     }

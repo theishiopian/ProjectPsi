@@ -19,7 +19,6 @@ public class TriggerHelper : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.CompareTag(tag));
         if (other.CompareTag(tag)) (target as ITriggerListener).OnEnter(other);
     }
 
