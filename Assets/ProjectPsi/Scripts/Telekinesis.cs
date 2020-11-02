@@ -1,4 +1,5 @@
-﻿using Unity.Labs.SuperScience;
+﻿using System.Collections.Generic;
+using Unity.Labs.SuperScience;
 using UnityEngine;
 using Valve.VR;
 
@@ -29,7 +30,7 @@ public class Telekinesis : MonoBehaviour
         trackpoint.transform.localPosition = trackpointOffset;
         trackpoint.transform.localRotation = Quaternion.identity;
         trackpoint.transform.localScale = Vector3.one;
-        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
 
         cube.transform.parent = trackpoint.transform;
         cube.GetComponent<Collider>().enabled = false;
@@ -37,23 +38,75 @@ public class Telekinesis : MonoBehaviour
         cube.transform.localRotation = Quaternion.identity;
     }
 
-    private RaycastHit hit;
-    private Rigidbody[] targets;
     private Vector3 additiveVelocity;
+    private GameObject cube;//temp object for testing
 
     private void FixedUpdate()
     {
         tracker.Update(transform.localPosition, transform.localRotation, Time.fixedDeltaTime);
         
-        if(adjustAction.GetState(controller))
+        if(triggerAction.GetStateDown(controller))
         {
-            additiveVelocity = tracker.Velocity * Time.fixedDeltaTime * 3;
-            //additiveVelocity.y = 0;
-            trackpoint.transform.position += additiveVelocity;
+            GetTargets();
+        }
+
+        if(triggerAction.GetState(controller))
+        {
+            cube.SetActive(true);
+            if (adjustAction.GetState(controller))
+            {
+                additiveVelocity = tracker.Velocity * Time.fixedDeltaTime * 3;
+                //additiveVelocity.y = 0;
+                trackpoint.transform.position += additiveVelocity;
+            }
+            else
+            {
+                trackpoint.transform.localPosition = Vector3.Slerp(trackpoint.transform.localPosition, trackpointOffset, Time.fixedDeltaTime);
+            }
+
+            MoveTargets();
         }
         else
         {
-            trackpoint.transform.localPosition = Vector3.Slerp(trackpoint.transform.localPosition, trackpointOffset, Time.fixedDeltaTime);
+            cube.SetActive(false);
+            trackpoint.transform.localPosition = trackpointOffset;
+            targets = new List<Rigidbody>();
+        }
+    }
+
+    private RaycastHit hit;
+    private List<Rigidbody> targets = new List<Rigidbody>();
+    private Collider[] potentialTargets;
+
+    Rigidbody potentialBody;
+
+    void GetTargets()
+    {
+        if (Physics.Raycast(head.position, head.forward, out hit, 15))
+        {
+            potentialTargets = Physics.OverlapSphere(hit.point, 1f);
+
+            foreach(Collider c in potentialTargets)
+            {
+                potentialBody = c.GetComponent<Rigidbody>();
+
+                if(potentialBody != null && c.CompareTag("Grabbable"))
+                {
+                    targets.Add(potentialBody);
+                }
+            }
+        }
+        else targets = new List<Rigidbody>();
+    }
+
+    void MoveTargets()
+    {
+        if(targets != null)
+        {
+            foreach(Rigidbody body in targets)
+            {
+                body.AddForce((trackpoint.transform.position - body.transform.position).normalized * 100, ForceMode.Acceleration);
+            }
         }
     }
 }
