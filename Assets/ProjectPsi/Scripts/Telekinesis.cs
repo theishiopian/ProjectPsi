@@ -14,7 +14,7 @@ public class Telekinesis : MonoBehaviour
     private Psi psi;
     private Rigidbody cameraRigBody;
     private GameObject trackpoint;
-    private Vector3 offset = new Vector3(0,0,3);
+    private readonly Vector3 trackpointOffset = new Vector3(0,0,3);
 
     private void Start()
     {
@@ -26,7 +26,7 @@ public class Telekinesis : MonoBehaviour
         trackpoint = new GameObject("trackPoint");
 
         trackpoint.transform.parent = head;
-        trackpoint.transform.localPosition = offset;
+        trackpoint.transform.localPosition = trackpointOffset;
         trackpoint.transform.localRotation = Quaternion.identity;
         trackpoint.transform.localScale = Vector3.one;
         GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -50,6 +50,10 @@ public class Telekinesis : MonoBehaviour
             additiveVelocity = tracker.Velocity * Time.fixedDeltaTime * 3;
             //additiveVelocity.y = 0;
             trackpoint.transform.position += additiveVelocity;
+        }
+        else
+        {
+            trackpoint.transform.localPosition = Vector3.Slerp(trackpoint.transform.localPosition, trackpointOffset, Time.fixedDeltaTime);
         }
     }
 }
