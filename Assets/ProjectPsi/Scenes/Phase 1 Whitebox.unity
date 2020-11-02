@@ -2171,6 +2171,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestTurret (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7584074240074718390, guid: 7628a23095468ae4ca348c90bd8e5c92,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7628a23095468ae4ca348c90bd8e5c92, type: 3}
 --- !u!4 &495252127 stripped
@@ -2817,6 +2822,21 @@ PrefabInstance:
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809365277600914963, guid: 64322001cde6a6044bc22eaf036c7d01,
+        type: 3}
+      propertyPath: triggerAction.actionPath
+      value: /actions/default/in/GrabGrip
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809365277600931365, guid: 64322001cde6a6044bc22eaf036c7d01,
+        type: 3}
+      propertyPath: triggerAction.actionPath
+      value: /actions/default/in/GrabGrip
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809365277600931365, guid: 64322001cde6a6044bc22eaf036c7d01,
+        type: 3}
+      propertyPath: adjustAction.actionPath
+      value: /actions/default/in/Psi Button
       objectReference: {fileID: 0}
     - target: {fileID: 6195395113973225930, guid: 64322001cde6a6044bc22eaf036c7d01,
         type: 3}
@@ -5245,6 +5265,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TestTurret (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584074240074718390, guid: 7628a23095468ae4ca348c90bd8e5c92,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7628a23095468ae4ca348c90bd8e5c92, type: 3}
@@ -8804,6 +8829,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TestTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584074240074718390, guid: 7628a23095468ae4ca348c90bd8e5c92,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7628a23095468ae4ca348c90bd8e5c92, type: 3}

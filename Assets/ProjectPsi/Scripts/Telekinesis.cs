@@ -5,16 +5,16 @@ using Valve.VR;
 public class Telekinesis : MonoBehaviour
 {
     public SteamVR_Input_Sources controller;//TODO vr input manager
-    public SteamVR_Action_Boolean triggerAction;//todo accessibility options?
+    public SteamVR_Action_Boolean triggerAction;
+    public SteamVR_Action_Boolean adjustAction;
 
     private Transform head;
-    private RaycastHit hit;
     private bool moving = false;
-    private Rigidbody target;
     private PhysicsTracker tracker;
-    private Quaternion heading;
     private Psi psi;
     private Rigidbody cameraRigBody;
+    private GameObject trackpoint;
+    private Vector3 offset = new Vector3(0,0,3);
 
     private void Start()
     {
@@ -22,55 +22,34 @@ public class Telekinesis : MonoBehaviour
         head = GlobalVars.Get("head").transform;
         tracker = new PhysicsTracker();
         cameraRigBody = GlobalVars.Get("player_rig").GetComponent<Rigidbody>();
+
+        trackpoint = new GameObject("trackPoint");
+
+        trackpoint.transform.parent = head;
+        trackpoint.transform.localPosition = offset;
+        trackpoint.transform.localRotation = Quaternion.identity;
+        trackpoint.transform.localScale = Vector3.one;
+        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+
+        cube.transform.parent = trackpoint.transform;
+        cube.GetComponent<Collider>().enabled = false;
+        cube.transform.localPosition = Vector3.zero;
+        cube.transform.localRotation = Quaternion.identity;
     }
+
+    private RaycastHit hit;
+    private Rigidbody[] targets;
+    private Vector3 additiveVelocity;
 
     private void FixedUpdate()
     {
-        tracker.Update(transform.position, transform.rotation, Time.fixedDeltaTime);
-
-        if(!moving)
+        tracker.Update(transform.localPosition, transform.localRotation, Time.fixedDeltaTime);
+        
+        if(adjustAction.GetState(controller))
         {
-            //aquire target
-            if (Physics.SphereCast(head.position, 0.3f, head.forward, out hit, 25f))
-            {
-                if (hit.collider.gameObject.CompareTag("Grabbable"))
-                {
-                    if (target != null) target.GetComponent<Outline>().enabled = false;
-                    target = hit.collider.gameObject.GetComponent<Rigidbody>();
-                    target.GetComponent<Outline>().enabled = true;
-                }
-            }
-
-            if (triggerAction.GetState(controller))//todo psi button
-            {
-                if(target != null && target.mass <= psi.GetPsi())
-                {
-                    moving = true;
-                }
-            }
-            
+            additiveVelocity = tracker.Velocity * Time.fixedDeltaTime * 3;
+            //additiveVelocity.y = 0;
+            trackpoint.transform.position += additiveVelocity;
         }
-        else if(target != null)
-        {
-            //actual velocity adding
-            heading = Quaternion.Euler(0, head.eulerAngles.y, 0);//todo add secondary movement again?
-
-            target.AddForce(Vector3.up * 9.8f, ForceMode.Acceleration);//is this needed?
-            target.velocity = ((tracker.Velocity/*add micro velocity here, multiply by heading*/) * Time.fixedDeltaTime * 500) - (cameraRigBody.velocity * 4.5f);//why tf is it 4.5???
-
-            psi.ModifyPsi(-tracker.Acceleration.magnitude * target.mass);
-
-            if (!triggerAction.GetState(controller))
-            {
-                if (target != null)
-                {
-                    moving = false;
-                    target.GetComponent<Outline>().enabled = false;
-                    target = null;
-                }
-            }
-        }
-
-        if (target == null) moving = false;//this is a bandaid. a permenant fix is preferable but may never be found
     }
 }
