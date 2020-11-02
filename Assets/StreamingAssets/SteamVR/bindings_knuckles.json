@@ -114,15 +114,6 @@
          "sources" : [
             {
                "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/trigger"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/left/input/trigger"
-            },
-            {
-               "inputs" : {
                   "force" : {
                      "output" : "/actions/default/in/squeeze"
                   }
@@ -168,7 +159,7 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/psi button"
+                     "output" : "/actions/default/in/psibutton"
                   }
                },
                "mode" : "button",
@@ -177,7 +168,7 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/psi button"
+                     "output" : "/actions/default/in/psibutton"
                   }
                },
                "mode" : "button",
@@ -209,15 +200,6 @@
                },
                "mode" : "grab",
                "path" : "/user/hand/right/input/pinch"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/trigger"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/right/input/trigger"
             },
             {
                "inputs" : {
@@ -259,6 +241,24 @@
                },
                "mode" : "button",
                "path" : "/user/hand/right/input/trigger"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/adjustbutton"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/left/input/b"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/adjustbutton"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/b"
             }
          ]
       },

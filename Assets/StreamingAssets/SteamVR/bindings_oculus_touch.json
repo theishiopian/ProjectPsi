@@ -125,52 +125,12 @@
           }
         },
         {
-          "path": "/user/hand/left/input/trigger",
-          "mode": "button",
-          "parameters": {},
-          "inputs": {
-            "click": {
-              "output": "/actions/default/in/trigger"
-            }
-          }
-        },
-        {
-          "path": "/user/hand/right/input/trigger",
-          "mode": "button",
-          "parameters": {},
-          "inputs": {
-            "click": {
-              "output": "/actions/default/in/trigger"
-            }
-          }
-        },
-        {
           "path": "/user/hand/left/input/joystick",
           "mode": "joystick",
           "parameters": {},
           "inputs": {
             "position": {
               "output": "/actions/default/in/move"
-            }
-          }
-        },
-        {
-          "path": "/user/hand/left/input/x",
-          "mode": "button",
-          "parameters": {},
-          "inputs": {
-            "click": {
-              "output": "/actions/default/in/psi button"
-            }
-          }
-        },
-        {
-          "path": "/user/hand/right/input/a",
-          "mode": "button",
-          "parameters": {},
-          "inputs": {
-            "click": {
-              "output": "/actions/default/in/psi button"
             }
           }
         },

@@ -113,19 +113,19 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Boolean Psi_Button
+        public virtual SteamVR_Action_Boolean PsiButton
         {
             get
             {
-                return SteamVR_Actions.default_Psi_Button;
+                return SteamVR_Actions.default_PsiButton;
             }
         }
         
-        public virtual SteamVR_Action_Boolean Trigger
+        public virtual SteamVR_Action_Boolean AdjustButton
         {
             get
             {
-                return SteamVR_Actions.default_Trigger;
+                return SteamVR_Actions.default_AdjustButton;
             }
         }
         

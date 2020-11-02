@@ -55,12 +55,12 @@
       "requirement": "mandatory"
     },
     {
-      "name": "/actions/default/in/Psi Button",
+      "name": "/actions/default/in/PsiButton",
       "type": "boolean",
       "requirement": "mandatory"
     },
     {
-      "name": "/actions/default/in/Trigger",
+      "name": "/actions/default/in/AdjustButton",
       "type": "boolean",
       "requirement": "mandatory"
     },

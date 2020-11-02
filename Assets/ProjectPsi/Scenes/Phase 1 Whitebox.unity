@@ -2826,17 +2826,17 @@ PrefabInstance:
     - target: {fileID: 4809365277600914963, guid: 64322001cde6a6044bc22eaf036c7d01,
         type: 3}
       propertyPath: triggerAction.actionPath
-      value: /actions/default/in/GrabGrip
+      value: /actions/default/in/PsiButton
       objectReference: {fileID: 0}
     - target: {fileID: 4809365277600931365, guid: 64322001cde6a6044bc22eaf036c7d01,
         type: 3}
       propertyPath: triggerAction.actionPath
-      value: /actions/default/in/GrabGrip
+      value: /actions/default/in/PsiButton
       objectReference: {fileID: 0}
     - target: {fileID: 4809365277600931365, guid: 64322001cde6a6044bc22eaf036c7d01,
         type: 3}
       propertyPath: adjustAction.actionPath
-      value: /actions/default/in/Psi Button
+      value: /actions/default/in/AdjustButton
       objectReference: {fileID: 0}
     - target: {fileID: 6195395113973225930, guid: 64322001cde6a6044bc22eaf036c7d01,
         type: 3}
