@@ -52,9 +52,7 @@ public class Telekinesis : MonoBehaviour
             //cube.SetActive(true);
             if (tracker.Speed > 0.2f)
             {
-                additiveVelocity = tracker.Velocity * Time.fixedDeltaTime * 5;
-                //additiveVelocity = head.TransformDirection(tracker.Velocity) * Time.fixedDeltaTime * 5;
-                //additiveVelocity.y *= -1;
+                additiveVelocity = tracker.Direction * Time.fixedDeltaTime * tracker.Speed * tracker.Speed * tracker.Speed;//cubed speed
                 trackpoint.transform.localPosition += additiveVelocity;
             }
             else
@@ -87,7 +85,7 @@ public class Telekinesis : MonoBehaviour
 
     void GetTargets()
     {
-        if (Physics.Raycast(head.position, head.forward, out hit, 40))
+        if (Physics.SphereCast(head.position, 0.5f, head.forward, out hit, 50))
         {
             potentialTargets = Physics.OverlapSphere(hit.point, 0.5f, layers.value, QueryTriggerInteraction.Ignore);
 
@@ -116,7 +114,7 @@ public class Telekinesis : MonoBehaviour
         {
             foreach(Rigidbody body in targets)
             {
-                body.AddForce((trackpoint.transform.position - body.transform.position).normalized * 100, ForceMode.Acceleration);
+                body.AddForce((trackpoint.transform.position - body.transform.position).normalized * 200, ForceMode.Acceleration);
                 //Debug.Log(body);
             }
         }
