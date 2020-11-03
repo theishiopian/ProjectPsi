@@ -42,6 +42,7 @@ public class Telekinesis : MonoBehaviour
     {
         tracker.Update(handAnchor.localPosition, handAnchor.localRotation, Time.fixedDeltaTime);
         
+        
 
         if (triggerAction.GetStateDown(controller))
         {
@@ -85,7 +86,7 @@ public class Telekinesis : MonoBehaviour
 
     void GetTargets()
     {
-        if (Physics.SphereCast(head.position, 0.5f, head.forward, out hit, 50, layers.value, QueryTriggerInteraction.Ignore))
+        if (Physics.SphereCast(head.position, 0.5f, head.forward, out hit, 50, layers.value))
         {
             potentialTargets = Physics.OverlapSphere(hit.point, 0.5f, layers.value, QueryTriggerInteraction.Ignore);
             ResetRigidbodies(targets);
@@ -93,13 +94,10 @@ public class Telekinesis : MonoBehaviour
             foreach (Collider c in potentialTargets)
             {
                 potentialBody = c.GetComponent<Rigidbody>();
+                Debug.Log(c.name);
 
                 if (potentialBody != null)
                 {
-                    //potentialBody.drag = 5;//todo save old drag value. struct?
-                    //potentialBody.useGravity = false;
-                    //targets.Add(potentialBody);
-                    //Debug.Log(potentialBody);
                     targets.Add(potentialBody);
                     Outline o = potentialBody.gameObject.GetComponent<Outline>();
                     

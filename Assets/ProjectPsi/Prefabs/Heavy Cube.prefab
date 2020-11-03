@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4231930662758074188}
   - component: {fileID: 4231930662758074189}
   - component: {fileID: 4231930662758074190}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Heavy Cube
-  m_TagString: Grabbable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

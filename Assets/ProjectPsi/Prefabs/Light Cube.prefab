@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4912949709582566606}
   - component: {fileID: 4912949709582566607}
   - component: {fileID: 4912949709582566604}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Light Cube
-  m_TagString: Grabbable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

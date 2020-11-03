@@ -12,8 +12,6 @@ public class Pocket : MonoBehaviour, ITriggerListener
 
     private Transform parent;
 
-    private bool otherHandHoldingItem = false;
-
     private void Start()
     {
         icon = transform.Find("PocketIcon").gameObject;
@@ -41,9 +39,9 @@ public class Pocket : MonoBehaviour, ITriggerListener
 
     public void OnStay(Collider other)
     {
-        if(!other.transform.parent.gameObject.GetComponent<Item>().isHeld && storedItem == null)
+        if(!other.transform.gameObject.GetComponent<Item>().isHeld && storedItem == null)
         {
-            storedItem = other.transform.parent.gameObject;
+            storedItem = other.transform.gameObject;
             storedItem.transform.parent = parent;
             storedItem.transform.localPosition = Vector3.zero;
             storedItem.GetComponent<Rigidbody>().isKinematic = true;

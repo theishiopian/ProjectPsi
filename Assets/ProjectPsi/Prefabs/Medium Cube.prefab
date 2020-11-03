@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5353285991411010509}
   - component: {fileID: 5353285991411010510}
   - component: {fileID: 5353285991411010511}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Medium Cube
   m_TagString: Grabbable
   m_Icon: {fileID: 0}
