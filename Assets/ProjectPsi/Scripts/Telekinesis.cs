@@ -17,9 +17,11 @@ public class Telekinesis : MonoBehaviour
     private Rigidbody cameraRigBody;
     private GameObject trackpoint;
     private readonly Vector3 trackpointOffset = new Vector3(0,0,3);
+    private Transform handAnchor;
 
     private void Start()
     {
+        handAnchor = GlobalVars.Get("hand_anchor").transform;
         psi = GlobalVars.playerPsi;
         head = GlobalVars.Get("head").transform;
         tracker = new PhysicsTracker();
@@ -31,12 +33,6 @@ public class Telekinesis : MonoBehaviour
         trackpoint.transform.localPosition = trackpointOffset;
         trackpoint.transform.localRotation = Quaternion.identity;
         trackpoint.transform.localScale = Vector3.one;
-        //cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-
-        //cube.transform.parent = trackpoint.transform;
-        //cube.GetComponent<Collider>().enabled = false;
-        //cube.transform.localPosition = Vector3.zero;
-        //cube.transform.localRotation = Quaternion.identity;
     }
 
     private Vector3 additiveVelocity;
@@ -44,7 +40,7 @@ public class Telekinesis : MonoBehaviour
 
     private void FixedUpdate()
     {
-        tracker.Update(transform.localPosition, transform.localRotation, Time.fixedDeltaTime);
+        tracker.Update(handAnchor.localPosition, handAnchor.localRotation, Time.fixedDeltaTime);
         
         if(triggerAction.GetStateDown(controller))
         {
@@ -54,15 +50,16 @@ public class Telekinesis : MonoBehaviour
         if(triggerAction.GetState(controller))
         {
             //cube.SetActive(true);
-            if (adjustAction.GetState(controller))
+            if (tracker.Speed > 0.2f)
             {
-                additiveVelocity = tracker.Velocity * Time.fixedDeltaTime * 8;
-                //additiveVelocity.y = 0;
-                trackpoint.transform.position += additiveVelocity;
+                additiveVelocity = tracker.Velocity * Time.fixedDeltaTime * 5;
+                //additiveVelocity = head.TransformDirection(tracker.Velocity) * Time.fixedDeltaTime * 5;
+                //additiveVelocity.y *= -1;
+                trackpoint.transform.localPosition += additiveVelocity;
             }
             else
             {
-                trackpoint.transform.localPosition = Vector3.Slerp(trackpoint.transform.localPosition, trackpointOffset, Time.fixedDeltaTime);
+                trackpoint.transform.localPosition = Vector3.Slerp(trackpoint.transform.localPosition, trackpointOffset, Time.fixedDeltaTime * 5);
             }
 
             MoveTargets();
@@ -72,7 +69,7 @@ public class Telekinesis : MonoBehaviour
         {
             //cube.SetActive(false);
             trackpoint.transform.localPosition = trackpointOffset;
-            Debug.Log(targets.Count);
+            //Debug.Log(targets.Count);
             foreach (Rigidbody body in targets)
             {
                 body.drag = 0;//todo save old drag value. struct?
