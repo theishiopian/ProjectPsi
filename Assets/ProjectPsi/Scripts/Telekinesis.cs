@@ -2,6 +2,7 @@
 using Unity.Labs.SuperScience;
 using UnityEngine;
 using Valve.VR;
+using cakeslice;
 
 public class Telekinesis : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class Telekinesis : MonoBehaviour
     public LayerMask layers;
 
     private Transform head;
-    private bool moving = false;
     private PhysicsTracker tracker;
     private Psi psi;
     private Rigidbody cameraRigBody;
@@ -42,9 +42,10 @@ public class Telekinesis : MonoBehaviour
     {
         tracker.Update(handAnchor.localPosition, handAnchor.localRotation, Time.fixedDeltaTime);
         
-        if(triggerAction.GetStateDown(controller))
+
+        if (triggerAction.GetStateDown(controller))
         {
-            GetTargets();
+            
         }
 
         if(triggerAction.GetState(controller))
@@ -62,17 +63,16 @@ public class Telekinesis : MonoBehaviour
 
             MoveTargets();
         }
+        else GetTargets();
 
-        if(triggerAction.GetStateUp(controller))
+        if (triggerAction.GetStateUp(controller))
         {
             //cube.SetActive(false);
             trackpoint.transform.localPosition = trackpointOffset;
             //Debug.Log(targets.Count);
-            foreach (Rigidbody body in targets)
-            {
-                body.drag = 0;//todo save old drag value. struct?
-                body.useGravity = true;
-            }
+
+            ResetRigidbodies(targets);
+
             targets = new List<Rigidbody>();
         }
     }
@@ -85,25 +85,38 @@ public class Telekinesis : MonoBehaviour
 
     void GetTargets()
     {
-        if (Physics.SphereCast(head.position, 0.5f, head.forward, out hit, 50))
+        if (Physics.SphereCast(head.position, 0.5f, head.forward, out hit, 50, layers.value, QueryTriggerInteraction.Ignore))
         {
             potentialTargets = Physics.OverlapSphere(hit.point, 0.5f, layers.value, QueryTriggerInteraction.Ignore);
-
+            ResetRigidbodies(targets);
+            targets.Clear();
             foreach (Collider c in potentialTargets)
             {
                 potentialBody = c.GetComponent<Rigidbody>();
 
-                if (potentialBody != null && c.CompareTag("Grabbable"))
+                if (potentialBody != null)
                 {
-                    potentialBody.drag = 5;//todo save old drag value. struct?
-                    potentialBody.useGravity = false;
-                    targets.Add(potentialBody);
+                    //potentialBody.drag = 5;//todo save old drag value. struct?
+                    //potentialBody.useGravity = false;
+                    //targets.Add(potentialBody);
                     //Debug.Log(potentialBody);
+                    targets.Add(potentialBody);
+                    Outline o = potentialBody.gameObject.GetComponent<Outline>();
+                    
+                    if(o == null)
+                    {
+                        potentialBody.gameObject.AddComponent<Outline>();
+                    }
+                    else
+                    {
+                        o.enabled = true;
+                    }
                 }
             }
         }
         else
         {
+            ResetRigidbodies(targets);
             targets = new List<Rigidbody>();
         }
     }
@@ -114,9 +127,19 @@ public class Telekinesis : MonoBehaviour
         {
             foreach(Rigidbody body in targets)
             {
-                body.AddForce((trackpoint.transform.position - body.transform.position).normalized * 200, ForceMode.Acceleration);
+                if(body.drag == 0) body.drag = 5;
+                body.AddForce(((trackpoint.transform.position - body.transform.position).normalized * 200) + new Vector3(0, 9.8f, 0), ForceMode.Acceleration);
                 //Debug.Log(body);
             }
+        }
+    }
+
+    void ResetRigidbodies(List<Rigidbody> bodies)
+    {
+        foreach(Rigidbody body in bodies)
+        {
+            body.drag = 0;
+            body.gameObject.GetComponent<Outline>().enabled = false;
         }
     }
 }
