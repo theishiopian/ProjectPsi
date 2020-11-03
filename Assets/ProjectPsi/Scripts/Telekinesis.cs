@@ -8,6 +8,7 @@ public class Telekinesis : MonoBehaviour
     public SteamVR_Input_Sources controller;//TODO vr input manager
     public SteamVR_Action_Boolean triggerAction;
     public SteamVR_Action_Boolean adjustAction;
+    public LayerMask layers;
 
     private Transform head;
     private bool moving = false;
@@ -30,16 +31,16 @@ public class Telekinesis : MonoBehaviour
         trackpoint.transform.localPosition = trackpointOffset;
         trackpoint.transform.localRotation = Quaternion.identity;
         trackpoint.transform.localScale = Vector3.one;
-        cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        //cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
 
-        cube.transform.parent = trackpoint.transform;
-        cube.GetComponent<Collider>().enabled = false;
-        cube.transform.localPosition = Vector3.zero;
-        cube.transform.localRotation = Quaternion.identity;
+        //cube.transform.parent = trackpoint.transform;
+        //cube.GetComponent<Collider>().enabled = false;
+        //cube.transform.localPosition = Vector3.zero;
+        //cube.transform.localRotation = Quaternion.identity;
     }
 
     private Vector3 additiveVelocity;
-    private GameObject cube;//temp object for testing
+    //private GameObject cube;//temp object for testing
 
     private void FixedUpdate()
     {
@@ -52,10 +53,10 @@ public class Telekinesis : MonoBehaviour
 
         if(triggerAction.GetState(controller))
         {
-            cube.SetActive(true);
+            //cube.SetActive(true);
             if (adjustAction.GetState(controller))
             {
-                additiveVelocity = tracker.Velocity * Time.fixedDeltaTime * 3;
+                additiveVelocity = tracker.Velocity * Time.fixedDeltaTime * 8;
                 //additiveVelocity.y = 0;
                 trackpoint.transform.position += additiveVelocity;
             }
@@ -66,10 +67,17 @@ public class Telekinesis : MonoBehaviour
 
             MoveTargets();
         }
-        else
+
+        if(triggerAction.GetStateUp(controller))
         {
-            cube.SetActive(false);
+            //cube.SetActive(false);
             trackpoint.transform.localPosition = trackpointOffset;
+            Debug.Log(targets.Count);
+            foreach (Rigidbody body in targets)
+            {
+                body.drag = 0;//todo save old drag value. struct?
+                body.useGravity = true;
+            }
             targets = new List<Rigidbody>();
         }
     }
@@ -82,21 +90,27 @@ public class Telekinesis : MonoBehaviour
 
     void GetTargets()
     {
-        if (Physics.Raycast(head.position, head.forward, out hit, 15))
+        if (Physics.Raycast(head.position, head.forward, out hit, 40))
         {
-            potentialTargets = Physics.OverlapSphere(hit.point, 1f);
+            potentialTargets = Physics.OverlapSphere(hit.point, 0.5f, layers.value, QueryTriggerInteraction.Ignore);
 
-            foreach(Collider c in potentialTargets)
+            foreach (Collider c in potentialTargets)
             {
                 potentialBody = c.GetComponent<Rigidbody>();
 
-                if(potentialBody != null && c.CompareTag("Grabbable"))
+                if (potentialBody != null && c.CompareTag("Grabbable"))
                 {
+                    potentialBody.drag = 5;//todo save old drag value. struct?
+                    potentialBody.useGravity = false;
                     targets.Add(potentialBody);
+                    //Debug.Log(potentialBody);
                 }
             }
         }
-        else targets = new List<Rigidbody>();
+        else
+        {
+            targets = new List<Rigidbody>();
+        }
     }
 
     void MoveTargets()
@@ -106,6 +120,7 @@ public class Telekinesis : MonoBehaviour
             foreach(Rigidbody body in targets)
             {
                 body.AddForce((trackpoint.transform.position - body.transform.position).normalized * 100, ForceMode.Acceleration);
+                //Debug.Log(body);
             }
         }
     }
