@@ -22,18 +22,15 @@ public class Pocket : MonoBehaviour, ITriggerListener
     private void Update()
     {
         icon.SetActive(otherHand.currentAttachedObject != null);
-        //Debug.Log(otherHand.gameObject);
     }
 
     public void OnEnter(Collider other)
     {
-        //Debug.Log("entered");
         icon.transform.localScale = Vector3.one * 1.3f * 0.1f;
     }
 
     public void OnExit(Collider other)
     {
-        //Debug.Log("exited");
         icon.transform.localScale = Vector3.one * 0.1f;
     }
 

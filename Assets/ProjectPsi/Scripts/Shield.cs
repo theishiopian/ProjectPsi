@@ -74,7 +74,6 @@ public class Shield : MonoBehaviour, ITriggerListener
         Debug.Log("hit");
         
         rbShieldCache = collider.GetComponent<Rigidbody>();
-        //Debug.Log(psi);
         psi.ModifyPsi(rbShieldCache.velocity.magnitude, true);
         rbShieldCache.useGravity = false;
         rbShieldCache.velocity = Vector3.zero;

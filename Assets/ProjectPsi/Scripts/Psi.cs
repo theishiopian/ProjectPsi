@@ -6,44 +6,19 @@ using Valve.VR;
 public class Psi : MonoBehaviour
 {
     private float psiLevel = 10;
-    //private ParticleSystem particles;
+
     private GameObject head;
 
     private void Awake()
     {
         GlobalVars.playerPsi = this;
-        //Debug.Log(GlobalVars.playerPsi);
     }
 
-    private void Start()
-    {
-        //head = GlobalVars.Get("head");
-        //particles = GetComponentInChildren<ParticleSystem>();
-        //Debug.Log(particles);
-    }
     float timer = 0;
     void Update()
     {
-        //Vector3 pos = head.transform.position;
-        //pos.y = this.transform.position.y;
-
-        //transform.position = pos;
-
-        //particles.emissionRate = psiLevel - 10;
-        //Debug.Log(psiLevel);
-
         if (timer <= 0) ModifyPsi(-5 * Time.deltaTime, false);
         else timer -= Time.deltaTime;
-
-        //if (Input.GetKeyDown(KeyCode.LeftShift))
-        //{
-        //    ModifyPsi(10);
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.RightShift))
-        //{
-        //    ModifyPsi(-10);
-        //}
     }
 
     public float GetPsi()

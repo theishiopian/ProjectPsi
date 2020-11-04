@@ -58,7 +58,6 @@ public class TestTurret : MonoBehaviour
         if(health <= 0)
         {
             isAlive = false;
-            //Debug.Log("turret done deaded inside");
             this.GetComponent<MeshRenderer>().material = deaded;
         }
     }

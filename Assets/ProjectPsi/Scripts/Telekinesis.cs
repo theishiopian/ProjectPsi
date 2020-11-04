@@ -36,7 +36,6 @@ public class Telekinesis : MonoBehaviour
     }
 
     private Vector3 additiveVelocity;
-    //private GameObject cube;//temp object for testing
 
     private void FixedUpdate()
     {
@@ -44,7 +43,6 @@ public class Telekinesis : MonoBehaviour
 
         if(triggerAction.GetState(controller))
         {
-            //cube.SetActive(true);
             if (tracker.Speed > 0.2f)
             {
                 additiveVelocity = tracker.Direction * Time.fixedDeltaTime * tracker.Speed * tracker.Speed * tracker.Speed;//cubed speed
@@ -61,9 +59,7 @@ public class Telekinesis : MonoBehaviour
 
         if (triggerAction.GetStateUp(controller))
         {
-            //cube.SetActive(false);
             trackpoint.transform.localPosition = trackpointOffset;
-            //Debug.Log(targets.Count);
 
             ResetRigidbodies(targets);
 
@@ -87,7 +83,6 @@ public class Telekinesis : MonoBehaviour
             foreach (Collider c in potentialTargets)
             {
                 potentialBody = c.GetComponent<Rigidbody>();
-                //Debug.Log(psi.GetPsi());
 
                 if (potentialBody != null && potentialBody.mass/10 <= psi.GetPsi())
                 {
@@ -120,7 +115,6 @@ public class Telekinesis : MonoBehaviour
             {
                 if(body.drag == 0) body.drag = 5;
                 body.AddForce(((trackpoint.transform.position - body.transform.position).normalized * 200) + new Vector3(0, 9.8f, 0), ForceMode.Acceleration);
-                //Debug.Log(body);
             }
         }
     }
