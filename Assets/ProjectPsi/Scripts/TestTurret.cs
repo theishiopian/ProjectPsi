@@ -50,9 +50,9 @@ public class TestTurret : MonoBehaviour
     {
         if(!collision.collider.CompareTag("projectile"))//dont hit self with own bullets
         {
-            float force = collision.impulse.magnitude / Time.fixedDeltaTime;
-            health -= (int)force;
-            Debug.Log("impact of " + force + " detected by turret, health at " + health);
+            float force = collision.impulse.magnitude;
+            health -= (int)(force/100);
+            Debug.Log("impact of " + (int)(force / 100) + " detected by turret, health at " + health);
         }
 
         if(health <= 0)

@@ -41,13 +41,6 @@ public class Telekinesis : MonoBehaviour
     private void FixedUpdate()
     {
         tracker.Update(handAnchor.localPosition, handAnchor.localRotation, Time.fixedDeltaTime);
-        
-        
-
-        if (triggerAction.GetStateDown(controller))
-        {
-            
-        }
 
         if(triggerAction.GetState(controller))
         {
@@ -94,9 +87,9 @@ public class Telekinesis : MonoBehaviour
             foreach (Collider c in potentialTargets)
             {
                 potentialBody = c.GetComponent<Rigidbody>();
-                Debug.Log(c.name);
+                //Debug.Log(psi.GetPsi());
 
-                if (potentialBody != null)
+                if (potentialBody != null && potentialBody.mass/10 <= psi.GetPsi())
                 {
                     targets.Add(potentialBody);
                     Outline o = potentialBody.gameObject.GetComponent<Outline>();

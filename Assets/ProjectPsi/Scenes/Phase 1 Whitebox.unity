@@ -2249,7 +2249,7 @@ PrefabInstance:
     - target: {fileID: 7584074240074718387, guid: 7628a23095468ae4ca348c90bd8e5c92,
         type: 3}
       propertyPath: health
-      value: 15000
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7584074240074718387, guid: 7628a23095468ae4ca348c90bd8e5c92,
         type: 3}
@@ -2264,7 +2264,7 @@ PrefabInstance:
     - target: {fileID: 7584074240074718390, guid: 7628a23095468ae4ca348c90bd8e5c92,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7628a23095468ae4ca348c90bd8e5c92, type: 3}
@@ -5192,7 +5192,7 @@ PrefabInstance:
     - target: {fileID: 7584074240074718387, guid: 7628a23095468ae4ca348c90bd8e5c92,
         type: 3}
       propertyPath: health
-      value: 100000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7584074240074718387, guid: 7628a23095468ae4ca348c90bd8e5c92,
         type: 3}
@@ -5207,7 +5207,7 @@ PrefabInstance:
     - target: {fileID: 7584074240074718390, guid: 7628a23095468ae4ca348c90bd8e5c92,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7628a23095468ae4ca348c90bd8e5c92, type: 3}
@@ -6989,6 +6989,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231930662758074190, guid: 5f9163f567d526b4cb332cf1a3daae24,
+        type: 3}
+      propertyPath: m_Mass
+      value: 999
       objectReference: {fileID: 0}
     - target: {fileID: 4231930662758074194, guid: 5f9163f567d526b4cb332cf1a3daae24,
         type: 3}
@@ -8944,7 +8949,7 @@ PrefabInstance:
     - target: {fileID: 7584074240074718387, guid: 7628a23095468ae4ca348c90bd8e5c92,
         type: 3}
       propertyPath: health
-      value: 15000
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7584074240074718387, guid: 7628a23095468ae4ca348c90bd8e5c92,
         type: 3}
@@ -8959,7 +8964,7 @@ PrefabInstance:
     - target: {fileID: 7584074240074718390, guid: 7628a23095468ae4ca348c90bd8e5c92,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7628a23095468ae4ca348c90bd8e5c92, type: 3}
@@ -88880,7 +88885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a78da3f00f3328541b4526c0b0b5ec5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineThickness: 1.25
+  lineThickness: 4.23
   lineIntensity: 0.5
   fillAmount: 0
   lineColor0: {r: 0.6468458, g: 0, b: 1, a: 1}

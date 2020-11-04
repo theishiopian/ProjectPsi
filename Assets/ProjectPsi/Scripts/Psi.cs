@@ -17,30 +17,33 @@ public class Psi : MonoBehaviour
 
     private void Start()
     {
-        head = GlobalVars.Get("head");
+        //head = GlobalVars.Get("head");
         //particles = GetComponentInChildren<ParticleSystem>();
         //Debug.Log(particles);
     }
-
+    float timer = 0;
     void Update()
     {
-        Vector3 pos = head.transform.position;
-        pos.y = this.transform.position.y;
+        //Vector3 pos = head.transform.position;
+        //pos.y = this.transform.position.y;
 
-        transform.position = pos;
+        //transform.position = pos;
 
         //particles.emissionRate = psiLevel - 10;
         //Debug.Log(psiLevel);
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            ModifyPsi(10);
-        }
+        if (timer <= 0) ModifyPsi(-5 * Time.deltaTime, false);
+        else timer -= Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.RightShift))
-        {
-            ModifyPsi(-10);
-        }
+        //if (Input.GetKeyDown(KeyCode.LeftShift))
+        //{
+        //    ModifyPsi(10);
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.RightShift))
+        //{
+        //    ModifyPsi(-10);
+        //}
     }
 
     public float GetPsi()
@@ -48,8 +51,12 @@ public class Psi : MonoBehaviour
         return psiLevel;
     }
 
-    public void ModifyPsi(float amount)
+    public void ModifyPsi(float amount, bool delay)
     {
+        if(delay)
+        {
+            timer = 2;
+        }
         psiLevel = Mathf.Clamp(psiLevel + amount, 10, 100);//minimum amount 10
         Debug.Log("psi is now at: " + psiLevel);
     }
