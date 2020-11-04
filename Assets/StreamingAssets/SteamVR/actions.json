@@ -60,11 +60,6 @@
       "requirement": "mandatory"
     },
     {
-      "name": "/actions/default/in/AdjustButton",
-      "type": "boolean",
-      "requirement": "mandatory"
-    },
-    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     }
