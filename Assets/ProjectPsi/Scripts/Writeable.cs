@@ -101,7 +101,7 @@ public class Writeable : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
         marker = collision.collider.GetComponent<Marker>();
-
+        //Debug.Log(collision.gameObject.tag);
         if (marker != null)
         {
             mat.mainTexture = captureTexture;
