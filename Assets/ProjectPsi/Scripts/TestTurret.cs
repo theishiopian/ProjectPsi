@@ -52,7 +52,7 @@ public class TestTurret : MonoBehaviour
         {
             float force = collision.impulse.magnitude;
             health -= (int)(force/100);
-            Debug.Log("impact of " + (int)(force / 100) + " detected by turret, health at " + health);
+            //Debug.Log("impact of " + (int)(force / 100) + " detected by turret, health at " + health);
         }
 
         if(health <= 0)

@@ -33,6 +33,6 @@ public class Psi : MonoBehaviour
             timer = 2;
         }
         psiLevel = Mathf.Clamp(psiLevel + amount, 10, 100);//minimum amount 10
-        Debug.Log("psi is now at: " + psiLevel);
+        //Debug.Log("psi is now at: " + psiLevel);
     }
 }
