@@ -88,14 +88,17 @@ public class Telekinesis : MonoBehaviour
                 {
                     targets.Add(potentialBody);
                     Outline o = potentialBody.gameObject.GetComponent<Outline>();
-                    
-                    if(o == null)
+                    //TODO optomize
+                    if(potentialBody.CompareTag("Grabbable"))
                     {
-                        potentialBody.gameObject.AddComponent<Outline>();
-                    }
-                    else
-                    {
-                        o.enabled = true;
+                        if (o == null)
+                        {
+                            potentialBody.gameObject.AddComponent<Outline>();
+                        }
+                        else
+                        {
+                            o.enabled = true;
+                        }
                     }
                 }
             }
@@ -124,7 +127,7 @@ public class Telekinesis : MonoBehaviour
         foreach(Rigidbody body in bodies)
         {
             body.drag = 0;
-            body.gameObject.GetComponent<Outline>().enabled = false;
+            if(body.gameObject.GetComponent<Outline>() != null) body.gameObject.GetComponent<Outline>().enabled = false;
         }
     }
 }
