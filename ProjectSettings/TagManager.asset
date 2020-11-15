@@ -9,6 +9,7 @@ TagManager:
   - Walkable
   - Item
   - Hands
+  - Marker
   layers:
   - Default
   - TransparentFX
@@ -24,8 +25,8 @@ TagManager:
   - Body
   - Items
   - Telekinesis
-  - 
-  - 
+  - WBDrawing
+  - WBCollision
   - 
   - 
   - 
