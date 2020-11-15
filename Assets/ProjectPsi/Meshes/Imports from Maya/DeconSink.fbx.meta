@@ -3,7 +3,12 @@ guid: 4f5676a32754a0a4cac9696c50091e5a
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DeconSinkShinyMetal
+    second: {fileID: 2100000, guid: 757480d74a8624a4e80e29068d81f830, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

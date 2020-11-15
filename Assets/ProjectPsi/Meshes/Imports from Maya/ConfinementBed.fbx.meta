@@ -3,7 +3,12 @@ guid: d142a9dd1be71d543bde5474026c5e8b
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ConBed
+    second: {fileID: 2100000, guid: 6d787d54e9f0311448f9479bb5c3ca21, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

@@ -3,7 +3,12 @@ guid: a9dbc5cd7657c7642afb5625a108226d
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SmallDesk
+    second: {fileID: 2100000, guid: a416374e3284faa47a9f8ce6e6b891ff, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
