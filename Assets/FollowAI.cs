@@ -16,15 +16,21 @@ public class FollowAI : MonoBehaviour
     public LayerMask obstacles;
     public LayerMask navMesh;
     public float shootingDistance = 5;
+    public float sightDistance = 10;
+
+    public GameObject bulletPrefab;
+    public Transform gun;
 
     private NavMeshAgent agent;
     private Transform player;
     private States state = States.SEARCHING;
+    private List<GameObject> bullets = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         player = GlobalVars.Get("head").transform;
+        InvokeRepeating("Cleanup", 3, 3);
     }
 
     float t = 0;
@@ -36,7 +42,7 @@ public class FollowAI : MonoBehaviour
         {
             case States.SEARCHING:
                 {
-                    Debug.Log("searching");
+                    
                     if (CheckLineOfSight())
                     {
                         if (GetDistance() > shootingDistance)
@@ -53,7 +59,7 @@ public class FollowAI : MonoBehaviour
                 break;
             case States.FOLLOWING:
                 {
-                    Debug.Log("following");
+                    //Debug.Log("following");
                     if (CheckLineOfSight())
                     {
                         if(GetDistance() < shootingDistance)
@@ -70,13 +76,13 @@ public class FollowAI : MonoBehaviour
                 break;
             case States.PATROLLING:
                 {
-
+                    agent.isStopped = true;
                 }
                 break;
             case States.SHOOTING:
                 {
                     agent.isStopped = true;
-                    Debug.Log("shooting");
+                    //Debug.Log("shooting");
                     if (CheckLineOfSight())
                     {
                         if(GetDistance() > shootingDistance)
@@ -86,7 +92,17 @@ public class FollowAI : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("shooting");
+                            if(t <= 0)
+                            {
+                                Debug.Log("shooting");
+                                Vector3 heading = player.position - (transform.position + Vector3.up);
+
+                                GameObject b = Instantiate(bulletPrefab, gun.position, Quaternion.identity);
+
+                                b.GetComponent<Rigidbody>().AddForce(heading.normalized * 40, ForceMode.Impulse);
+                                bullets.Add(b);
+                                t = 3;
+                            }
                         }
                     }
                     else
@@ -98,7 +114,7 @@ public class FollowAI : MonoBehaviour
                 break;
         }
 
-        //if (t > 0) t -= Time.deltaTime;
+        if (t > 0) t -= Time.deltaTime;
     }
 
     bool CheckLineOfSight()
@@ -109,7 +125,7 @@ public class FollowAI : MonoBehaviour
         Vector3 heading = player.position - transform.position;
         Vector3 direction = heading / distance;
 
-        return !Physics.Raycast(transform.position, direction, out hit, distance, obstacles);
+        return !Physics.Raycast(transform.position, direction, out hit, distance, obstacles) && GetDistance() <= sightDistance;
     }
 
     float GetDistance()
@@ -127,5 +143,45 @@ public class FollowAI : MonoBehaviour
         }
         Debug.LogWarning("PLAYER IS NOT ON NAVMESH");
         return player.position;
+    }
+
+    private void Cleanup()
+    {
+        if (bullets.Count > 0)
+        {
+            Destroy(bullets[0]);
+            bullets.Remove(bullets[0]);
+        }
+
+    }
+
+    private void OnDrawGizmos()
+    {
+        switch (state)
+        {
+            case States.SEARCHING:
+            {
+                    Gizmos.color = Color.blue;
+                    Gizmos.DrawSphere(transform.position, 1);
+            }break;
+            case States.FOLLOWING:
+                {
+                    Gizmos.color = Color.yellow;
+                    Gizmos.DrawSphere(transform.position, 1);
+                }
+                break;
+            case States.SHOOTING:
+                {
+                    Gizmos.color = Color.red;
+                    Gizmos.DrawSphere(transform.position, 1);
+                }
+                break;
+            case States.PATROLLING:
+                {
+                    Gizmos.color = Color.green;
+                    Gizmos.DrawSphere(transform.position, 1);
+                }
+                break;
+        }
     }
 }
