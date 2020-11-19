@@ -4,26 +4,18 @@ using UnityEngine;
 
 public class Marker : MonoBehaviour
 {
-    public float dist = 0.2f;
+    public TrailRenderer trail;
 
-    private TrailRenderer trail;
-
-    private void Start()
+    private void OnCollisionEnter(Collision collision)
     {
-        trail = GetComponent<TrailRenderer>();
+        Debug.Log("hit");
+        trail.emitting = true;
     }
 
-    private void Update()
+    private void OnCollisionExit(Collision collision)
     {
-        if (Physics.Raycast(transform.position, transform.up, dist, LayerMask.NameToLayer("WBCollision")))
-        {
-            trail.emitting = true;
-            //Debug.Log("hit");
-        }
-        else
-        {
-            trail.emitting = false;
-            trail.Clear();
-        }
+        Debug.Log("clear");
+        trail.emitting = false;
+        trail.Clear();
     }
 }
