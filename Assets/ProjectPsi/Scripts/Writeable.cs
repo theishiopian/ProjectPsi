@@ -96,14 +96,14 @@ public class Writeable : MonoBehaviour
         //    }
         //}
     }
-    Marker marker;
-
+    TrailRenderer marker;
     public void OnCollisionEnter(Collision collision)
     {
-        marker = collision.collider.GetComponent<Marker>();
-        //Debug.Log(collision.gameObject.tag);
-        if (marker != null)
+        if (collision.collider.CompareTag("Marker"))
         {
+            Debug.Log("entered");
+            marker = collision.gameObject.GetComponentInChildren<TrailRenderer>();
+            marker.emitting = true;
             mat.mainTexture = captureTexture;
             old.mainTexture = saveTexture;
             //markers[marker.markerNumber].emitting = true;
@@ -112,12 +112,16 @@ public class Writeable : MonoBehaviour
 
     public void OnCollisionExit(Collision collision)
     {
-        marker = collision.collider.GetComponent<Marker>();
-
-        if(marker != null)
+        if(collision.collider.CompareTag("Marker"))
         {
+            Debug.Log("left");
+            
             Graphics.CopyTexture(captureTexture, saveTexture);
             mat.mainTexture = saveTexture;
+
+            marker = collision.gameObject.GetComponentInChildren<TrailRenderer>();
+            marker.emitting = false;
+            marker.Clear();
             //markers[currentMarker].emitting = false;
             //markers[currentMarker].Clear();
         }
