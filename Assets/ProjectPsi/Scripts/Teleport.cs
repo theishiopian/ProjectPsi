@@ -11,40 +11,92 @@ public class Teleport : MonoBehaviour
     public Transform teleportHand;
     public TeleportArc arc;
     public LayerMask arcMask;
+    public LayerMask sweepMask;
     public new CapsuleCollider collider;
     public Rigidbody body;
+
+    private GameObject head;
 
     // Start is called before the first frame update
     void Start()
     {
+        head = GlobalVars.Get("head");
         arc.Show();
         arc.traceLayerMask = arcMask;
     }
-    RaycastHit hit;
+    RaycastHit hit = new RaycastHit();
 
     bool shouldTeleport = false;
-
+    bool canTeleport = true;
     // Update is called once per frame
     void Update()
+    {
+        bool didHit = DrawArc(canTeleport);
+        canTeleport = didHit ? CanTeleportTo(hit, body) : false;
+
+        if (teleportAction.GetStateDown(controller))
+        {
+            shouldTeleport = true;
+        }
+        else if (teleportAction.GetStateUp(controller))
+        {
+            //teleport here
+            if (canTeleport)
+            {
+                Debug.Log("teleporting");
+            }
+        }
+    }
+
+    bool DrawArc(bool canTeleport)
     {
         arc.SetArcData(teleportHand.position, teleportHand.forward * 10, true, false);
         bool didHit = arc.DrawArc(out hit);
 
-        if(didHit && !hit.collider.gameObject.layer.Equals(LayerMask.NameToLayer("NavMesh")))
-        {
-            arc.SetColor(Color.red);
-        }
-        else
-        {
-            arc.SetColor(Color.blue);
-        }
+        arc.SetColor(canTeleport ? Color.cyan : Color.red);
+        return didHit;
     }
 
+    Vector3 dir, groundPos = new Vector3();
+    Vector3 a, b = new Vector3();
     //can we fit to the destination?
-    bool CanTeleportTo(Vector3 destination)
+    bool CanTeleportTo(RaycastHit hitInfo, Rigidbody body)
     {
+        if (!hitInfo.collider.gameObject.layer.Equals(LayerMask.NameToLayer("NavMesh"))) return false;
+
+        groundPos = GetGroundPoint();
+        dir = hitInfo.point - groundPos;
+
+        Debug.DrawRay(groundPos, Vector3.up, Color.magenta);
+
+        Debug.DrawRay(groundPos, dir, Color.green);
+
+        float pointDist = collider.height / 2 - collider.radius;
+        a = new Vector3(0, collider.center.y, 0) + Vector3.up * pointDist;
+        b = new Vector3(0, collider.center.y, 0) + Vector3.down * pointDist;
+        RaycastHit cHit;
+        if (Physics.CapsuleCast(groundPos + a, groundPos + b, collider.radius, dir, out cHit, dir.magnitude, sweepMask.value))
+        {
+            //Debug.Log("hit: " + cHit.collider);
+            Debug.DrawRay(cHit.point, Vector3.up * 100);
+            return false;
+        }
+
         return true;
     }
 
+    Vector3 GetGroundPoint()
+    {
+        RaycastHit groundHit = new RaycastHit();
 
+        Physics.Raycast(head.transform.position, Vector3.down, out groundHit, 2f, arcMask);
+        //Debug.Log(groundHit.collider);
+        return groundHit.point;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(a + groundPos, 0.1f);
+        Gizmos.DrawWireSphere(b + groundPos, 0.1f);
+    }
 }
