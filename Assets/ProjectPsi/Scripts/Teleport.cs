@@ -71,6 +71,7 @@ public class Teleport : MonoBehaviour
         groundPos = GetGroundPoint();
         dir = hitInfo.point - groundPos;
 
+        //KEEP THIS JUST IN CASE WE NEED IT
         //Debug.DrawRay(groundPos, Vector3.up, Color.magenta);
 
         //Debug.DrawRay(groundPos, dir, Color.green);
