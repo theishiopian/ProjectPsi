@@ -21,22 +21,24 @@ public class Teleport : MonoBehaviour
     void Start()
     {
         head = GlobalVars.Get("head");
-        arc.Show();
+        //arc.Hide();
         arc.traceLayerMask = arcMask;
     }
     RaycastHit hit = new RaycastHit();
 
-    bool shouldTeleport = false;
-    bool canTeleport = true;
+    bool canTeleport = false;
+    Vector3 dir, groundPos, a, b = new Vector3();
     // Update is called once per frame
     void Update()
     {
-        bool didHit = DrawArc(canTeleport);
-        canTeleport = didHit ? CanTeleportTo(hit, body) : false;
-
-        if (teleportAction.GetStateDown(controller))
+        bool didHit = false;
+        
+        if (teleportAction.GetState(controller))
         {
-            shouldTeleport = true;
+            if (!arc.gameObject.activeSelf) arc.gameObject.SetActive(true);
+            didHit = DrawArc(canTeleport);
+            canTeleport = didHit ? CanTeleportTo(hit, body) : false;
+            //arc.Show();
         }
         else if (teleportAction.GetStateUp(controller))
         {
@@ -44,7 +46,11 @@ public class Teleport : MonoBehaviour
             if (canTeleport)
             {
                 Debug.Log("teleporting");
+
+                //teleport with offset
+                body.position += dir;
             }
+            arc.gameObject.SetActive(false);
         }
     }
 
@@ -57,8 +63,6 @@ public class Teleport : MonoBehaviour
         return didHit;
     }
 
-    Vector3 dir, groundPos = new Vector3();
-    Vector3 a, b = new Vector3();
     //can we fit to the destination?
     bool CanTeleportTo(RaycastHit hitInfo, Rigidbody body)
     {
@@ -94,9 +98,9 @@ public class Teleport : MonoBehaviour
         return groundHit.point;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(a + groundPos, 0.1f);
-        Gizmos.DrawWireSphere(b + groundPos, 0.1f);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawWireSphere(a + groundPos, 0.1f);
+    //    Gizmos.DrawWireSphere(b + groundPos, 0.1f);
+    //}
 }
