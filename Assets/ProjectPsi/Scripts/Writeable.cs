@@ -22,8 +22,8 @@ public class Writeable : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        captureTexture = new RenderTexture(512, 256, 24);
-        saveTexture = new Texture2D(512, 256, TextureFormat.ARGB32,false);
+        captureTexture = new RenderTexture(1024, 512, 24);
+        saveTexture = new Texture2D(1024, 512, TextureFormat.ARGB32,false);
         captureTexture.useDynamicScale = true;
         mat = new Material(Shader.Find("Standard"));
         old = new Material(Shader.Find("Unlit/Texture"));
@@ -60,9 +60,10 @@ public class Writeable : MonoBehaviour
     //private Ray ray;
     //private RaycastHit hit;
 
+    #region OldUpdate
     // Update is called once per frame
-    private void Update()
-    {
+    //private void Update()
+    //{
         //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         //if (Physics.Raycast(ray, out hit, LayerMask.NameToLayer("WB Colliders")))
@@ -95,13 +96,15 @@ public class Writeable : MonoBehaviour
         //        currentMarker += 1;
         //    }
         //}
-    }
+    //}
+    #endregion
+
     TrailRenderer marker;
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Marker"))
+        if (collision.collider.CompareTag("Marker") || collision.collider.CompareTag("Eraser"))
         {
-            Debug.Log("entered");
+            //Debug.Log("entered");
             marker = collision.gameObject.GetComponentInChildren<TrailRenderer>();
             marker.emitting = true;
             mat.mainTexture = captureTexture;
@@ -112,9 +115,9 @@ public class Writeable : MonoBehaviour
 
     public void OnCollisionExit(Collision collision)
     {
-        if(collision.collider.CompareTag("Marker"))
+        if(collision.collider.CompareTag("Marker") || collision.collider.CompareTag("Eraser"))
         {
-            Debug.Log("left");
+            //Debug.Log("left");
             
             Graphics.CopyTexture(captureTexture, saveTexture);
             mat.mainTexture = saveTexture;
