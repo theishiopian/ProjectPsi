@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log(moveDirection);
         if (body.velocity.magnitude<speed &&   joystickInput.magnitude > deadzone)
         {
-            body.AddForce(moveDirection * 30, ForceMode.Acceleration);
+            body.position += moveDirection * speed * Time.deltaTime;
         }
 
         if(snapLeft)
@@ -57,7 +57,8 @@ public class PlayerMovement : MonoBehaviour
         else if(shouldTurnLeft)
         {
             shouldTurnLeft = false;
-            body.rotation = body.rotation * Quaternion.Euler(0, -15,0);
+            //body.rotation = body.rotation * Quaternion.Euler(0, -15,0);
+            RotateRigidBodyAroundPointBy(body, transform.position + collider.center, Vector3.up, -15);
         }
 
         if (snapRight)
@@ -67,9 +68,10 @@ public class PlayerMovement : MonoBehaviour
         else if (shouldTurnRight)
         {
             shouldTurnRight = false;
-            body.rotation = body.rotation * Quaternion.Euler(0, 15, 0);
+            //body.rotation = body.rotation * Quaternion.Euler(0, 15, 0);
+            RotateRigidBodyAroundPointBy(body, transform.position + collider.center, Vector3.up, 15);
         }
-
+        #region OldTeleport
         //if (teleport)
         //{
         //    shouldTeleport = true;
@@ -94,6 +96,7 @@ public class PlayerMovement : MonoBehaviour
         //    teleportReticle.gameObject.SetActive(false);
         //    teleportLine.enabled = false;
         //}
+        #endregion
     }
 
     public static float GetAngle(Vector2 p_vector2)//put this in a library???
@@ -124,5 +127,13 @@ public class PlayerMovement : MonoBehaviour
         snapLeft = snapLeftAction.GetState(turnHand);
         snapRight = snapRightAction.GetState(turnHand);
         //teleport = teleportAction.GetState(teleportHand);
+    }
+
+    //code by Sandy Gifford of the unity answers forums
+    public void RotateRigidBodyAroundPointBy(Rigidbody rb, Vector3 origin, Vector3 axis, float angle)
+    {
+        Quaternion q = Quaternion.AngleAxis(angle, axis);
+        rb.MovePosition(q * (rb.transform.position - origin) + origin);
+        rb.MoveRotation(rb.transform.rotation * q);
     }
 }
