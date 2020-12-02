@@ -8,6 +8,7 @@ public class TriggerHelper : MonoBehaviour
 {
     public MonoBehaviour target;
     public new string tag;
+    public bool useTag = false;
 
     private void Start()
     {
@@ -19,16 +20,16 @@ public class TriggerHelper : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(tag)) (target as ITriggerListener).OnEnter(other);
+        if (!useTag || other.CompareTag(tag)) (target as ITriggerListener).OnEnter(other);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag(tag)) (target as ITriggerListener).OnExit(other);
+        if (!useTag || other.CompareTag(tag)) (target as ITriggerListener).OnExit(other);
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag(tag)) (target as ITriggerListener).OnStay(other);
+        if (!useTag || other.CompareTag(tag)) (target as ITriggerListener).OnStay(other);
     }
 }

@@ -27,8 +27,9 @@ public class Teleport : MonoBehaviour
     RaycastHit hit = new RaycastHit();
 
     bool canTeleport = false;
-    Vector3 dir, groundPos, a, b = new Vector3();
-    // Update is called once per frame
+    Vector3 dir, groundPos = new Vector3();
+    //Vector3 a, b = new Vector3();
+
     void Update()
     {
         bool didHit = false;

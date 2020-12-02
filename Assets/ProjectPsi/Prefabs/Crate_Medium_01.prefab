@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8480656342677420410}
   - component: {fileID: 5376509016933726177}
   - component: {fileID: 3335175157578552375}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Crate_Medium_01
-  m_TagString: Untagged
+  m_TagString: Grabbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
