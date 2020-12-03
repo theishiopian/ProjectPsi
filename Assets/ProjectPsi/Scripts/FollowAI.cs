@@ -171,33 +171,33 @@ public class FollowAI : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        switch (state)
-        {
-            case States.SEARCHING:
-            {
-                    Gizmos.color = Color.blue;
-                    Gizmos.DrawSphere(transform.position, 1);
-            }break;
-            case States.FOLLOWING:
-                {
-                    Gizmos.color = Color.yellow;
-                    Gizmos.DrawSphere(transform.position, 1);
-                }
-                break;
-            case States.SHOOTING:
-                {
-                    Gizmos.color = Color.red;
-                    Gizmos.DrawSphere(transform.position, 1);
-                }
-                break;
-            case States.PATROLLING:
-                {
-                    Gizmos.color = Color.green;
-                    Gizmos.DrawSphere(transform.position, 1);
-                }
-                break;
-        }
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    switch (state)
+    //    {
+    //        case States.SEARCHING:
+    //        {
+    //                Gizmos.color = Color.blue;
+    //                Gizmos.DrawSphere(transform.position, 1);
+    //        }break;
+    //        case States.FOLLOWING:
+    //            {
+    //                Gizmos.color = Color.yellow;
+    //                Gizmos.DrawSphere(transform.position, 1);
+    //            }
+    //            break;
+    //        case States.SHOOTING:
+    //            {
+    //                Gizmos.color = Color.red;
+    //                Gizmos.DrawSphere(transform.position, 1);
+    //            }
+    //            break;
+    //        case States.PATROLLING:
+    //            {
+    //                Gizmos.color = Color.green;
+    //                Gizmos.DrawSphere(transform.position, 1);
+    //            }
+    //            break;
+    //    }
+    //}
 }
