@@ -6656,7 +6656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 4893400925699389034}
   tag: Item
-  useTag: 0
+  useTag: 1
 --- !u!1 &5784143070427541842
 GameObject:
   m_ObjectHideFlags: 0
@@ -6905,7 +6905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 5784143071613642960}
   tag: Item
-  useTag: 0
+  useTag: 1
 --- !u!1 &5784143071166078905
 GameObject:
   m_ObjectHideFlags: 0
