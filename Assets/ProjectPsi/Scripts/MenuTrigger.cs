@@ -8,14 +8,20 @@ public class MenuTrigger : MonoBehaviour
     [System.Serializable]
     public class MenuCallback : UnityEvent { }
 
-    public MenuCallback callback;
+    public MenuCallback OnDrawn;
+    public MenuCallback OnErased;
 
     private void OnTriggerExit(Collider other)
     {
         if(other.CompareTag("Marker"))
         {
-            Debug.Log("detected");
-            callback.Invoke();
+            Debug.Log("marker detected");
+            OnDrawn.Invoke();
+        }
+        else if((other.CompareTag("Eraser")))
+        {
+            Debug.Log("eraser detected");
+            OnErased.Invoke();
         }
     }
 }
