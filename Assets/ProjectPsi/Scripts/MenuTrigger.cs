@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class MenuTrigger : MonoBehaviour
 {
     [System.Serializable]
-    public class MenuCallback : UnityEvent { }
+    public class MenuCallback : UnityEvent<string> { }
 
     public MenuCallback OnDrawn;
     public MenuCallback OnErased;
@@ -16,12 +16,12 @@ public class MenuTrigger : MonoBehaviour
         if(other.CompareTag("Marker"))
         {
             Debug.Log("marker detected");
-            OnDrawn.Invoke();
+            OnDrawn.Invoke("debug");
         }
         else if((other.CompareTag("Eraser")))
         {
             Debug.Log("eraser detected");
-            OnErased.Invoke();
+            OnErased.Invoke("debug");
         }
     }
 }
