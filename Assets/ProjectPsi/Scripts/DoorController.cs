@@ -9,14 +9,22 @@ internal enum DoorState
 
 public class DoorController : MonoBehaviour, ITriggerListener
 {
+    public bool startLocked;
     public Transform door;
     public Vector3 openPos;
     public AnimationCurve openCurve;
     public AnimationCurve closeCurve;
+    public DoorPanel panel;
 
     private bool detected = false;
     private float t = 0;//0-1 closed-open
     private DoorState state = DoorState.CLOSED;
+
+    private void Start()
+    {
+        if (startLocked)
+            state = DoorState.LOCKED;
+    }
 
     // Update is called once per frame
     void Update()
@@ -62,6 +70,10 @@ public class DoorController : MonoBehaviour, ITriggerListener
             case DoorState.LOCKED:
                 {
                     //key check here
+                    if (!panel.locked)
+                    {
+                        state = DoorState.CLOSED;
+                    }
                 }
                 break;
         }
