@@ -14,7 +14,6 @@ public class DoorController : MonoBehaviour, ITriggerListener
     public AnimationCurve openCurve;
     public AnimationCurve closeCurve;
 
-    //private bool moving = false;
     private bool detected = false;
     private float t = 0;//0-1 closed-open
     private DoorState state = DoorState.CLOSED;
@@ -22,37 +21,6 @@ public class DoorController : MonoBehaviour, ITriggerListener
     // Update is called once per frame
     void Update()
     {
-        //if(moving)
-        //{
-        //    switch (state)
-        //    {
-        //        case DoorState.CLOSING://open door
-        //            {
-        //                MoveDoorPos(t, closeCurve);
-        //            }
-        //            break;
-        //        case DoorState.OPENING://close door
-        //            {
-        //                MoveDoorPos(t, openCurve);
-        //            }
-        //            break;
-        //    }
-        //    t += Time.deltaTime;
-        //}
-
-        //Debug.Log(t);
-        //if (moving && t >= 1)
-        //{
-        //    moving = false;
-        //    t = 0;
-
-        //    switch (state)
-        //    {
-        //        case DoorState.OPENING: state = DoorState.OPEN; break;
-        //        case DoorState.CLOSING: state = DoorState.CLOSED; break;
-        //    }
-        //}
-
         switch (state)
         {
             case DoorState.CLOSED:
@@ -107,27 +75,16 @@ public class DoorController : MonoBehaviour, ITriggerListener
 
     public void OnEnter(Collider other)
     {
-        //if(!moving)
-        //{
-        //    state = DoorState.OPENING;
-        //    moving = true;
-        //}
         detected = true;
     }
 
     public void OnExit(Collider other)
     {
-        //if(!moving)
-        //{
-        //    state = DoorState.CLOSING;
-        //    moving = true;
-        //}
         detected = false;
     }
 
     public void OnStay(Collider other)
     {
-        //throw new System.NotImplementedException();
         detected = true;
     }
 
