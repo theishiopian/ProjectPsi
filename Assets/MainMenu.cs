@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public List<GameObject> overlays = new List<GameObject>();
+    public GameObject options;
 
     // Start is called before the first frame update
     void Start()
@@ -19,12 +19,18 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    public void OnStartChecked()
+    public void OnStartChecked(string input)
     {
         SceneManager.LoadScene("Phase 1 Whitebox");
     }
 
-    public void OnExitChecked()
+    public void OnOptionsChecked(string input)
+    {
+        options.SetActive(true);
+        this.gameObject.SetActive(false);
+    }
+
+    public void OnExitChecked(string input)
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;

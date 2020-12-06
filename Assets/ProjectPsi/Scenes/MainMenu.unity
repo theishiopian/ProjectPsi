@@ -877,7 +877,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnDrawn:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1473245801}
+        m_MethodName: OnOptionsChecked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnErased:
     m_PersistentCalls:
       m_Calls: []
@@ -1011,7 +1022,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnDrawn:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1473245801}
+        m_MethodName: OnStartChecked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnErased:
     m_PersistentCalls:
       m_Calls: []
@@ -2691,6 +2713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea65df3dcfc5492488d7a7f490f947df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  main: {fileID: 1473245799}
   volumeIndicator: {fileID: 389974845}
   volumeNotches:
   - {fileID: 432481085}
@@ -3619,7 +3642,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnDrawn:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1473245801}
+        m_MethodName: OnExitChecked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnErased:
     m_PersistentCalls:
       m_Calls: []
@@ -3664,6 +3698,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1473245800}
+  - component: {fileID: 1473245801}
   m_Layer: 0
   m_Name: Main Menu
   m_TagString: Untagged
@@ -3688,6 +3723,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1473245801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473245799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a808bbabbe3777b4a88faf9579d17808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  options: {fileID: 1105976640}
 --- !u!1 &1528231765
 GameObject:
   m_ObjectHideFlags: 0
@@ -4083,7 +4131,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnDrawn:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1105976642}
+        m_MethodName: OnReturnChecked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnErased:
     m_PersistentCalls:
       m_Calls: []

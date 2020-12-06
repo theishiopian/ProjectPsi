@@ -6,6 +6,8 @@ using TMPro;
 
 public class OptionsMenu : MonoBehaviour
 {
+    public GameObject main;
+
     public Transform volumeIndicator;
 
     public Transform[] volumeNotches;
@@ -82,5 +84,11 @@ public class OptionsMenu : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    public void OnReturnChecked(string input)
+    {
+        main.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 }
