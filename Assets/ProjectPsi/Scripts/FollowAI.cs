@@ -17,7 +17,8 @@ public class FollowAI : MonoBehaviour
     public LayerMask navMesh;
     public float shootingDistance = 5;
     public float sightDistance = 10;
-    public int health = 10;
+    public int health = 50;
+    public int armor = 2;
 
     public GameObject bulletPrefab;
     public Transform gun;
@@ -158,10 +159,22 @@ public class FollowAI : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Rigidbody b = collision.collider.GetComponent<Rigidbody>();
         if (!collision.collider.CompareTag("projectile"))//dont hit self with own bullets
         {
-            float force = collision.impulse.magnitude;
-            health -= (int)(force / 100);
+            if(b != null)
+            {
+                //float force = collision.impulse.magnitude;
+
+                float force = b.velocity.magnitude;
+                //Debug.Log(force);
+                int damage = Mathf.FloorToInt(force);
+                if(damage > armor)health -= damage;
+            }
+            else
+            {
+                Debug.Log("body null");
+            }
             //Debug.Log("impact of " + (int)(force / 100) + " detected by turret, health at " + health);
         }
 
