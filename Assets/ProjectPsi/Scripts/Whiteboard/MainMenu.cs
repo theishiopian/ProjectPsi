@@ -21,7 +21,7 @@ public class MainMenu : MonoBehaviour
 
     public void OnStartChecked(string input)
     {
-        SceneManager.LoadScene("Phase 1 Whitebox");
+        SceneManager.LoadScene("Level1");
     }
 
     public void OnOptionsChecked(string input)
