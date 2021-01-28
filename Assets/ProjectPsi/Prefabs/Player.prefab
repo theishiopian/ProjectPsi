@@ -6883,7 +6883,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6195395113973499954}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f29232f9dcaeb654294b8424e7d3daa7, type: 3}
   m_Name: 
@@ -6891,7 +6891,6 @@ MonoBehaviour:
   trigger:
     actionPath: /actions/default/in/InteractUI
     needsReinit: 0
-  leftController: 1
   rightController: 2
 --- !u!1 &6195395114842401008
 GameObject:
