@@ -6722,7 +6722,6 @@ GameObject:
   - component: {fileID: 6195395113973499953}
   - component: {fileID: 5784143070326453428}
   - component: {fileID: 6195395113973499966}
-  - component: {fileID: 8864678539236246916}
   m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
@@ -6737,7 +6736,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6195395113973499954}
-  m_LocalRotation: {x: -0, y: -0.7118893, z: -0, w: 0.70229167}
+  m_LocalRotation: {x: 0, y: -0.7118913, z: 0, w: 0.70228976}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6876,22 +6875,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: player_rig
---- !u!114 &8864678539236246916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6195395113973499954}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f29232f9dcaeb654294b8424e7d3daa7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trigger:
-    actionPath: /actions/default/in/InteractUI
-    needsReinit: 0
-  rightController: 2
 --- !u!1 &6195395114842401008
 GameObject:
   m_ObjectHideFlags: 0

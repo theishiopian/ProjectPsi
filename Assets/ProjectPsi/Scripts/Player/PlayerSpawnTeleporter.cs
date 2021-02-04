@@ -5,18 +5,31 @@ using UnityEngine;
 public class PlayerSpawnTeleporter : MonoBehaviour
 {
     public static PlayerSpawnTeleporter instance;
+    public GameObject fallbackPlayer;
+    
     // Start is called before the first frame update
     void Awake()
     {
-        instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        if(!instance)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
     }
 
     Transform player;
 
     private void Start()
     {
-        player = GlobalVars.Get("player_rig").transform;
+        if(!player)
+        {
+            player = GlobalVars.Get("player_rig").transform;
+        }
+        else
+        {
+            Destroy(fallbackPlayer);
+            MovePlayer(transform);
+        }
     }
 
     public void MovePlayer(Transform t)
