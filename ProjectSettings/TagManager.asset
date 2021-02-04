@@ -30,9 +30,9 @@ TagManager:
   - WBCollision
   - NavMesh
   - Walls
-  - 
-  - 
-  - 
+  - PlayerTarget
+  - Enemy
+  - EnemyBullet
   - 
   - 
   - 
