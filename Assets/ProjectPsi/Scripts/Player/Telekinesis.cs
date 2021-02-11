@@ -6,11 +6,14 @@ using cakeslice;
 
 public class Telekinesis : MonoBehaviour
 {
+    [Header("SteamVR")]
     public SteamVR_Input_Sources controller;
     public SteamVR_Action_Boolean triggerAction;
     public SteamVR_Action_Boolean adjustAction;
-    public LayerMask layers;
+
+    [Header("Transforms")]
     public Transform head;
+    public Transform body;
     public Transform hand;
 
     private void Start()
