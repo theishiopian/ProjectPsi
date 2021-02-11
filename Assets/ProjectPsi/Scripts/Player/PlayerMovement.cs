@@ -89,6 +89,7 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log(collider);
         collider.height = head.localPosition.y;
         collider.transform.localPosition = new Vector3(head.localPosition.x, head.localPosition.y / 2, head.localPosition.z);
+        collider.transform.eulerAngles = new Vector3(0,head.eulerAngles.y,0);
     }
 
     private void UpdateInput()
