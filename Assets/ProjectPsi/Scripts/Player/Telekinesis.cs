@@ -17,16 +17,33 @@ public class Telekinesis : MonoBehaviour
 
     [Header("Physics Objects")]
     public SpringJoint joint;
-    public Rigidbody target;
 
     [Header("Settings")]
-    public float launchForce = 50;
+    public LayerMask mask;
+    public float launchForce = 20;
+    public float springMultiplier = 5;
+    public string hitTag = "Grabbable";
+
+    RaycastHit hit;
+    private Rigidbody target;
 
     private void Update()
     {
-        if(pickupAction.GetStateDown(controller))
+        if (Physics.SphereCast(head.transform.position, 0.5f, head.forward, out hit, 100, mask))
         {
-            joint.connectedBody = target;
+            if (hit.collider.CompareTag(hitTag))
+            {
+                target = hit.rigidbody;
+            }
+        }
+
+        if (pickupAction.GetStateDown(controller))
+        {
+            if(target)
+            {
+                joint.connectedBody = target;
+                joint.spring = target.mass * springMultiplier;
+            }
         }
 
         if(pickupAction.GetStateUp(controller))
@@ -38,6 +55,7 @@ public class Telekinesis : MonoBehaviour
         {
             joint.connectedBody = null;
             target.AddForce(head.forward * launchForce, ForceMode.VelocityChange);
+            target = null;
         }
     }
 }

@@ -265,8 +265,11 @@ MonoBehaviour:
     needsReinit: 0
   head: {fileID: 8088146632553792955}
   joint: {fileID: 2108989989}
-  target: {fileID: 840943889}
+  mask:
+    serializedVersion: 2
+    m_Bits: 1044481
   launchForce: 50
+  hitTag: Grabbable
 --- !u!1001 &542337784
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -283,6 +286,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169942776143389015, guid: 067deeca1e54c9c4c91411556901614e,
+        type: 3}
+      propertyPath: m_Drag
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169942776143389015, guid: 067deeca1e54c9c4c91411556901614e,
+        type: 3}
+      propertyPath: m_Mass
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 6469096747357779545, guid: 067deeca1e54c9c4c91411556901614e,
         type: 3}
@@ -435,12 +448,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &840943889 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 3335175157578552375, guid: 68ff19c428af39b4ab7cea8784b5c33b,
-    type: 3}
-  m_PrefabInstance: {fileID: 2147464859}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1249473587
 GameObject:
   m_ObjectHideFlags: 0
