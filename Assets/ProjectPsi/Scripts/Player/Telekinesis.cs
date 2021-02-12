@@ -22,6 +22,8 @@ public class Telekinesis : MonoBehaviour
     public LayerMask mask;
     public float launchForce = 20;
     public float springMultiplier = 5;
+    public float raycastRadius = 0.25f;
+    public float raycastRange = 100f;
     public string hitTag = "Grabbable";
 
     RaycastHit hit;
@@ -29,7 +31,7 @@ public class Telekinesis : MonoBehaviour
 
     private void Update()
     {
-        if (Physics.SphereCast(head.transform.position, 0.5f, head.forward, out hit, 100, mask))
+        if (Physics.SphereCast(head.transform.position, raycastRadius, head.forward, out hit, raycastRange, mask))
         {
             if (hit.collider.CompareTag(hitTag))
             {
