@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3335175157578552375}
   m_Layer: 0
   m_Name: Crate_Medium_01
-  m_TagString: Grabbable
+  m_TagString: Liftable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
