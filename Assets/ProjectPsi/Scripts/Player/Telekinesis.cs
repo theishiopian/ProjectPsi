@@ -30,24 +30,27 @@ public class Telekinesis : MonoBehaviour
     public float grabForce = 25f;
     public float grabDistance = 0.15f;
 
+    [Header("Outline")]
+    public ParticleSystem outline;
+
     RaycastHit hit;
     private Rigidbody liftTarget;
     private Rigidbody grabTarget;
 
     private void Update()
     {
-        Debug.LogFormat("LiftTarget is: {0}, GrabTarget is: {1}", liftTarget, grabTarget);
+        //Debug.LogFormat("LiftTarget is: {0}, GrabTarget is: {1}", liftTarget, grabTarget);
         if (Physics.SphereCast(head.transform.position, raycastRadius, head.forward, out hit, raycastRange, mask))
         {
             if(hit.collider.CompareTag(grabTag))
             {
-                grabTarget = hit.rigidbody;
-                liftTarget = null;
+                grabTarget = SetTarget(hit.rigidbody);
+                ResetTarget(out liftTarget);
             }
             else if (hit.collider.CompareTag(liftTag))
             {
-                liftTarget = hit.rigidbody;
-                grabTarget = null;
+                liftTarget = SetTarget(hit.rigidbody);
+                ResetTarget(out grabTarget);
             }
         }
 
@@ -60,7 +63,7 @@ public class Telekinesis : MonoBehaviour
                 //attatch to hand
                 handScript.AttachObject(grabTarget.gameObject, GrabTypes.Grip);
 
-                grabTarget = null;
+                ResetTarget(out grabTarget);
             }
         }
 
@@ -73,15 +76,41 @@ public class Telekinesis : MonoBehaviour
         if(pickupAction.GetStateUp(controller))
         {
             joint.connectedBody = null;
-            liftTarget = null;
-            grabTarget = null;
+            ResetTarget(out liftTarget);
+            ResetTarget(out grabTarget);
         }
 
         if(throwAction.GetStateDown(controller))
         {
             joint.connectedBody = null;
             liftTarget.AddForce(head.forward * launchForce, ForceMode.VelocityChange);
-            liftTarget = null;
+            ResetTarget(out liftTarget);
         }
+    }
+
+    Rigidbody SetTarget(Rigidbody target)
+    {
+        outline.transform.SetParent(target.transform);//this line not working, even though thye method is called. fuck you
+        Debug.Log(target);
+        outline.transform.localPosition = Vector3.zero;
+
+        ParticleSystem.ShapeModule shape = outline.shape;
+
+        MeshFilter filter = target.gameObject.GetComponent<MeshFilter>();
+
+        shape.mesh = filter.mesh;
+
+        outline.Play();
+
+        return target;
+    }
+
+    void ResetTarget(out Rigidbody target)
+    {
+        outline.Stop();
+        outline.transform.parent = null;
+        outline.transform.position = Vector3.zero;
+
+        target = null;
     }
 }
