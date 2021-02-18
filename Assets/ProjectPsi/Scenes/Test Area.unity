@@ -332,7 +332,6 @@ GameObject:
   m_Component:
   - component: {fileID: 432986783}
   - component: {fileID: 432986784}
-  - component: {fileID: 432986785}
   m_Layer: 11
   m_Name: Abilities
   m_TagString: Untagged
@@ -394,31 +393,6 @@ MonoBehaviour:
   sphereMask:
     serializedVersion: 2
     m_Bits: 12288
---- !u!114 &432986785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 432986782}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1db80e91875fcac4497de382dd7cb1d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  look: {fileID: 8088146632553792955}
-  outline: {fileID: 1237928805}
-  castRadius: 0.1
-  sphereRadius: 0.5
-  castDistance: 150
-  castMask:
-    serializedVersion: 2
-    m_Bits: 143361
-  sphereMask:
-    serializedVersion: 2
-    m_Bits: 12288
-  liftTag: Liftable
-  grabTag: Item
 --- !u!1001 &504350416
 PrefabInstance:
   m_ObjectHideFlags: 0
