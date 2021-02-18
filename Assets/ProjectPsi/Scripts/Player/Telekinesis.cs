@@ -36,6 +36,7 @@ public class Telekinesis : MonoBehaviour
     public LayerMask castMask;
     public LayerMask sphereMask;
 
+    //internal vars
     private RaycastHit hit;
     private Rigidbody liftTarget;
     private Rigidbody grabTarget;
@@ -100,14 +101,14 @@ public class Telekinesis : MonoBehaviour
             lifting = false;
             joint.connectedBody = null;
         }
-        else if (pickupAction.GetState(controller))
+        else if (pickupAction.GetState(controller))//use telekinesis
         {
-            if(grabTarget)
+            if(grabTarget)//item
             {
                 lifting = true;
                 grabTarget.AddForce((hand.position - grabTarget.transform.position).normalized * grabForce, ForceMode.Acceleration);
 
-                if (Vector3.Distance(hand.position, grabTarget.transform.position) < grabDistance)
+                if (Vector3.Distance(hand.position, grabTarget.transform.position) < grabDistance)//is close enough to hand
                 {
                     //attatch to hand
                     lifting = false;
@@ -117,7 +118,7 @@ public class Telekinesis : MonoBehaviour
                     ResetOutline();
                 }  
             }
-            else if (liftTarget)
+            else if (liftTarget)//object
             {
                 lifting = true;
 
@@ -126,7 +127,7 @@ public class Telekinesis : MonoBehaviour
             }
         }
 
-        if(throwAction.GetStateDown(controller))
+        if(throwAction.GetStateDown(controller))//throw
         {
             joint.connectedBody = null;
             liftTarget.AddForce(head.forward * launchForce, ForceMode.VelocityChange);
@@ -136,7 +137,7 @@ public class Telekinesis : MonoBehaviour
         }
     }
 
-    void SetOutline(GameObject target)
+    void SetOutline(GameObject target)//move particles to target
     {
         ParticleSystem.ShapeModule shape = outline.shape;
 
@@ -150,9 +151,8 @@ public class Telekinesis : MonoBehaviour
         outline.Play();
     }
 
-    void ResetOutline()
+    void ResetOutline()//stop particles
     {
         outline.Stop();
     }
-
 }
