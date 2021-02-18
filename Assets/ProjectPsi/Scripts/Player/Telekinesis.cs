@@ -41,6 +41,7 @@ public class Telekinesis : MonoBehaviour
     private Rigidbody liftTarget;
     private Rigidbody grabTarget;
     private bool lifting  = false;
+    private bool grabbing = false;
     private Collider[] overlaps;
 
     private void Update()
@@ -74,7 +75,7 @@ public class Telekinesis : MonoBehaviour
                     {
                         grabTarget = theOne.GetComponent<Rigidbody>();
                     }
-                    else if (theOne.CompareTag(liftTag))
+                    else if (theOne.CompareTag(liftTag) && !grabbing)
                     {
                         liftTarget = theOne.GetComponent<Rigidbody>();
                     }
@@ -106,19 +107,21 @@ public class Telekinesis : MonoBehaviour
             if(grabTarget)//item
             {
                 lifting = true;
+                grabbing = true;
                 grabTarget.AddForce((hand.position - grabTarget.transform.position).normalized * grabForce, ForceMode.Acceleration);
 
                 if (Vector3.Distance(hand.position, grabTarget.transform.position) < grabDistance)//is close enough to hand
                 {
                     //attatch to hand
                     lifting = false;
+                    grabbing = false;
                     handScript.AttachObject(grabTarget.gameObject, GrabTypes.Grip);
 
                     grabTarget = null;
                     ResetOutline();
                 }  
             }
-            else if (liftTarget)//object
+            else if (liftTarget && !grabbing)//object
             {
                 lifting = true;
 
