@@ -332,6 +332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 432986783}
   - component: {fileID: 432986784}
+  - component: {fileID: 432986785}
   m_Layer: 11
   m_Name: Abilities
   m_TagString: Untagged
@@ -376,21 +377,37 @@ MonoBehaviour:
   head: {fileID: 8088146632553792955}
   hand: {fileID: 8088146632553914611}
   joint: {fileID: 2108989989}
-  worldMask:
-    serializedVersion: 2
-    m_Bits: 131073
-  pickUpMask:
-    serializedVersion: 2
-    m_Bits: 1
   launchForce: 50
   springMultiplier: 5
-  raycastRadius: 0.25
-  raycastRange: 100
   liftTag: Liftable
   grabTag: Item
   grabForce: 100
-  grabDistance: 0.15
+  grabDistance: 1
   outline: {fileID: 1237928805}
+--- !u!114 &432986785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432986782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1db80e91875fcac4497de382dd7cb1d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  look: {fileID: 8088146632553792955}
+  castRadius: 0.1
+  sphereRadius: 0.5
+  castDistance: 150
+  castMask:
+    serializedVersion: 2
+    m_Bits: 143361
+  sphereMask:
+    serializedVersion: 2
+    m_Bits: 12288
+  liftTag: Liftable
+  grabTag: Item
 --- !u!1001 &504350416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -457,11 +474,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GreenKeycard (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2274070012218939172, guid: 968eb3ac7a10e9a4a86f5e7ac4273a1d,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 968eb3ac7a10e9a4a86f5e7ac4273a1d, type: 3}
@@ -552,7 +564,7 @@ GameObject:
   - component: {fileID: 824603801}
   - component: {fileID: 824603800}
   - component: {fileID: 824603799}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5410,7 +5422,7 @@ GameObject:
   - component: {fileID: 1249473590}
   - component: {fileID: 1249473589}
   m_Layer: 11
-  m_Name: Body
+  m_Name: Player Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5565,11 +5577,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GreenKeycard (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 2274070012218939172, guid: 968eb3ac7a10e9a4a86f5e7ac4273a1d,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 968eb3ac7a10e9a4a86f5e7ac4273a1d, type: 3}
 --- !u!1001 &1740156067
@@ -5638,11 +5645,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GreenKeycard
-      objectReference: {fileID: 0}
-    - target: {fileID: 2274070012218939172, guid: 968eb3ac7a10e9a4a86f5e7ac4273a1d,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 968eb3ac7a10e9a4a86f5e7ac4273a1d, type: 3}
@@ -5713,16 +5715,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GreenKeycard (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 2274070012218939172, guid: 968eb3ac7a10e9a4a86f5e7ac4273a1d,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5037904603751342184, guid: 968eb3ac7a10e9a4a86f5e7ac4273a1d,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 968eb3ac7a10e9a4a86f5e7ac4273a1d, type: 3}
 --- !u!1 &2108989986
@@ -5752,7 +5744,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108989986}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00000013783574, y: 0, z: 3.000001}
+  m_LocalPosition: {x: -0.000000063329935, y: 0.00000013411045, z: 3.0000017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1249473588}
@@ -10697,15 +10689,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3639069849087498418}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.134, z: 0}
+  m_LocalRotation: {x: 0, y: 0.60056, z: -0, w: -0.7995797}
+  m_LocalPosition: {x: -7.81, y: 0.23, z: 3.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1237928806}
   - {fileID: 7456524708711775428}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 286.18, z: 0}
 --- !u!1 &4368143248833785112
 GameObject:
   m_ObjectHideFlags: 0

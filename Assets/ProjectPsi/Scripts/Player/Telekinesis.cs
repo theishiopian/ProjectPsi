@@ -20,13 +20,13 @@ public class Telekinesis : MonoBehaviour
     public SpringJoint joint;
 
     [Header("Settings")]
-    public LayerMask worldMask;
-    public LayerMask pickUpMask;
+    //public LayerMask worldMask;
+    //public LayerMask pickUpMask;
     public float launchForce = 20;
     public float springMultiplier = 5;
-    public float spherecastRadius = 0.25f;
-    public float spherecastRange = 100f;
-    public float overlapRadius = 0.5f;
+    //public float spherecastRadius = 0.25f;
+    //public float spherecastRange = 100f;
+    //public float overlapRadius = 0.5f;
     public string liftTag = "Liftable";
     public string grabTag = "Item";
     public float grabForce = 25f;
@@ -39,44 +39,47 @@ public class Telekinesis : MonoBehaviour
     private Rigidbody liftTarget;
     private Rigidbody grabTarget;
     private Collider[] sphereHits;
-
+    private bool lifting  = false;
 
     private void Update()
     {
-        Physics.SphereCast(head.transform.position, spherecastRadius, head.forward, out hit, spherecastRange, worldMask);
-
-        if (pickupAction.GetStateDown(controller))
+        if(!lifting)
         {
-            sphereHits = Physics.OverlapSphere(hit.point, overlapRadius, pickUpMask);
+            GameObject check = TargetScanner.Target;
 
-            foreach (Collider item in sphereHits)
+            if (check)
             {
-                if (item.CompareTag(grabTag))
+                if (check.CompareTag(grabTag))
                 {
-                    grabTarget = SetTarget(item.GetComponent<Rigidbody>());
-                    Debug.Log("grab target");
-                    //ResetTarget(out liftTarget);
-                    break;
+                    grabTarget = SetTarget(check.GetComponent<Rigidbody>());
                 }
-                else if (item.CompareTag(liftTag))
+                else if (check.CompareTag(liftTag))
                 {
-                    liftTarget = SetTarget(item.GetComponent<Rigidbody>());
-                    //ResetTarget(out grabTarget);
-
-                    joint.connectedBody = liftTarget;
-                    joint.spring = liftTarget.mass * springMultiplier;
-                    break;
+                    liftTarget = SetTarget(check.GetComponent<Rigidbody>());
+                }
+                else
+                {
+                    ResetAll();
                 }
             }
+            else
+            {
+                ResetAll();
+            }
+
+            //Debug.Log(check);
         }
-        else if (pickupAction.GetStateUp(controller))
+
+        //Debug.Log(liftTarget);
+
+        if (pickupAction.GetStateUp(controller))
         {
+            lifting = false;
             joint.connectedBody = null;
-            if(liftTarget)ResetTarget(out liftTarget);
-            if(grabTarget)ResetTarget(out grabTarget);
         }
         else if (grabTarget && pickupAction.GetState(controller))
         {
+            lifting = true;
             grabTarget.AddForce((hand.position - grabTarget.transform.position).normalized * grabForce, ForceMode.Acceleration);
 
             if (Vector3.Distance(hand.position, grabTarget.transform.position) < grabDistance)
@@ -85,22 +88,28 @@ public class Telekinesis : MonoBehaviour
                 handScript.AttachObject(grabTarget.gameObject, GrabTypes.Grip);
 
                 ResetTarget(out grabTarget);
+                //lifting = false;
             }
+        }
+        else if(liftTarget && pickupAction.GetState(controller))
+        {
+            lifting = true;
+
+            joint.connectedBody = liftTarget;
+            joint.spring = liftTarget.mass * springMultiplier;
         }
         else if(throwAction.GetStateDown(controller))
         {
             joint.connectedBody = null;
             liftTarget.AddForce(head.forward * launchForce, ForceMode.VelocityChange);
             ResetTarget(out liftTarget);
-            
+            lifting = false;
         }
 
     }
 
     Rigidbody SetTarget(Rigidbody target)
     {
-        Debug.Log("Setting");
-
         outline.transform.SetParent(target.transform);//this line not working, even though the method is called. fuck you
         
         outline.transform.localPosition = Vector3.zero;
@@ -116,12 +125,18 @@ public class Telekinesis : MonoBehaviour
         return target;
     }
 
+    void ResetAll()
+    {
+        ResetTarget(out liftTarget);
+        ResetTarget(out grabTarget);
+        Debug.Log("reseting");
+    }
+
     void ResetTarget(out Rigidbody target)
     {
         outline.Stop();
         outline.transform.parent = null;
         outline.transform.position = Vector3.zero;
-        Debug.Log("Resetting");
         target = null;
     }
 }
