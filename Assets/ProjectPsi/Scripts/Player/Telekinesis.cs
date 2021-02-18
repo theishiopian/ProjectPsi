@@ -15,59 +15,80 @@ public class Telekinesis : MonoBehaviour
     [Header("Transforms")]
     public Transform head;
     public Transform hand;
+    public Transform look;
 
-    [Header("Physics Objects")]
+    [Header("Objects")]
+    public ParticleSystem outline;
     public SpringJoint joint;
 
-    [Header("Settings")]
-    //public LayerMask worldMask;
-    //public LayerMask pickUpMask;
+    [Header("Physics Settings")]
     public float launchForce = 20;
     public float springMultiplier = 5;
-    //public float spherecastRadius = 0.25f;
-    //public float spherecastRange = 100f;
-    //public float overlapRadius = 0.5f;
     public string liftTag = "Liftable";
     public string grabTag = "Item";
     public float grabForce = 25f;
     public float grabDistance = 0.15f;
 
-    [Header("Outline")]
-    public ParticleSystem outline;
+    [Header("Targeting Settings")]
+    public float castRadius = 0.25f;
+    public float sphereRadius = 0.5f;
+    public float castDistance = 150;
+    public LayerMask castMask;
+    public LayerMask sphereMask;
 
     private RaycastHit hit;
     private Rigidbody liftTarget;
     private Rigidbody grabTarget;
-    private Collider[] sphereHits;
     private bool lifting  = false;
+    private Collider[] overlaps;
 
     private void Update()
     {
-        if(!lifting)
+        if (!lifting && handScript.AttachedObjects.Count == 0)
         {
-            GameObject check = TargetScanner.Target;
-
-            if (check)
+            if (Physics.SphereCast(look.position, castRadius, look.forward, out hit, castDistance, castMask))
             {
-                if (check.CompareTag(grabTag))
+                overlaps = Physics.OverlapSphere(hit.point, sphereRadius, sphereMask);
+                float distance = Mathf.Infinity;
+                Collider theOne = null;
+
+                foreach (Collider c in overlaps)
                 {
-                    grabTarget = SetTarget(check.GetComponent<Rigidbody>());
+                    float newDist = Vector3.Distance(hit.point, c.transform.position);
+                    if (newDist < distance && (c.CompareTag(liftTag) || c.CompareTag(grabTag)))
+                    {
+                        distance = newDist;
+                        theOne = c;
+                    }
                 }
-                else if (check.CompareTag(liftTag))
+
+                if (theOne)
                 {
-                    liftTarget = SetTarget(check.GetComponent<Rigidbody>());
+                    SetOutline(theOne.gameObject);
+
+                    if (theOne.CompareTag(grabTag))
+                    {
+                        grabTarget = theOne.GetComponent<Rigidbody>();
+                    }
+                    else if (theOne.CompareTag(liftTag))
+                    {
+                        liftTarget = theOne.GetComponent<Rigidbody>();
+                    }
                 }
                 else
                 {
-                    ResetAll();
+                    liftTarget = null;
+                    grabTarget = null;
+                    ResetOutline();
                 }
             }
             else
             {
-                ResetAll();
-            }
 
-            //Debug.Log(check);
+                liftTarget = null;
+                grabTarget = null;
+                ResetOutline();
+            }
         }
 
         //Debug.Log(liftTarget);
@@ -77,7 +98,7 @@ public class Telekinesis : MonoBehaviour
             lifting = false;
             joint.connectedBody = null;
         }
-        else if (grabTarget && pickupAction.GetState(controller))
+        else if (grabTarget && pickupAction.GetState(controller) )
         {
             lifting = true;
             grabTarget.AddForce((hand.position - grabTarget.transform.position).normalized * grabForce, ForceMode.Acceleration);
@@ -85,10 +106,11 @@ public class Telekinesis : MonoBehaviour
             if (Vector3.Distance(hand.position, grabTarget.transform.position) < grabDistance)
             {
                 //attatch to hand
+                lifting = false;
                 handScript.AttachObject(grabTarget.gameObject, GrabTypes.Grip);
 
-                ResetTarget(out grabTarget);
-                //lifting = false;
+                grabTarget = null;
+                ResetOutline();
             }
         }
         else if(liftTarget && pickupAction.GetState(controller))
@@ -102,41 +124,30 @@ public class Telekinesis : MonoBehaviour
         {
             joint.connectedBody = null;
             liftTarget.AddForce(head.forward * launchForce, ForceMode.VelocityChange);
-            ResetTarget(out liftTarget);
+            liftTarget = null;
             lifting = false;
+            ResetOutline();
         }
 
     }
 
-    Rigidbody SetTarget(Rigidbody target)
+    void SetOutline(GameObject target)
     {
-        outline.transform.SetParent(target.transform);//this line not working, even though the method is called. fuck you
-        
-        outline.transform.localPosition = Vector3.zero;
-
         ParticleSystem.ShapeModule shape = outline.shape;
 
-        MeshFilter filter = target.gameObject.GetComponent<MeshFilter>();
+        MeshFilter filter = target.GetComponent<MeshFilter>();
 
         shape.mesh = filter.mesh;
 
+        outline.transform.SetParent(target.transform);
+        outline.transform.localPosition = Vector3.zero;
+        outline.transform.localEulerAngles = Vector3.zero;
         outline.Play();
-
-        return target;
     }
 
-    void ResetAll()
-    {
-        ResetTarget(out liftTarget);
-        ResetTarget(out grabTarget);
-        Debug.Log("reseting");
-    }
-
-    void ResetTarget(out Rigidbody target)
+    void ResetOutline()
     {
         outline.Stop();
-        outline.transform.parent = null;
-        outline.transform.position = Vector3.zero;
-        target = null;
     }
+
 }
