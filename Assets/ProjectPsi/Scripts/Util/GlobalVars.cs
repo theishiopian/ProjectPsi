@@ -12,6 +12,13 @@ public class GlobalVars : MonoBehaviour
     public static void Add(string key, GameObject value)
     {
         globalObjects[key] = value;
+        //if (!globalObjects.ContainsKey(key))
+        //    globalObjects[key] = value;
+        //else
+        //{
+        //    Debug.Log("Key " + key + " already present in dictionary with value of: " + globalObjects[key] + ", Destroying duplicate");
+        //    Destroy(value);
+        //}
     }
 
     public static GameObject Get(string key)
