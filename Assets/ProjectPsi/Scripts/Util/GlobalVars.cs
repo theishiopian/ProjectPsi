@@ -6,9 +6,6 @@ public class GlobalVars : MonoBehaviour
     //global system
     private static Dictionary<string, GameObject> globalObjects = new Dictionary<string, GameObject>();
 
-    public static Psi playerPsi;
-    public static Health playerHealth;
-
     public static void Add(string key, GameObject value)
     {
         globalObjects[key] = value;
