@@ -5,12 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - projectile
-  - Grabbable
   - Walkable
   - Item
   - Hands
   - Marker
   - Eraser
+  - Liftable
+  - Grabbable
   layers:
   - Default
   - TransparentFX

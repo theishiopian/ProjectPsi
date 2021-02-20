@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3285570375520074633}
   - component: {fileID: 755557524102139715}
   - component: {fileID: 2143100107570664393}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: RockFaceObservationArea_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6542883739489823157, guid: 11dcd2e13f1411a4b97c94411fce28f9, type: 3}
+  - {fileID: 2100000, guid: 8a15b696cd2130d4ea24fd46a43e1787, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

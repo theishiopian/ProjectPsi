@@ -6,12 +6,16 @@ public class GlobalVars : MonoBehaviour
     //global system
     private static Dictionary<string, GameObject> globalObjects = new Dictionary<string, GameObject>();
 
-    public static Psi playerPsi;
-    public static Health playerHealth;
-
     public static void Add(string key, GameObject value)
     {
         globalObjects[key] = value;
+        //if (!globalObjects.ContainsKey(key))
+        //    globalObjects[key] = value;
+        //else
+        //{
+        //    Debug.Log("Key " + key + " already present in dictionary with value of: " + globalObjects[key] + ", Destroying duplicate");
+        //    Destroy(value);
+        //}
     }
 
     public static GameObject Get(string key)

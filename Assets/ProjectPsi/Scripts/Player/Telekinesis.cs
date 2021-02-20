@@ -2,132 +2,165 @@
 using Unity.Labs.SuperScience;
 using UnityEngine;
 using Valve.VR;
-using cakeslice;
+using Valve.VR.InteractionSystem;
 
 public class Telekinesis : MonoBehaviour
 {
-    public SteamVR_Input_Sources controller;//TODO vr input manager
-    public SteamVR_Action_Boolean triggerAction;
-    public SteamVR_Action_Boolean adjustAction;
-    public LayerMask layers;
+    [Header("SteamVR")]
+    public SteamVR_Input_Sources controller;
+    public SteamVR_Action_Boolean pickupAction;
+    public SteamVR_Action_Boolean throwAction;
+    public Hand handScript;
 
-    private Transform head;
-    private PhysicsTracker tracker;
-    private Psi psi;
-    private Rigidbody cameraRigBody;
-    private GameObject trackpoint;
-    private readonly Vector3 trackpointOffset = new Vector3(0,0,3);
-    private Transform handAnchor;
+    [Header("Transforms")]
+    public Transform head;
+    public Transform hand;
+    public Transform look;
 
-    private void Start()
+    [Header("Objects")]
+    public ParticleSystem outline;
+    public SpringJoint joint;
+
+    [Header("Physics Settings")]
+    public float launchForce = 20;
+    public float springMultiplier = 5;
+    public string liftTag = "Liftable";
+    public string grabTag = "Item";
+    public float grabForce = 25f;
+    public float grabDistance = 0.15f;
+
+    [Header("Targeting Settings")]
+    public float castRadius = 0.25f;
+    public float sphereRadius = 0.5f;
+    public float castDistance = 150;
+    public LayerMask castMask;
+    public LayerMask sphereMask;
+    public string ignoreLayer = "Items";
+
+    //internal vars
+    private RaycastHit hit;
+    private Rigidbody liftTarget;
+    private Rigidbody grabTarget;
+    private bool lifting  = false;
+    private bool grabbing = false;
+    private Collider[] overlaps;
+
+    private void Update()
     {
-        handAnchor = GlobalVars.Get("hand_anchor").transform;
-        psi = GlobalVars.playerPsi;
-        head = GlobalVars.Get("head").transform;
-        tracker = new PhysicsTracker();
-        cameraRigBody = GlobalVars.Get("player_rig").GetComponent<Rigidbody>();
-
-        trackpoint = new GameObject("trackPoint");
-
-        trackpoint.transform.parent = head;
-        trackpoint.transform.localPosition = trackpointOffset;
-        trackpoint.transform.localRotation = Quaternion.identity;
-        trackpoint.transform.localScale = Vector3.one;
-    }
-
-    private Vector3 additiveVelocity;
-
-    private void FixedUpdate()
-    {
-        tracker.Update(handAnchor.localPosition, handAnchor.localRotation, Time.fixedDeltaTime);
-
-        if(triggerAction.GetState(controller))
+        if (!lifting && handScript.AttachedObjects.Count == 0)
         {
-            if (tracker.Speed > 0.2f)
+            //scan for targets
+            if (Physics.SphereCast(look.position, castRadius, look.forward, out hit, castDistance, castMask))
             {
-                additiveVelocity = tracker.Direction * Time.fixedDeltaTime * tracker.Speed * tracker.Speed * tracker.Speed;//cubed speed
-                trackpoint.transform.localPosition += additiveVelocity;
+                overlaps = Physics.OverlapSphere(hit.point, sphereRadius, sphereMask);
+                float distance = Mathf.Infinity;
+                Collider theOne = null;
+
+                //sort by size
+                foreach (Collider c in overlaps)
+                {
+                    float newDist = Vector3.Distance(hit.point, c.transform.position);
+                    if (newDist < distance && (c.CompareTag(liftTag) || c.CompareTag(grabTag)))
+                    {
+                        if(c.gameObject.layer == LayerMask.NameToLayer(ignoreLayer) && c.GetComponent<Item>().isHeld)
+                        {
+                            continue;
+                        }
+                        distance = newDist;
+                        theOne = c;
+                    }
+                }
+
+                //aquire target
+                if (theOne)
+                {
+                    SetOutline(theOne.gameObject);
+
+                    if (theOne.CompareTag(grabTag))
+                    {
+                        grabTarget = theOne.GetComponent<Rigidbody>();
+                    }
+                    else if (theOne.CompareTag(liftTag) && !grabbing)
+                    {
+                        liftTarget = theOne.GetComponent<Rigidbody>();
+                    }
+                }
+                else
+                {
+                    //if no targets to aquire at hit
+                    liftTarget = null;
+                    grabTarget = null;
+                    ResetOutline();
+                }
             }
             else
             {
-                trackpoint.transform.localPosition = Vector3.Slerp(trackpoint.transform.localPosition, trackpointOffset, Time.fixedDeltaTime * 5);
+                //if no hits
+                liftTarget = null;
+                grabTarget = null;
+                ResetOutline();
             }
-
-            MoveTargets();
         }
-        else GetTargets();
 
-        if (triggerAction.GetStateUp(controller))
+        if (pickupAction.GetStateUp(controller))//let go
         {
-            trackpoint.transform.localPosition = trackpointOffset;
-
-            ResetRigidbodies(targets);
-
-            targets = new List<Rigidbody>();
+            lifting = false;
+            joint.connectedBody = null;
         }
-    }
-
-    private RaycastHit hit;
-    private List<Rigidbody> targets = new List<Rigidbody>();
-    private Collider[] potentialTargets;
-
-    Rigidbody potentialBody;
-
-    void GetTargets()
-    {
-        if (Physics.SphereCast(head.position, 0.5f, head.forward, out hit, 50, layers.value))
+        else if (pickupAction.GetState(controller))//use telekinesis
         {
-            potentialTargets = Physics.OverlapSphere(hit.point, 0.5f, layers.value, QueryTriggerInteraction.Ignore);
-            ResetRigidbodies(targets);
-            targets.Clear();
-            foreach (Collider c in potentialTargets)
+            if(grabTarget)//item
             {
-                potentialBody = c.GetComponent<Rigidbody>();
+                lifting = true;
+                grabbing = true;
+                grabTarget.AddForce((hand.position - grabTarget.transform.position).normalized * grabForce, ForceMode.Acceleration);
 
-                if (potentialBody != null && potentialBody.mass/10 <= psi.GetPsi())
+                if (Vector3.Distance(hand.position, grabTarget.transform.position) < grabDistance)//is close enough to hand
                 {
-                    targets.Add(potentialBody);
-                    Outline o = potentialBody.gameObject.GetComponent<Outline>();
-                    //TODO optomize
-                    if(potentialBody.CompareTag("Grabbable"))
-                    {
-                        if (o == null)
-                        {
-                            potentialBody.gameObject.AddComponent<Outline>();
-                        }
-                        else
-                        {
-                            o.enabled = true;
-                        }
-                    }
-                }
-            }
-        }
-        else
-        {
-            ResetRigidbodies(targets);
-            targets = new List<Rigidbody>();
-        }
-    }
+                    //attatch to hand
+                    lifting = false;
+                    grabbing = false;
+                    handScript.AttachObject(grabTarget.gameObject, GrabTypes.Grip);
 
-    void MoveTargets()
-    {
-        if(targets != null)
-        {
-            foreach(Rigidbody body in targets)
+                    grabTarget = null;
+                    ResetOutline();
+                }  
+            }
+            else if (liftTarget && !grabbing)//object
             {
-                if(body.drag == 0) body.drag = 5;
-                body.AddForce(((trackpoint.transform.position - body.transform.position).normalized * 200) + new Vector3(0, 9.8f, 0), ForceMode.Acceleration);
+                lifting = true;
+
+                joint.connectedBody = liftTarget;
+                joint.spring = liftTarget.mass * springMultiplier;
             }
+        }
+
+        if(throwAction.GetStateDown(controller))//throw
+        {
+            joint.connectedBody = null;
+            liftTarget.AddForce(head.forward * launchForce, ForceMode.VelocityChange);
+            liftTarget = null;
+            lifting = false;
+            ResetOutline();
         }
     }
 
-    void ResetRigidbodies(List<Rigidbody> bodies)
+    void SetOutline(GameObject target)//move particles to target
     {
-        foreach(Rigidbody body in bodies)
-        {
-            body.drag = 0;
-            if(body.gameObject.GetComponent<Outline>() != null) body.gameObject.GetComponent<Outline>().enabled = false;
-        }
+        ParticleSystem.ShapeModule shape = outline.shape;
+
+        MeshFilter filter = target.GetComponent<MeshFilter>();
+
+        shape.mesh = filter.mesh;
+
+        outline.transform.SetParent(target.transform);
+        outline.transform.localPosition = Vector3.zero;
+        outline.transform.localEulerAngles = Vector3.zero;
+        outline.Play();
+    }
+
+    void ResetOutline()//stop particles
+    {
+        outline.Stop();
     }
 }

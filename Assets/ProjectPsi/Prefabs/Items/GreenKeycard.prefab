@@ -18,6 +18,8 @@ GameObject:
   - component: {fileID: 6262478142312165065}
   - component: {fileID: 9168466112293914644}
   - component: {fileID: 6668179140773910316}
+  - component: {fileID: 3902882183585064633}
+  - component: {fileID: 4815431082381117950}
   m_Layer: 12
   m_Name: GreenKeycard
   m_TagString: Item
@@ -35,8 +37,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.498891, y: 0.974, z: -3.4983742}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 5037904603751342184}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -314,53 +315,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   code: green
---- !u!1 &5666068359286307538
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5037904603751342184}
-  - component: {fileID: 8234233916541136845}
-  - component: {fileID: 6170238627490601735}
-  m_Layer: 0
-  m_Name: GreenKeycard
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5037904603751342184
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5666068359286307538}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.0011999607, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1496547527969590686}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8234233916541136845
+--- !u!33 &3902882183585064633
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5666068359286307538}
+  m_GameObject: {fileID: 2274070012218939172}
   m_Mesh: {fileID: 5697637368414676610, guid: 045a6a68c08b71a41a6ae70e4e038427, type: 3}
---- !u!23 &6170238627490601735
+--- !u!23 &4815431082381117950
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5666068359286307538}
+  m_GameObject: {fileID: 2274070012218939172}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1

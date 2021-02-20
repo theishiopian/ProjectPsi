@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2263829140676957973}
   - component: {fileID: 4075278078537540575}
   - component: {fileID: 7295350622837429008}
-  m_Layer: 8
+  m_Layer: 17
   m_Name: Stairs_Metal_2x2
   m_TagString: Walkable
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ MeshCollider:
   m_GameObject: {fileID: 2562187145213444618}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30

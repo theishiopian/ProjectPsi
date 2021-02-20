@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6109147015099886398}
   - component: {fileID: 8299284870865772532}
   - component: {fileID: 1211675953713850043}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: RailingStraightShort_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

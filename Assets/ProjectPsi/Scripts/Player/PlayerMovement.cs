@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public bool useHand;//if true we use your hand for movement. if false we use the head. default false
     public float speed;
     public float deadzone;//the Deadzone of the joystick. used to prevent unwanted walking.
+    public new CapsuleCollider collider;
 
     private Transform head;
     private Transform leftHand;
@@ -23,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private bool snapRight, shouldTurnRight;
     private bool teleport, shouldTeleport;
     private Vector3 moveDirection;
-    private new CapsuleCollider collider;
+    
     private Rigidbody body;
 
     private void Start()
@@ -31,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
         head = GlobalVars.Get("head").transform;
         leftHand = GlobalVars.Get("left_hand").transform;
         rightHand = GlobalVars.Get("right_hand").transform;
-        collider = GetComponent<CapsuleCollider>();
         body = GetComponent<Rigidbody>();
     }
 
@@ -39,12 +39,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Debug.Log(body.velocity.magnitude);
         UpdateCollider();
         UpdateInput();
 
         moveDirection = Quaternion.AngleAxis(GetAngle(joystickInput) + (useHand ? leftHand : head).transform.rotation.eulerAngles.y, Vector3.up) * Vector3.forward;//get the angle of the touch and correct it for the rotation of the controller
-        //Debug.Log(moveDirection);
         if (body.velocity.magnitude<speed &&   joystickInput.magnitude > deadzone)
         {
             body.position += moveDirection * speed * Time.deltaTime;
@@ -58,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         {
             shouldTurnLeft = false;
             //body.rotation = body.rotation * Quaternion.Euler(0, -15,0);
-            RotateRigidBodyAroundPointBy(body, transform.position + collider.center, Vector3.up, -15);
+            RotateRigidBodyAroundPointBy(body, collider.transform.position, Vector3.up, -15);
         }
 
         if (snapRight)
@@ -69,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         {
             shouldTurnRight = false;
             //body.rotation = body.rotation * Quaternion.Euler(0, 15, 0);
-            RotateRigidBodyAroundPointBy(body, transform.position + collider.center, Vector3.up, 15);
+            RotateRigidBodyAroundPointBy(body, collider.transform.position, Vector3.up, 15);
         }
     }
 
@@ -90,7 +88,8 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log(head);
         //Debug.Log(collider);
         collider.height = head.localPosition.y;
-        collider.center = new Vector3(head.localPosition.x, head.localPosition.y / 2, head.localPosition.z);
+        collider.transform.localPosition = new Vector3(head.localPosition.x, head.localPosition.y / 2, head.localPosition.z);
+        collider.transform.eulerAngles = new Vector3(0,head.eulerAngles.y,0);
     }
 
     private void UpdateInput()
@@ -100,7 +99,6 @@ public class PlayerMovement : MonoBehaviour
 
         snapLeft = snapLeftAction.GetState(turnHand);
         snapRight = snapRightAction.GetState(turnHand);
-        //teleport = teleportAction.GetState(teleportHand);
     }
 
     //code by Sandy Gifford of the unity answers forums
