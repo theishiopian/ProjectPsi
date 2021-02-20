@@ -7273,7 +7273,7 @@ MonoBehaviour:
   castDistance: 150
   castMask:
     serializedVersion: 2
-    m_Bits: 143361
+    m_Bits: 139265
   sphereMask:
     serializedVersion: 2
     m_Bits: 12288

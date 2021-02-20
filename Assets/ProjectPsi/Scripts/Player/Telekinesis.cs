@@ -35,6 +35,7 @@ public class Telekinesis : MonoBehaviour
     public float castDistance = 150;
     public LayerMask castMask;
     public LayerMask sphereMask;
+    public string ignoreLayer = "Items";
 
     //internal vars
     private RaycastHit hit;
@@ -61,6 +62,10 @@ public class Telekinesis : MonoBehaviour
                     float newDist = Vector3.Distance(hit.point, c.transform.position);
                     if (newDist < distance && (c.CompareTag(liftTag) || c.CompareTag(grabTag)))
                     {
+                        if(c.gameObject.layer == LayerMask.NameToLayer(ignoreLayer) && c.GetComponent<Item>().isHeld)
+                        {
+                            continue;
+                        }
                         distance = newDist;
                         theOne = c;
                     }
