@@ -1447,7 +1447,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1818423
+    m_Bits: 3915575
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -7277,3 +7277,4 @@ MonoBehaviour:
   sphereMask:
     serializedVersion: 2
     m_Bits: 12288
+  ignoreLayer: Items

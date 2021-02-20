@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3099556110035472277}
   - component: {fileID: 929749874878888799}
   - component: {fileID: 1956452522587334617}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: RockFaceDiagnosticsArea_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1722590461793737354}
-  m_LocalRotation: {x: -0, y: 0.35380098, z: -0, w: 0.93532073}
+  m_LocalRotation: {x: 0, y: 0.35380137, z: 0, w: 0.9353206}
   m_LocalPosition: {x: 22.875, y: 0, z: -5.125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 08e81440304a6264cb4e1b719b5c81b7, type: 2}
+  - {fileID: 2100000, guid: 8a15b696cd2130d4ea24fd46a43e1787, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

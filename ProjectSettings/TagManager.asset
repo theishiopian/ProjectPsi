@@ -11,6 +11,7 @@ TagManager:
   - Marker
   - Eraser
   - Liftable
+  - Grabbable
   layers:
   - Default
   - TransparentFX
@@ -33,7 +34,7 @@ TagManager:
   - PlayerTarget
   - Enemy
   - EnemyBullet
-  - 
+  - Transparent
   - 
   - 
   - 

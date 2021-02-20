@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4378391372880692051}
   - component: {fileID: 1956775041637070745}
   - component: {fileID: 2565800058732284579}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: RailingStraight_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 11013775101466188}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 49.875, y: 1.5, z: 24.625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
