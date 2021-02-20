@@ -2181,10 +2181,10 @@ MonoBehaviour:
   arc: {fileID: 8457292436660777587}
   arcMask:
     serializedVersion: 2
-    m_Bits: 196609
+    m_Bits: 2293761
   sweepMask:
     serializedVersion: 2
-    m_Bits: 139265
+    m_Bits: 2236417
   collider: {fileID: 0}
   body: {fileID: 8133860311344099972}
 --- !u!114 &8133860311344099978
