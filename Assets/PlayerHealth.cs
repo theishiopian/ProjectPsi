@@ -3,44 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tactical;
 
-public class PlayerHealth : MonoBehaviour, IDamageable
+public class PlayerHealth : AbstractHealth
 {
     [Header("Tags (WARNING do not change at runtime)")]
     public const string stunTag = "stun";
     public const string killTag = "bullet";
 
-    [Header("Settings")]
-    public float startingHealth = 100;//how much health does the player get on start?
+    [Header("Player Health Settings")]
     public float regenRate = 10;//regen rate of health  per second
     public float gracePeriod = 0.5f;//during grace, health doesnt regen but you cant take damage either
     public float maxStunTime;
     
-    public float Health { get; private set; }//health  value
-
     private bool isAlive = true;//is the player alive?
     private float graceTimer = 0;//how much grace is left?
 
-    public void Damage(float amount)//deal damage, implemented from IDamageable
+    public override void Damage(float amount)//deal damage, implemented from IDamageable
     {
-        Health -= amount;
+        base.Damage(amount);        
         graceTimer = gracePeriod;
-        if (Health <= 0)
-        {
-            isAlive = false;
-            gameObject.SetActive(false);
-        }
-    }
-
-    public bool IsAlive()//get alive status, implemented from IDamageable
-    {
-        return isAlive;
-    }
-
-    public void Kill()//Instantly kill (environmental hazards, etc)
-    {
-        isAlive = false;
-        Health = 0;
-        gameObject.SetActive(false);
     }
 
     public void Stun()//stun halves movement speed and teleport range
