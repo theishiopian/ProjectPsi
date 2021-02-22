@@ -8,41 +8,43 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     [Header("Tags (WARNING do not change at runtime)")]
     public const string stunTag = "stun";
     public const string killTag = "bullet";
+
+    [Header("Settings")]
     public float startingHealth = 100;
+    public float gracePeriod;
+    public float maxStunTime;
+    
+    public float Health { get; private set; }//health  value
 
-    public float Health { get; private set; }
+    private bool isAlive = true;//is the player alive?
 
-    private bool isAlive = true;
-
-    public void Damage(float amount)
+    public void Damage(float amount)//deal damage, implemented from IDamageable
     {
         Health -= amount;
     }
 
-    public bool IsAlive()
+    public bool IsAlive()//get alive status, implemented from IDamageable
     {
         return isAlive;
     }
 
-    public void Kill()
+    public void Kill()//Instantly kill (environmental hazards, etc)
     {
         isAlive = false;
         Health = 0;
         gameObject.SetActive(false);
     }
 
-    public void Stun()
+    public void Stun()//stun halves movement speed and teleport range
     {
         //TODO
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         Health = startingHealth;   
     }
 
-    // Update is called once per frame
     void Update()
     {
         
