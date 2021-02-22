@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - projectile
   - Walkable
   - Item
   - Hands
@@ -12,6 +11,8 @@ TagManager:
   - Eraser
   - Liftable
   - Grabbable
+  - Stun
+  - Kill
   layers:
   - Default
   - TransparentFX

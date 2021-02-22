@@ -5,8 +5,8 @@ using BehaviorDesigner.Runtime.Tactical;
 
 public class PlayerHealth : AbstractHealth
 {
-    public const string stunTag = "stun";
-    public const string killTag = "bullet";
+    public const string stunTag = "Stun";
+    public const string killTag = "Kill";
 
     [Header("Player Health Settings")]
     public float regenRate = 10;//regen rate of health  per second
@@ -38,11 +38,11 @@ public class PlayerHealth : AbstractHealth
 
     void Update()
     {
-        graceTimer = Mathf.Clamp(0, gracePeriod, graceTimer - Time.deltaTime);
+        graceTimer = Mathf.Clamp(graceTimer - Time.deltaTime, 0, gracePeriod);
 
         if(graceTimer <=0)
         {
-            Health = Mathf.Clamp(0, startingHealth, Health + regenRate * Time.deltaTime);
+            Health = Mathf.Clamp(Health + regenRate * Time.deltaTime, 0, startingHealth);
         }
     }
 
