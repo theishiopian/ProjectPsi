@@ -12,6 +12,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public float Health { get; private set; }
 
+    private bool isAlive = true;
+
     public void Damage(float amount)
     {
         Health -= amount;
@@ -19,7 +21,19 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public bool IsAlive()
     {
-        return true;
+        return isAlive;
+    }
+
+    public void Kill()
+    {
+        isAlive = false;
+        Health = 0;
+        gameObject.SetActive(false);
+    }
+
+    public void Stun()
+    {
+        //TODO
     }
 
     // Start is called before the first frame update
