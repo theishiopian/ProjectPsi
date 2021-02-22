@@ -24,6 +24,11 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         Health -= amount;
         graceTimer = gracePeriod;
+        if (Health <= 0)
+        {
+            isAlive = false;
+            gameObject.SetActive(false);
+        }
     }
 
     public bool IsAlive()//get alive status, implemented from IDamageable
