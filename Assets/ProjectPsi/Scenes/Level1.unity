@@ -10831,7 +10831,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 931458990}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Gun Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17267,7 +17267,7 @@ GameObject:
   - component: {fileID: 1414767345}
   - component: {fileID: 1414767346}
   - component: {fileID: 1414767347}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: TheRobot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17438,7 +17438,7 @@ MonoBehaviour:
   startingHealth: 50
   gunPoint: {fileID: 931458990}
   attackAngle: 45
-  attackDistance: 10
+  attackDistance: 5
   reloadTime: 2
   launchForce: 25
   projectilePrefab: {fileID: 3828968103762842539, guid: 5a21653106d6fdf4eb53c988ad899599,

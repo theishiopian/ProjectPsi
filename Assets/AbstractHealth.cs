@@ -15,6 +15,7 @@ public abstract class AbstractHealth : MonoBehaviour, IDamageable
     public virtual void Damage(float amount)//deal damage, implemented from IDamageable
     {
         Health -= amount;
+        //Debug.Log("health at: " + Health);
         if (Health <= 0)
         {
             isAlive = false;

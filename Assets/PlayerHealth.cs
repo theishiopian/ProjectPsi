@@ -18,6 +18,7 @@ public class PlayerHealth : AbstractHealth
     public override void Damage(float amount)//deal damage, implemented from IDamageable
     {
         graceTimer = gracePeriod;
+        
         base.Damage(amount);        
     }
 
@@ -40,10 +41,12 @@ public class PlayerHealth : AbstractHealth
     {
         graceTimer = Mathf.Clamp(graceTimer - Time.deltaTime, 0, gracePeriod);
 
-        if(graceTimer <=0)
+        if (graceTimer <= 0)
         {
             Health = Mathf.Clamp(Health + regenRate * Time.deltaTime, 0, startingHealth);
         }
+
+        //Debug.LogFormat("Health: {0}, Grace: {1}", Health, graceTimer);
     }
 
     private void OnCollisionEnter(Collision collision)
