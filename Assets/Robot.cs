@@ -6,9 +6,13 @@ using BehaviorDesigner.Runtime.Tactical;
 public class Robot : AbstractHealth, IAttackAgent
 {
     [Header("Objects")]
-    public GameObject projectilePrefab;
+    public GameObject projectilePrefab;//make pool
 
-    private bool isAlive = true;
+    [Header("AI Settings")]
+    public float attackAngle = 45;
+    public float attackDistance = 10;
+
+    private List<GameObject> bulletPool;//store pool
 
     public void Attack(Vector3 targetPosition)
     {
@@ -17,17 +21,22 @@ public class Robot : AbstractHealth, IAttackAgent
 
     public float AttackAngle()
     {
-        return 45;
+        return attackAngle;
     }
 
     public float AttackDistance()
     {
-        return 10;
+        return attackDistance;
     }
 
     public bool CanAttack()
     {
         return true;
+    }
+
+    void Awake()
+    {
+        //do pool stuff here
     }
 
     // Start is called before the first frame update

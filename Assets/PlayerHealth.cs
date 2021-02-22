@@ -5,7 +5,6 @@ using BehaviorDesigner.Runtime.Tactical;
 
 public class PlayerHealth : AbstractHealth
 {
-    [Header("Tags (WARNING do not change at runtime)")]
     public const string stunTag = "stun";
     public const string killTag = "bullet";
 
@@ -14,13 +13,12 @@ public class PlayerHealth : AbstractHealth
     public float gracePeriod = 0.5f;//during grace, health doesnt regen but you cant take damage either
     public float maxStunTime;
     
-    private bool isAlive = true;//is the player alive?
     private float graceTimer = 0;//how much grace is left?
 
     public override void Damage(float amount)//deal damage, implemented from IDamageable
     {
-        base.Damage(amount);        
         graceTimer = gracePeriod;
+        base.Damage(amount);        
     }
 
     public void Stun()//stun halves movement speed and teleport range
