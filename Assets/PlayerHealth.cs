@@ -10,17 +10,20 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public const string killTag = "bullet";
 
     [Header("Settings")]
-    public float startingHealth = 100;
-    public float gracePeriod;
+    public float startingHealth = 100;//how much health does the player get on start?
+    public float regenRate = 10;//regen rate of health  per second
+    public float gracePeriod = 0.5f;//during grace, health doesnt regen but you cant take damage either
     public float maxStunTime;
     
     public float Health { get; private set; }//health  value
 
     private bool isAlive = true;//is the player alive?
+    private float graceTimer = 0;//how much grace is left?
 
     public void Damage(float amount)//deal damage, implemented from IDamageable
     {
         Health -= amount;
+        graceTimer = gracePeriod;
     }
 
     public bool IsAlive()//get alive status, implemented from IDamageable
@@ -40,30 +43,43 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         //TODO
     }
 
+    void Awake()
+    {
+        //TODO register with global vars for scientists
+    }
+
     void Start()
     {
-        Health = startingHealth;   
+        Health = startingHealth;
     }
 
     void Update()
     {
-        
+        graceTimer = Mathf.Clamp(0, gracePeriod, graceTimer - Time.deltaTime);
+
+        if(graceTimer <=0)
+        {
+            Health = Mathf.Clamp(0, startingHealth, Health + regenRate * Time.deltaTime);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        switch (collision.collider.tag)
+        if(graceTimer <= 0)
         {
-            case stunTag:
-                {
-                    //stun
-                    break;
-                }
-            case killTag:
-                {
-                    Damage(10);
-                    break;
-                }
+            switch (collision.collider.tag)
+            {
+                case stunTag:
+                    {
+                        //stun
+                        break;
+                    }
+                case killTag:
+                    {
+                        Damage(10);
+                        break;
+                    }
+            }
         }
 
     }
