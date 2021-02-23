@@ -7,6 +7,7 @@ public abstract class AbstractHealth : MonoBehaviour, IDamageable
 {
     [Header("Health Settings")]
     public float startingHealth = 100;//how much health does the player get on start?
+    public bool isImmortal = false;
 
     public float Health { get; internal set; }//health  value
 
@@ -16,7 +17,7 @@ public abstract class AbstractHealth : MonoBehaviour, IDamageable
     {
         Health -= amount;
         //Debug.Log("health at: " + Health);
-        if (Health <= 0)
+        if (Health <= 0 && !isImmortal)
         {
             isAlive = false;
             gameObject.SetActive(false);

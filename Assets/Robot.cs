@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tactical;
+using BehaviorDesigner.Runtime;
+using UnityEngine.AI;
 
 public class Robot : AbstractHealth, IAttackAgent
 {
@@ -19,11 +21,22 @@ public class Robot : AbstractHealth, IAttackAgent
     public float cleanupTime = 20;
     public int poolSize = 5;
 
+    [Header("Combat Settings")]
+    public float armor = 10;
+    public Vector3 centerOfMass;
+    public float stunTime = 2;
+
     private Queue<GameObject> idlePool;
     private Queue<GameObject> activePool;
 
+    private Rigidbody body;//used for physical responses
+    private BehaviorTree ai;
+    private NavMeshAgent agent;
+
     private float reloadTimer = 0;
     private float cleanupTimer = 0;
+    private float stunTimer = 0;
+    private bool aiEnabled = true;
 
     public void Attack(Vector3 targetPosition)
     {
@@ -56,7 +69,7 @@ public class Robot : AbstractHealth, IAttackAgent
 
     public bool CanAttack()
     {
-        return reloadTimer <= 0;
+        return reloadTimer <= 0 && stunTimer <=0;
     }
 
     void Awake()
@@ -77,6 +90,13 @@ public class Robot : AbstractHealth, IAttackAgent
     void Start()
     {
         Health = startingHealth;
+        body = GetComponent<Rigidbody>();
+
+        body.centerOfMass = centerOfMass;
+
+        ai = GetComponent<BehaviorTree>();
+
+        agent = GetComponent<NavMeshAgent>();
     }
 
     void Cleanup()
@@ -95,8 +115,9 @@ public class Robot : AbstractHealth, IAttackAgent
     {
         reloadTimer = Mathf.Clamp(reloadTimer - Time.deltaTime, 0, reloadTime);
         cleanupTimer = Mathf.Clamp(cleanupTimer - Time.deltaTime, 0, cleanupTime);
+        stunTimer = Mathf.Clamp(stunTimer - Time.deltaTime, 0, stunTime);
 
-        if(cleanupTimer <=0)
+        if (cleanupTimer <=0)
         {
             cleanupTimer = cleanupTime;
 
@@ -105,5 +126,38 @@ public class Robot : AbstractHealth, IAttackAgent
                 Cleanup();
             }
         }
+
+        if(stunTimer <= 0 && !aiEnabled)
+        {
+            EnableAI();
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.impulse.magnitude);
+
+        if(collision.impulse.magnitude > armor)
+        {
+            if(aiEnabled)DisableAI();
+            stunTimer = stunTime;
+        }
+    }
+
+    private void EnableAI()
+    {
+        ai.enabled = true;
+        body.isKinematic = true;
+        agent.enabled = true;
+        aiEnabled = true;
+    }
+
+    private void DisableAI()
+    {
+        ai.enabled = false;
+        body.isKinematic = false;
+        agent.enabled = false;
+        aiEnabled = false;
+
     }
 }
