@@ -135,12 +135,14 @@ public class Robot : AbstractHealth, IAttackAgent
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.impulse.magnitude);
+        
 
         if(collision.impulse.magnitude > armor)
         {
             if(aiEnabled)DisableAI();
             stunTimer = stunTime;
+
+            Damage(collision.impulse.magnitude * 0.01f);
         }
     }
 
