@@ -76,40 +76,42 @@ public class PlayerHealth : AbstractHealth
     void Update()
     {
         graceTimer = Mathf.Clamp(graceTimer - Time.deltaTime, 0, gracePeriod);
-        damageEffects.intensity.value = Mathf.Clamp(damageEffects.intensity.value - Time.deltaTime * 2.5f, 0, 1);
-
+        
         if (graceTimer <= 0)
         {
             Health = Mathf.Clamp(Health + regenRate * Time.deltaTime, 0, startingHealth);
         }
 
-        colorEffects.saturation.value = Health.Remap(0, startingHealth, -startingHealth + 25, 0);
-        colorEffects.contrast.value = Health.Remap(0, startingHealth, startingHealth, 0);
+        if(doPostProcess)
+        {
+            damageEffects.intensity.value = Mathf.Clamp(damageEffects.intensity.value - Time.deltaTime * 2.5f, 0, 1);
+            colorEffects.saturation.value = Health.Remap(0, startingHealth, -startingHealth + 25, 0);
+            colorEffects.contrast.value = Health.Remap(0, startingHealth, startingHealth, 0);
+
+            if (Health <= startingHealth / 5)
+            {
+                heartBeatTimer = Mathf.Clamp(heartBeatTimer - Time.deltaTime, 0, hasBeat ? beatDelay : beatDuration);
+
+                //health/starting
+
+                if (heartBeatTimer <= 0)
+                {
+                    hasBeat = !hasBeat;
+                    heartBeatTimer = hasBeat ? beatDelay : beatDuration;
+                }
+
+                if (!hasBeat)
+                {
+                    vinEffects.intensity.value = heartBeatCurve.Evaluate(heartBeatTimer.Remap(0, beatDuration, 0, 1));
+                }
+            }
+            else
+            {
+                vinEffects.intensity.value = 0;
+            }
+        }
 
         Debug.LogFormat("Value: {0}", Health);
-
-        if (Health <= startingHealth / 5)
-        {
-            heartBeatTimer = Mathf.Clamp(heartBeatTimer - Time.deltaTime, 0, hasBeat ? beatDelay : beatDuration);
-
-            //health/starting
-
-            if (heartBeatTimer <= 0)
-            {
-                hasBeat = !hasBeat;
-                heartBeatTimer = hasBeat ? beatDelay : beatDuration;
-            }
-
-            if(!hasBeat)
-            {
-                vinEffects.intensity.value = heartBeatCurve.Evaluate(heartBeatTimer.Remap(0, beatDuration, 0,1));
-            }
-        }
-        else
-        {
-            vinEffects.intensity.value = 0;
-        }
-
         //Debug.LogFormat("Health: {0}, Grace: {1}", Health, graceTimer);
     }
 
@@ -127,7 +129,7 @@ public class PlayerHealth : AbstractHealth
                 case killTag:
                     {
                         Damage(collision.collider.GetComponent<ProjectileData>().damage);
-                        damageEffects.intensity.value = 1;
+                        if(doPostProcess)damageEffects.intensity.value = 1;
                         break;
                     }
             }
