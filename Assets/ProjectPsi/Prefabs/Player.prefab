@@ -2217,7 +2217,64 @@ MonoBehaviour:
   isImmortal: 1
   regenRate: 1
   gracePeriod: 0.5
+  overrideStartingHealth: 1
+  overrideHealth: 15
   maxStunTime: 0
+  doPostProcess: 1
+  volume: {fileID: 7468514020824660936}
+  heartBeatCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.053547304
+      outSlope: 0.053547304
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.23343846
+    - serializedVersion: 3
+      time: 0.19811882
+      value: 0.51337916
+      inSlope: 0.2003816
+      outSlope: 0.2003816
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.17429842
+    - serializedVersion: 3
+      time: 0.49837598
+      value: 0.28433752
+      inSlope: -0.02473372
+      outSlope: -0.02473372
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.801239
+      value: 0.50317764
+      inSlope: 0.017335065
+      outSlope: 0.017335065
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.22851601
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0.06186412
+      outSlope: 0.06186412
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.20729242
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  beatDuration: 0.6
+  beatDelay: 1
 --- !u!1 &8457292436660777596
 GameObject:
   m_ObjectHideFlags: 0

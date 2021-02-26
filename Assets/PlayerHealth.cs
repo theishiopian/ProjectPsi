@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tactical;
+using UnityEngine.Rendering.PostProcessing;
 
 public class PlayerHealth : AbstractHealth
 {
@@ -11,9 +12,20 @@ public class PlayerHealth : AbstractHealth
     [Header("Player Health Settings")]
     public float regenRate = 10;//regen rate of health  per second
     public float gracePeriod = 0.5f;//during grace, health doesnt regen but you cant take damage either
+    public bool overrideStartingHealth = false;
+    public float overrideHealth = 15;
     public float maxStunTime;
-    
-    private float graceTimer = 0;//how much grace is left?
+
+    [Header("Post Processing Settings")]
+    public bool doPostProcess = true;
+    public PostProcessVolume volume;
+    public AnimationCurve heartBeatCurve;
+    public float beatDuration = 2;
+    public float beatDelay = 1f;
+
+    private ColorGrading colorEffects;
+    private ChromaticAberration damageEffects;
+    private Vignette vinEffects;//not spelling that every time. still
 
     public override void Damage(float amount)//deal damage, implemented from IDamageable
     {
@@ -27,15 +39,39 @@ public class PlayerHealth : AbstractHealth
         //TODO
     }
 
-    void Awake()
+    private bool GetEffects()
     {
-        //TODO register with global vars for scientists
+        return
+            volume.profile.TryGetSettings(out colorEffects)
+            && volume.profile.TryGetSettings(out damageEffects)
+            && volume.profile.TryGetSettings(out vinEffects);
     }
 
     void Start()
     {
         Health = startingHealth;
+
+        if(!volume)
+        {
+            doPostProcess = false;
+            Debug.LogWarning("No post-proccess volume detected, disabling post proccessing effects");
+        }
+        else if(!GetEffects())
+        {
+            doPostProcess = false;
+            Debug.LogWarning("Attempt to get post process settings failed, disabling post proccessing effects");
+        }
+
+        if(overrideStartingHealth)
+        {
+            Health = overrideHealth;
+        }
     }
+
+    private float graceTimer = 0;//how much grace is left?
+    private float heartBeatTimer = 0;
+
+    private bool hasBeat = true;
 
     void Update()
     {
@@ -44,6 +80,26 @@ public class PlayerHealth : AbstractHealth
         if (graceTimer <= 0)
         {
             Health = Mathf.Clamp(Health + regenRate * Time.deltaTime, 0, startingHealth);
+        }
+
+        if(Health <= startingHealth / 5)
+        {
+            heartBeatTimer = Mathf.Clamp(heartBeatTimer - Time.deltaTime, 0, hasBeat ? beatDelay : beatDuration);
+
+            if (heartBeatTimer <= 0)
+            {
+                hasBeat = !hasBeat;
+                heartBeatTimer = hasBeat ? beatDelay : beatDuration;
+            }
+
+            if(!hasBeat)
+            {
+                vinEffects.intensity.value = heartBeatCurve.Evaluate(heartBeatTimer.Remap(0, beatDuration, 0,1));
+            }
+        }
+        else
+        {
+            vinEffects.intensity.value = 0;
         }
 
         //Debug.LogFormat("Health: {0}, Grace: {1}", Health, graceTimer);
