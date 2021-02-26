@@ -76,6 +76,7 @@ public class PlayerHealth : AbstractHealth
     void Update()
     {
         graceTimer = Mathf.Clamp(graceTimer - Time.deltaTime, 0, gracePeriod);
+        damageEffects.intensity.value = Mathf.Clamp(damageEffects.intensity.value - Time.deltaTime * 2.5f, 0, 1);
 
         if (graceTimer <= 0)
         {
@@ -126,6 +127,7 @@ public class PlayerHealth : AbstractHealth
                 case killTag:
                     {
                         Damage(collision.collider.GetComponent<ProjectileData>().damage);
+                        damageEffects.intensity.value = 1;
                         break;
                     }
             }

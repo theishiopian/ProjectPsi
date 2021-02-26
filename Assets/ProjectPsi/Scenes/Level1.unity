@@ -17369,7 +17369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d857c4e35ece99649838484c6566450c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
+  startingHealth: 75
   isImmortal: 0
   gunPoint: {fileID: 931458990}
   attackAngle: 45
