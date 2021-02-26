@@ -82,9 +82,16 @@ public class PlayerHealth : AbstractHealth
             Health = Mathf.Clamp(Health + regenRate * Time.deltaTime, 0, startingHealth);
         }
 
-        if(Health <= startingHealth / 5)
+        colorEffects.saturation.value = Health.Remap(0, startingHealth, -startingHealth + 25, 0);
+        colorEffects.contrast.value = Health.Remap(0, startingHealth, startingHealth, 0);
+
+        Debug.LogFormat("Value: {0}", Health);
+
+        if (Health <= startingHealth / 5)
         {
             heartBeatTimer = Mathf.Clamp(heartBeatTimer - Time.deltaTime, 0, hasBeat ? beatDelay : beatDuration);
+
+            //health/starting
 
             if (heartBeatTimer <= 0)
             {
@@ -118,7 +125,7 @@ public class PlayerHealth : AbstractHealth
                     }
                 case killTag:
                     {
-                        Damage(10);
+                        Damage(collision.collider.GetComponent<ProjectileData>().damage);
                         break;
                     }
             }

@@ -2215,10 +2215,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100
   isImmortal: 1
-  regenRate: 1
+  regenRate: 10
   gracePeriod: 0.5
-  overrideStartingHealth: 1
-  overrideHealth: 15
+  overrideStartingHealth: 0
+  overrideHealth: 30
   maxStunTime: 0
   doPostProcess: 1
   volume: {fileID: 7468514020824660936}
