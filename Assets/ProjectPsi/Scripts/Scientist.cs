@@ -16,11 +16,6 @@ public class Scientist : AbstractHealth, IAttackAgent
     public float reloadTime = 1;
     public float launchForce = 25;
 
-    [Header("Object Pool Settings")]
-    public GameObject projectilePrefab;//make pool
-    public float cleanupTime = 20;
-    public int poolSize = 5;
-
     [Header("Combat Settings")]
     public float armor = 25;
     public Vector3 centerOfMass;
@@ -33,28 +28,12 @@ public class Scientist : AbstractHealth, IAttackAgent
     private BehaviorTree ai;
     private NavMeshAgent agent;
 
-    private float reloadTimer = 0;
-    private float cleanupTimer = 0;
     private float stunTimer = 0;
     private bool aiEnabled = true;
 
     public void Attack(Vector3 targetPosition)
     {
         Debug.Log("Attack");
-        reloadTimer = reloadTime;
-
-        if(idlePool.Count == 0)
-        {
-            Cleanup();
-        }
-
-        GameObject toShoot = idlePool.Dequeue();
-        toShoot.SetActive(true);
-        toShoot.transform.parent = null;//todo master parent for robot?
-        activePool.Enqueue(toShoot);
-
-        toShoot.transform.rotation = gunPoint.rotation;
-        toShoot.GetComponent<Rigidbody>().AddForce(toShoot.transform.forward * launchForce, ForceMode.Impulse);
     }
 
     public float AttackAngle()
@@ -69,7 +48,7 @@ public class Scientist : AbstractHealth, IAttackAgent
 
     public bool CanAttack()
     {
-        return reloadTimer <= 0 && stunTimer <=0;
+        return true;
     }
 
     void Awake()
@@ -77,13 +56,6 @@ public class Scientist : AbstractHealth, IAttackAgent
         //do pool stuff here
         idlePool = new Queue<GameObject>();
         activePool = new Queue<GameObject>();
-        GameObject p;
-        for (int i = 0; i < poolSize; i++)
-        {
-            p = Instantiate(projectilePrefab, gunPoint.position, gunPoint.rotation, gunPoint);
-            idlePool.Enqueue(p);
-            p.SetActive(false);
-        }
     }
 
     // Start is called before the first frame update
@@ -113,20 +85,6 @@ public class Scientist : AbstractHealth, IAttackAgent
     // Update is called once per frame
     void Update()
     {
-        reloadTimer = Mathf.Clamp(reloadTimer - Time.deltaTime, 0, reloadTime);
-        cleanupTimer = Mathf.Clamp(cleanupTimer - Time.deltaTime, 0, cleanupTime);
-        stunTimer = Mathf.Clamp(stunTimer - Time.deltaTime, 0, stunTime);
-
-        if (cleanupTimer <=0)
-        {
-            cleanupTimer = cleanupTime;
-
-            if(activePool.Count > 0)
-            {
-                Cleanup();
-            }
-        }
-
         if(stunTimer <= 0 && !aiEnabled)
         {
             EnableAI();
