@@ -21,9 +21,6 @@ public class Scientist : AbstractHealth, IAttackAgent
     public Vector3 centerOfMass;
     public float stunTime = 1;
 
-    private Queue<GameObject> idlePool;
-    private Queue<GameObject> activePool;
-
     private Rigidbody body;//used for physical responses
     private BehaviorTree ai;
     private NavMeshAgent agent;
@@ -33,7 +30,7 @@ public class Scientist : AbstractHealth, IAttackAgent
 
     public void Attack(Vector3 targetPosition)
     {
-        Debug.Log("Attack");
+        Debug.Log("Sleep Attack");
     }
 
     public float AttackAngle()
@@ -53,9 +50,7 @@ public class Scientist : AbstractHealth, IAttackAgent
 
     void Awake()
     {
-        //do pool stuff here
-        idlePool = new Queue<GameObject>();
-        activePool = new Queue<GameObject>();
+        
     }
 
     // Start is called before the first frame update
@@ -69,17 +64,6 @@ public class Scientist : AbstractHealth, IAttackAgent
         ai = GetComponent<BehaviorTree>();
 
         agent = GetComponent<NavMeshAgent>();
-    }
-
-    void Cleanup()
-    {
-        GameObject toCleanup = activePool.Dequeue();
-
-        toCleanup.transform.parent = gunPoint;
-        toCleanup.transform.localPosition = Vector3.zero;
-        toCleanup.SetActive(false);
-
-        idlePool.Enqueue(toCleanup);
     }
 
     // Update is called once per frame
