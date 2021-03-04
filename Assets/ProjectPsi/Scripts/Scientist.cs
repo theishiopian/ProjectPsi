@@ -11,15 +11,14 @@ public class Scientist : AbstractHealth, IAttackAgent
     public Transform gunPoint;
 
     [Header("AI Settings")]
-    public float attackAngle = 45;
-    public float attackDistance = 10;
-    public float reloadTime = 1;
-    public float launchForce = 25;
+    public float attackAngle = 25;
+    public float attackDistance = 2;
 
     [Header("Combat Settings")]
     public float armor = 25;
     public Vector3 centerOfMass;
     public float stunTime = 1;
+    public float killDelay = 1;//delay in seconds before jab
 
     private Rigidbody body;//used for physical responses
     private BehaviorTree ai;
@@ -77,8 +76,6 @@ public class Scientist : AbstractHealth, IAttackAgent
 
     private void OnCollisionEnter(Collision collision)
     {
-        
-
         if(collision.impulse.magnitude > armor)
         {
             if(aiEnabled)DisableAI();
