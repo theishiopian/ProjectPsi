@@ -18,7 +18,8 @@ namespace BehaviorDesigner.Runtime.Tactical.Tasks
                 return baseStatus;
             }
 
-            if (MoveToAttackPosition()) {
+            if (MoveToAttackPosition())
+            {
                 tacticalAgent.TryAttack();
             }
 

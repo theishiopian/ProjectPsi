@@ -106,10 +106,16 @@ namespace BehaviorDesigner.Runtime.Tactical
         /// </summary>
         public bool TryAttack()
         {
-            if (attackAgent.CanAttack()) {
+            //Debug.Log("attempting attack");
+
+            if (attackAgent.CanAttack())
+            {
+                //Debug.Log("can attack, attacking");
                 attackAgent.Attack(targetTransform.position);
                 return true;
             }
+            //Debug.Log("cannot attack");
+
             return false;
         }
 

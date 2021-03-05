@@ -424,12 +424,16 @@ namespace BehaviorDesigner.Runtime.Tactical.Tasks
             if (tacticalAgent.TargetTransform == null) {
                 return false;
             }
+
             if (!tacticalAgent.CanSeeTarget() ||
-                    Vector3.Distance(tacticalAgent.TargetTransform.position, transform.position) > tacticalAgent.AttackAgent.AttackDistance()) {
+                Vector3.Distance(tacticalAgent.TargetTransform.position, transform.position) > tacticalAgent.AttackAgent.AttackDistance())
+            {
                 tacticalAgent.SetDestination(tacticalAgent.TargetTransform.position);
                 tacticalAgent.UpdateRotation(true);
                 tacticalAgent.AttackPosition = true;
-            } else {
+            }
+            else
+            {
                 tacticalAgent.Stop();
 
                 return tacticalAgent.RotateTowardsPosition(tacticalAgent.TargetTransform.position);
