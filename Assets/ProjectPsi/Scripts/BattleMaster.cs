@@ -17,7 +17,7 @@ public class BattleMaster : MonoBehaviour
 
     IEnumerator startRoutine()
     {
-        yield return new WaitUntil(() => GlobalVars.Get("player_body") != null);
+        yield return new WaitUntil((/*haha funny empty function*/) => GlobalVars.Get("player_body") != null);
         enemyParent.SetActive(true);
         yield return null;
     }
