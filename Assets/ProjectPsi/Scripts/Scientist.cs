@@ -99,11 +99,12 @@ public class Scientist : AbstractHealth, IAttackAgent
             }
         }
 
-        Debug.LogFormat("Can Attack: {0}, Timer: {1}, Distance: {2}, Target: {3}",
+        Debug.LogFormat("Can Attack: {0}, Timer: {1}, Distance: {2}, Target: {3}, Attacking: {4}",
             CanAttack(),
             killTimer,
             Vector3.Distance(player.transform.position, transform.position),
-            GlobalVars.Get("player_body")
+            GlobalVars.Get("player_body"),
+            attacking
             );
     }
 
