@@ -113,8 +113,6 @@ public class PlayerHealth : AbstractHealth
                 vinEffects.intensity.value = 0;
             }
         }
-
-        Debug.LogFormat("Value: {0}", Health);
         //Debug.LogFormat("Health: {0}, Grace: {1}", Health, graceTimer);
     }
 

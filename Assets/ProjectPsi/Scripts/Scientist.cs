@@ -20,16 +20,30 @@ public class Scientist : AbstractHealth, IAttackAgent
     public float stunTime = 1;
     public float killDelay = 1;//delay in seconds before jab
 
+    [HideInInspector]
+    public GameObject player;
+
     private Rigidbody body;//used for physical responses
     private BehaviorTree ai;
     private NavMeshAgent agent;
 
     private float stunTimer = 0;
     private bool aiEnabled = true;
+    private float killTimer = 0;
+    private bool attacking = false;
 
+    //start tranq windup
     public void Attack(Vector3 targetPosition)
     {
         Debug.Log("Sleep Attack");
+        attacking = true;
+        killTimer = 1;
+    }
+
+    //inject tranq
+    public void KillPlayer()
+    {
+        Debug.Log("jab");
     }
 
     public float AttackAngle()
@@ -47,20 +61,19 @@ public class Scientist : AbstractHealth, IAttackAgent
         return true;
     }
 
-    void Awake()
-    {
-        
-    }
-
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("scientist start");
+        player = GlobalVars.Get("player_body");
         Health = startingHealth;
         body = GetComponent<Rigidbody>();
 
         body.centerOfMass = centerOfMass;
 
         ai = GetComponent<BehaviorTree>();
+        ai.SetVariableValue("Player", player);
+        ai.enabled = true;
 
         agent = GetComponent<NavMeshAgent>();
     }
@@ -71,6 +84,19 @@ public class Scientist : AbstractHealth, IAttackAgent
         if(stunTimer <= 0 && !aiEnabled)
         {
             EnableAI();
+        }
+
+        if(attacking)
+        {
+            if (killTimer <= 0)
+            {
+                KillPlayer();
+                attacking = false;
+            }
+            else
+            {
+                killTimer -= Time.deltaTime;
+            }
         }
     }
 

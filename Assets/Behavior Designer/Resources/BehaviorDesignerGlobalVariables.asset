@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mVariableData:
     variableStartIndex: 
-    JSONSerialization: '{"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedGameObjectList","Name":"GlobalTargets","IsShared":true,"IsGlobal":true,"List`1mValue":[]}]}'
+    JSONSerialization: '{"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedGameObjectList","Name":"GlobalTargets","IsShared":true,"IsGlobal":true,"List`1mValue":[]},{"Type":"BehaviorDesigner.Runtime.SharedGameObjectList","Name":"GlobalScientistCallers","IsShared":true,"IsGlobal":true,"List`1mValue":[]}]}'
     fieldSerializationData:
       typeName: []
       fieldNameHash: 
