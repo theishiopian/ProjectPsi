@@ -20,6 +20,7 @@ public class GlobalVars : MonoBehaviour
         catch
         {
             //TODO cleanup this garbo
+            Debug.LogWarning("Attempted to get nonexistant key: " + key + ", if this isnt the player you may have a problem");
             return null;
         }
     }

@@ -12,7 +12,7 @@ public class Scientist : AbstractHealth, IAttackAgent
 
     [Header("AI Settings")]
     public float attackAngle = 25;
-    public float attackDistance = 2;
+    public float attackDistance = 3;
 
     [Header("Combat Settings")]
     public float armor = 25;
@@ -58,7 +58,7 @@ public class Scientist : AbstractHealth, IAttackAgent
 
     public bool CanAttack()
     {
-        return true;
+        return !attacking;
     }
 
     // Start is called before the first frame update
@@ -98,6 +98,13 @@ public class Scientist : AbstractHealth, IAttackAgent
                 killTimer -= Time.deltaTime;
             }
         }
+
+        Debug.LogFormat("Can Attack: {0}, Timer: {1}, Distance: {2}, Target: {3}",
+            CanAttack(),
+            killTimer,
+            Vector3.Distance(player.transform.position, transform.position),
+            GlobalVars.Get("player_body")
+            );
     }
 
     private void OnCollisionEnter(Collision collision)
