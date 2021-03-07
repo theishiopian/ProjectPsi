@@ -7,9 +7,6 @@ using UnityEngine.AI;
 
 public class Scientist : AbstractHealth, IAttackAgent
 {
-    [Header("Transforms")]
-    public Transform gunPoint;
-
     [Header("AI Settings")]
     public float attackAngle = 25;
     public float attackDistance = 3;
@@ -19,6 +16,7 @@ public class Scientist : AbstractHealth, IAttackAgent
     public Vector3 centerOfMass;
     public float stunTime = 1;
     public float killDelay = 1;//delay in seconds before jab
+    public LayerMask attackMask;
 
     [HideInInspector]
     public GameObject player;
@@ -30,20 +28,32 @@ public class Scientist : AbstractHealth, IAttackAgent
     private float stunTimer = 0;
     private bool aiEnabled = true;
     private float killTimer = 0;
+    private float waitTimer = 0;
     private bool attacking = false;
 
     //start tranq windup
     public void Attack(Vector3 targetPosition)
     {
-        Debug.Log("Sleep Attack");
-        attacking = true;
-        killTimer = 1;
+        if(waitTimer <= 0)
+        {
+            Debug.Log("Sleep Attack");
+            attacking = true;
+            killTimer = 1;
+        }
     }
 
     //inject tranq
     public void KillPlayer()
     {
         Debug.Log("jab");
+        RaycastHit hit;
+        if (Physics.SphereCast(transform.position, 0.5f, transform.forward, out hit, 1, attackMask))
+        {
+            Debug.Log("hit target");
+            hit.collider.attachedRigidbody.gameObject.GetComponent<PlayerHealth>().Kill();
+        }
+
+        waitTimer = 2;
     }
 
     public float AttackAngle()
@@ -58,13 +68,12 @@ public class Scientist : AbstractHealth, IAttackAgent
 
     public bool CanAttack()
     {
-        return !attacking;
+        return !attacking && waitTimer <= 0;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("scientist start");
         player = GlobalVars.Get("player_body");
         Health = startingHealth;
         body = GetComponent<Rigidbody>();
@@ -81,6 +90,7 @@ public class Scientist : AbstractHealth, IAttackAgent
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(stunTime);
         if(stunTimer <= 0 && !aiEnabled)
         {
             EnableAI();
@@ -98,14 +108,12 @@ public class Scientist : AbstractHealth, IAttackAgent
                 killTimer -= Time.deltaTime;
             }
         }
+        else
+        {
+            waitTimer = Mathf.Clamp(waitTimer - Time.deltaTime, 0, 1);
+        }
 
-        //Debug.LogFormat("Can Attack: {0}, Timer: {1}, Distance: {2}, Target: {3}, Attacking: {4}",
-        //    CanAttack(),
-        //    killTimer,
-        //    Vector3.Distance(player.transform.position, transform.position),
-        //    GlobalVars.Get("player_body"),
-        //    attacking
-        //    );
+        stunTimer = Mathf.Clamp(stunTimer- Time.deltaTime, 0, stunTime);
     }
 
     private void OnCollisionEnter(Collision collision)

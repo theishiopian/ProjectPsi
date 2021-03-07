@@ -125,7 +125,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1046257703969943174}
-  - {fileID: 1046257704515621064}
   m_Father: {fileID: 1046257704890072103}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -232,13 +231,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 25
   isImmortal: 0
-  gunPoint: {fileID: 1046257704515621064}
   attackAngle: 45
-  attackDistance: 3
-  armor: 50
+  attackDistance: 1
+  armor: 45
   centerOfMass: {x: 0, y: -1, z: 0}
   stunTime: 1
   killDelay: 1
+  attackMask:
+    serializedVersion: 2
+    m_Bits: 2048
   player: {fileID: 0}
 --- !u!1 &1046257703969943173
 GameObject:
@@ -335,36 +336,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &1046257704515621063
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1046257704515621064}
-  m_Layer: 19
-  m_Name: Gun Point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1046257704515621064
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1046257704515621063}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1046257703967906921}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1046257704890072102
 GameObject:
   m_ObjectHideFlags: 0

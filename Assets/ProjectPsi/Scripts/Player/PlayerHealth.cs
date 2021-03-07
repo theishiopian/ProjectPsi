@@ -84,7 +84,7 @@ public class PlayerHealth : AbstractHealth
         graceTimer = Mathf.Clamp(graceTimer - Time.deltaTime, 0, gracePeriod);
         vinIntTime = Mathf.Clamp(vinIntTime + vinInitMult * Time.deltaTime, 0, 1);
         dVin = Mathf.Lerp(0,minVin, vinIntTime);
-        Debug.Log(dVin);
+        //Debug.Log(dVin);
         if(Health >= 100)
         {
             vinInitMult = -1;
