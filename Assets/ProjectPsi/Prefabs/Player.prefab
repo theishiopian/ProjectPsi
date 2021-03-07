@@ -2224,6 +2224,7 @@ MonoBehaviour:
   overrideStartingHealth: 0
   overrideHealth: 30
   maxStunTime: 0
+  canRegen: 1
   doPostProcess: 1
   volume: {fileID: 7468514020824660936}
   heartBeatCurve:
@@ -2279,6 +2280,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   beatDuration: 0.6
   beatDelay: 1
+  minVin: 0.5
 --- !u!1 &8457292436660777596
 GameObject:
   m_ObjectHideFlags: 0

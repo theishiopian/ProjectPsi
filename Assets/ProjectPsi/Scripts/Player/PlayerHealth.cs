@@ -15,6 +15,7 @@ public class PlayerHealth : AbstractHealth
     public bool overrideStartingHealth = false;
     public float overrideHealth = 15;
     public float maxStunTime;
+    public bool canRegen = true;
 
     [Header("Post Processing Settings")]
     public bool doPostProcess = true;
@@ -22,6 +23,7 @@ public class PlayerHealth : AbstractHealth
     public AnimationCurve heartBeatCurve;
     public float beatDuration = 2;
     public float beatDelay = 1f;
+    public float minVin = 0.2f;
 
     private ColorGrading colorEffects;
     private ChromaticAberration damageEffects;
@@ -39,8 +41,6 @@ public class PlayerHealth : AbstractHealth
         //TODO
         
     }
-
-    
 
     private bool GetEffects()
     {
@@ -73,16 +73,30 @@ public class PlayerHealth : AbstractHealth
 
     private float graceTimer = 0;//how much grace is left?
     private float heartBeatTimer = 0;
+    private int vinInitMult = -1;
+    private float vinIntTime = 0;
+    private float dVin = 0;
 
     private bool hasBeat = true;
 
     void Update()
     {
         graceTimer = Mathf.Clamp(graceTimer - Time.deltaTime, 0, gracePeriod);
-        
+        vinIntTime = Mathf.Clamp(vinIntTime + vinInitMult * Time.deltaTime, 0, 1);
+        dVin = Mathf.Lerp(0,minVin, vinIntTime);
+        Debug.Log(dVin);
+        if(Health >= 100)
+        {
+            vinInitMult = -1;
+        }
+        else
+        {
+            vinInitMult = 1;
+        }
+
         if (graceTimer <= 0)
         {
-            Health = Mathf.Clamp(Health + regenRate * Time.deltaTime, 0, startingHealth);
+            Health = Mathf.Clamp(Health + (canRegen ? (regenRate * Time.deltaTime) : 0), 0, startingHealth);
         }
 
         if(doPostProcess)
@@ -95,8 +109,6 @@ public class PlayerHealth : AbstractHealth
             {
                 heartBeatTimer = Mathf.Clamp(heartBeatTimer - Time.deltaTime, 0, hasBeat ? beatDelay : beatDuration);
 
-                //health/starting
-
                 if (heartBeatTimer <= 0)
                 {
                     hasBeat = !hasBeat;
@@ -105,12 +117,12 @@ public class PlayerHealth : AbstractHealth
 
                 if (!hasBeat)
                 {
-                    vinEffects.intensity.value = heartBeatCurve.Evaluate(heartBeatTimer.Remap(0, beatDuration, 0, 1));
+                    vinEffects.intensity.value = heartBeatCurve.Evaluate(heartBeatTimer.Remap(0, beatDuration, dVin, 1));
                 }
             }
             else
             {
-                vinEffects.intensity.value = 0;
+                vinEffects.intensity.value = dVin;
             }
         }
         //Debug.LogFormat("Health: {0}, Grace: {1}", Health, graceTimer);
