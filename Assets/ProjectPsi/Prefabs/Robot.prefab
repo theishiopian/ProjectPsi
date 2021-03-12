@@ -251,6 +251,7 @@ MonoBehaviour:
   attackMat: {fileID: 2100000, guid: a95fd0a096515304cbb516ff511b88d1, type: 2}
   patrolMat: {fileID: 2100000, guid: 2e6bd2761ac5f1442825e639b33d0435, type: 2}
   chaseMat: {fileID: 2100000, guid: 3f5766a8b67794141ac19c1a51d27083, type: 2}
+  stunMat: {fileID: 2100000, guid: 12d4e391b4e1e1e4a8a1f06f601e5ab5, type: 2}
   state: 0
 --- !u!54 &9088118438227715509
 Rigidbody:

@@ -31,6 +31,7 @@ public class Robot : AbstractHealth, IAttackAgent
     public Material attackMat;
     public Material patrolMat;
     public Material chaseMat;
+    public Material stunMat;
 
     private Queue<GameObject> idlePool;
     private Queue<GameObject> activePool;
@@ -122,7 +123,8 @@ public class Robot : AbstractHealth, IAttackAgent
     {
         PATROLING,
         CHASING,
-        ATTACKING
+        ATTACKING,
+        STUNNED
     }
 
     public RobotState state = RobotState.PATROLING;
@@ -132,20 +134,27 @@ public class Robot : AbstractHealth, IAttackAgent
     {
         GameObject currentTarget = (GameObject)ai.GetVariable("CurrentTarget").GetValue();
 
-        if (currentTarget != null)
+        if(stunTimer > 0)
         {
-            if(Vector3.Distance(currentTarget.transform.position, transform.position) < attackDistance)
-            {
-                state = RobotState.ATTACKING;
-            }
-            else
-            {
-                state = RobotState.CHASING;
-            }
+            state = RobotState.STUNNED;
         }
         else
         {
-            state = RobotState.PATROLING;
+            if (currentTarget != null)
+            {
+                if (Vector3.Distance(currentTarget.transform.position, transform.position) < attackDistance)
+                {
+                    state = RobotState.ATTACKING;
+                }
+                else
+                {
+                    state = RobotState.CHASING;
+                }
+            }
+            else
+            {
+                state = RobotState.PATROLING;
+            }
         }
 
         switch(state)
@@ -153,6 +162,7 @@ public class Robot : AbstractHealth, IAttackAgent
             case RobotState.ATTACKING: indicator.material = attackMat; break;
             case RobotState.CHASING: indicator.material = chaseMat; break;
             case RobotState.PATROLING: indicator.material = patrolMat; break;
+            case RobotState.STUNNED: indicator.material = stunMat; break;
         }
 
         Debug.Log(state);
