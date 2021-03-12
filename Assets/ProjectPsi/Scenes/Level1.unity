@@ -135,10 +135,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scientist
       objectReference: {fileID: 0}
+    - target: {fileID: 1046257704890072102, guid: 6daccfe8da280824aaf2def26d607fcc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1046257704890072103, guid: 6daccfe8da280824aaf2def26d607fcc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1046257704890072103, guid: 6daccfe8da280824aaf2def26d607fcc,
         type: 3}
@@ -1809,6 +1814,81 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0, y: 4, z: 4.000001}
   m_Center: {x: 1.7763573e-15, y: 2, z: 0}
+--- !u!1001 &123462660
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 899704400}
+    m_Modifications:
+    - target: {fileID: 9088118438091679026, guid: 8c3c55f0ee34e3c4883f9c056c899563,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088118438091679026, guid: 8c3c55f0ee34e3c4883f9c056c899563,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.0187325
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088118438091679026, guid: 8c3c55f0ee34e3c4883f9c056c899563,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.845
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088118438091679026, guid: 8c3c55f0ee34e3c4883f9c056c899563,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.711647
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088118438091679026, guid: 8c3c55f0ee34e3c4883f9c056c899563,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088118438091679026, guid: 8c3c55f0ee34e3c4883f9c056c899563,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088118438091679026, guid: 8c3c55f0ee34e3c4883f9c056c899563,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088118438091679026, guid: 8c3c55f0ee34e3c4883f9c056c899563,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088118438091679026, guid: 8c3c55f0ee34e3c4883f9c056c899563,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088118438091679026, guid: 8c3c55f0ee34e3c4883f9c056c899563,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088118438091679026, guid: 8c3c55f0ee34e3c4883f9c056c899563,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088118438091679027, guid: 8c3c55f0ee34e3c4883f9c056c899563,
+        type: 3}
+      propertyPath: m_Name
+      value: Robot
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8c3c55f0ee34e3c4883f9c056c899563, type: 3}
+--- !u!4 &123462661 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9088118438091679026, guid: 8c3c55f0ee34e3c4883f9c056c899563,
+    type: 3}
+  m_PrefabInstance: {fileID: 123462660}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &132084142 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8797782163205281423, guid: ef83f39a118b52b419b2a1a465c4f45e,
@@ -1973,10 +2053,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scientist
       objectReference: {fileID: 0}
+    - target: {fileID: 1046257704890072102, guid: 6daccfe8da280824aaf2def26d607fcc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1046257704890072103, guid: 6daccfe8da280824aaf2def26d607fcc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1046257704890072103, guid: 6daccfe8da280824aaf2def26d607fcc,
         type: 3}
@@ -4647,10 +4732,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scientist
       objectReference: {fileID: 0}
+    - target: {fileID: 1046257704890072102, guid: 6daccfe8da280824aaf2def26d607fcc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1046257704890072103, guid: 6daccfe8da280824aaf2def26d607fcc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1046257704890072103, guid: 6daccfe8da280824aaf2def26d607fcc,
         type: 3}
@@ -9390,7 +9480,7 @@ PrefabInstance:
     - target: {fileID: 3639069849149869095, guid: fd35864b0e5399248ba3f9f4f63f89bd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.29
+      value: 4.75
       objectReference: {fileID: 0}
     - target: {fileID: 3639069849149869095, guid: fd35864b0e5399248ba3f9f4f63f89bd,
         type: 3}
@@ -9400,7 +9490,7 @@ PrefabInstance:
     - target: {fileID: 3639069849149869095, guid: fd35864b0e5399248ba3f9f4f63f89bd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.75
+      value: 27.73
       objectReference: {fileID: 0}
     - target: {fileID: 3639069849149869095, guid: fd35864b0e5399248ba3f9f4f63f89bd,
         type: 3}
@@ -10852,6 +10942,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 123462661}
   - {fileID: 372383633}
   - {fileID: 1749428250}
   - {fileID: 838467}
@@ -22240,7 +22331,7 @@ PrefabInstance:
     - target: {fileID: 9088118438091679026, guid: 8c3c55f0ee34e3c4883f9c056c899563,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9088118438091679026, guid: 8c3c55f0ee34e3c4883f9c056c899563,
         type: 3}

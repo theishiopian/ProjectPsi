@@ -38,7 +38,7 @@ public class Robot : AbstractHealth, IAttackAgent
     private float stunTimer = 0;
     private bool aiEnabled = true;
 
-    public void Attack(Vector3 targetPosition)
+    public void Attack(Vector3 targPosition)
     {
         Debug.Log("Attack");
         reloadTimer = reloadTime;
@@ -97,6 +97,8 @@ public class Robot : AbstractHealth, IAttackAgent
         ai = GetComponent<BehaviorTree>();
 
         agent = GetComponent<NavMeshAgent>();
+
+        ai.SetVariableValue("State", 0);
     }
 
     void Cleanup()
@@ -110,9 +112,38 @@ public class Robot : AbstractHealth, IAttackAgent
         idlePool.Enqueue(toCleanup);
     }
 
+    public enum RobotState
+    {
+        PATROLING,
+        CHASING,
+        ATTACKING
+    }
+
+    public RobotState state = RobotState.PATROLING;
+
     // Update is called once per frame
     void Update()
     {
+        GameObject currentTarget = (GameObject)ai.GetVariable("CurrentTarget").GetValue();
+
+        if (currentTarget != null)
+        {
+            if(Vector3.Distance(currentTarget.transform.position, transform.position) < attackDistance)
+            {
+                state = RobotState.ATTACKING;
+            }
+            else
+            {
+                state = RobotState.CHASING;
+            }
+        }
+        else
+        {
+            state = RobotState.PATROLING;
+        }
+
+        Debug.Log(state);
+
         reloadTimer = Mathf.Clamp(reloadTimer - Time.deltaTime, 0, reloadTime);
         cleanupTimer = Mathf.Clamp(cleanupTimer - Time.deltaTime, 0, cleanupTime);
         stunTimer = Mathf.Clamp(stunTimer - Time.deltaTime, 0, stunTime);
@@ -135,8 +166,6 @@ public class Robot : AbstractHealth, IAttackAgent
 
     private void OnCollisionEnter(Collision collision)
     {
-        
-
         if(collision.impulse.magnitude > armor)
         {
             if(aiEnabled)DisableAI();
