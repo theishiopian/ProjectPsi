@@ -26,6 +26,12 @@ public class Robot : AbstractHealth, IAttackAgent
     public Vector3 centerOfMass;
     public float stunTime = 2;
 
+    [Header("State Indication")]
+    public MeshRenderer indicator;
+    public Material attackMat;
+    public Material patrolMat;
+    public Material chaseMat;
+
     private Queue<GameObject> idlePool;
     private Queue<GameObject> activePool;
 
@@ -140,6 +146,13 @@ public class Robot : AbstractHealth, IAttackAgent
         else
         {
             state = RobotState.PATROLING;
+        }
+
+        switch(state)
+        {
+            case RobotState.ATTACKING: indicator.material = attackMat; break;
+            case RobotState.CHASING: indicator.material = chaseMat; break;
+            case RobotState.PATROLING: indicator.material = patrolMat; break;
         }
 
         Debug.Log(state);
