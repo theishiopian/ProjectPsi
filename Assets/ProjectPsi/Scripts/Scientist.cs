@@ -87,10 +87,35 @@ public class Scientist : AbstractHealth, IAttackAgent
         agent = GetComponent<NavMeshAgent>();
     }
 
+    public enum SciState
+    {
+        WANDERING,
+        CHASING,
+        ATTACKING,
+        STUNNED
+    }
+
+    public SciState state = SciState.WANDERING;
+
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(stunTime);
+        //if(stunTimer > 0)
+        //{
+        //    state = SciState.STUNNED;
+        //}
+        //else
+        //{
+
+        //}
+
+        //switch(state)
+        //{
+
+        //}
+
+        Debug.Log(ai.GetVariable("state").GetValue());
+
         if(stunTimer <= 0 && !aiEnabled)
         {
             EnableAI();

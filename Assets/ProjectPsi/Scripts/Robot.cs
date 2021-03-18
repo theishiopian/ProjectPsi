@@ -165,7 +165,7 @@ public class Robot : AbstractHealth, IAttackAgent
             case RobotState.STUNNED: indicator.material = stunMat; break;
         }
 
-        Debug.Log(state);
+        //Debug.Log(state);
 
         reloadTimer = Mathf.Clamp(reloadTimer - Time.deltaTime, 0, reloadTime);
         cleanupTimer = Mathf.Clamp(cleanupTimer - Time.deltaTime, 0, cleanupTime);
