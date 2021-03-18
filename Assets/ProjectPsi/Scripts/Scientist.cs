@@ -18,6 +18,13 @@ public class Scientist : AbstractHealth, IAttackAgent
     public float killDelay = 1;//delay in seconds before jab
     public LayerMask attackMask;
 
+    [Header("State Indication")]
+    public MeshRenderer indicator;
+    public Material attackMat;
+    public Material wanderMat;
+    public Material chaseMat;
+    public Material stunMat;
+
     [HideInInspector]
     public GameObject player;
 
@@ -125,10 +132,13 @@ public class Scientist : AbstractHealth, IAttackAgent
             }
         }
 
-        //switch(state)
-        //{
-
-        //}
+        switch (state)
+        {
+            case SciState.ATTACKING: indicator.material = attackMat; break;
+            case SciState.CHASING: indicator.material = chaseMat; break;
+            case SciState.WANDERING: indicator.material = wanderMat; break;
+            case SciState.STUNNED: indicator.material = stunMat; break;
+        }
 
         Debug.Log(state);
 

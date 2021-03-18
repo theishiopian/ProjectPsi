@@ -240,7 +240,13 @@ MonoBehaviour:
   attackMask:
     serializedVersion: 2
     m_Bits: 2048
+  indicator: {fileID: 1046257703628165377}
+  attackMat: {fileID: 2100000, guid: 047211f56d9efb948b6a2b95dd1f3742, type: 2}
+  wanderMat: {fileID: 2100000, guid: 94ec4675e5dae5f41918c3e026202d59, type: 2}
+  chaseMat: {fileID: 2100000, guid: feb7ec65002402e4cbcc1cdcc0a7a6fb, type: 2}
+  stunMat: {fileID: 2100000, guid: 7e90f10e44a186a49a00679d068515ed, type: 2}
   player: {fileID: 0}
+  state: 0
 --- !u!1 &1046257703969943173
 GameObject:
   m_ObjectHideFlags: 0
