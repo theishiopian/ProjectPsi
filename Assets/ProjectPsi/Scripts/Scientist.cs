@@ -96,25 +96,41 @@ public class Scientist : AbstractHealth, IAttackAgent
     }
 
     public SciState state = SciState.WANDERING;
-
+    bool hasTarget = false;
     // Update is called once per frame
     void Update()
     {
-        //if(stunTimer > 0)
-        //{
-        //    state = SciState.STUNNED;
-        //}
-        //else
-        //{
+        hasTarget = (bool)ai.GetVariable("HasTarget").GetValue();
 
-        //}
+        if (stunTimer > 0)
+        {
+            state = SciState.STUNNED;
+        }
+        else
+        {
+            if(hasTarget)
+            {
+                if(Vector3.Distance(transform.position, ((GameObject)(ai.GetVariable("Player").GetValue())).transform.position) < attackDistance)
+                {
+                    state = SciState.ATTACKING;
+                }
+                else
+                {
+                    state = SciState.CHASING;
+                }
+            }
+            else
+            {
+                state = SciState.WANDERING;
+            }
+        }
 
         //switch(state)
         //{
 
         //}
 
-        Debug.Log(ai.GetVariable("state").GetValue());
+        Debug.Log(state);
 
         if(stunTimer <= 0 && !aiEnabled)
         {
