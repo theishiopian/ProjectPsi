@@ -117,14 +117,25 @@ public class Scientist : AbstractHealth, IAttackAgent
         {
             if(hasTarget)
             {
-                if(Vector3.Distance(transform.position, ((GameObject)(ai.GetVariable("Player").GetValue())).transform.position) < attackDistance)
+                GameObject player = (GameObject)ai.GetVariable("Player").GetValue();
+
+                if(!player)
                 {
-                    state = SciState.ATTACKING;
+                    Debug.LogWarning("Player is null");
                 }
                 else
                 {
-                    state = SciState.CHASING;
+                    if (Vector3.Distance(transform.position, (player.transform.position)) < attackDistance)
+                    {
+                        state = SciState.ATTACKING;
+                    }
+                    else
+                    {
+                        state = SciState.CHASING;
+                    }
                 }
+
+                
             }
             else
             {
