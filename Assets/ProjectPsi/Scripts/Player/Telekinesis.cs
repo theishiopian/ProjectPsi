@@ -149,9 +149,9 @@ public class Telekinesis : MonoBehaviour
     {
         ParticleSystem.ShapeModule shape = outline.shape;
 
-        MeshFilter filter = target.GetComponent<MeshFilter>();
+        //MeshFilter filter = target.GetComponent<MeshFilter>();
 
-        shape.mesh = filter.mesh;
+        //shape.mesh = filter.mesh;
 
         outline.transform.SetParent(target.transform);
         outline.transform.localPosition = Vector3.zero;

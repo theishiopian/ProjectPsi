@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7374280870876600445}
   - component: {fileID: 387734255285216227}
   - component: {fileID: 2413431861119285816}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Top1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 290084964564484969}
   - component: {fileID: 5552794677506450130}
   - component: {fileID: 2824576189054441150}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Base1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,9 +167,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7223583214372431177}
-  m_Layer: 0
+  - component: {fileID: 5933923975389274187}
+  - component: {fileID: 7535721180617795335}
+  m_Layer: 13
   m_Name: Stapler
-  m_TagString: Untagged
+  m_TagString: Liftable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,3 +192,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &5933923975389274187
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8031186996994310131}
+  serializedVersion: 2
+  m_Mass: 2
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &7535721180617795335
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8031186996994310131}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19, y: 0.06, z: 0.05}
+  m_Center: {x: 0, y: 0.03, z: 0}
