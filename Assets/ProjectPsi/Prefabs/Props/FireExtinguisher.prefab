@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7517042283182461858}
   - component: {fileID: 5249943712441196455}
   - component: {fileID: 2265906988229541108}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Valve1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 7002563857150384445}
   - component: {fileID: 8587383228392541952}
   - component: {fileID: 2398586291913164014}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Hose1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 5219274933125283615}
   - component: {fileID: 2048956137715891004}
   - component: {fileID: 9134935394966720400}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Clip1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 4866156881030382900}
   - component: {fileID: 721015167302826903}
   - component: {fileID: 7555816779909991521}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: pin1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 5774408713097473489}
   - component: {fileID: 1602912359441911585}
   - component: {fileID: 3657774809074641942}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Handle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 8768572824509727941}
   - component: {fileID: 3331393128032313600}
   - component: {fileID: 3124083094317471815}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Guage1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 8304179001299440708}
   - component: {fileID: 6162493183628726019}
   - component: {fileID: 5770023772672723750}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: NozelConnection1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -562,9 +562,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4160770452616905483}
-  m_Layer: 0
+  - component: {fileID: 1294141439086544832}
+  - component: {fileID: 6525784643323998938}
+  - component: {fileID: 3472102876500133696}
+  m_Layer: 13
   m_Name: FireExtinguisher
-  m_TagString: Untagged
+  m_TagString: Liftable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -594,6 +597,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1294141439086544832
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3672076375513913777}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.113
+  m_Height: 0.7
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.345, z: 0}
+--- !u!65 &6525784643323998938
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3672076375513913777}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.7, z: 0.1}
+  m_Center: {x: 0, y: 0.35, z: 0}
+--- !u!54 &3472102876500133696
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3672076375513913777}
+  serializedVersion: 2
+  m_Mass: 55
+  m_Drag: 4
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4853469364447555361
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,7 +651,7 @@ GameObject:
   - component: {fileID: 2194007726719107074}
   - component: {fileID: 6335917358136491619}
   - component: {fileID: 2162808611932552374}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Top_Hinge1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -684,7 +730,7 @@ GameObject:
   - component: {fileID: 495326756085226200}
   - component: {fileID: 8601587210120397669}
   - component: {fileID: 6681773586283496593}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Nozel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -763,7 +809,7 @@ GameObject:
   - component: {fileID: 2587467646298064315}
   - component: {fileID: 7543037891702198387}
   - component: {fileID: 8221616096876536417}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Connector_tube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -842,7 +888,7 @@ GameObject:
   - component: {fileID: 5817523127207290747}
   - component: {fileID: 5873845192472872093}
   - component: {fileID: 8379974902215721850}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Body1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,9 +11,13 @@ GameObject:
   - component: {fileID: 1027888472160596525}
   - component: {fileID: 4173729147439742344}
   - component: {fileID: 2164234442431138114}
-  m_Layer: 0
+  - component: {fileID: 5184311915245037808}
+  - component: {fileID: 4627109881285057662}
+  - component: {fileID: 1412675884400865728}
+  - component: {fileID: 876371882029227259}
+  m_Layer: 13
   m_Name: CoffeeMaker
-  m_TagString: Untagged
+  m_TagString: Liftable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,6 +84,61 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &5184311915245037808
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362570221479372951}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25159645, y: 0.272, z: 0.13214672}
+  m_Center: {x: -0.0003194809, y: 0.136, z: 0.07326788}
+--- !u!65 &4627109881285057662
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362570221479372951}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.23859978, y: 0.1006172, z: 0.13661194}
+  m_Center: {x: -0.0019426346, y: 0.22169141, z: -0.06128311}
+--- !u!65 &1412675884400865728
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362570221479372951}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.23830223, y: 0.034793973, z: 0.2700671}
+  m_Center: {x: -0.0011091232, y: 0.017396986, z: 0.0043076873}
+--- !u!54 &876371882029227259
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362570221479372951}
+  serializedVersion: 2
+  m_Mass: 15
+  m_Drag: 2
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3861769774264359206
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6950736880546263269}
   - component: {fileID: 87156302931615269}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BaseCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
