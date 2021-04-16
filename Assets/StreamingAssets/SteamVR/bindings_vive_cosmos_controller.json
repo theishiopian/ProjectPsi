@@ -113,23 +113,6 @@
             },
             {
                "inputs" : {
-                  "east" : {
-                     "output" : "/actions/default/in/snapturnright"
-                  },
-                  "west" : {
-                     "output" : "/actions/default/in/snapturnleft"
-                  }
-               },
-               "mode" : "dpad",
-               "parameters" : {
-                  "deadzone_pct" : "85",
-                  "overlap_pct" : "0",
-                  "sub_mode" : "touch"
-               },
-               "path" : "/user/hand/right/input/joystick"
-            },
-            {
-               "inputs" : {
                   "click" : {
                      "output" : "/actions/default/in/grabgrip"
                   }
@@ -171,7 +154,7 @@
                   }
                },
                "mode" : "button",
-               "path" : "/user/hand/left/input/bumper"
+               "path" : "/user/hand/left/input/trigger"
             },
             {
                "inputs" : {
@@ -180,6 +163,35 @@
                   }
                },
                "mode" : "button",
+               "path" : "/user/hand/right/input/trigger"
+            },
+            {
+               "inputs" : {
+                  "east" : {
+                     "output" : "/actions/default/in/snapturnright"
+                  },
+                  "west" : {
+                     "output" : "/actions/default/in/snapturnleft"
+                  }
+               },
+               "mode" : "dpad",
+               "parameters" : {
+                  "sub_mode" : "touch"
+               },
+               "path" : "/user/hand/right/input/joystick"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/psibutton"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/left/input/bumper"
+            },
+            {
+               "inputs" : {},
+               "mode" : "none",
                "path" : "/user/hand/right/input/bumper"
             }
          ]
