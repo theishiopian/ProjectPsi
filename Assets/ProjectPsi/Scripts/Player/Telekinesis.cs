@@ -6,6 +6,7 @@ using Valve.VR.InteractionSystem;
 
 public class Telekinesis : MonoBehaviour
 {
+    #region header
     [Header("SteamVR")]
     public SteamVR_Input_Sources controller;
     public SteamVR_Action_Boolean pickupAction;
@@ -36,6 +37,7 @@ public class Telekinesis : MonoBehaviour
     public LayerMask castMask;
     public LayerMask sphereMask;
     public string ignoreLayer = "Items";
+    #endregion
 
     //internal vars
     private RaycastHit hit;
