@@ -7364,12 +7364,11 @@ MonoBehaviour:
   grabTag: Item
   grabForce: 100
   grabDistance: 1
-  castRadius: 0.25
   sphereRadius: 0.5
   castDistance: 150
-  castMask:
+  rayMask:
     serializedVersion: 2
-    m_Bits: 139265
+    m_Bits: 139264
   sphereMask:
     serializedVersion: 2
     m_Bits: 12288

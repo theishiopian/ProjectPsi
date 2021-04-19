@@ -106,57 +106,65 @@ public class Telekinesis : MonoBehaviour
         //}
         #endregion
 
-        float dist = castDistance;
-
-        if (Physics.Raycast(head.position, head.forward, out hit, castDistance, rayMask))
+        if(!liftTarget && !grabTarget)
         {
-            dist = hit.distance - sphereRadius;
-        }
+            float dist = castDistance;
 
-        RaycastHit[] potentialTargets = Physics.SphereCastAll(head.position, sphereRadius, head.forward, dist, sphereMask);
-
-        float highestMass = 0;
-        Rigidbody theOne = null;
-
-        foreach (RaycastHit canidate in potentialTargets)
-        {
-            //prevent us from targeting held items
-            if (canidate.collider.gameObject.layer == LayerMask.NameToLayer(ignoreLayer) && canidate.collider.GetComponent<Item>().isHeld)
+            if (Physics.Raycast(head.position, head.forward, out hit, castDistance, rayMask))
             {
-                continue;
+                dist = hit.distance - sphereRadius;
+            }
+
+            RaycastHit[] potentialTargets = Physics.SphereCastAll(head.position, sphereRadius, head.forward, dist, sphereMask);
+
+            float highestMass = 0;
+            Rigidbody theOne = null;
+
+            foreach (RaycastHit canidate in potentialTargets)
+            {
+                //prevent us from targeting held items
+                if (canidate.collider.gameObject.layer == LayerMask.NameToLayer(ignoreLayer) && canidate.collider.GetComponent<Item>().isHeld)
+                {
+                    continue;
+                }
+                else
+                {
+                    theOne = canidate.collider.gameObject.GetComponent<Rigidbody>();
+
+                    if (theOne && theOne.mass > highestMass)
+                    {
+                        highestMass = theOne.mass;
+                    }
+                }
+            }
+
+            if (highestMass > 0 && theOne)
+            {
+                SetOutline(theOne.gameObject);
+
+                if (theOne.CompareTag(grabTag))
+                {
+                    grabTarget = theOne;
+                }
+                else if (theOne.CompareTag(liftTag) && !grabbing)
+                {
+                    liftTarget = theOne;
+                }
             }
             else
             {
-                theOne = canidate.collider.gameObject.GetComponent<Rigidbody>();
-
-                if(theOne && theOne.mass > highestMass)
-                {
-                    highestMass = theOne.mass;
-                }
-            }
-        }
-
-        if (highestMass > 0 && theOne)
-        {
-            SetOutline(theOne.gameObject);
-
-            if (theOne.CompareTag(grabTag))
-            {
-                grabTarget = theOne;
-            }
-            else if (theOne.CompareTag(liftTag) && !grabbing)
-            {
-                liftTarget = theOne;
+                //if no targets to aquire at hit
+                liftTarget = null;
+                grabTarget = null;
+                ResetOutline();
             }
         }
         else
         {
-            //if no targets to aquire at hit
             liftTarget = null;
             grabTarget = null;
             ResetOutline();
         }
-
 
         if (pickupAction.GetStateUp(controller))//let go
         {
