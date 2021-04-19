@@ -49,6 +49,7 @@ public class Telekinesis : MonoBehaviour
 
     private void Update()
     {
+        #region OldCode
         //if (!lifting && handScript.AttachedObjects.Count == 0)
         //{
         //    //scan for targets
@@ -103,6 +104,7 @@ public class Telekinesis : MonoBehaviour
         //        ResetOutline();
         //    }
         //}
+        #endregion
 
         float dist = castDistance;
 
