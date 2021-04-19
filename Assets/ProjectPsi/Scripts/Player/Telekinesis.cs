@@ -106,7 +106,7 @@ public class Telekinesis : MonoBehaviour
         //}
         #endregion
 
-        if(!liftTarget && !grabTarget)
+        if(!lifting)
         {
             float dist = castDistance;
 
@@ -158,12 +158,6 @@ public class Telekinesis : MonoBehaviour
                 grabTarget = null;
                 ResetOutline();
             }
-        }
-        else
-        {
-            liftTarget = null;
-            grabTarget = null;
-            ResetOutline();
         }
 
         if (pickupAction.GetStateUp(controller))//let go
