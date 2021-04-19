@@ -4,6 +4,7 @@ using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
+
 public class Telekinesis : MonoBehaviour
 {
     #region header
@@ -31,10 +32,9 @@ public class Telekinesis : MonoBehaviour
     public float grabDistance = 0.15f;
 
     [Header("Targeting Settings")]
-    public float castRadius = 0.25f;
     public float sphereRadius = 0.5f;
-    public float castDistance = 150;
-    public LayerMask castMask;
+    public float castDistance = 100;
+    public LayerMask rayMask;
     public LayerMask sphereMask;
     public string ignoreLayer = "Items";
     #endregion
@@ -49,59 +49,76 @@ public class Telekinesis : MonoBehaviour
 
     private void Update()
     {
-        if (!lifting && handScript.AttachedObjects.Count == 0)
+        //if (!lifting && handScript.AttachedObjects.Count == 0)
+        //{
+        //    //scan for targets
+        //    if (Physics.SphereCast(look.position, castRadius, look.forward, out hit, castDistance, castMask))
+        //    {
+        //        overlaps = Physics.OverlapSphere(hit.point, sphereRadius, sphereMask);
+        //        float distance = Mathf.Infinity;
+        //        Collider theOne = null;
+
+        //        //sort by size
+        //        foreach (Collider c in overlaps)
+        //        {
+        //            float newDist = Vector3.Distance(hit.point, c.transform.position);
+        //            if (newDist < distance && (c.CompareTag(liftTag) || c.CompareTag(grabTag)))
+        //            {
+        //                if(c.gameObject.layer == LayerMask.NameToLayer(ignoreLayer) && c.GetComponent<Item>().isHeld)
+        //                {
+        //                    continue;
+        //                }
+        //                distance = newDist;
+        //                theOne = c;
+        //            }
+        //        }
+
+        //        //aquire target
+        //        if (theOne)
+        //        {
+        //            SetOutline(theOne.gameObject);
+
+        //            if (theOne.CompareTag(grabTag))
+        //            {
+        //                grabTarget = theOne.GetComponent<Rigidbody>();
+        //            }
+        //            else if (theOne.CompareTag(liftTag) && !grabbing)
+        //            {
+        //                liftTarget = theOne.GetComponent<Rigidbody>();
+        //            }
+        //        }
+        //        else
+        //        {
+        //            //if no targets to aquire at hit
+        //            liftTarget = null;
+        //            grabTarget = null;
+        //            ResetOutline();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        //if no hits
+        //        liftTarget = null;
+        //        grabTarget = null;
+        //        ResetOutline();
+        //    }
+        //}
+
+        float dist = castDistance;
+
+        if(Physics.Raycast(head.position, head.forward, out hit, castDistance, rayMask))
         {
-            //scan for targets
-            if (Physics.SphereCast(look.position, castRadius, look.forward, out hit, castDistance, castMask))
-            {
-                overlaps = Physics.OverlapSphere(hit.point, sphereRadius, sphereMask);
-                float distance = Mathf.Infinity;
-                Collider theOne = null;
+            dist = hit.distance - sphereRadius;
+        }
 
-                //sort by size
-                foreach (Collider c in overlaps)
-                {
-                    float newDist = Vector3.Distance(hit.point, c.transform.position);
-                    if (newDist < distance && (c.CompareTag(liftTag) || c.CompareTag(grabTag)))
-                    {
-                        if(c.gameObject.layer == LayerMask.NameToLayer(ignoreLayer) && c.GetComponent<Item>().isHeld)
-                        {
-                            continue;
-                        }
-                        distance = newDist;
-                        theOne = c;
-                    }
-                }
+        RaycastHit[] potentialTargets = Physics.SphereCastAll(head.position, sphereRadius, head.forward,  dist, sphereMask);
 
-                //aquire target
-                if (theOne)
-                {
-                    SetOutline(theOne.gameObject);
+        float highestMass = 0;
+        Rigidbody theOne = null;
 
-                    if (theOne.CompareTag(grabTag))
-                    {
-                        grabTarget = theOne.GetComponent<Rigidbody>();
-                    }
-                    else if (theOne.CompareTag(liftTag) && !grabbing)
-                    {
-                        liftTarget = theOne.GetComponent<Rigidbody>();
-                    }
-                }
-                else
-                {
-                    //if no targets to aquire at hit
-                    liftTarget = null;
-                    grabTarget = null;
-                    ResetOutline();
-                }
-            }
-            else
-            {
-                //if no hits
-                liftTarget = null;
-                grabTarget = null;
-                ResetOutline();
-            }
+        foreach(RaycastHit canidate in potentialTargets)
+        {
+
         }
 
         if (pickupAction.GetStateUp(controller))//let go
