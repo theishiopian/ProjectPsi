@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e61476186b7cb94b83e59e0b7ee7b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startLocked: 0
   door: {fileID: 1385556361933446959}
   openPos: {x: 0, y: 2, z: 0}
   openCurve:
@@ -95,6 +96,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  panel: {fileID: 0}
 --- !u!1 &7498290369918074110
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,6 +108,7 @@ GameObject:
   - component: {fileID: 3504700888180818328}
   - component: {fileID: 3257608787497781671}
   - component: {fileID: 6753178247807948861}
+  - component: {fileID: 2717213701153434491}
   m_Layer: 0
   m_Name: trigger
   m_TagString: Untagged
@@ -121,7 +124,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7498290369918074110}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6891352445797505978}
@@ -155,6 +158,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 1.25}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &2717213701153434491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7498290369918074110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc3be917a80086a48b97933694257f09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9095672653746074250
 GameObject:
   m_ObjectHideFlags: 0

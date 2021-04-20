@@ -59,7 +59,7 @@ public class Teleport : MonoBehaviour
     {
         arc.SetArcData(teleportHand.position, teleportHand.forward * 10, true, false);
         bool didHit = arc.DrawArc(out hit);
-
+        //Debug.Log(hit.collider.gameObject);
         arc.SetColor(canTeleport ? Color.cyan : Color.red);
         return didHit;
     }
@@ -72,24 +72,10 @@ public class Teleport : MonoBehaviour
         groundPos = GetGroundPoint();
         dir = hitInfo.point - groundPos;
 
-        //KEEP THIS JUST IN CASE WE NEED IT
-        //Debug.DrawRay(groundPos, Vector3.up, Color.magenta);
-
-        //Debug.DrawRay(groundPos, dir, Color.green);
-
-        //float pointDist = collider.height / 2 - collider.radius;
-        //a = new Vector3(0, collider.center.y, 0) + Vector3.up * pointDist;
-        //b = new Vector3(0, collider.center.y, 0) + Vector3.down * pointDist;
-        //RaycastHit cHit;
-        //if (Physics.CapsuleCast(groundPos + a, groundPos + b, collider.radius, dir, out cHit, dir.magnitude, sweepMask.value))
-        //{
-        //    //Debug.Log("hit: " + cHit.collider);
-        //    Debug.DrawRay(cHit.point, Vector3.up * 100);
-        //    return false;
-        //}
         RaycastHit cHit;
-        if(Physics.SphereCast(head.transform.position, 0.125f, dir, out cHit, dir.magnitude, sweepMask))
+        if(Physics.SphereCast(head.transform.position, 0.125f, dir, out cHit, dir.magnitude, sweepMask, QueryTriggerInteraction.Ignore))
         {
+            Debug.Log(cHit.collider.gameObject);
             return false;
         }
 
@@ -104,10 +90,4 @@ public class Teleport : MonoBehaviour
         //Debug.Log(groundHit.collider);
         return groundHit.point;
     }
-
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.DrawWireSphere(a + groundPos, 0.1f);
-    //    Gizmos.DrawWireSphere(b + groundPos, 0.1f);
-    //}
 }
