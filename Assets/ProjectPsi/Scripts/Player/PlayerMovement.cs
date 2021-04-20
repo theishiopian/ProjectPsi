@@ -43,9 +43,10 @@ public class PlayerMovement : MonoBehaviour
         UpdateInput();
 
         moveDirection = Quaternion.AngleAxis(GetAngle(joystickInput) + (useHand ? leftHand : head).transform.rotation.eulerAngles.y, Vector3.up) * Vector3.forward;//get the angle of the touch and correct it for the rotation of the controller
+
         if (body.velocity.magnitude<speed &&   joystickInput.magnitude > deadzone)
         {
-            body.position += moveDirection * speed * Time.deltaTime;
+            body.position = body.position + moveDirection * speed * Time.deltaTime;
         }
 
         if(snapLeft)
