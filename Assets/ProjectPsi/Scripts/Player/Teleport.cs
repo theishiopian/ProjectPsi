@@ -8,6 +8,8 @@ public class Teleport : MonoBehaviour
 {
     public SteamVR_Input_Sources controller;
     public SteamVR_Action_Boolean teleportAction;
+    public SteamVR_Action_Boolean snapTurnLeft;
+    public SteamVR_Action_Boolean snapTurnRight;
     public Transform teleportHand;
     public TeleportArc arc;
     public LayerMask arcMask;
@@ -41,7 +43,7 @@ public class Teleport : MonoBehaviour
             canTeleport = didHit ? CanTeleportTo(hit, body) : false;
             //arc.Show();
         }
-        else if (teleportAction.GetStateUp(controller))
+        else if (teleportAction.GetStateUp(controller) && !snapTurnLeft.GetState(controller) && !snapTurnRight.GetState(controller))
         {
             //teleport here
             if (canTeleport)
@@ -51,6 +53,11 @@ public class Teleport : MonoBehaviour
                 //teleport with offset
                 body.position += dir;
             }
+            arc.gameObject.SetActive(false);
+        }
+
+        if(snapTurnLeft.GetState(controller) || snapTurnRight.GetState(controller))
+        {
             arc.gameObject.SetActive(false);
         }
     }

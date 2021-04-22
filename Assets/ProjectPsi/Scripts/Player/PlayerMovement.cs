@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public SteamVR_Action_Vector2 movementJoystick;
     public SteamVR_Action_Boolean snapLeftAction;
     public SteamVR_Action_Boolean snapRightAction;
+    public SteamVR_Action_Boolean teleportAction;
 
     [Header("Settings")]
     public bool useHand;//if true we use your hand for movement. if false we use the head. default false
@@ -22,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 joystickInput;
     private bool snapLeft, shouldTurnLeft;
     private bool snapRight, shouldTurnRight;
-    private bool teleport, shouldTeleport;
+    private bool teleport;
     private Vector3 moveDirection;
     
     private Rigidbody body;
@@ -49,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
             body.position = body.position + moveDirection * speed * Time.deltaTime;
         }
 
-        if(snapLeft)
+        if(snapLeft && !teleport)
         {
             shouldTurnLeft = true;
         }
@@ -60,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
             RotateRigidBodyAroundPointBy(body, collider.transform.position, Vector3.up, -15);
         }
 
-        if (snapRight)
+        if (snapRight && !teleport)
         {
             shouldTurnRight = true;
         }
@@ -100,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
 
         snapLeft = snapLeftAction.GetState(turnHand);
         snapRight = snapRightAction.GetState(turnHand);
+        teleport = teleportAction.GetState(turnHand);
     }
 
     //code by Sandy Gifford of the unity answers forums

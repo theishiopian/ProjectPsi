@@ -2161,6 +2161,9 @@ MonoBehaviour:
   snapRightAction:
     actionPath: /actions/default/in/SnapTurnRight
     needsReinit: 0
+  teleportAction:
+    actionPath: /actions/default/in/Teleport
+    needsReinit: 0
   useHand: 0
   speed: 2
   deadzone: 0
@@ -2180,6 +2183,12 @@ MonoBehaviour:
   controller: 2
   teleportAction:
     actionPath: /actions/default/in/Teleport
+    needsReinit: 0
+  snapTurnLeft:
+    actionPath: /actions/default/in/SnapTurnLeft
+    needsReinit: 0
+  snapTurnRight:
+    actionPath: /actions/default/in/SnapTurnRight
     needsReinit: 0
   teleportHand: {fileID: 7468514020824301385}
   arc: {fileID: 8457292436660777587}
