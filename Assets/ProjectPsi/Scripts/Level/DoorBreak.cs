@@ -7,6 +7,7 @@ public class DoorBreak : AbstractHealth
     public float armor = 30;
 
     ParticleSystem shatter;
+    Vector3 impulse;
 
     private void Start()
     {
@@ -16,6 +17,7 @@ public class DoorBreak : AbstractHealth
 
     private void OnCollisionEnter(Collision collision)
     {
+        impulse = collision.impulse;
         if (collision.impulse.magnitude > armor)
         {
             Damage(collision.impulse.magnitude * 0.01f);
@@ -25,6 +27,8 @@ public class DoorBreak : AbstractHealth
 
     private void OnDeath()
     {
-
+        shatter.transform.position = transform.position;
+        shatter.transform.rotation = Quaternion.LookRotation(impulse, transform.up);
+        shatter.Play();
     }
 }
