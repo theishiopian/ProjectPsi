@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tactical;
 
+public delegate void KillAction();
+
 public abstract class AbstractHealth : MonoBehaviour, IDamageable
 {
     [Header("Health Settings")]
@@ -12,6 +14,7 @@ public abstract class AbstractHealth : MonoBehaviour, IDamageable
     public float Health { get; internal set; }//health  value
 
     private bool isAlive = true;//is the player alive?
+    protected KillAction onDeath;
 
     public virtual void Damage(float amount)//deal damage, implemented from IDamageable
     {
@@ -19,8 +22,7 @@ public abstract class AbstractHealth : MonoBehaviour, IDamageable
         //Debug.Log("health at: " + Health);
         if (Health <= 0 && !isImmortal)
         {
-            isAlive = false;
-            gameObject.SetActive(false);
+            Kill();
         }
     }
 
@@ -33,6 +35,10 @@ public abstract class AbstractHealth : MonoBehaviour, IDamageable
     {
         isAlive = false;
         Health = 0;
+        if(onDeath != null)
+        {
+            onDeath.Invoke();
+        }
         gameObject.SetActive(false);
     }
 }
