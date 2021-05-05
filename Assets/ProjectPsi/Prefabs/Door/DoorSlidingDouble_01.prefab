@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 2463276921216049453}
   - component: {fileID: 6865047115463476052}
   - component: {fileID: 3451291921529292833}
+  - component: {fileID: 1980863233976971522}
   m_Layer: 0
   m_Name: DoorMesh
   m_TagString: Untagged
@@ -191,6 +192,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.10000038, y: 2.625, z: 2.1000004}
   m_Center: {x: 0, y: 1.2375, z: 0}
+--- !u!114 &1980863233976971522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3355657956362331824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79698ea8d83cd084c9923b40b7abfcc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 10
+  isImmortal: 0
+  armor: 30
 --- !u!1 &5616137220693849758
 GameObject:
   m_ObjectHideFlags: 0
