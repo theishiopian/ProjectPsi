@@ -195,11 +195,14 @@ public class Telekinesis : MonoBehaviour
 
         if(throwAction.GetStateDown(controller))//throw
         {
-            joint.connectedBody = null;
-            liftTarget.AddForce(head.forward * launchForce, ForceMode.VelocityChange);
-            liftTarget = null;
-            lifting = false;
-            ResetOutline();
+            if(liftTarget)
+            {
+                joint.connectedBody = null;
+                liftTarget.AddForce(head.forward * launchForce, ForceMode.VelocityChange);
+                liftTarget = null;
+                lifting = false;
+                ResetOutline();
+            }
         }
     }
 
