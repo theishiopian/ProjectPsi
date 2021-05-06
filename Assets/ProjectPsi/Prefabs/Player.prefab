@@ -881,7 +881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherHand: {fileID: 7468514020835221515}
   handType: 2
-  trackedObject: {fileID: 0}
+  trackedObject: {fileID: 7363525607245327831}
   grabPinchAction:
     actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
@@ -1217,7 +1217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherHand: {fileID: 7468514020835401877}
   handType: 1
-  trackedObject: {fileID: 0}
+  trackedObject: {fileID: 7363525606855422037}
   grabPinchAction:
     actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
