@@ -565,6 +565,8 @@ GameObject:
   - component: {fileID: 1294141439086544832}
   - component: {fileID: 6525784643323998938}
   - component: {fileID: 3472102876500133696}
+  - component: {fileID: -3972651625655844406}
+  - component: {fileID: 1223917455017487293}
   m_Layer: 13
   m_Name: FireExtinguisher
   m_TagString: Liftable
@@ -639,7 +641,38 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!114 &-3972651625655844406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3672076375513913777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3203a04c7ef891c4ca38ed393c368f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priority: 0
+  _material: {fileID: 11400000, guid: 7a7dbfb38fea99846972f2de8a6ea0ae, type: 2}
+--- !u!114 &1223917455017487293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3672076375513913777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e125879df9b8949a41dabefe0f9a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  _target: {fileID: -3972651625655844406}
+  _useMaterialComposition: 0
+  _contactMode: 0
+  _highPriority: 0
 --- !u!1 &4853469364447555361
 GameObject:
   m_ObjectHideFlags: 0
