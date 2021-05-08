@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using Unity.Labs.SuperScience;
-using UnityEngine;
+﻿using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
-
 
 public class Telekinesis : MonoBehaviour
 {
