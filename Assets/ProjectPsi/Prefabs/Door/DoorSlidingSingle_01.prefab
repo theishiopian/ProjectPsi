@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 8079913392765783355}
   - component: {fileID: 2518453388604577608}
   - component: {fileID: 5991767596788379531}
+  - component: {fileID: 6379306157976207379}
   m_Layer: 0
   m_Name: door mesh
   m_TagString: Untagged
@@ -280,3 +281,17 @@ MonoBehaviour:
   startingHealth: 10
   isImmortal: 0
   armor: 30
+--- !u!114 &6379306157976207379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9095672653746074250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c576f0cc5b9fb408ba690361383217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priority: 0
+  _material: {fileID: 11400000, guid: 101d792d31460414f809dbc961383c60, type: 2}

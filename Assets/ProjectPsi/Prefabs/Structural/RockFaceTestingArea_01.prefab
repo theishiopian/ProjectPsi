@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3010588485200590093}
   - component: {fileID: 1018716279849337287}
   - component: {fileID: 1865229868928687425}
+  - component: {fileID: 4393223932692461048}
   m_Layer: 17
   m_Name: RockFaceTestingArea_01
   m_TagString: Untagged
@@ -94,3 +95,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2781796457455323068, guid: a143690959830294687e0c818d40e960, type: 3}
+--- !u!114 &4393223932692461048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523282646648250386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c576f0cc5b9fb408ba690361383217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priority: 0
+  _material: {fileID: 11400000, guid: cd624dd402810544688effd49e7c48b5, type: 2}
