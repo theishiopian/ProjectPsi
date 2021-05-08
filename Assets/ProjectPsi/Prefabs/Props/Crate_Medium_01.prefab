@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8480656342677420410}
   - component: {fileID: 5376509016933726177}
   - component: {fileID: 3335175157578552375}
+  - component: {fileID: -6974735785780316361}
   m_Layer: 13
   m_Name: Crate_Medium_01
   m_TagString: Liftable
@@ -110,3 +111,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-6974735785780316361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7976337228506650799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3203a04c7ef891c4ca38ed393c368f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priority: 0
+  _material: {fileID: 11400000, guid: 101d792d31460414f809dbc961383c60, type: 2}
