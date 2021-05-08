@@ -12,12 +12,13 @@ GameObject:
   - component: {fileID: 1123449620559440237}
   - component: {fileID: 2914880313994698151}
   - component: {fileID: 6747158865560931679}
-  m_Layer: 0
+  - component: {fileID: 1435496105131725373}
+  m_Layer: 17
   m_Name: WallPanelDoorFrameSingle_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 125
   m_IsActive: 1
 --- !u!4 &4051147221032314568
 Transform:
@@ -95,3 +96,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -4613905232992324924, guid: 73026082d170c604e883eaf217830256, type: 3}
+--- !u!114 &1435496105131725373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3707377577325853810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c576f0cc5b9fb408ba690361383217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priority: 0
+  _material: {fileID: 11400000, guid: cd624dd402810544688effd49e7c48b5, type: 2}

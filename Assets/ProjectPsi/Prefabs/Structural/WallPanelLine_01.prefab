@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 7178905344762296196}
   - component: {fileID: 6057134745005504545}
   - component: {fileID: 8352968655761984747}
-  - component: {fileID: 4526577983797409962}
-  m_Layer: 0
+  - component: {fileID: 1878077061}
+  - component: {fileID: 8330986756455157168}
+  m_Layer: 17
   m_Name: WallPanelLine_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,8 +81,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4526577983797409962
-MeshCollider:
+--- !u!65 &1878077061
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -90,7 +91,20 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3510305803816567196, guid: 16569df13946dc243919ed9418460995, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0, y: 4, z: 2}
+  m_Center: {x: 1.7763568e-15, y: 2, z: 0}
+--- !u!114 &8330986756455157168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7560216443636542782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c576f0cc5b9fb408ba690361383217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priority: 0
+  _material: {fileID: 11400000, guid: cd624dd402810544688effd49e7c48b5, type: 2}

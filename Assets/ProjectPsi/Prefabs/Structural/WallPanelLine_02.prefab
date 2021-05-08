@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8166100275672517685}
   - component: {fileID: 5114975895762830224}
   - component: {fileID: 6996619321383450458}
-  - component: {fileID: 4075548285406798662}
   - component: {fileID: 2882473707928050009}
-  m_Layer: 0
+  - component: {fileID: 1869539823}
+  m_Layer: 17
   m_Name: WallPanelLine_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,20 +81,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4075548285406798662
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8797782163205281423}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1442974260845237583, guid: f93deb7cc0519124a87060af739f776e, type: 3}
 --- !u!114 &2882473707928050009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,3 +95,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _priority: 0
   _material: {fileID: 11400000, guid: cd624dd402810544688effd49e7c48b5, type: 2}
+--- !u!65 &1869539823
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8797782163205281423}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0, y: 4, z: 4.000001}
+  m_Center: {x: 1.7763573e-15, y: 2, z: 0}
