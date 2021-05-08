@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 8071178111430061657}
   - component: {fileID: 1272074806030166581}
   - component: {fileID: 3707174468826668294}
+  - component: {fileID: -479418010994533400}
+  - component: {fileID: -2300612930992855416}
   m_Layer: 13
   m_Name: Bottle200
   m_TagString: Liftable
@@ -126,3 +128,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-479418010994533400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4027156154767533302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3203a04c7ef891c4ca38ed393c368f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priority: 0
+  _material: {fileID: 11400000, guid: 5cf8acf76e2f9284cba09fefd71ff9d6, type: 2}
+--- !u!114 &-2300612930992855416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4027156154767533302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e125879df9b8949a41dabefe0f9a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  _target: {fileID: -479418010994533400}
+  _useMaterialComposition: 0
+  _contactMode: 0
+  _highPriority: 0

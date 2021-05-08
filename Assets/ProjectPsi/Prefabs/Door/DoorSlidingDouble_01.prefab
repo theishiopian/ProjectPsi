@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _priority: 0
-  _material: {fileID: 11400000, guid: 101d792d31460414f809dbc961383c60, type: 2}
+  _material: {fileID: 11400000, guid: 63bd650b728d9784eb0f3593d052b616, type: 2}
 --- !u!1 &5616137220693849758
 GameObject:
   m_ObjectHideFlags: 0

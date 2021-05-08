@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3054784511795641298}
   - component: {fileID: 1846290302456240996}
   - component: {fileID: 1039714792572078744}
+  - component: {fileID: 2321209435858833387}
+  - component: {fileID: -4120980027346079197}
   m_Layer: 13
   m_Name: Stand
   m_TagString: Liftable
@@ -62,6 +64,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6758958, y: 0.33465445, z: 0.6815439}
   m_Center: {x: -0.008521959, y: 0.0028347373, z: 0.008532256}
+--- !u!114 &2321209435858833387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2391155183716524392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3203a04c7ef891c4ca38ed393c368f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priority: 0
+  _material: {fileID: 11400000, guid: 7a7dbfb38fea99846972f2de8a6ea0ae, type: 2}
+--- !u!114 &-4120980027346079197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2391155183716524392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e125879df9b8949a41dabefe0f9a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  _target: {fileID: 2321209435858833387}
+  _useMaterialComposition: 0
+  _contactMode: 0
+  _highPriority: 0
 --- !u!1 &7023574727733548969
 GameObject:
   m_ObjectHideFlags: 0
