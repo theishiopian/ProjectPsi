@@ -139,7 +139,7 @@ public class Telekinesis : MonoBehaviour
             foreach (RaycastHit canidate in potentialTargets)
             {
                 //prevent us from targeting held items
-                Item item = canidate.collider.GetComponent<Item>();
+                Item item = canidate.collider.transform.root.gameObject.GetComponent<Item>();
                 int layer = canidate.collider.gameObject.layer;
 
                 if (layer == LayerMask.NameToLayer(ignoreLayer) && item.isHeld)
