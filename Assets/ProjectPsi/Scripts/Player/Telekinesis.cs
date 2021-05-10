@@ -24,8 +24,8 @@ public class Telekinesis : MonoBehaviour
     [Header("Physics Settings")]
     public float launchForce = 20;
     public float springMultiplier = 5;
-    public string liftTag = "Liftable";
-    public string grabTag = "Item";
+    public string[] liftTags = {"Liftable"};
+    public string[] grabTags = {"Item", "Marker"};
     public float grabForce = 25f;
     public float grabDistance = 0.15f;
 
@@ -60,63 +60,6 @@ public class Telekinesis : MonoBehaviour
 
     private void Update()
     {
-        #region OldCode
-        //if (!lifting && handScript.AttachedObjects.Count == 0)
-        //{
-        //    //scan for targets
-        //    if (Physics.SphereCast(look.position, castRadius, look.forward, out hit, castDistance, castMask))
-        //    {
-        //        overlaps = Physics.OverlapSphere(hit.point, sphereRadius, sphereMask);
-        //        float distance = Mathf.Infinity;
-        //        Collider theOne = null;
-
-        //        //sort by size
-        //        foreach (Collider c in overlaps)
-        //        {
-        //            float newDist = Vector3.Distance(hit.point, c.transform.position);
-        //            if (newDist < distance && (c.CompareTag(liftTag) || c.CompareTag(grabTag)))
-        //            {
-        //                if(c.gameObject.layer == LayerMask.NameToLayer(ignoreLayer) && c.GetComponent<Item>().isHeld)
-        //                {
-        //                    continue;
-        //                }
-        //                distance = newDist;
-        //                theOne = c;
-        //            }
-        //        }
-
-        //        //aquire target
-        //        if (theOne)
-        //        {
-        //            SetOutline(theOne.gameObject);
-
-        //            if (theOne.CompareTag(grabTag))
-        //            {
-        //                grabTarget = theOne.GetComponent<Rigidbody>();
-        //            }
-        //            else if (theOne.CompareTag(liftTag) && !grabbing)
-        //            {
-        //                liftTarget = theOne.GetComponent<Rigidbody>();
-        //            }
-        //        }
-        //        else
-        //        {
-        //            //if no targets to aquire at hit
-        //            liftTarget = null;
-        //            grabTarget = null;
-        //            ResetOutline();
-        //        }
-        //    }
-        //    else
-        //    {
-        //        //if no hits
-        //        liftTarget = null;
-        //        grabTarget = null;
-        //        ResetOutline();
-        //    }
-        //}
-        #endregion
-
         if(!outline)
         {
             RemakeParticles();//only calls once
@@ -139,7 +82,7 @@ public class Telekinesis : MonoBehaviour
             foreach (RaycastHit canidate in potentialTargets)
             {
                 //prevent us from targeting held items
-                Item item = canidate.collider.transform.root.gameObject.GetComponent<Item>();
+                Item item = canidate.collider.transform.gameObject.GetComponentInParent<Item>();
                 int layer = canidate.collider.gameObject.layer;
 
                 if (layer == LayerMask.NameToLayer(ignoreLayer) && item.isHeld)
@@ -161,11 +104,11 @@ public class Telekinesis : MonoBehaviour
             {
                 SetOutline(theOne.gameObject);
 
-                if (theOne.CompareTag(grabTag))
+                if (CompareTags(theOne.tag, grabTags))
                 {
                     grabTarget = theOne;
                 }
-                else if (theOne.CompareTag(liftTag) && !grabbing)
+                else if (CompareTags(theOne.tag, liftTags) && !grabbing)
                 {
                     liftTarget = theOne;
                 }
@@ -186,7 +129,7 @@ public class Telekinesis : MonoBehaviour
         }
         else if (pickupAction.GetState(controller))//use telekinesis
         {
-            if(grabTarget)//item
+            if(grabTarget && hand.parent.GetComponentInChildren<Item>() == null)//item
             {
                 lifting = true;
                 grabbing = true;
@@ -242,5 +185,17 @@ public class Telekinesis : MonoBehaviour
     void ResetOutline()//stop particles
     {
         outline.Stop();
+    }
+
+    bool CompareTags(string tagIn, string[] tags)
+    {
+        foreach(string tag in tags)
+        {
+            if(tagIn.Equals(tag))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
