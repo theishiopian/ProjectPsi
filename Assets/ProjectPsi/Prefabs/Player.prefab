@@ -2599,6 +2599,7 @@ MonoBehaviour:
     actionPath: /actions/default/in/PsiButton
     needsReinit: 0
   handScript: {fileID: 7468514020835401877}
+  attachmentFlags: 27
   head: {fileID: 7468514020824209921}
   hand: {fileID: 7468514020824301385}
   look: {fileID: 7468514020824209921}
@@ -2608,8 +2609,11 @@ MonoBehaviour:
   joint: {fileID: 8482755062524379111}
   launchForce: 50
   springMultiplier: 5
-  liftTag: Liftable
-  grabTag: Item
+  liftTags:
+  - Liftable
+  grabTags:
+  - Item
+  - Marker
   grabForce: 100
   grabDistance: 1
   sphereRadius: 1

@@ -10,6 +10,7 @@ public class Telekinesis : MonoBehaviour
     public SteamVR_Action_Boolean pickupAction;
     public SteamVR_Action_Boolean throwAction;
     public Hand handScript;
+    public Hand.AttachmentFlags attachmentFlags;
 
     [Header("Transforms")]
     public Transform head;
@@ -140,8 +141,7 @@ public class Telekinesis : MonoBehaviour
                     //attatch to hand
                     lifting = false;
                     grabbing = false;
-                    handScript.AttachObject(grabTarget.gameObject, GrabTypes.Grip);
-
+                    handScript.AttachObject(grabTarget.gameObject, GrabTypes.Grip, attachmentFlags);
                     grabTarget = null;
                     ResetOutline();
                 }  
