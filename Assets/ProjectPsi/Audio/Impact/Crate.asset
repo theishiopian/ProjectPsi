@@ -14,9 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tagLibrary: {fileID: 11400000, guid: e3bda70abc11ab24b9e9ee51ff5aef4e, type: 2}
   _materialTagsMask:
-    _value: 8191
+    _value: 1
     _tagLibrary: {fileID: 0}
-  _interactionSets: []
+  _interactionSets:
+  - _name: Impact
+    _includeTagsFilter:
+      TagMask:
+        _value: 129
+        _tagLibrary: {fileID: 0}
+      ExactMatch: 0
+    _excludeTagsFilter:
+      TagMask:
+        _value: 0
+        _tagLibrary: {fileID: 0}
+      ExactMatch: 0
+    _interactions:
+    - {fileID: 11400000, guid: c97eaddf63eae794088497f13bac2aa6, type: 2}
   _fallbackTagMask:
     _value: 0
     _tagLibrary: {fileID: 0}
