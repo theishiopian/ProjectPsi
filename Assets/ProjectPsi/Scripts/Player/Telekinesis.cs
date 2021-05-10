@@ -17,6 +17,7 @@ public class Telekinesis : MonoBehaviour
     public Transform look;
 
     [Header("Objects")]
+    public GameObject particles;
     public ParticleSystem outline;
     public SpringJoint joint;
 
@@ -43,6 +44,19 @@ public class Telekinesis : MonoBehaviour
     private bool lifting  = false;
     private bool grabbing = false;
     private Collider[] overlaps;
+
+    private void Start()
+    {
+        if(!outline)
+        {
+            RemakeParticles();
+        }
+    }
+
+    void RemakeParticles()
+    {
+        outline = Instantiate(particles).GetComponent<ParticleSystem>();
+    }
 
     private void Update()
     {
@@ -103,6 +117,11 @@ public class Telekinesis : MonoBehaviour
         //}
         #endregion
 
+        if(!outline)
+        {
+            RemakeParticles();//only calls once
+        }
+
         if(!lifting)
         {
             float dist = castDistance;
@@ -120,7 +139,10 @@ public class Telekinesis : MonoBehaviour
             foreach (RaycastHit canidate in potentialTargets)
             {
                 //prevent us from targeting held items
-                if (canidate.collider.gameObject.layer == LayerMask.NameToLayer(ignoreLayer) && canidate.collider.GetComponent<Item>().isHeld)
+                Item item = canidate.collider.GetComponent<Item>();
+                int layer = canidate.collider.gameObject.layer;
+
+                if (layer == LayerMask.NameToLayer(ignoreLayer) && item.isHeld)
                 {
                     continue;
                 }

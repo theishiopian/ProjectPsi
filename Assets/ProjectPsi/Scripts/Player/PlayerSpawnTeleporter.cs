@@ -6,6 +6,7 @@ public class PlayerSpawnTeleporter : MonoBehaviour
 {
     public GameObject playerPrefab;
     public static GameObject player;
+    public GameObject particles;
 
     private void Start()
     {
@@ -13,6 +14,7 @@ public class PlayerSpawnTeleporter : MonoBehaviour
         {
             player.transform.position = transform.position;
             player.transform.rotation = transform.rotation;
+
         }
         else
         {
