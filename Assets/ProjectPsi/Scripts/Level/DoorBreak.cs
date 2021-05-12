@@ -21,7 +21,13 @@ public class DoorBreak : AbstractHealth
         if (collision.impulse.magnitude > armor)
         {
             Damage(collision.impulse.magnitude * 0.01f);
-            OneshotManager.instance.PlaySound("door_shatter", transform.position);
+            OneshotManager.instance.PlaySound("door_shatter", transform.position,
+                new SoundParams
+                {
+                    pitch = Random.Range(0.8f, 1.1f),
+                    volume = 1
+                }
+                );
             onDeath.Invoke();
         }
     }
