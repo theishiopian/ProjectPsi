@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 223485692681438527}
   - component: {fileID: 2665300041856987637}
   - component: {fileID: 798178355}
+  - component: {fileID: 6413252170509180347}
+  - component: {fileID: 2766329420497574438}
   m_Layer: 17
   m_Name: WallPanelBlank_03
   m_TagString: Untagged
@@ -93,3 +95,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0, y: 2, z: 2.0000005}
   m_Center: {x: 1.7763573e-15, y: 1, z: 0}
+--- !u!114 &6413252170509180347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4611105701506813984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c576f0cc5b9fb408ba690361383217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priority: 0
+  _material: {fileID: 11400000, guid: cd624dd402810544688effd49e7c48b5, type: 2}
+--- !u!114 &2766329420497574438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4611105701506813984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b276200d4074bb4469ce306be816a5a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  _target: {fileID: 6413252170509180347}
+  _useMaterialComposition: 0
+  _contactMode: 0
+  _highPriority: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1018716279849337287}
   - component: {fileID: 1865229868928687425}
   - component: {fileID: 4393223932692461048}
+  - component: {fileID: 8850960339345371539}
   m_Layer: 17
   m_Name: RockFaceTestingArea_01
   m_TagString: Untagged
@@ -109,3 +110,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _priority: 0
   _material: {fileID: 11400000, guid: cd624dd402810544688effd49e7c48b5, type: 2}
+--- !u!114 &8850960339345371539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523282646648250386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b276200d4074bb4469ce306be816a5a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  _target: {fileID: 4393223932692461048}
+  _useMaterialComposition: 0
+  _contactMode: 0
+  _highPriority: 0
