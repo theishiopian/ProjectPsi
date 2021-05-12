@@ -33,8 +33,9 @@ public class GameObjectPool
     /// <param name="initialSize">The amount of objects to initilize</param>
     /// <param name="shouldGrow">Optional parameter. Set to true to allow the pool to grow itself if needed</param>
     /// <param name="parent">Optional parameter. Use this if you want your pooled objects parented to something</param>
-    public GameObjectPool(GameObject prefab, int initialSize, bool shouldGrow = false, Transform parent = null)
+    public GameObjectPool(GameObject prefab, int initialSize, Transform parent, bool shouldGrow = false)
     {
+        Debug.Log(parent);
         //init queues
         available = new Queue<GameObject>();
         inUse = new Queue<GameObject>();
@@ -107,8 +108,7 @@ public class GameObjectPool
     //internal method for creating objects for the pool
     private void GrowPool(GameObject prefab)
     {
-        cache = Object.Instantiate(prefab);
-        cache.transform.parent = parent;
+        cache = Object.Instantiate(prefab, parent);
         cache.hideFlags = HideFlags.HideInHierarchy;//makes your pooled objects invisible in the hierarchy, comment out to be able to see them
         available.Enqueue(cache);
         cache.SetActive(false);

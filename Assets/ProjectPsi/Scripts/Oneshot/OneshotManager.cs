@@ -31,7 +31,7 @@ public class OneshotManager : MonoBehaviour
     public static OneshotManager instance;
 
     private GameObjectPool sourcePool;
-    private Dictionary<string, AudioClip[]> sounds;
+    private Dictionary<string, AudioClip[]> sounds = new Dictionary<string, AudioClip[]>();
 
     // Start is called before the first frame update
     void Awake()
@@ -42,8 +42,8 @@ public class OneshotManager : MonoBehaviour
             {
                 Debug.Log("Initilizing Oneshot System...");
                 instance = this;
-                DontDestroyOnLoad(instance);
-                sourcePool = new GameObjectPool(prefab, initialSize, transform);
+                
+                sourcePool = new GameObjectPool(prefab, initialSize, gameObject.transform);
 
                 foreach (SoundEvent e in events.events)
                 {
@@ -52,6 +52,7 @@ public class OneshotManager : MonoBehaviour
 
                 if (sounds.Count > 0) Debug.Log(sounds.Count + " sound events loaded");
                 else Debug.LogWarning("No sound events loaded");
+                DontDestroyOnLoad(instance.gameObject);
             }
             else Debug.LogError("No sound event library provided!");
         }

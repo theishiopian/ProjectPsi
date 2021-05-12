@@ -2070,7 +2070,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8792a9555fcc611479fbf89ae08536ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 5893982004328118183, guid: 94257914193ba3e41a210a627494ae26, type: 3}
   initialSize: 20
   defaultSoundSettings:
     volume: 0

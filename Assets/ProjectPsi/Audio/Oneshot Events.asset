@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Oneshot Events
   m_EditorClassIdentifier: 
   events:
-  - key: glass_break
+  - key: door_shatter
     clips:
     - {fileID: 8300000, guid: e766e04002abf6a4b86f96e31cc0b59f, type: 3}
     - {fileID: 8300000, guid: cf06ef6aca26fc448a0d043186a8ac6d, type: 3}
