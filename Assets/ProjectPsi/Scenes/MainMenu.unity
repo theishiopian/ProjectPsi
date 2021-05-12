@@ -2038,7 +2038,7 @@ GameObject:
   - component: {fileID: 816790859}
   - component: {fileID: 816790860}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: SoundManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2072,7 +2072,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   initialSize: 20
-  growPool: 1
+  defaultSoundSettings:
+    volume: 0
+    pitch: 0
+  events: {fileID: 11400000, guid: c4b193ac0f612d54b8d1870037748d2f, type: 2}
 --- !u!1 &858813831
 GameObject:
   m_ObjectHideFlags: 0

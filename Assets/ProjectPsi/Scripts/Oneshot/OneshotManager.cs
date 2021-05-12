@@ -6,7 +6,7 @@ using UnityEngine;
 public class SoundEvent
 {
     public string key;
-    public AudioClip clip;
+    public AudioClip[] clips;
 }
 
 [System.Serializable]
@@ -26,36 +26,48 @@ public class OneshotManager : MonoBehaviour
     public SoundParams defaultSoundSettings;
 
     [Header("Sound Events")]
-    public List<SoundEvent> events;
+    public SoundEventLibrary events;
 
     public static OneshotManager instance;
 
     private GameObjectPool sourcePool;
-    private Dictionary<string, AudioClip> sounds;
+    private Dictionary<string, AudioClip[]> sounds;
 
     // Start is called before the first frame update
     void Awake()
     {
-        Debug.Log("Initilizing Oneshot System...");
-        instance = this;
-        DontDestroyOnLoad(instance);
-        sourcePool = new GameObjectPool(prefab, initialSize, transform);
-
-        foreach(SoundEvent e in events)
+        if(instance == null)
         {
-            sounds.Add(e.key, e.clip);
-        }
+            if (events != null)
+            {
+                Debug.Log("Initilizing Oneshot System...");
+                instance = this;
+                DontDestroyOnLoad(instance);
+                sourcePool = new GameObjectPool(prefab, initialSize, transform);
 
-        if(sounds.Count > 0) Debug.Log(sounds.Count + " sound events loaded");
-        else Debug.LogWarning("No sound events loaded");
+                foreach (SoundEvent e in events.events)
+                {
+                    sounds.Add(e.key, e.clips);
+                }
+
+                if (sounds.Count > 0) Debug.Log(sounds.Count + " sound events loaded");
+                else Debug.LogWarning("No sound events loaded");
+            }
+            else Debug.LogError("No sound event library provided!");
+        }
+        else
+        {
+            Debug.Log("Removing duplicate sound manager");
+            Destroy(this.gameObject);
+        }
     }
 
     public void PlaySound(string key, Vector3 position, SoundParams settings = null)
     {
         AudioSource source = sourcePool.Activate(position, Quaternion.identity, ResetAudioSource).GetComponent<AudioSource>();
 
-        AudioClip clip;
-        bool hasClip = sounds.TryGetValue(key, out clip);
+        AudioClip[] clips;
+        bool hasClip = sounds.TryGetValue(key, out clips);
 
         if(hasClip)
         {
@@ -64,7 +76,8 @@ public class OneshotManager : MonoBehaviour
                 source.volume = settings.volume;
                 source.pitch = settings.pitch;
             }
-            source.PlayOneShot(clip);
+
+            source.PlayOneShot(clips[Random.Range(0, clips.Length)]);
         }
         else
         {
