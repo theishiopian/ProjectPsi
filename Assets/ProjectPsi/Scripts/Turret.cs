@@ -45,18 +45,18 @@ public class Turret : MonoBehaviour
 
             if(didHit && hit.collider.CompareTag("Player"))
             {
-                StartFiring();
+                if(!firing)StartFiring();
             }
             else
             {
-                StopFiring();
+                if(firing)StopFiring();
             }
         }
         else
         {
             //gun.rotation = Quaternion.Lerp(gun.rotation, Quaternion.identity, Time.deltaTime * 3);
             //bracket.rotation = Quaternion.Lerp(bracket.rotation, Quaternion.Euler(0,-90,0), Time.deltaTime * 3);
-            StopFiring();
+            if(firing)StopFiring();
         }
         
         if(firing)
@@ -68,7 +68,7 @@ public class Turret : MonoBehaviour
                 fireTime = 0;
                 Rigidbody bullet = bullets.Activate(shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>();
 
-                bullet.AddRelativeForce(0,0,10, ForceMode.Impulse);
+                bullet.AddRelativeForce(0,0,100, ForceMode.Impulse);
             }
         }
         else
