@@ -4,17 +4,28 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
+    [Header("Objects")]
     public ParticleSystem muzzleflash;
     public ParticleSystem shells;
     public Transform shootPoint;
     public Transform bracket;
     public Transform gun;
 
-    public LayerMask mask;
+    [Header("Tracking Settings")]
+    public LayerMask losMask;
+
+    [Header("Pool Settings")]
+    public GameObject prefab;
+    public int poolSize = 30;
 
     private GameObjectPool bullets;
     private bool tracking = false;
     private Transform target;
+
+    private void Start()
+    {
+        bullets = new GameObjectPool(prefab, poolSize, null);
+    }
 
     // Update is called once per frame
     void Update()
