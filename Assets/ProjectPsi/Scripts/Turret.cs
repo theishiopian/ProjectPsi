@@ -5,6 +5,7 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     [Header("Objects")]
+    public ParticleSystem bullets;
     public ParticleSystem muzzleflash;
     public ParticleSystem shells;
     public Transform shootPoint;
@@ -14,19 +15,13 @@ public class Turret : MonoBehaviour
     [Header("Tracking Settings")]
     public LayerMask losMask;
 
-    [Header("Pool Settings")]
-    public GameObject prefab;
-    public int poolSize = 30;
-
-    private GameObjectPool bullets;
     private bool tracking = false;
     private bool firing = false;
     private Transform target;
-    private float fireTime = 0;
 
     private void Start()
     {
-        bullets = new GameObjectPool(prefab, poolSize, null);
+        
     }
 
     // Update is called once per frame
@@ -53,27 +48,8 @@ public class Turret : MonoBehaviour
             }
         }
         else
-        {
-            //gun.rotation = Quaternion.Lerp(gun.rotation, Quaternion.identity, Time.deltaTime * 3);
-            //bracket.rotation = Quaternion.Lerp(bracket.rotation, Quaternion.Euler(0,-90,0), Time.deltaTime * 3);
+        { 
             if(firing)StopFiring();
-        }
-        
-        if(firing)
-        {
-            fireTime += Time.deltaTime;
-
-            if(fireTime > 0.1f)
-            {
-                fireTime = 0;
-                Rigidbody bullet = bullets.Activate(shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>();
-
-                bullet.AddRelativeForce(0,0,100, ForceMode.Impulse);
-            }
-        }
-        else
-        {
-            fireTime = 0;
         }
     }
 
@@ -99,6 +75,7 @@ public class Turret : MonoBehaviour
     {
         muzzleflash.Play();
         shells.Play();
+        bullets.Play();
         firing = true;
     }
 
@@ -106,6 +83,12 @@ public class Turret : MonoBehaviour
     {
         muzzleflash.Stop();
         shells.Stop();
+        bullets.Stop();
         firing = false;
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        if(other.CompareTag("Player"))Debug.Log("Hit");
     }
 }
