@@ -11,6 +11,7 @@ public class Turret : MonoBehaviour, IGun
     public Transform shootPoint;
     public Transform bracket;
     public Transform gun;
+    public AudioSource audio;
 
     [Header("Tracking Settings")]
     public LayerMask losMask;
@@ -19,10 +20,11 @@ public class Turret : MonoBehaviour, IGun
     private bool firing = false;
     private Transform target;
 
-    private void Start()
-    {
+    ////keep jsut in case
+    //private void Start()
+    //{
 
-    }
+    //}
 
     // Update is called once per frame
     void Update()
@@ -90,6 +92,11 @@ public class Turret : MonoBehaviour, IGun
 
     public void Fire(GameObject other)
     {
-        if (other.CompareTag("Player")) Debug.Log("Hit");
+        if (other.CompareTag("Player"))
+        {
+            PlayerHealth health = other.transform.root.gameObject.GetComponent<PlayerHealth>();
+
+            health.Damage(30);
+        }
     }
 }
