@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class Turret : MonoBehaviour, IGun
 {
     [Header("Objects")]
     public ParticleSystem bullets;
@@ -21,13 +21,13 @@ public class Turret : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(tracking)
+        if (tracking)
         {
             gun.rotation = Quaternion.Lerp(gun.rotation, Quaternion.LookRotation((target.position - transform.position).normalized, transform.up), Time.deltaTime * 3);
             bracket.rotation = Quaternion.Lerp(bracket.rotation, Quaternion.LookRotation((target.position - transform.position).normalized, transform.up), Time.deltaTime * 3);
@@ -38,24 +38,24 @@ public class Turret : MonoBehaviour
 
             bool didHit = Physics.Raycast(shootPoint.position, shootPoint.forward, out hit, losMask);
 
-            if(didHit && hit.collider.CompareTag("Player"))
+            if (didHit && hit.collider.CompareTag("Player"))
             {
-                if(!firing)StartFiring();
+                if (!firing) StartFiring();
             }
             else
             {
-                if(firing)StopFiring();
+                if (firing) StopFiring();
             }
         }
         else
-        { 
-            if(firing)StopFiring();
+        {
+            if (firing) StopFiring();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             tracking = true;
             target = other.transform;
@@ -87,8 +87,9 @@ public class Turret : MonoBehaviour
         firing = false;
     }
 
-    private void OnParticleCollision(GameObject other)
+
+    public void Fire(GameObject other)
     {
-        if(other.CompareTag("Player"))Debug.Log("Hit");
+        if (other.CompareTag("Player")) Debug.Log("Hit");
     }
 }
