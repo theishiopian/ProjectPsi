@@ -78,14 +78,17 @@ public class Turret : MonoBehaviour, IGun
         muzzleflash.Play();
         shells.Play();
         bullets.Play();
+        audio.Play();
         firing = true;
     }
 
     private void StopFiring()
     {
         muzzleflash.Stop();
+        muzzleflash.Clear();
         shells.Stop();
         bullets.Stop();
+        audio.Stop();
         firing = false;
     }
 
