@@ -22,7 +22,9 @@ public class Turret : MonoBehaviour
         if(tracking)
         {
             gun.rotation = Quaternion.Lerp(gun.rotation, Quaternion.LookRotation((target.position - transform.position).normalized, transform.up), Time.deltaTime * 3);
-            bracket.eulerAngles = new Vector3(0, gun.eulerAngles.y, 0);
+            bracket.rotation = Quaternion.Lerp(bracket.rotation, Quaternion.LookRotation((target.position - transform.position).normalized, transform.up), Time.deltaTime * 3);
+            bracket.localEulerAngles = new Vector3(0, bracket.localEulerAngles.y, 0);
+            gun.localEulerAngles = new Vector3(gun.localEulerAngles.x, -90, 0);
         }
         else
         {
