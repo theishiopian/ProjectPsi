@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2728441259162280686}
   - component: {fileID: 8462502393557846018}
   - component: {fileID: 8577387313338499171}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Tube5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 8574790248684448234}
   - component: {fileID: 4435610887135016884}
   - component: {fileID: 8288711426519050653}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Tube6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 4933191237273415662}
   - component: {fileID: 166070200733264239}
   - component: {fileID: 9183350765231637354}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Tube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 8179400025671476773}
   - component: {fileID: 1777482935802872829}
   - component: {fileID: 7780797773608147769}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,9 +327,9 @@ GameObject:
   - component: {fileID: 5754630829772557300}
   - component: {fileID: 6370193434723821758}
   - component: {fileID: 5615965886386410875}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BinderClip
-  m_TagString: Untagged
+  m_TagString: Liftable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -384,8 +384,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1, z: 0.1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.0755291, y: 0.042402618, z: 0.048732758}
+  m_Center: {x: -0.0009584427, y: 0.019855596, z: 0.0067157745}
 --- !u!1 &5864771217643882763
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,7 +397,7 @@ GameObject:
   - component: {fileID: 25764843937346712}
   - component: {fileID: 5070935075176629627}
   - component: {fileID: 7864751775574068135}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Tube3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,7 +476,7 @@ GameObject:
   - component: {fileID: 2756302820917290286}
   - component: {fileID: 6943486997636351966}
   - component: {fileID: 4945390140923241705}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Handle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -555,7 +555,7 @@ GameObject:
   - component: {fileID: 2884862888609218422}
   - component: {fileID: 2482930037428922110}
   - component: {fileID: 1602622726654209357}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Tube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,7 +634,7 @@ GameObject:
   - component: {fileID: 5900215045097929781}
   - component: {fileID: 4008875538217726362}
   - component: {fileID: 2822693728911235056}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -713,7 +713,7 @@ GameObject:
   - component: {fileID: 7239799579057550802}
   - component: {fileID: 866173117905293581}
   - component: {fileID: 7290346570423135934}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Tube4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
