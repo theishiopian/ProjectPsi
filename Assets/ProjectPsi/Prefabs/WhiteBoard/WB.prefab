@@ -112,7 +112,7 @@ MonoBehaviour:
   captureCam: {fileID: 2231001762772253040}
   renderer: {fileID: 2231001762152559990}
   oldRenderer: {fileID: 2231001763087482539}
-  inputTexture: {fileID: 2800000, guid: 9ef156cb3a9056942a3183a1f31ea026, type: 3}
+  inputTexture: {fileID: 0}
 --- !u!1 &2231001762432586288
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,14 +136,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2231001762432586288}
-  m_LocalRotation: {x: 0, y: -0.37615952, z: 0, w: 0.926555}
-  m_LocalPosition: {x: 16.414, y: 1.2982988, z: 5.529}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2231001762152559988}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -44.192, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2231001762772253041
 GameObject:
   m_ObjectHideFlags: 0
