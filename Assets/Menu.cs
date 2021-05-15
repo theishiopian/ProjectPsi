@@ -46,8 +46,11 @@ public class Menu : MonoBehaviour
         AudioListener.volume = PlayerPrefs.GetFloat("volume");
         MoveVolumeIndicator();
 
-        if (PlayerPrefs.GetInt("hassaved") > 0) resumeButton.SetActive(true);
-        else resumeButton.SetActive(false);
+        if(!pauseMode)
+        {
+            if (PlayerPrefs.GetInt("hassaved") > 0) resumeButton.SetActive(true);
+            else resumeButton.SetActive(false);
+        }
     }
 
     public void ChangeVolume(string input)
@@ -163,7 +166,10 @@ public class Menu : MonoBehaviour
 
     private void MoveVolumeIndicator()
     {
-        volumeIndicator.localPosition = new Vector3(volumeNotches[GetIndex()].localPosition.x, volumeIndicator.localPosition.y, volumeIndicator.localPosition.z);
+        int i = GetIndex();
+        if (i < 0) return;
+        Debug.Log(i);
+        volumeIndicator.localPosition = new Vector3(volumeNotches[i].localPosition.x, volumeIndicator.localPosition.y, volumeIndicator.localPosition.z);
 
         volumeText.text = (PlayerPrefs.GetFloat("volume") * 100).ToString() + "%";
     }
