@@ -2198,7 +2198,7 @@ MonoBehaviour:
     m_Bits: 2293761
   sweepMask:
     serializedVersion: 2
-    m_Bits: 2236417
+    m_Bits: 6430721
   collider: {fileID: 0}
   body: {fileID: 8133860311344099972}
 --- !u!114 &8133860311344099978

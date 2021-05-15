@@ -97,7 +97,7 @@ public class Turret : MonoBehaviour, IGun
     {
         if (other.CompareTag("Player"))
         {
-            PlayerHealth health = other.transform.root.gameObject.GetComponent<PlayerHealth>();
+            PlayerHealth health = GlobalVars.Get("player_rig").GetComponent<PlayerHealth>();
 
             health.Damage(30);
         }
