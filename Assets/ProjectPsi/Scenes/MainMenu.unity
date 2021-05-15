@@ -132,7 +132,6 @@ GameObject:
   m_Component:
   - component: {fileID: 49947639}
   - component: {fileID: 49947643}
-  - component: {fileID: 49947642}
   - component: {fileID: 49947641}
   - component: {fileID: 49947640}
   m_Layer: 0
@@ -202,7 +201,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -216,7 +215,7 @@ MonoBehaviour:
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
-  m_textAlignment: 257
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -254,20 +253,12 @@ MonoBehaviour:
   _SortingOrder: 0
 --- !u!222 &49947641
 CanvasRenderer:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49947638}
   m_CullTransparentMesh: 0
---- !u!33 &49947642
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 49947638}
-  m_Mesh: {fileID: 0}
 --- !u!23 &49947643
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -858,8 +849,8 @@ MonoBehaviour:
   OnDrawn:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1105976642}
-        m_MethodName: EditVolume
+      - m_Target: {fileID: 1916354754}
+        m_MethodName: ChangeVolume
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -947,15 +938,15 @@ MonoBehaviour:
   OnDrawn:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1473245801}
-        m_MethodName: OnOptionsChecked
+      - m_Target: {fileID: 1916354754}
+        m_MethodName: Return
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: fromMain
           m_BoolArgument: 0
         m_CallState: 2
   OnErased:
@@ -1092,15 +1083,15 @@ MonoBehaviour:
   OnDrawn:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1473245801}
-        m_MethodName: OnStartChecked
+      - m_Target: {fileID: 1916354754}
+        m_MethodName: Play
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 1
           m_BoolArgument: 0
         m_CallState: 2
   OnErased:
@@ -1264,7 +1255,6 @@ GameObject:
   m_Component:
   - component: {fileID: 385507233}
   - component: {fileID: 385507237}
-  - component: {fileID: 385507236}
   - component: {fileID: 385507235}
   - component: {fileID: 385507234}
   m_Layer: 0
@@ -1334,7 +1324,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -1346,9 +1336,9 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 516
+  m_HorizontalAlignment: 4
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -1386,20 +1376,12 @@ MonoBehaviour:
   _SortingOrder: 0
 --- !u!222 &385507235
 CanvasRenderer:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385507232}
   m_CullTransparentMesh: 0
---- !u!33 &385507236
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 385507232}
-  m_Mesh: {fileID: 0}
 --- !u!23 &385507237
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1519,8 +1501,8 @@ MonoBehaviour:
   OnDrawn:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1105976642}
-        m_MethodName: EditVolume
+      - m_Target: {fileID: 1916354754}
+        m_MethodName: ChangeVolume
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1556,7 +1538,6 @@ GameObject:
   m_Component:
   - component: {fileID: 549918859}
   - component: {fileID: 549918863}
-  - component: {fileID: 549918862}
   - component: {fileID: 549918861}
   - component: {fileID: 549918860}
   m_Layer: 0
@@ -1626,7 +1607,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -1638,9 +1619,9 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 516
+  m_HorizontalAlignment: 4
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -1678,20 +1659,12 @@ MonoBehaviour:
   _SortingOrder: 0
 --- !u!222 &549918861
 CanvasRenderer:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549918858}
   m_CullTransparentMesh: 0
---- !u!33 &549918862
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 549918858}
-  m_Mesh: {fileID: 0}
 --- !u!23 &549918863
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1820,7 +1793,6 @@ GameObject:
   m_Component:
   - component: {fileID: 748218007}
   - component: {fileID: 748218011}
-  - component: {fileID: 748218010}
   - component: {fileID: 748218009}
   - component: {fileID: 748218008}
   m_Layer: 0
@@ -1890,7 +1862,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -1902,9 +1874,9 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 1026
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 1024
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -1942,20 +1914,12 @@ MonoBehaviour:
   _SortingOrder: 0
 --- !u!222 &748218009
 CanvasRenderer:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 748218006}
   m_CullTransparentMesh: 0
---- !u!33 &748218010
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 748218006}
-  m_Mesh: {fileID: 0}
 --- !u!23 &748218011
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2086,7 +2050,6 @@ GameObject:
   m_Component:
   - component: {fileID: 858813832}
   - component: {fileID: 858813836}
-  - component: {fileID: 858813835}
   - component: {fileID: 858813834}
   - component: {fileID: 858813833}
   m_Layer: 0
@@ -2156,7 +2119,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -2168,9 +2131,9 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 516
+  m_HorizontalAlignment: 4
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -2208,20 +2171,12 @@ MonoBehaviour:
   _SortingOrder: 0
 --- !u!222 &858813834
 CanvasRenderer:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858813831}
   m_CullTransparentMesh: 0
---- !u!33 &858813835
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 858813831}
-  m_Mesh: {fileID: 0}
 --- !u!23 &858813836
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2683,7 +2638,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1105976641}
-  - component: {fileID: 1105976642}
   m_Layer: 0
   m_Name: Options Menu
   m_TagString: Untagged
@@ -2710,26 +2664,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1105976642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1105976640}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea65df3dcfc5492488d7a7f490f947df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  main: {fileID: 1473245799}
-  volumeIndicator: {fileID: 389974845}
-  volumeNotches:
-  - {fileID: 432481085}
-  - {fileID: 199875389}
-  - {fileID: 1568837177}
-  volumeText: {fileID: 748218008}
-  debugMode: 0
 --- !u!1 &1133543649
 GameObject:
   m_ObjectHideFlags: 0
@@ -3161,7 +3095,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1367317774}
   - component: {fileID: 1367317778}
-  - component: {fileID: 1367317777}
   - component: {fileID: 1367317776}
   - component: {fileID: 1367317775}
   m_Layer: 0
@@ -3231,7 +3164,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -3243,9 +3176,9 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 516
+  m_HorizontalAlignment: 4
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -3283,20 +3216,12 @@ MonoBehaviour:
   _SortingOrder: 0
 --- !u!222 &1367317776
 CanvasRenderer:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1367317773}
   m_CullTransparentMesh: 0
---- !u!33 &1367317777
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1367317773}
-  m_Mesh: {fileID: 0}
 --- !u!23 &1367317778
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3453,8 +3378,8 @@ MonoBehaviour:
   OnDrawn:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1105976642}
-        m_MethodName: ToggleSmoothMove
+      - m_Target: {fileID: 1916354754}
+        m_MethodName: ToggleSmooth
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3467,15 +3392,15 @@ MonoBehaviour:
   OnErased:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1105976642}
-        m_MethodName: ToggleSmoothMove
+      - m_Target: {fileID: 1916354754}
+        m_MethodName: ToggleSmooth
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: true
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!65 &1377153927
@@ -3632,15 +3557,15 @@ MonoBehaviour:
   OnDrawn:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1473245801}
-        m_MethodName: OnExitChecked
+      - m_Target: {fileID: 1916354754}
+        m_MethodName: Exit
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: haha funny
           m_BoolArgument: 0
         m_CallState: 2
   OnErased:
@@ -3687,7 +3612,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1473245800}
-  - component: {fileID: 1473245801}
   m_Layer: 0
   m_Name: Main Menu
   m_TagString: Untagged
@@ -3712,19 +3636,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1473245801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473245799}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a808bbabbe3777b4a88faf9579d17808, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  options: {fileID: 1105976640}
 --- !u!1 &1528231765
 GameObject:
   m_ObjectHideFlags: 0
@@ -3852,8 +3763,8 @@ MonoBehaviour:
   OnDrawn:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1105976642}
-        m_MethodName: EditVolume
+      - m_Target: {fileID: 1916354754}
+        m_MethodName: ChangeVolume
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4052,15 +3963,15 @@ MonoBehaviour:
   OnDrawn:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1105976642}
-        m_MethodName: OnReturnChecked
+      - m_Target: {fileID: 1916354754}
+        m_MethodName: Return
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: fromOptions
           m_BoolArgument: 0
         m_CallState: 2
   OnErased:

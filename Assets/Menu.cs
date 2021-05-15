@@ -34,7 +34,7 @@ public class Menu : MonoBehaviour
 
     void OnEnable()
     {
-        OnLoad.Invoke();
+        OnLoad?.Invoke();
         if (debugMode) PlayerPrefs.DeleteAll();
         if (!PlayerPrefs.HasKey("volume")) PlayerPrefs.SetFloat("volume", 1);
         if (!PlayerPrefs.HasKey("smoothmove")) PlayerPrefs.SetInt("smoothmove", 1);
@@ -44,7 +44,7 @@ public class Menu : MonoBehaviour
 
     public void ChangeVolume(string input)
     {
-        OnVolumeChanged.Invoke();
+        OnVolumeChanged?.Invoke();
         switch (input)
         {
             case "low":
@@ -74,7 +74,7 @@ public class Menu : MonoBehaviour
 
     public void ToggleSmooth(string input)
     {
-        OnSmoothChanged.Invoke();
+        OnSmoothChanged?.Invoke();
         switch (input)
         {
             case "true":
@@ -92,32 +92,34 @@ public class Menu : MonoBehaviour
 
     public void Resume(string input)
     {
-        OnResume.Invoke();
+        OnResume?.Invoke();
 
         SceneManager.LoadScene("Level1");
     }
 
+    //string could be used for other levels
     public void Play(string input)
     {
-        OnPlay.Invoke();
+        OnPlay?.Invoke();
 
         SceneManager.LoadScene("Level1");
     }
 
+    //also used to go there in the first place :D
     public void Return(string input)
     {
         switch(input)
         {
             case "fromMain":
                 {
-                    OnOptions.Invoke();
+                    OnOptions?.Invoke();
                     mainMenu.SetActive(false);
                     optionsMenu.SetActive(true);
                 }
                 break;
             case "fromOptions":
                 {
-                    OnMain.Invoke();
+                    OnMain?.Invoke();
                     mainMenu.SetActive(true);
                     optionsMenu.SetActive(false);
                 }
@@ -127,7 +129,7 @@ public class Menu : MonoBehaviour
 
     public void Exit(string input)
     {
-        OnQuit.Invoke();
+        OnQuit?.Invoke();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
