@@ -9,9 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3193682916216147717}
-  m_Layer: 0
+  - component: {fileID: 5984636039424417269}
+  - component: {fileID: 7682623663334009238}
+  - component: {fileID: 5927839405478108087}
+  - component: {fileID: 2440414236662078094}
+  - component: {fileID: 1848723293013422896}
+  m_Layer: 13
   m_Name: DraftingChair_01
-  m_TagString: Untagged
+  m_TagString: Liftable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,6 +37,75 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -105, z: 0}
+--- !u!54 &5984636039424417269
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2817543753273464255}
+  serializedVersion: 2
+  m_Mass: 18
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &7682623663334009238
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2817543753273464255}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.69566804, y: 0.24007845, z: 0.64712936}
+  m_Center: {x: -0.014260411, y: 0.09673093, z: 0.028197499}
+--- !u!136 &5927839405478108087
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2817543753273464255}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.032415148
+  m_Height: 0.3496099
+  m_Direction: 1
+  m_Center: {x: 0.0003945008, y: 0.39834586, z: -7.958964e-12}
+--- !u!65 &2440414236662078094
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2817543753273464255}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.518964, y: 0.10445094, z: 0.46745223}
+  m_Center: {x: -0.0010520812, y: 0.6433445, z: 0.015445463}
+--- !u!65 &1848723293013422896
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2817543753273464255}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.42271078, y: 0.5737618, z: 0.09846811}
+  m_Center: {x: 0.0028495986, y: 0.99575776, z: -0.2876148}
 --- !u!1 &6440923618205074520
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +117,7 @@ GameObject:
   - component: {fileID: 2898647213688835738}
   - component: {fileID: 1080690281739068970}
   - component: {fileID: 4167683172433987247}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: DraftingChairTop_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +196,7 @@ GameObject:
   - component: {fileID: 9010377935020449663}
   - component: {fileID: 3306262917905841511}
   - component: {fileID: 7753250563984086969}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: DraftingChairBase_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

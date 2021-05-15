@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5557665386303592930}
   - component: {fileID: 7934289435722093129}
   - component: {fileID: 4584480663116185516}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Pen1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 2488130738376685880}
   - component: {fileID: 8760038471200149893}
   - component: {fileID: 3292725763537606883}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Cap1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,9 +169,9 @@ GameObject:
   - component: {fileID: 5828951361075794316}
   - component: {fileID: 2835778248934177229}
   - component: {fileID: 5843174189066997303}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: PenUncapped
-  m_TagString: Untagged
+  m_TagString: Liftable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

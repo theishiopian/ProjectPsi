@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5645463894777408208}
   - component: {fileID: 9199637922203878287}
   - component: {fileID: 4701158376051555365}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Seat1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,9 +88,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2167638286035329777}
-  m_Layer: 0
+  - component: {fileID: 8607876683145289241}
+  - component: {fileID: 1466012587908818055}
+  - component: {fileID: 2896497056687437152}
+  - component: {fileID: 8771302088888002691}
+  m_Layer: 13
   m_Name: RestrainChair
-  m_TagString: Untagged
+  m_TagString: Liftable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,6 +128,61 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &8607876683145289241
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540001436800940107}
+  serializedVersion: 2
+  m_Mass: 27
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1466012587908818055
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540001436800940107}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.63267326, y: 0.7225075, z: 0.73451424}
+  m_Center: {x: 0.032100677, y: 0.37361073, z: 0.07415962}
+--- !u!65 &2896497056687437152
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540001436800940107}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.63267326, y: 0.65673566, z: 0.08427715}
+  m_Center: {x: 0.032100677, y: 1.0569726, z: 0.45621443}
+--- !u!65 &8771302088888002691
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540001436800940107}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.683403, y: 0.013430357, z: 0.3355198}
+  m_Center: {x: 0.012493849, y: 0.012814879, z: -0.47366047}
 --- !u!1 &2126314434345549482
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +194,7 @@ GameObject:
   - component: {fileID: 1076480307389671110}
   - component: {fileID: 8449531744811922281}
   - component: {fileID: 4603162701908362207}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: FrontRightSupport1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +273,7 @@ GameObject:
   - component: {fileID: 2837238729976648738}
   - component: {fileID: 6316424062675503259}
   - component: {fileID: 2709753224410919975}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: RightFootTube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +352,7 @@ GameObject:
   - component: {fileID: 3518180399694131721}
   - component: {fileID: 7031060412997255431}
   - component: {fileID: 1052500471013814081}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: FrontLeftSupport1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -372,7 +431,7 @@ GameObject:
   - component: {fileID: 3835418282356311646}
   - component: {fileID: 2292976690912254996}
   - component: {fileID: 8558637284799318632}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BackRest1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +510,7 @@ GameObject:
   - component: {fileID: 799602007875449444}
   - component: {fileID: 6675803423260444840}
   - component: {fileID: 8553240042656369446}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: RightHandRestraint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,7 +589,7 @@ GameObject:
   - component: {fileID: 4335158385971058083}
   - component: {fileID: 5792757572871907562}
   - component: {fileID: 2356259942851889076}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: LeftHandRestraint4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -609,7 +668,7 @@ GameObject:
   - component: {fileID: 7906533253219944300}
   - component: {fileID: 3625246459908583634}
   - component: {fileID: 2979720130042461443}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: LeftHandRestraint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -688,7 +747,7 @@ GameObject:
   - component: {fileID: 8081448480968760225}
   - component: {fileID: 4929109072609409474}
   - component: {fileID: 488869592926717784}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: RightArmrest1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -767,7 +826,7 @@ GameObject:
   - component: {fileID: 1405229293450935124}
   - component: {fileID: 2585359927044347178}
   - component: {fileID: 1197072401220379882}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: LeftArmrest1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -846,7 +905,7 @@ GameObject:
   - component: {fileID: 8452115791306079142}
   - component: {fileID: 3116743694144013776}
   - component: {fileID: 6804279936205246711}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: RightWheel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -925,7 +984,7 @@ GameObject:
   - component: {fileID: 5018325677332339906}
   - component: {fileID: 5307347106019082560}
   - component: {fileID: 1145769148597998062}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: LeftFootTube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1004,7 +1063,7 @@ GameObject:
   - component: {fileID: 5964390035077197822}
   - component: {fileID: 2331158951569361612}
   - component: {fileID: 7616770551686370041}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: LeftWheel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1083,7 +1142,7 @@ GameObject:
   - component: {fileID: 6329400554133766217}
   - component: {fileID: 3007949320457165903}
   - component: {fileID: 2915974185747329043}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: LeftHandRestraint5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1162,7 +1221,7 @@ GameObject:
   - component: {fileID: 6551818374169991643}
   - component: {fileID: 6474742408913708761}
   - component: {fileID: 2022044508948264990}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ChairFootRest1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

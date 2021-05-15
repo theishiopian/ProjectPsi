@@ -9,9 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1766841959390499361}
-  m_Layer: 0
+  - component: {fileID: 6941826759718388194}
+  - component: {fileID: 8166504790567543634}
+  - component: {fileID: 7724224555896553437}
+  m_Layer: 13
   m_Name: ComMouse
-  m_TagString: Untagged
+  m_TagString: Liftable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,6 +35,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6941826759718388194
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427295604254017691}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.029008865, y: 0.0056234747, z: 0.11286926}
+  m_Center: {x: -0.0012407303, y: 0.0025836155, z: -0.001701355}
+--- !u!136 &8166504790567543634
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427295604254017691}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.019764557
+  m_Height: 0.13918304
+  m_Direction: 2
+  m_Center: {x: -0.0015010834, y: 0.016777717, z: 0.003932953}
+--- !u!54 &7724224555896553437
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427295604254017691}
+  serializedVersion: 2
+  m_Mass: 3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2176151486867187731
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +89,7 @@ GameObject:
   - component: {fileID: 5211775611279897366}
   - component: {fileID: 4580836626422583945}
   - component: {fileID: 7820139622549948043}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wheel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +168,7 @@ GameObject:
   - component: {fileID: 8178798324046542417}
   - component: {fileID: 8124217599319774647}
   - component: {fileID: 6156619764477465168}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Body1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
