@@ -10,6 +10,9 @@ public class Menu : MonoBehaviour
 {
     public GameObject mainMenu;
     public GameObject optionsMenu;
+    public GameObject pauseMenu;
+
+    public GameObject resumeButton;
 
     public Transform volumeIndicator;
 
@@ -17,6 +20,7 @@ public class Menu : MonoBehaviour
 
     public TextMeshPro volumeText;
 
+    public bool pauseMode = false;
     public bool debugMode = false;
 
     public static event MenuEvent OnLoad;
@@ -37,9 +41,13 @@ public class Menu : MonoBehaviour
         OnLoad?.Invoke();
         if (debugMode) PlayerPrefs.DeleteAll();
         if (!PlayerPrefs.HasKey("volume")) PlayerPrefs.SetFloat("volume", 1);
+        if (!PlayerPrefs.HasKey("hassaved")) PlayerPrefs.SetInt("hassaved", 0);
         if (!PlayerPrefs.HasKey("smoothmove")) PlayerPrefs.SetInt("smoothmove", 1);
         AudioListener.volume = PlayerPrefs.GetFloat("volume");
         MoveVolumeIndicator();
+
+        if (PlayerPrefs.GetInt("hassaved") > 0) resumeButton.SetActive(true);
+        else resumeButton.SetActive(false);
     }
 
     public void ChangeVolume(string input)
@@ -114,14 +122,23 @@ public class Menu : MonoBehaviour
                 {
                     OnOptions?.Invoke();
                     mainMenu.SetActive(false);
+                    pauseMenu.SetActive(false);
                     optionsMenu.SetActive(true);
                 }
                 break;
             case "fromOptions":
                 {
                     OnMain?.Invoke();
-                    mainMenu.SetActive(true);
-                    optionsMenu.SetActive(false);
+                    if(pauseMode)
+                    {
+                        pauseMenu.SetActive(true);
+                        optionsMenu.SetActive(false);
+                    }
+                    else
+                    {
+                        mainMenu.SetActive(true);
+                        optionsMenu.SetActive(false);
+                    }
                 }
                 break;
         }
