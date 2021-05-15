@@ -1,0 +1,151 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public delegate void MenuEvent();
+//todo generic menu system?
+public class Menu : MonoBehaviour
+{
+    public GameObject mainMenu;
+    public GameObject optionsMenu;
+
+    public Transform volumeIndicator;
+
+    public Transform[] volumeNotches;
+
+    public TextMeshPro volumeText;
+
+    public bool debugMode = false;
+
+    public static event MenuEvent OnLoad;
+
+    public static event MenuEvent OnMain;
+    public static event MenuEvent OnOptions;
+
+    public static event MenuEvent OnVolumeChanged;
+    public static event MenuEvent OnSmoothChanged;
+    public static event MenuEvent OnAwesomeChanged;
+
+    public static event MenuEvent OnResume;
+    public static event MenuEvent OnPlay;
+    public static event MenuEvent OnQuit;
+
+    void OnEnable()
+    {
+        OnLoad.Invoke();
+        if (debugMode) PlayerPrefs.DeleteAll();
+        if (!PlayerPrefs.HasKey("volume")) PlayerPrefs.SetFloat("volume", 1);
+        if (!PlayerPrefs.HasKey("smoothmove")) PlayerPrefs.SetInt("smoothmove", 1);
+        AudioListener.volume = PlayerPrefs.GetFloat("volume");
+        MoveVolumeIndicator();
+    }
+
+    public void ChangeVolume(string input)
+    {
+        OnVolumeChanged.Invoke();
+        switch (input)
+        {
+            case "low":
+                {
+                    AudioListener.volume = 0;
+                    PlayerPrefs.SetFloat("volume", 0);
+                }
+                break;
+            case "mid":
+                {
+                    AudioListener.volume = 0.5f;
+                    PlayerPrefs.SetFloat("volume", 0.5f);
+
+                }
+                break;
+            case "high":
+                {
+                    AudioListener.volume = 1;
+                    PlayerPrefs.SetFloat("volume", 1);
+                }
+                break;
+        }
+
+
+        MoveVolumeIndicator();
+    }
+
+    public void ToggleSmooth(string input)
+    {
+        OnSmoothChanged.Invoke();
+        switch (input)
+        {
+            case "true":
+                {
+                    PlayerPrefs.SetInt("smoothmove", 1);
+                }
+                break;
+            case "false":
+                {
+                    PlayerPrefs.SetInt("smoothmove", 0);
+                }
+                break;
+        }
+    }
+
+    public void Resume(string input)
+    {
+        OnResume.Invoke();
+
+        SceneManager.LoadScene("Level1");
+    }
+
+    public void Play(string input)
+    {
+        OnPlay.Invoke();
+
+        SceneManager.LoadScene("Level1");
+    }
+
+    public void Return(string input)
+    {
+        switch(input)
+        {
+            case "fromMain":
+                {
+                    OnOptions.Invoke();
+                    mainMenu.SetActive(false);
+                    optionsMenu.SetActive(true);
+                }
+                break;
+            case "fromOptions":
+                {
+                    OnMain.Invoke();
+                    mainMenu.SetActive(true);
+                    optionsMenu.SetActive(false);
+                }
+                break;
+        }
+    }
+
+    public void Exit(string input)
+    {
+        OnQuit.Invoke();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
+
+    private int GetIndex()
+    {
+        int r = Mathf.FloorToInt((volumeNotches.Length - 1) * PlayerPrefs.GetFloat("volume"));
+        //Debug.Log(r);
+        return r;
+    }
+
+    private void MoveVolumeIndicator()
+    {
+        volumeIndicator.localPosition = new Vector3(volumeNotches[GetIndex()].localPosition.x, volumeIndicator.localPosition.y, volumeIndicator.localPosition.z);
+
+        volumeText.text = (PlayerPrefs.GetFloat("volume") * 100).ToString() + "%";
+    }
+}
