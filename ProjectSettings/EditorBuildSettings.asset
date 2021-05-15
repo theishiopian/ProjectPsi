@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ProjectPsi/Scenes/Level1.unity
     guid: 18a098fc66c61d943ae187d8ca1e2df2
+  - enabled: 1
+    path: Assets/ProjectPsi/Scenes/PauseRoomScene.unity
+    guid: d7b7d0cef6ac7f740b29e9a07bd0be84
   m_configObjects: {}
