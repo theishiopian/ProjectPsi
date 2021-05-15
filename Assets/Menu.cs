@@ -51,6 +51,7 @@ public class Menu : MonoBehaviour
             if (PlayerPrefs.GetInt("hassaved") > 0) resumeButton.SetActive(true);
             else resumeButton.SetActive(false);
         }
+        
     }
 
     public void ChangeVolume(string input)
