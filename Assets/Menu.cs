@@ -168,8 +168,7 @@ public class Menu : MonoBehaviour
     private void MoveVolumeIndicator()
     {
         int i = GetIndex();
-        if (i < 0) return;
-        Debug.Log(i);
+        if (i < 0) return;//bandaid, may not be needed
         volumeIndicator.localPosition = new Vector3(volumeNotches[i].localPosition.x, volumeIndicator.localPosition.y, volumeIndicator.localPosition.z);
 
         volumeText.text = (PlayerPrefs.GetFloat("volume") * 100).ToString() + "%";
