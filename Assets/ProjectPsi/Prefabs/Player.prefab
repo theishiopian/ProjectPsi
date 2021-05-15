@@ -1449,7 +1449,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3913527
+    m_Bits: 8107831
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2307,6 +2307,7 @@ MonoBehaviour:
   pauseButton:
     actionPath: /actions/default/in/Pause
     needsReinit: 0
+  pauseDelay: 5
 --- !u!1 &8457292436660777596
 GameObject:
   m_ObjectHideFlags: 0

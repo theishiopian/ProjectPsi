@@ -36,7 +36,7 @@ TagManager:
   - Enemy
   - EnemyBullet
   - Transparent
-  - 
+  - Laser
   - 
   - 
   - 
@@ -49,4 +49,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Laser
+    uniqueID: 528475325
     locked: 0
