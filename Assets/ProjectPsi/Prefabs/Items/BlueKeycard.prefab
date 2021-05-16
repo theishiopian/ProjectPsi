@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 3902882183585064633}
   - component: {fileID: 4815431082381117950}
   m_Layer: 12
-  m_Name: BlueKeyCard
+  m_Name: BlueKeycard
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e46dfb73378fae240a3c568fb5355d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: green
+  code: blue
 --- !u!33 &3902882183585064633
 MeshFilter:
   m_ObjectHideFlags: 0
