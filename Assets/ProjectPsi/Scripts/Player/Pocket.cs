@@ -15,6 +15,8 @@ public class Pocket : MonoBehaviour, ITriggerListener
     private void Start()
     {
         Pause.OnPause += OnPause;
+        Menu.OnPlay += OnPause;
+        Menu.OnResume += OnPause;
         icon = transform.Find("PocketIcon").gameObject;
         parent = transform.Find("PocketParent");
         icon.SetActive(false);
