@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 9089435888966929617}
   - component: {fileID: 6113689064449562881}
   - component: {fileID: 1187501053015533361}
+  - component: {fileID: 1201359294006641809}
   m_Layer: 13
   m_Name: Crate_Large_01
   m_TagString: Liftable
@@ -163,3 +164,16 @@ MonoBehaviour:
   _highPriority: 0
   _slideMode: 0
   _rollMode: 0
+--- !u!114 &1201359294006641809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5948421244441685219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde71d37fbf1d1a4a96b1661097b40d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 2

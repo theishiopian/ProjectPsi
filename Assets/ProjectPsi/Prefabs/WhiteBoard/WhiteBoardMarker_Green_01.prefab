@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 5190052826612822004}
   - component: {fileID: 5190052826612822003}
   - component: {fileID: 5190052826612822002}
+  - component: {fileID: 4445793296625110757}
   m_Layer: 12
   m_Name: WhiteBoardMarker_Green_01
   m_TagString: Marker
@@ -350,6 +351,19 @@ CapsuleCollider:
   m_Height: 0.15
   m_Direction: 1
   m_Center: {x: 0, y: 0.06, z: 0}
+--- !u!114 &4445793296625110757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4947220978237418603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde71d37fbf1d1a4a96b1661097b40d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0.05
 --- !u!1 &5190052826985531025
 GameObject:
   m_ObjectHideFlags: 0

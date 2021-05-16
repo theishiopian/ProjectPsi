@@ -106,11 +106,29 @@ public class Telekinesis : MonoBehaviour
 
     void SetOutline(GameObject target)//move particles to target
     {
+        try
+        {
+            if (!target.Equals(outline.transform.parent.gameObject)) outline.Clear();
+        }
+        catch
+        {
+
+        }
         ParticleSystem.ShapeModule shape = outline.shape;
 
         //MeshFilter filter = target.GetComponent<MeshFilter>();
 
         //shape.mesh = filter.mesh;
+        OutlineRadius rad = target.GetComponent<OutlineRadius>();
+
+        if(rad != null)
+        {
+            shape.radius = rad.radius;
+        }
+        else
+        {
+            shape.radius = 1;
+        }
 
         outline.transform.SetParent(target.transform);
         outline.transform.localPosition = Vector3.zero;
@@ -167,7 +185,6 @@ public class Telekinesis : MonoBehaviour
 
             if (theOne != null)
             {
-                Debug.Log("grabbing " + theOne);
                 SetOutline(theOne.gameObject);
 
                 if (CompareTags(theOne.tag, grabTags))
@@ -238,6 +255,7 @@ public class Telekinesis : MonoBehaviour
     void ResetOutline()//stop particles
     {
         outline.Stop();
+        outline.Clear();
     }
 
     bool CompareTags(string tagIn, string[] tags)

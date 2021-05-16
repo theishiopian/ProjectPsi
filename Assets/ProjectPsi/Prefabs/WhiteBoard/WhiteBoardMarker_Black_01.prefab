@@ -244,6 +244,7 @@ GameObject:
   - component: {fileID: 7256319145818736356}
   - component: {fileID: 7804054091864966247}
   - component: {fileID: 8499129195887327658}
+  - component: {fileID: -5587399158415230431}
   m_Layer: 12
   m_Name: WhiteBoardMarker_Black_01
   m_TagString: Marker
@@ -575,3 +576,16 @@ CapsuleCollider:
   m_Height: 0.15
   m_Direction: 1
   m_Center: {x: 0, y: 0.06, z: 0}
+--- !u!114 &-5587399158415230431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5307688348729603249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde71d37fbf1d1a4a96b1661097b40d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0.05

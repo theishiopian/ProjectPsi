@@ -15,7 +15,6 @@ public class MenuTrigger : MonoBehaviour
     {
         if(other.CompareTag("Marker"))
         {
-            Debug.Log("marker detected");
             OnDrawn.Invoke("debug");
         }
         else if((other.CompareTag("Eraser")))
