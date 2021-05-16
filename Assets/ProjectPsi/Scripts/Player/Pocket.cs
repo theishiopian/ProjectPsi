@@ -14,6 +14,7 @@ public class Pocket : MonoBehaviour, ITriggerListener
 
     private void Start()
     {
+        Pause.OnPause += OnPause;
         icon = transform.Find("PocketIcon").gameObject;
         parent = transform.Find("PocketParent");
         icon.SetActive(false);
@@ -52,5 +53,14 @@ public class Pocket : MonoBehaviour, ITriggerListener
                 storedItem = null;
             }
         }
+    }
+
+    void OnPause()
+    {
+        storedItem.transform.parent = null;
+        storedItem.GetComponent<Rigidbody>().isKinematic = false;
+        storedItem = null;
+        //the funny
+        otherHand.DetachObject(otherHand.AttachedObjects[0].attachedObject);
     }
 }

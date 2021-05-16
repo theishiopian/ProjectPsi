@@ -4,8 +4,11 @@ using UnityEngine;
 using Valve.VR;
 using UnityEngine.SceneManagement;
 
+public delegate void PauseEvent();
+
 public class Pause : MonoBehaviour
 {
+    public static PauseEvent OnPause;
     public SteamVR_Input_Sources controller;
     public SteamVR_Action_Boolean pauseButton;
     public float pauseDelay = 5f;
@@ -22,6 +25,7 @@ public class Pause : MonoBehaviour
 
             if(t > pauseDelay)
             {
+                OnPause?.Invoke();
                 LevelSaveManager.currentInstance.SaveGame();
                 SceneManager.LoadScene(scene);
             }
