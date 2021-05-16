@@ -483,6 +483,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8105283455539664883}
+  - component: {fileID: 4918602422806134612}
   m_Layer: 0
   m_Name: PrisonTable
   m_TagString: Untagged
@@ -510,3 +511,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4918602422806134612
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8876613520368241993}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6424103, y: 0.725513, z: 1.7393456}
+  m_Center: {x: 0.024888992, y: 0.4342084, z: 0.0003604889}
