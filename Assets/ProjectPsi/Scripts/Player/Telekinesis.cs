@@ -21,6 +21,7 @@ public class Telekinesis : MonoBehaviour
     public GameObject particles;
     public ParticleSystem outline;
     public SpringJoint joint;
+    public AudioSource soundLoop;
 
     [Header("Physics Settings")]
     public float launchForce = 20;
@@ -45,6 +46,8 @@ public class Telekinesis : MonoBehaviour
     private bool lifting  = false;
     private bool grabbing = false;
     private Collider[] overlaps;
+    private bool stopSound = false;
+    private bool hasPlayedForceSound = false;
 
     private void Start()
     {
@@ -66,6 +69,18 @@ public class Telekinesis : MonoBehaviour
             RemakeParticles();//only calls once
         }
 
+        //if(lifting && !soundLoop.isPlaying)
+        //{
+        //    soundLoop.Play();
+        //    Debug.Log("playing");
+        //}
+        //else if(soundLoop.isPlaying)
+        //{
+        //    soundLoop.Stop();
+        //    Debug.Log("stoping");
+        //}
+
+        //scan for targets
         if(!lifting)
         {
             float dist = castDistance;
@@ -133,6 +148,12 @@ public class Telekinesis : MonoBehaviour
         {
             lifting = false;
             joint.connectedBody = null;
+
+            if (soundLoop.isPlaying)
+            {
+                stopSound = true;
+                Debug.Log("stoping");
+            }
         }
         else if (pickupAction.GetState(controller))//use telekinesis
         {
@@ -142,11 +163,18 @@ public class Telekinesis : MonoBehaviour
                 grabbing = true;
                 grabTarget.AddForce((hand.position - grabTarget.transform.position).normalized * grabForce, ForceMode.Acceleration);
 
+                if(!hasPlayedForceSound)
+                {
+                    hasPlayedForceSound = true;
+                    OneshotManager.instance.PlaySound("psi_throw", transform.position);
+                }
+
                 if (Vector3.Distance(hand.position, grabTarget.transform.position) < grabDistance)//is close enough to hand
                 {
                     //attatch to hand
                     lifting = false;
                     grabbing = false;
+                    hasPlayedForceSound = false;
                     handScript.AttachObject(grabTarget.gameObject, GrabTypes.Grip, attachmentFlags);
                     grabTarget = null;
                     ResetOutline();
@@ -154,6 +182,7 @@ public class Telekinesis : MonoBehaviour
             }
             else if (liftTarget && !grabbing)//object
             {
+
                 lifting = true;
 
                 joint.connectedBody = liftTarget;
@@ -167,10 +196,22 @@ public class Telekinesis : MonoBehaviour
             {
                 joint.connectedBody = null;
                 liftTarget.AddForce(head.forward * launchForce, ForceMode.VelocityChange);
+                OneshotManager.instance.PlaySound("psi_throw", transform.position);
                 liftTarget = null;
                 lifting = false;
                 ResetOutline();
             }
+        }
+
+        if(stopSound && soundLoop.time < 0.1f)
+        {
+            soundLoop.Stop();
+            stopSound = false;
+        }
+
+        if(lifting && !soundLoop.isPlaying)
+        {
+            soundLoop.Play();
         }
     }
 

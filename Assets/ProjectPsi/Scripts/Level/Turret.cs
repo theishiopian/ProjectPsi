@@ -11,7 +11,7 @@ public class Turret : MonoBehaviour, IGun
     public Transform shootPoint;
     public Transform bracket;
     public Transform gun;
-    public AudioSource audio;
+    public AudioSource gunSound;
 
     [Header("Tracking Settings")]
     public LayerMask losMask;
@@ -78,7 +78,7 @@ public class Turret : MonoBehaviour, IGun
         muzzleflash.Play();
         shells.Play();
         bullets.Play();
-        audio.Play();
+        gunSound.Play();
         firing = true;
     }
 
@@ -88,7 +88,7 @@ public class Turret : MonoBehaviour, IGun
         muzzleflash.Clear();
         shells.Stop();
         bullets.Stop();
-        audio.Stop();
+        gunSound.Stop();
         firing = false;
     }
 

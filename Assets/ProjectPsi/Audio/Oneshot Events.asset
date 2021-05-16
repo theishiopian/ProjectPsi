@@ -18,3 +18,6 @@ MonoBehaviour:
     - {fileID: 8300000, guid: e766e04002abf6a4b86f96e31cc0b59f, type: 3}
     - {fileID: 8300000, guid: cf06ef6aca26fc448a0d043186a8ac6d, type: 3}
     - {fileID: 8300000, guid: 992cf58b7712e0a419811cb039bd777a, type: 3}
+  - key: psi_throw
+    clips:
+    - {fileID: 8300000, guid: 672044ef602dd5841b5275d197fa1a03, type: 3}

@@ -263,7 +263,7 @@ MonoBehaviour:
   shootPoint: {fileID: 9003866410209914703}
   bracket: {fileID: 9003866410568320412}
   gun: {fileID: 9003866409801239096}
-  audio: {fileID: 6888778643551565023}
+  gunSound: {fileID: 6888778643551565023}
   losMask:
     serializedVersion: 2
     m_Bits: 139265

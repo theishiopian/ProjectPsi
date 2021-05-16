@@ -35,7 +35,6 @@ public class GameObjectPool
     /// <param name="parent">Optional parameter. Use this if you want your pooled objects parented to something</param>
     public GameObjectPool(GameObject prefab, int initialSize, Transform parent, bool shouldGrow = false)
     {
-        Debug.Log(parent);
         //init queues
         available = new Queue<GameObject>();
         inUse = new Queue<GameObject>();
