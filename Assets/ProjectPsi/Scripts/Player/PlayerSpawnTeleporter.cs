@@ -8,7 +8,7 @@ public class PlayerSpawnTeleporter : MonoBehaviour
     public static GameObject player;
     public GameObject particles;
 
-    private void Start()
+    private void Awake()
     {
         if(player)
         {

@@ -5,11 +5,11 @@ using UnityEngine;
 [System.Serializable]
 public class SaveData
 {
-    public Vector3 playerPosition;
+    public Vector3 playerPosition = new Vector3();
 
-    public List<Vector3> enemyPositions;
+    public List<Vector3> enemyPositions = new List<Vector3>();
 
-    public List<bool> doorsUnlocked;
+    public List<bool> doorsLocked = new List<bool>();
 
-    public List<Vector3> cardPositions;
+    public List<Vector3> cardPositions = new List<Vector3>();
 }
