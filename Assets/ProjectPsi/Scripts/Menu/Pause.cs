@@ -22,6 +22,7 @@ public class Pause : MonoBehaviour
 
             if(t > pauseDelay)
             {
+                LevelSaveManager.currentInstance.SaveGame();
                 SceneManager.LoadScene(scene);
             }
         }

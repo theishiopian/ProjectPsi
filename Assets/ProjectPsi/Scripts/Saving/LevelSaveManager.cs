@@ -8,9 +8,10 @@ public class LevelSaveManager : MonoBehaviour
 {
     public static LevelSaveManager currentInstance;//weak singleton
 
-    List<GameObject> enemies;
-    List<GameObject> keycards;
-    List<DoorPanel> doors;
+    [Header("Savable Objects")]
+    public List<GameObject> enemies;
+    public List<GameObject> keycards;
+    public List<DoorPanel> doors;
 
     string saveFilePath = Application.persistentDataPath + "/game_data.json";
     SaveData data;
