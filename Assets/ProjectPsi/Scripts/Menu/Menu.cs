@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -36,22 +37,28 @@ public class Menu : MonoBehaviour
     public static event MenuEvent OnPlay;
     public static event MenuEvent OnQuit;
 
+    string filePath;
+
     void OnEnable()
     {
         OnLoad?.Invoke();
         if (debugMode) PlayerPrefs.DeleteAll();
         if (!PlayerPrefs.HasKey("volume")) PlayerPrefs.SetFloat("volume", 1);
-        if (!PlayerPrefs.HasKey("hassaved")) PlayerPrefs.SetInt("hassaved", 0);
         if (!PlayerPrefs.HasKey("smoothmove")) PlayerPrefs.SetInt("smoothmove", 1);
         AudioListener.volume = PlayerPrefs.GetFloat("volume");
         MoveVolumeIndicator();
 
-        if(!pauseMode)
+        filePath = Application.persistentDataPath + "/game_data.json";
+
+        if (File.Exists(filePath))
         {
-            if (PlayerPrefs.GetInt("hassaved") > 0) resumeButton.SetActive(true);
-            else resumeButton.SetActive(false);
+            Debug.Log("Save file located at " + filePath);
+            resumeButton.SetActive(true);
         }
-        
+        else
+        {
+            Debug.Log("No save file located");
+        }
     }
 
     public void ChangeVolume(string input)
@@ -113,6 +120,16 @@ public class Menu : MonoBehaviour
     public void Play(string input)
     {
         OnPlay?.Invoke();
+        
+        if(File.Exists(filePath))
+        {
+            Debug.Log("Deleting old save data");
+            File.Delete(filePath);
+        }
+        else
+        {
+            Debug.Log("Starting fresh game");
+        }
 
         SceneManager.LoadScene("Level1");
     }

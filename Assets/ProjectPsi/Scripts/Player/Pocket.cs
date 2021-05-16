@@ -59,10 +59,16 @@ public class Pocket : MonoBehaviour, ITriggerListener
 
     void OnPause()
     {
-        storedItem.transform.parent = null;
-        storedItem.GetComponent<Rigidbody>().isKinematic = false;
-        storedItem = null;
+        if(storedItem)
+        {
+            storedItem.transform.parent = null;
+            storedItem.GetComponent<Rigidbody>().isKinematic = false;
+            storedItem = null;
+        }
         //the funny
-        otherHand.DetachObject(otherHand.AttachedObjects[0].attachedObject);
+        if(otherHand.AttachedObjects.Count > 0)
+        {
+            otherHand.DetachObject(otherHand.AttachedObjects[0].attachedObject);
+        }
     }
 }
