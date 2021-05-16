@@ -94,6 +94,12 @@ public class Telekinesis : MonoBehaviour
                 {
                     theOne = canidate.collider.gameObject.GetComponent<Rigidbody>();
 
+                    //prioritize items
+                    if (item != null)
+                    {
+                        break;
+                    }
+
                     if (theOne && theOne.mass > highestMass)
                     {
                         highestMass = theOne.mass;
