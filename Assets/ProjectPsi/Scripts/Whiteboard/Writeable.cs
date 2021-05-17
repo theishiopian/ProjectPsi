@@ -50,54 +50,7 @@ public class Writeable : MonoBehaviour
         }
         oldRenderer.material = old;
         mat.mainTexture = saveTexture;
-        //foreach (TrailRenderer marker in markers)
-        //{
-        //    marker.Clear();
-        //    marker.emitting = false;
-        //}
     }
-
-    //private Ray ray;
-    //private RaycastHit hit;
-
-    #region OldUpdate
-    // Update is called once per frame
-    //private void Update()
-    //{
-        //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        //if (Physics.Raycast(ray, out hit, LayerMask.NameToLayer("WB Colliders")))
-        //{
-        //    markers[currentMarker].transform.parent.transform.position = hit.point;
-        //}
-
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    mat.mainTexture = captureTexture;
-        //    old.mainTexture = saveTexture;
-        //    markers[currentMarker].emitting = true;
-        //}
-        //if(Input.GetMouseButtonUp(0))
-        //{
-        //    Graphics.CopyTexture(captureTexture, saveTexture);
-        //    mat.mainTexture = saveTexture;
-        //    markers[currentMarker].emitting = false;
-        //    markers[currentMarker].Clear();
-        //}
-
-        //if(Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    if(currentMarker == markers.Length - 1)
-        //    {
-        //        currentMarker = 0;
-        //    }
-        //    else
-        //    {
-        //        currentMarker += 1;
-        //    }
-        //}
-    //}
-    #endregion
 
     TrailRenderer marker;
     public void OnCollisionEnter(Collision collision)
