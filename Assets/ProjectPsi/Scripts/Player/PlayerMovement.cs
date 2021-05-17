@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
         moveDirection = Quaternion.AngleAxis(GetAngle(joystickInput) + (useHand ? leftHand : head).transform.rotation.eulerAngles.y, Vector3.up) * Vector3.forward;//get the angle of the touch and correct it for the rotation of the controller
 
-        if (body.velocity.magnitude<speed &&   joystickInput.magnitude > deadzone)
+        if ((!PlayerPrefs.HasKey("smoothmove") || PlayerPrefs.GetInt("smoothmove") > 0) && body.velocity.magnitude<speed && joystickInput.magnitude > deadzone)
         {
             body.position = body.position + moveDirection * speed * Time.deltaTime;
         }

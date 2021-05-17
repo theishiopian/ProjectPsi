@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7891502489675541762}
   - component: {fileID: 3102403144212375053}
   - component: {fileID: 1253308006534999486}
+  - component: {fileID: 7824449154442114260}
   m_Layer: 0
   m_Name: Outline Particles
   m_TagString: Untagged
@@ -4779,3 +4780,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   system: {fileID: 7891502489675541762}
   strength: 0.5
+--- !u!114 &7824449154442114260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2620752519391827952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a03fb6f384f44374ea8a6c756dd0ef9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

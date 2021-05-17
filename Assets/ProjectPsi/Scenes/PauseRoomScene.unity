@@ -5324,6 +5324,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WhiteBoardEraser_01
       objectReference: {fileID: 0}
+    - target: {fileID: 2319246093647098276, guid: 49d843d50bed0a14fa81c7ed187835b0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Eraser
+      objectReference: {fileID: 0}
     - target: {fileID: 3126710509131033374, guid: 49d843d50bed0a14fa81c7ed187835b0,
         type: 3}
       propertyPath: m_RootOrder
@@ -5342,7 +5347,7 @@ PrefabInstance:
     - target: {fileID: 3126710509131033374, guid: 49d843d50bed0a14fa81c7ed187835b0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.544
+      value: -2.162
       objectReference: {fileID: 0}
     - target: {fileID: 3126710509131033374, guid: 49d843d50bed0a14fa81c7ed187835b0,
         type: 3}
@@ -16293,9 +16298,9 @@ GameObject:
   - component: {fileID: 2124508506}
   - component: {fileID: 2124508511}
   - component: {fileID: 2124508510}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Walkable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

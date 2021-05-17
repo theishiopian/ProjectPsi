@@ -27,7 +27,7 @@ public class Telekinesis : MonoBehaviour
     public float launchForce = 20;
     public float springMultiplier = 5;
     public string[] liftTags = {"Liftable"};
-    public string[] grabTags = {"Item", "Marker"};
+    public string[] grabTags = {"Item", "Marker", "Eraser"};
     public float grabForce = 25f;
     public float grabDistance = 0.15f;
 
@@ -168,7 +168,7 @@ public class Telekinesis : MonoBehaviour
                 }
                 else
                 {
-                    theOne = canidate.collider.gameObject.GetComponent<Rigidbody>();
+                    theOne = canidate.collider.attachedRigidbody;
 
                     //prioritize items
                     if (item != null)
