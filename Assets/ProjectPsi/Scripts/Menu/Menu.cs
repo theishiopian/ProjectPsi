@@ -42,9 +42,21 @@ public class Menu : MonoBehaviour
     void OnEnable()
     {
         OnLoad?.Invoke();
-        if (debugMode) PlayerPrefs.DeleteAll();
-        if (!PlayerPrefs.HasKey("volume")) PlayerPrefs.SetFloat("volume", 1);
-        if (!PlayerPrefs.HasKey("smoothmove")) PlayerPrefs.SetInt("smoothmove", 1);
+        if (debugMode)
+        {
+            Debug.LogError("Deleting player prefs");
+            PlayerPrefs.DeleteAll();
+        }
+        if (!PlayerPrefs.HasKey("volume"))
+        {
+            PlayerPrefs.SetFloat("volume", 1);
+            Debug.LogError("volume key not found");
+        }
+        if (!PlayerPrefs.HasKey("smoothmove"))
+        {
+            Debug.LogError("smoothmove key not found");
+            PlayerPrefs.SetInt("smoothmove", 1);
+        }
         AudioListener.volume = PlayerPrefs.GetFloat("volume");
         MoveVolumeIndicator();
 
@@ -57,7 +69,7 @@ public class Menu : MonoBehaviour
         }
         else
         {
-            Debug.Log("No save file located");
+            Debug.LogWarning("No save file located");
         }
     }
 
