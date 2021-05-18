@@ -2656,7 +2656,7 @@ SpringJoint:
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   serializedVersion: 2
   m_Spring: 1000
-  m_Damper: 25
+  m_Damper: 1000
   m_MinDistance: 0
   m_MaxDistance: 0
   m_Tolerance: 0.025
@@ -2728,7 +2728,6 @@ MonoBehaviour:
   joint: {fileID: 8482755062524379111}
   soundLoop: {fileID: 3540778961104194165}
   launchForce: 50
-  springMultiplier: 5
   liftTags:
   - Liftable
   grabTags:

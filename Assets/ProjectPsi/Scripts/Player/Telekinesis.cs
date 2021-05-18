@@ -25,7 +25,6 @@ public class Telekinesis : MonoBehaviour
 
     [Header("Physics Settings")]
     public float launchForce = 20;
-    public float springMultiplier = 5;
     public string[] liftTags = {"Liftable"};
     public string[] grabTags = {"Item", "Marker", "Eraser"};
     public float grabForce = 25f;
@@ -47,6 +46,7 @@ public class Telekinesis : MonoBehaviour
     private bool grabbing = false;
     private Collider[] overlaps;
     private bool stopSound = false;
+    private bool supressGrab = false;
 
     private void Start()
     {
@@ -63,7 +63,6 @@ public class Telekinesis : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(grabTarget);
         if(!outline)
         {
             RemakeParticles();//only calls once
@@ -74,8 +73,9 @@ public class Telekinesis : MonoBehaviour
         if (pickupAction.GetStateUp(controller))//let go
         {
             LetGo();
+            supressGrab = false;
         }
-        else if (pickupAction.GetState(controller))//use telekinesis
+        else if (pickupAction.GetState(controller) && !supressGrab)//use telekinesis
         {
             Grab();
         }
@@ -84,12 +84,11 @@ public class Telekinesis : MonoBehaviour
         {
             if (liftTarget)
             {
-                joint.connectedBody = null;
                 liftTarget.AddForce(head.forward * launchForce, ForceMode.VelocityChange);
                 OneshotManager.instance.PlaySound("psi_throw", transform.position);
-                liftTarget = null;
-                lifting = false;
-                ResetOutline();
+                
+                supressGrab = true;
+                LetGo();
             }
         }
 
@@ -234,14 +233,16 @@ public class Telekinesis : MonoBehaviour
         else if (liftTarget && !grabbing)//object
         {
             lifting = true;
-
+            liftTarget.useGravity = false;
             joint.connectedBody = liftTarget;
-            joint.spring = liftTarget.mass * springMultiplier;
+            joint.connectedMassScale = liftTarget.mass;
         }
     }
 
     void LetGo()
     {
+        if(liftTarget)liftTarget.useGravity = true;
+
         lifting = false;
         liftTarget = null;
         grabTarget = null;
