@@ -2595,7 +2595,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8482755062524379104}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.000000059604645, y: 0.00000011920929, z: 3.0000005}
+  m_LocalPosition: {x: -0.000000059604645, y: 0.00000011920929, z: 1.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8482755062310152694}
@@ -2610,10 +2610,10 @@ ParentConstraint:
   m_GameObject: {fileID: 8482755062524379104}
   m_Enabled: 1
   m_Weight: 1
-  m_TranslationAtRest: {x: 0, y: 0, z: 3}
+  m_TranslationAtRest: {x: 0, y: 0, z: 1.25}
   m_RotationAtRest: {x: 0, y: 0, z: 0}
   m_TranslationOffsets:
-  - {x: -0.25000006, y: -0.9999999, z: 3.0000005}
+  - {x: -0.25000006, y: -0.9999999, z: 1.25}
   m_RotationOffsets:
   - {x: 0, y: 0, z: 0}
   m_AffectTranslationX: 1
