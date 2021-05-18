@@ -21,3 +21,9 @@ MonoBehaviour:
   - key: psi_throw
     clips:
     - {fileID: 8300000, guid: 672044ef602dd5841b5275d197fa1a03, type: 3}
+  - key: door_unlock
+    clips:
+    - {fileID: 8300000, guid: 92ec73ffdb362d74aa55d56fe6c17800, type: 3}
+  - key: door_open
+    clips:
+    - {fileID: 8300000, guid: b65bcb47adf3c264b8bf49756b42db01, type: 3}

@@ -9,12 +9,6 @@ public class DoorPanel : MonoBehaviour, ITriggerListener
     public string code;
     public float blinkTime = 0.2f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     float t = 0;
 
     // Update is called once per frame
@@ -42,6 +36,7 @@ public class DoorPanel : MonoBehaviour, ITriggerListener
         Key key = other.gameObject.GetComponent<Key>();
         if(key != null && key.code == code)
         {
+            OneshotManager.instance.PlaySound("door_unlock", transform.position);
             locked = false;
         }
     }

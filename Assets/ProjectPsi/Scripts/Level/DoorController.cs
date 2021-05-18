@@ -14,7 +14,7 @@ public class DoorController : MonoBehaviour, ITriggerListener
     public Vector3 openPos;
     public AnimationCurve openCurve;
     public AnimationCurve closeCurve;
-    public DoorPanel panel;
+    public DoorPanel[] panels;
 
     private bool detected = false;
     private float t = 0;//0-1 closed-open
@@ -36,6 +36,7 @@ public class DoorController : MonoBehaviour, ITriggerListener
                     if(detected)
                     {
                         state = DoorState.OPENING;
+                        OneshotManager.instance.PlaySound("door_open", transform.position + openPos/2);
                     }
                 }
                 break;
@@ -54,6 +55,7 @@ public class DoorController : MonoBehaviour, ITriggerListener
                     if(!detected)
                     {
                         state = DoorState.CLOSING;
+                        OneshotManager.instance.PlaySound("door_open", transform.position + openPos / 2);
                     }
                 }
                 break;
@@ -69,11 +71,21 @@ public class DoorController : MonoBehaviour, ITriggerListener
                 break;
             case DoorState.LOCKED:
                 {
-                    //key check here
-                    if (!panel.locked)
+                    ////key check here
+                    //if (!panel.locked)
+                    //{
+                    //    state = DoorState.CLOSED;
+                    //}
+                    int unlocked = 0;
+                    for(int i = 0; i < panels.Length; i++)
                     {
-                        state = DoorState.CLOSED;
+                        if(!panels[i].locked)
+                        {
+                            unlocked++;
+                        }
                     }
+
+                    if (unlocked == panels.Length) state = DoorState.CLOSED;
                 }
                 break;
         }
@@ -82,7 +94,7 @@ public class DoorController : MonoBehaviour, ITriggerListener
     void MoveDoorPos(AnimationCurve curve)
     {
         door.localPosition = Vector3.Lerp(Vector3.zero, openPos, curve.Evaluate(t));
-        t += Time.deltaTime;
+        t += Time.deltaTime / 2;
     }
 
     public void OnEnter(Collider other)

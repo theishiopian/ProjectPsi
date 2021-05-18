@@ -74,41 +74,45 @@ public class Teleport : MonoBehaviour
         arc.SetArcData(teleportHand.position, teleportHand.forward * 10, true, false);//TODO vary multiplier with angle
         bool didHit = arc.DrawArc(out hit);
 
-        if (!hit.collider.gameObject.layer.Equals(LayerMask.NameToLayer("NavMesh")))
+        if(didHit)
         {
-            groundPos = GetGroundPoint();
-            hitPoint = hit.point;
-
-            groundPos.y = 0;
-            hitPoint.y = 0;
-
-            Vector3 dir = (groundPos - hitPoint).normalized;
-            Vector3 oldPoint = hit.point;
-            Physics.Raycast(hit.point + dir * downLineOffset, Vector3.down, out hit, arcMask);
-
             if (!hit.collider.gameObject.layer.Equals(LayerMask.NameToLayer("NavMesh")))
             {
-                downLine.SetPosition(0, Vector3.zero);
-                downLine.SetPosition(1, Vector3.zero);
+                groundPos = GetGroundPoint();
+                hitPoint = hit.point;
+
+                groundPos.y = 0;
+                hitPoint.y = 0;
+
+                Vector3 dir = (groundPos - hitPoint).normalized;
+                Vector3 oldPoint = hit.point;
+                Physics.Raycast(hit.point + dir * downLineOffset, Vector3.down, out hit, arcMask);
+
+                if (!hit.collider.gameObject.layer.Equals(LayerMask.NameToLayer("NavMesh")))
+                {
+                    downLine.SetPosition(0, Vector3.zero);
+                    downLine.SetPosition(1, Vector3.zero);
+                    return false;
+                }
+                else
+                {
+                    downLine.SetPosition(0, oldPoint + dir * downLineOffset);
+                    downLine.SetPosition(1, hit.point);
+                }
+            }
+
+            groundPos = GetGroundPoint();
+            teleportVector = hit.point - groundPos;
+
+            RaycastHit cHit;
+            if (Physics.SphereCast(head.transform.position, 0.125f, teleportVector, out cHit, teleportVector.magnitude, sweepMask, QueryTriggerInteraction.Ignore))
+            {
                 return false;
             }
-            else
-            {
-                downLine.SetPosition(0, oldPoint + dir * downLineOffset);
-                downLine.SetPosition(1, hit.point);
-            }
+
+            return true;
         }
-
-        groundPos = GetGroundPoint();
-        teleportVector = hit.point - groundPos;
-
-        RaycastHit cHit;
-        if (Physics.SphereCast(head.transform.position, 0.125f, teleportVector, out cHit, teleportVector.magnitude, sweepMask, QueryTriggerInteraction.Ignore))
-        {
-            return false;
-        }
-
-        return true;
+        return false;
     }
 
     Vector3 GetGroundPoint()
