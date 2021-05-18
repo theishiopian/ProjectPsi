@@ -6,16 +6,23 @@ using Valve.VR.InteractionSystem;
 
 public class Teleport : MonoBehaviour
 {
+    [Header("SteamVR")]
     public SteamVR_Input_Sources controller;
     public SteamVR_Action_Boolean teleportAction;
     public SteamVR_Action_Boolean snapTurnLeft;
     public SteamVR_Action_Boolean snapTurnRight;
+
+    [Header("Objects")]
     public Transform teleportHand;
     public TeleportArc arc;
-    public LayerMask arcMask;
-    public LayerMask sweepMask;
+    public LineRenderer downLine;
     public new CapsuleCollider collider;
     public Rigidbody body;
+
+    [Header("Settings")]
+    public LayerMask arcMask;
+    public LayerMask sweepMask;
+    public float downLineOffset = 0.3f;
 
     private GameObject head;
 
@@ -29,19 +36,19 @@ public class Teleport : MonoBehaviour
     RaycastHit hit = new RaycastHit();
 
     bool canTeleport = false;
-    Vector3 dir, groundPos = new Vector3();
+    Vector3 teleportVector, groundPos, hitPoint = new Vector3();
     //Vector3 a, b = new Vector3();
 
     void Update()
     {
-        bool didHit = false;
-        
         if (teleportAction.GetState(controller))
         {
             if (!arc.gameObject.activeSelf) arc.gameObject.SetActive(true);
-            didHit = DrawArc(canTeleport);
-            canTeleport = didHit ? CanTeleportTo(hit, body) : false;
-            //arc.Show();
+            canTeleport = DoTeleportCheck();
+            Color c = canTeleport? Color.cyan: Color.red;
+            arc.SetColor(c);
+            downLine.startColor = c;
+            downLine.endColor = c;
         }
         else if (teleportAction.GetStateUp(controller) && !snapTurnLeft.GetState(controller) && !snapTurnRight.GetState(controller))
         {
@@ -51,7 +58,7 @@ public class Teleport : MonoBehaviour
                 Debug.Log("teleporting");
 
                 //teleport with offset
-                body.position += dir;
+                body.position += teleportVector;
             }
             arc.gameObject.SetActive(false);
         }
@@ -62,27 +69,42 @@ public class Teleport : MonoBehaviour
         }
     }
 
-    bool DrawArc(bool canTeleport)
+    bool DoTeleportCheck()
     {
-        arc.SetArcData(teleportHand.position, teleportHand.forward * 10, true, false);
+        arc.SetArcData(teleportHand.position, teleportHand.forward * 10, true, false);//TODO vary multiplier with angle
         bool didHit = arc.DrawArc(out hit);
-        //Debug.Log(hit.collider.gameObject);
-        arc.SetColor(canTeleport ? Color.cyan : Color.red);
-        return didHit;
-    }
 
-    //can we fit to the destination?
-    bool CanTeleportTo(RaycastHit hitInfo, Rigidbody body)
-    {
-        if (!hitInfo.collider.gameObject.layer.Equals(LayerMask.NameToLayer("NavMesh"))) return false;
+        if (!hit.collider.gameObject.layer.Equals(LayerMask.NameToLayer("NavMesh")))
+        {
+            groundPos = GetGroundPoint();
+            hitPoint = hit.point;
+
+            groundPos.y = 0;
+            hitPoint.y = 0;
+
+            Vector3 dir = (groundPos - hitPoint).normalized;
+            Vector3 oldPoint = hit.point;
+            Physics.Raycast(hit.point + dir * downLineOffset, Vector3.down, out hit, arcMask);
+
+            if (!hit.collider.gameObject.layer.Equals(LayerMask.NameToLayer("NavMesh")))
+            {
+                downLine.SetPosition(0, Vector3.zero);
+                downLine.SetPosition(1, Vector3.zero);
+                return false;
+            }
+            else
+            {
+                downLine.SetPosition(0, oldPoint + dir * downLineOffset);
+                downLine.SetPosition(1, hit.point);
+            }
+        }
 
         groundPos = GetGroundPoint();
-        dir = hitInfo.point - groundPos;
+        teleportVector = hit.point - groundPos;
 
         RaycastHit cHit;
-        if(Physics.SphereCast(head.transform.position, 0.125f, dir, out cHit, dir.magnitude, sweepMask, QueryTriggerInteraction.Ignore))
+        if (Physics.SphereCast(head.transform.position, 0.125f, teleportVector, out cHit, teleportVector.magnitude, sweepMask, QueryTriggerInteraction.Ignore))
         {
-            Debug.Log(cHit.collider.gameObject);
             return false;
         }
 
