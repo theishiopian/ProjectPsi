@@ -899,7 +899,7 @@ MonoBehaviour:
   hoverSphereRadius: 0.075
   hoverLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4096
   hoverUpdateInterval: 0.1
   useControllerHoverComponent: 1
   controllerHoverComponent: tip
@@ -1235,7 +1235,7 @@ MonoBehaviour:
   hoverSphereRadius: 0.075
   hoverLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4096
   hoverUpdateInterval: 0.1
   useControllerHoverComponent: 1
   controllerHoverComponent: tip
@@ -2194,14 +2194,15 @@ MonoBehaviour:
   teleportHand: {fileID: 7468514020824301385}
   arc: {fileID: 8457292436660777587}
   downLine: {fileID: 848394814409858778}
+  collider: {fileID: 0}
+  body: {fileID: 8133860311344099972}
   arcMask:
     serializedVersion: 2
     m_Bits: 2293761
   sweepMask:
     serializedVersion: 2
     m_Bits: 6430721
-  collider: {fileID: 0}
-  body: {fileID: 8133860311344099972}
+  downLineOffset: 0.3
 --- !u!114 &8133860311344099978
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -39,21 +39,24 @@ public class Pocket : MonoBehaviour, ITriggerListener
 
     public void OnStay(Collider other)
     {
-        if(!other.transform.gameObject.GetComponent<Item>().isHeld && storedItem == null)
+        if(storedItem == null)
         {
             storedItem = other.transform.gameObject;
-            storedItem.transform.parent = parent;
-            storedItem.transform.localPosition = Vector3.zero;
-            storedItem.GetComponent<Rigidbody>().isKinematic = true;
-        }
-        else if(storedItem != null)
-        {
-            if (storedItem.GetComponent<Item>().isHeld)
+            if (!storedItem.GetComponent<Item>().isHeld && !storedItem.GetComponent<Item>().isStored)
             {
-                storedItem.transform.parent = null;
-                storedItem.GetComponent<Rigidbody>().isKinematic = false;
-                storedItem = null;
+                Debug.Log("storing");
+                storedItem.transform.parent = parent;
+                storedItem.transform.localPosition = Vector3.zero;
+                storedItem.GetComponent<Rigidbody>().isKinematic = true;
             }
+            else storedItem = null;
+        }
+        else if(storedItem != null && storedItem.GetComponent<Item>().isHeld)
+        {
+            Debug.Log("unstoring");
+            storedItem.GetComponent<Rigidbody>().isKinematic = false;
+
+            storedItem = null;
         }
     }
 
@@ -65,7 +68,7 @@ public class Pocket : MonoBehaviour, ITriggerListener
             storedItem.GetComponent<Rigidbody>().isKinematic = false;
             storedItem = null;
         }
-        //the funny
+        //the funny way to make items get dropped from hand
         if(otherHand.AttachedObjects.Count > 0)
         {
             otherHand.DetachObject(otherHand.AttachedObjects[0].attachedObject);

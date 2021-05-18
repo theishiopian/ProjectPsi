@@ -63,6 +63,7 @@ public class Telekinesis : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(grabTarget);
         if(!outline)
         {
             RemakeParticles();//only calls once
@@ -143,7 +144,6 @@ public class Telekinesis : MonoBehaviour
         {
             liftTarget = null;
             grabTarget = null;
-
             float dist = castDistance;
 
             if (Physics.Raycast(head.position, head.forward, out hit, castDistance, rayMask))
@@ -160,9 +160,8 @@ public class Telekinesis : MonoBehaviour
             {
                 //prevent us from targeting held items
                 Item item = canidate.collider.transform.gameObject.GetComponentInParent<Item>();
-                int layer = canidate.collider.gameObject.layer;
-
-                if (layer == LayerMask.NameToLayer(ignoreLayer) && item.isHeld)
+                
+                if (item && (item.isHeld || item.isStored))
                 {
                     continue;
                 }
@@ -223,6 +222,7 @@ public class Telekinesis : MonoBehaviour
             if (Vector3.Distance(hand.position, grabTarget.transform.position) < grabDistance)//is close enough to hand
             {
                 //attatch to hand
+                Debug.Log("attatching");
                 lifting = false;
                 grabbing = false;
                 handScript.AttachObject(grabTarget.gameObject, GrabTypes.Grip, attachmentFlags);
@@ -243,7 +243,10 @@ public class Telekinesis : MonoBehaviour
     void LetGo()
     {
         lifting = false;
+        liftTarget = null;
+        grabTarget = null;
         joint.connectedBody = null;
+        ResetOutline();
 
         if (soundLoop.isPlaying)
         {
@@ -272,6 +275,7 @@ public class Telekinesis : MonoBehaviour
 
     bool IsHolding()
     {
-        return hand.parent.GetComponentInChildren<Item>() != null;
+        Item item = hand.GetComponentInChildren<Item>();
+        return item != null && item.isHeld;
     }
 }
