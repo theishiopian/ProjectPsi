@@ -38,51 +38,48 @@ public class LevelSaveManager : MonoBehaviour
 
     public void SaveGame()
     {
-        if(data == null)
+        Debug.Log("Save Sequence Initiated");
+        data = new SaveData();
+
+        Debug.Log("Saving Player Position");
+        data.playerPosition = GlobalVars.Get("player_rig").transform.position;
+
+        Debug.Log("Saving Enemies");
+        for (int i = 0; i < enemies.Count; i++)
         {
-            Debug.Log("Save Sequence Initiated");
-            data = new SaveData();
-
-            Debug.Log("Saving Player Position");
-            data.playerPosition = GlobalVars.Get("player_rig").transform.position;
-
-            Debug.Log("Saving Enemies");
-            for (int i = 0; i < enemies.Count; i++)
-            {
-                data.enemyPositions.Add(enemies[i].transform.position);
-                data.enemyLife.Add(enemies[i].activeSelf);
-            }
-
-            Debug.Log("Saving Keycard Positions");
-            for (int i = 0; i < keycards.Count; i++)
-            {
-                data.cardPositions.Add(keycards[i].transform.position);
-            }
-
-            Debug.Log("Saving Door Lock States");
-            for (int i = 0; i < doors.Count; i++)
-            {
-                data.doorsLocked.Add(doors[i].locked);
-            }
-
-            Debug.Log("Saving Checkpoints");
-            for (int i = 0; i < checkpoints.Count; i++)
-            {
-                data.checkpoints.Add(checkpoints[i].enabled);
-            }
-
-            Debug.Log("Checking for save file");
-            if (!File.Exists(saveFilePath))
-            {
-                Debug.Log("Creating new save file at " + saveFilePath);
-            }
-            else
-            {
-                Debug.Log("Saving to " + saveFilePath);
-            }
-
-            WriteFile(data);
+            data.enemyPositions.Add(enemies[i].transform.position);
+            data.enemyLife.Add(enemies[i].activeSelf);
         }
+
+        Debug.Log("Saving Keycard Positions");
+        for (int i = 0; i < keycards.Count; i++)
+        {
+            data.cardPositions.Add(keycards[i].transform.position);
+        }
+
+        Debug.Log("Saving Door Lock States");
+        for (int i = 0; i < doors.Count; i++)
+        {
+            data.doorsLocked.Add(doors[i].locked);
+        }
+
+        Debug.Log("Saving Checkpoints");
+        for (int i = 0; i < checkpoints.Count; i++)
+        {
+            data.checkpoints.Add(checkpoints[i].enabled);
+        }
+
+        Debug.Log("Checking for save file");
+        if (!File.Exists(saveFilePath))
+        {
+            Debug.Log("Creating new save file at " + saveFilePath);
+        }
+        else
+        {
+            Debug.Log("Saving to " + saveFilePath);
+        }
+
+        WriteFile(data);
     }
 
     public void LoadGame()
@@ -136,5 +133,10 @@ public class LevelSaveManager : MonoBehaviour
         string serializedData = ToJson(toSave);
 
         File.WriteAllText(saveFilePath, serializedData);
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveGame();
     }
 }
