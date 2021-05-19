@@ -68,7 +68,7 @@ public class LevelSaveManager : MonoBehaviour
             Debug.Log("Saving Checkpoints");
             for (int i = 0; i < checkpoints.Count; i++)
             {
-                data.checkpoints[i] = checkpoints[i].enabled;
+                data.checkpoints.Add(checkpoints[i].enabled);
             }
 
             Debug.Log("Checking for save file");

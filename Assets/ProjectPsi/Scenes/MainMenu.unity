@@ -649,7 +649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 5893982004328118183, guid: 94257914193ba3e41a210a627494ae26, type: 3}
-  initialSize: 20
+  initialSize: 100
   defaultSoundSettings:
     volume: 0
     pitch: 0

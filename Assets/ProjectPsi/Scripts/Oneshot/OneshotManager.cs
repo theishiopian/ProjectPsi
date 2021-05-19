@@ -77,8 +77,9 @@ public class OneshotManager : MonoBehaviour
                 source.volume = settings.volume;
                 source.pitch = settings.pitch;
             }
-
+            source.enabled = true;
             source.PlayOneShot(clips[Random.Range(0, clips.Length)]);
+            sourcePool.Recycle();
         }
         else
         {

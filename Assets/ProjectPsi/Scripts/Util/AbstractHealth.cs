@@ -10,6 +10,7 @@ public abstract class AbstractHealth : MonoBehaviour, IDamageable
     [Header("Health Settings")]
     public float startingHealth = 100;//how much health does the player get on start?
     public bool isImmortal = false;
+    public bool disableOnDeath = true;
 
     public float Health { get; internal set; }//health  value
 
@@ -22,7 +23,7 @@ public abstract class AbstractHealth : MonoBehaviour, IDamageable
         //Debug.Log("health at: " + Health);
         if (Health <= 0 && !isImmortal)
         {
-            Kill();
+            Kill(disableOnDeath);
         }
     }
 
@@ -31,7 +32,7 @@ public abstract class AbstractHealth : MonoBehaviour, IDamageable
         return isAlive;
     }
 
-    public virtual void Kill()//Instantly kill (environmental hazards, etc)
+    public virtual void Kill(bool disable = true)//Instantly kill (environmental hazards, etc)
     {
         isAlive = false;
         Health = 0;
@@ -39,6 +40,6 @@ public abstract class AbstractHealth : MonoBehaviour, IDamageable
         {
             onDeath.Invoke();
         }
-        gameObject.SetActive(false);
+        if(disable)gameObject.SetActive(false);
     }
 }
