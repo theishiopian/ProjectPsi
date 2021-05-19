@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tactical;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : AbstractHealth
 {
@@ -36,10 +37,11 @@ public class PlayerHealth : AbstractHealth
         base.Damage(amount);        
     }
 
-    public void Stun()//stun halves movement speed and teleport range
+    public void Die()
     {
-        //TODO
-        
+        if(Checkpoint.pos != null)transform.position = Checkpoint.pos;//send back to checkpoint
+        LevelSaveManager.currentInstance.SaveGame();
+        SceneManager.LoadScene("MainMenu");
     }
 
     private bool GetEffects()
@@ -52,6 +54,7 @@ public class PlayerHealth : AbstractHealth
 
     void Start()
     {
+        onDeath = Die;
         Health = startingHealth;
 
         if(!volume)

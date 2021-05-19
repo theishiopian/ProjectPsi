@@ -179,12 +179,19 @@ public class Menu : MonoBehaviour
 
     public void Exit(string input)
     {
-        OnQuit?.Invoke();
+        if(!pauseMode)
+        {
+            OnQuit?.Invoke();
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+            UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
+        }
+        else
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
     private int GetIndex()

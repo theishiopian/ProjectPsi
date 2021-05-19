@@ -12,6 +12,7 @@ public class LevelSaveManager : MonoBehaviour
     public List<GameObject> enemies;
     public List<GameObject> keycards;
     public List<DoorPanel> doors;
+    public List<Checkpoint> checkpoints;
 
     string saveFilePath;
     SaveData data;
@@ -45,10 +46,11 @@ public class LevelSaveManager : MonoBehaviour
             Debug.Log("Saving Player Position");
             data.playerPosition = GlobalVars.Get("player_rig").transform.position;
 
-            Debug.Log("Saving Enemy Positions");
+            Debug.Log("Saving Enemies");
             for (int i = 0; i < enemies.Count; i++)
             {
                 data.enemyPositions.Add(enemies[i].transform.position);
+                data.enemyLife.Add(enemies[i].activeSelf);
             }
 
             Debug.Log("Saving Keycard Positions");
@@ -61,6 +63,12 @@ public class LevelSaveManager : MonoBehaviour
             for (int i = 0; i < doors.Count; i++)
             {
                 data.doorsLocked.Add(doors[i].locked);
+            }
+
+            Debug.Log("Saving Checkpoints");
+            for (int i = 0; i < checkpoints.Count; i++)
+            {
+                data.checkpoints[i] = checkpoints[i].enabled;
             }
 
             Debug.Log("Checking for save file");
@@ -88,6 +96,7 @@ public class LevelSaveManager : MonoBehaviour
         for (int i = 0; i < enemies.Count; i++)
         {
             enemies[i].transform.position = data.enemyPositions[i];
+            enemies[i].SetActive(data.enemyLife[i]);
         }
 
         Debug.Log("Loading Keycards");
@@ -96,10 +105,16 @@ public class LevelSaveManager : MonoBehaviour
             keycards[i].transform.position = data.cardPositions[i];
         }
 
-        Debug.Log("Loading Door");
+        Debug.Log("Loading Doors");
         for (int i = 0; i < doors.Count; i++)
         {
             doors[i].locked = data.doorsLocked[i];
+        }
+
+        Debug.Log("Loading Checkpoints");
+        for (int i = 0; i < doors.Count; i++)
+        {
+            checkpoints[i].enabled = data.checkpoints[i];
         }
     }
 

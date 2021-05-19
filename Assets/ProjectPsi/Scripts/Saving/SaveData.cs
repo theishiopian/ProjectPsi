@@ -9,7 +9,11 @@ public class SaveData
 
     public List<Vector3> enemyPositions = new List<Vector3>();
 
+    public List<bool> enemyLife = new List<bool>();
+
     public List<bool> doorsLocked = new List<bool>();
 
     public List<Vector3> cardPositions = new List<Vector3>();
+
+    public List<bool> checkpoints = new List<bool>();
 }
