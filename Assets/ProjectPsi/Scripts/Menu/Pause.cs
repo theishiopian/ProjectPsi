@@ -28,6 +28,7 @@ public class Pause : MonoBehaviour
                 OnPause?.Invoke();
                 LevelSaveManager.currentInstance.SaveGame();
                 SceneManager.LoadScene(scene);
+                t = 0;
             }
         }
     }
