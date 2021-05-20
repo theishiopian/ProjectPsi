@@ -2230,7 +2230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  isImmortal: 1
+  isImmortal: 0
   disableOnDeath: 0
   regenRate: 10
   gracePeriod: 0.5
