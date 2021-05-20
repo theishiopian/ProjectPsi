@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6043578314214448983}
   - component: {fileID: 7237497775864058098}
   - component: {fileID: 4869577194208126008}
+  - component: {fileID: 3111195356032488697}
   m_Layer: 0
   m_Name: Cabinet_6drawer
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &3111195356032488697
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6382949602121860589}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2347753, y: 0.9592167, z: 0.5936626}
+  m_Center: {x: 0, y: 0.47960836, z: 0}

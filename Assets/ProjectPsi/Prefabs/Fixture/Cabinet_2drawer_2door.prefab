@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2033573835063515738}
   - component: {fileID: 3141101541381002751}
   - component: {fileID: 897228410250764597}
+  - component: {fileID: 4544261964371716949}
   m_Layer: 0
   m_Name: Cabinet_2drawer_2door
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &4544261964371716949
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689804289872822496}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2347753, y: 0.9584979, z: 0.5936626}
+  m_Center: {x: 0, y: 0.47924894, z: 0}
