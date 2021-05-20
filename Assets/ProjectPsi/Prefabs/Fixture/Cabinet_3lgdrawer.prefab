@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7409516056890407689}
   - component: {fileID: 5871629646806545580}
   - component: {fileID: 8545808184380391526}
+  - component: {fileID: 3702920166551079450}
   m_Layer: 0
   m_Name: Cabinet_3lgdrawer
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &3702920166551079450
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7897118245733343667}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.60981077, y: 0.95858026, z: 0.5936626}
+  m_Center: {x: 0, y: 0.47929013, z: 0}

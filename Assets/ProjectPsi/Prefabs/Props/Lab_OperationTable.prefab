@@ -2985,6 +2985,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8354573916966610419}
+  - component: {fileID: 1966330470090073772}
   m_Layer: 0
   m_Name: Lab_OperationTable
   m_TagString: Untagged
@@ -3057,6 +3058,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -44.961002, z: 0}
+--- !u!65 &1966330470090073772
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8699468052300414793}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5684198, y: 1.0161989, z: 1.9779243}
+  m_Center: {x: 0.0048941374, y: 0.5271121, z: -0.0006316303}
 --- !u!1 &8733968519664783616
 GameObject:
   m_ObjectHideFlags: 0
