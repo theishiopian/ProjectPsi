@@ -124,7 +124,7 @@ public class Menu : MonoBehaviour
     public void Resume(string input)
     {
         OnResume?.Invoke();
-
+        Pause.paused = false;
         SceneManager.LoadScene("Level1");
     }
 

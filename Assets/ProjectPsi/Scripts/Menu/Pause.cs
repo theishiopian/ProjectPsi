@@ -9,6 +9,7 @@ public delegate void PauseEvent();
 public class Pause : MonoBehaviour
 {
     public static PauseEvent OnPause;
+    public static bool paused = false;
     public SteamVR_Input_Sources controller;
     public SteamVR_Action_Boolean pauseButton;
     public float pauseDelay = 5f;
@@ -19,13 +20,14 @@ public class Pause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(pauseButton.GetState(controller))
+        if(!paused && pauseButton.GetState(controller))
         {
             t += Time.deltaTime;
 
             if(t > pauseDelay)
             {
                 OnPause?.Invoke();
+                paused = true;
                 LevelSaveManager.currentInstance.SaveGame();
                 SceneManager.LoadScene(scene);
                 t = 0;
