@@ -12,6 +12,7 @@ public class Turret : MonoBehaviour, IGun
     public Transform bracket;
     public Transform gun;
     public AudioSource gunSound;
+    public float damage = 10;
 
     [Header("Tracking Settings")]
     public LayerMask losMask;
@@ -20,7 +21,7 @@ public class Turret : MonoBehaviour, IGun
     private bool firing = false;
     private Transform target;
 
-    ////keep jsut in case
+    //keep just in case
     //private void Start()
     //{
 
@@ -99,7 +100,7 @@ public class Turret : MonoBehaviour, IGun
         {
             PlayerHealth health = GlobalVars.Get("player_rig").GetComponent<PlayerHealth>();
 
-            health.Damage(30);
+            health.Damage(damage);
         }
     }
 }
