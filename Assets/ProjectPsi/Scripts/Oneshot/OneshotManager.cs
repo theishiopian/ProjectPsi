@@ -23,7 +23,8 @@ public class OneshotManager : MonoBehaviour
     public int initialSize = 20;
 
     [Header("Default Settings")]
-    public SoundParams defaultSoundSettings;
+    public float volume = 1;
+    public float pitch = 1;
 
     [Header("Sound Events")]
     public SoundEventLibrary events;
@@ -32,6 +33,7 @@ public class OneshotManager : MonoBehaviour
 
     private GameObjectPool sourcePool;
     private Dictionary<string, AudioClip[]> sounds = new Dictionary<string, AudioClip[]>();
+    private SoundParams defaultSoundSettings;
 
     // Start is called before the first frame update
     void Awake()
@@ -61,6 +63,12 @@ public class OneshotManager : MonoBehaviour
             Debug.Log("Removing duplicate sound manager");
             Destroy(this.gameObject);
         }
+
+        defaultSoundSettings = new SoundParams
+        {
+            volume = this.volume,
+            pitch = this.pitch
+        };
     }
 
     public void PlaySound(string key, Vector3 position, SoundParams settings = null)
@@ -77,9 +85,14 @@ public class OneshotManager : MonoBehaviour
                 source.volume = settings.volume;
                 source.pitch = settings.pitch;
             }
-            source.enabled = true;
-            source.PlayOneShot(clips[Random.Range(0, clips.Length)]);
-            sourcePool.Recycle();
+            Debug.Log("Playing sound on " + source.gameObject.name);
+
+            AudioClip clip = clips[Random.Range(0, clips.Length)];
+
+            Debug.Log(source);
+
+            source.clip = clip;
+            source.Play();
         }
         else
         {
@@ -93,5 +106,6 @@ public class OneshotManager : MonoBehaviour
 
         toClean.volume = defaultSoundSettings.volume;
         toClean.pitch = defaultSoundSettings.pitch;
+        toClean.clip = null;
     }
 }

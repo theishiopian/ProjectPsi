@@ -24,8 +24,6 @@ public class GameObjectPool
     private Queue<GameObject> inUse;
     private GameObject prefab;
 
-    private GameObject cache;//this var is used for internal operations that require storing a game object
-
     /// <summary>
     /// The Constructor, used to initilize a new Object Pool
     /// </summary>
@@ -61,15 +59,11 @@ public class GameObjectPool
     /// <returns>The object that was activated, so you can do stuff to it</returns>
     public GameObject Activate(Vector3 pos, Quaternion rot, CleanupOperation recycleOp = null)
     {
-        cache = available.Dequeue();
-        cache.transform.position = pos;
-        cache.transform.rotation = rot;
-        cache.SetActive(true);
-        inUse.Enqueue(cache);
-        
-        if(available.Count == 0)
+        GameObject toActivate;
+        if (available.Count == 1)
         {
-            if(shouldGrow)
+            //Debug.LogWarning("Out of Objects");
+            if (shouldGrow)
             {
                 GrowPool(prefab);
             }
@@ -79,7 +73,19 @@ public class GameObjectPool
             }
         }
 
-        return cache;
+        //Debug.Log("Activating");
+        //DebugState();
+        toActivate = available.Dequeue();
+        //Debug.Log("Activating " + toActivate.name);
+        toActivate.transform.position = pos;
+        toActivate.transform.rotation = rot;
+        toActivate.SetActive(true);
+        inUse.Enqueue(toActivate);
+
+        //Debug.Log("Done Activating");
+        //DebugState();
+
+        return toActivate;
     }
 
     /// <summary>
@@ -88,28 +94,46 @@ public class GameObjectPool
     /// <param name="cleanup">An optional delegate for recycling old objects</param>
     public void Recycle(CleanupOperation cleanup = null)
     {
-        cache = inUse.Dequeue();
+        GameObject toRecycle;
+        //Debug.Log("Recycling");
+        //DebugState();
+        toRecycle = inUse.Dequeue();
+        //Debug.Log("Recycling " + toRecycle.name);
 
         if(cleanup != null)
         {
-            cleanup.Invoke(cache);
+            cleanup.Invoke(toRecycle);
         }
 
-        cache.SetActive(false);
-        available.Enqueue(cache);
+        toRecycle.SetActive(false);
+        available.Enqueue(toRecycle);
+        //Debug.Log("Done Recyling");
+        //DebugState();
     }
 
     public int GetPoolSize()
     {
         return available.Count + inUse.Count;
     }
-
+    int num = 0;
     //internal method for creating objects for the pool
     private void GrowPool(GameObject prefab)
     {
-        cache = Object.Instantiate(prefab, parent);
-        cache.hideFlags = HideFlags.HideInHierarchy;//makes your pooled objects invisible in the hierarchy, comment out to be able to see them
-        available.Enqueue(cache);
-        cache.SetActive(false);
+        GameObject toMake;
+        //Debug.Log("Growing Pool");
+        //DebugState();
+        toMake = Object.Instantiate(prefab, parent);
+        toMake.name = (++num).ToString();
+        //toMake.hideFlags = HideFlags.HideInHierarchy;//makes your pooled objects invisible in the hierarchy, comment out to be able to see them
+        available.Enqueue(toMake);
+        toMake.SetActive(false);
+        //Debug.Log("Done Growing");
+        //DebugState();
+    }
+
+    private void DebugState()
+    {
+        Debug.Log("Available: " + available.Count);
+        Debug.Log("In Use: " + inUse.Count);
     }
 }

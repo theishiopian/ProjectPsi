@@ -221,7 +221,7 @@ public class Telekinesis : MonoBehaviour
             if (Vector3.Distance(hand.position, grabTarget.transform.position) < grabDistance)//is close enough to hand
             {
                 //attatch to hand
-                Debug.Log("attatching");
+                //Debug.Log("attatching");
                 lifting = false;
                 grabbing = false;
                 handScript.AttachObject(grabTarget.gameObject, GrabTypes.Grip, attachmentFlags);
@@ -252,7 +252,7 @@ public class Telekinesis : MonoBehaviour
         if (soundLoop.isPlaying)
         {
             stopSound = true;
-            Debug.Log("stoping");
+//            Debug.Log("stoping");
         }
     }
 
