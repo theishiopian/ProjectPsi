@@ -231,6 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 25
   isImmortal: 0
+  disableOnDeath: 1
   attackAngle: 45
   attackDistance: 2
   armor: 50
@@ -243,8 +244,8 @@ MonoBehaviour:
   indicator: {fileID: 1046257703628165377}
   attackMat: {fileID: 2100000, guid: 047211f56d9efb948b6a2b95dd1f3742, type: 2}
   wanderMat: {fileID: 2100000, guid: 94ec4675e5dae5f41918c3e026202d59, type: 2}
-  chaseMat: {fileID: 2100000, guid: feb7ec65002402e4cbcc1cdcc0a7a6fb, type: 2}
-  stunMat: {fileID: 2100000, guid: 7e90f10e44a186a49a00679d068515ed, type: 2}
+  chaseMat: {fileID: 2100000, guid: 63fbcf6161512314f92a3a9affa7ffd2, type: 2}
+  stunMat: {fileID: 2100000, guid: 1aa12f687303d8d46bc6b2da911ab5cf, type: 2}
   player: {fileID: 0}
   state: 0
 --- !u!1 &1046257703969943173
