@@ -257,6 +257,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cb5a0565a540314c963144db11c6e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingHealth: 20
+  isImmortal: 0
+  disableOnDeath: 1
   bullets: {fileID: 9003866410209914697}
   muzzleflash: {fileID: 9003866411240838606}
   shells: {fileID: 9003866410410161781}
@@ -264,6 +267,7 @@ MonoBehaviour:
   bracket: {fileID: 9003866410568320412}
   gun: {fileID: 9003866409801239096}
   gunSound: {fileID: 6888778643551565023}
+  damage: 10
   losMask:
     serializedVersion: 2
     m_Bits: 139265

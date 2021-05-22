@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour, IGun
+public class Turret : AbstractHealth, IGun
 {
     [Header("Objects")]
     public ParticleSystem bullets;
@@ -92,7 +92,6 @@ public class Turret : MonoBehaviour, IGun
         gunSound.Stop();
         firing = false;
     }
-
 
     public void Fire(GameObject other)
     {
