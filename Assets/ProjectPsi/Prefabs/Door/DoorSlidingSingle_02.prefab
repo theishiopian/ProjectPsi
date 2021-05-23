@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startLocked: 0
   door: {fileID: 1385556361933446959}
-  openPos: {x: 0, y: 2, z: 0}
+  openPos: {x: 0, y: 2.25, z: 0}
   openCurve:
     serializedVersion: 2
     m_Curve:
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfd8c9100cc3744fbedcf58aa579c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 8070947059798736410}
   tags:
   - Player
   - Enemy
@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: 8079913392765783355}
   - component: {fileID: 2518453388604577608}
   - component: {fileID: 6379306157976207379}
+  - component: {fileID: 888434173383496480}
   m_Layer: 0
   m_Name: door mesh
   m_TagString: Untagged
@@ -280,3 +281,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _priority: 0
   _material: {fileID: 11400000, guid: 63bd650b728d9784eb0f3593d052b616, type: 2}
+--- !u!208 &888434173383496480
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9095672653746074250}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.05, y: 1.312, z: 0.70000005}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.2370001, z: 0}
+  m_TimeToStationary: 0.5

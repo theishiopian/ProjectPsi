@@ -85,11 +85,11 @@ public class OneshotManager : MonoBehaviour
                 source.volume = settings.volume;
                 source.pitch = settings.pitch;
             }
-            Debug.Log("Playing sound on " + source.gameObject.name);
+            //Debug.Log("Playing sound on " + source.gameObject.name);
 
             AudioClip clip = clips[Random.Range(0, clips.Length)];
 
-            Debug.Log(source);
+            //Debug.Log(source);
 
             source.clip = clip;
             source.Play();
