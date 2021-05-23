@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 5991767596788379531}
   - component: {fileID: 6379306157976207379}
   - component: {fileID: 814146604075731283}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: door mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

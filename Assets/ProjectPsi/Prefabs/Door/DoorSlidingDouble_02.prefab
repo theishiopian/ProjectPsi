@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6053639828333794378}
   - component: {fileID: 4130095693033363231}
   - component: {fileID: 5890696863810329703}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: DoorMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ NavMeshObstacle:
   m_Carve: 0
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 1.2370001, z: 0}
-  m_TimeToStationary: 0.5
+  m_TimeToStationary: 0.1
 --- !u!1 &5981756133072670624
 GameObject:
   m_ObjectHideFlags: 0

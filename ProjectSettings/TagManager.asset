@@ -33,7 +33,7 @@ TagManager:
   - WBCollision
   - NavMesh
   - Walls
-  - PlayerTarget
+  - Door
   - Enemy
   - EnemyBullet
   - Transparent
