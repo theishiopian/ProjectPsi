@@ -234,7 +234,7 @@ MonoBehaviour:
   disableOnDeath: 1
   attackAngle: 45
   attackDistance: 2
-  armor: 50
+  armor: 30
   centerOfMass: {x: 0, y: -1, z: 0}
   stunTime: 1
   killDelay: 1

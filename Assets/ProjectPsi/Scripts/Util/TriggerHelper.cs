@@ -7,7 +7,7 @@ using System;
 public class TriggerHelper : MonoBehaviour
 {
     public MonoBehaviour target;
-    public new string tag;
+    public string[] tags;
     public bool useTag = false;
 
     private void Start()
@@ -20,16 +20,29 @@ public class TriggerHelper : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!useTag || other.CompareTag(tag)) (target as ITriggerListener).OnEnter(other);
+        if (!useTag || CompareTags(other.tag, tags)) (target as ITriggerListener).OnEnter(other);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (!useTag || other.CompareTag(tag)) (target as ITriggerListener).OnExit(other);
+        if (!useTag || CompareTags(other.tag, tags)) (target as ITriggerListener).OnExit(other);
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (!useTag || other.CompareTag(tag)) (target as ITriggerListener).OnStay(other);
+        if (!useTag || CompareTags(other.tag, tags)) (target as ITriggerListener).OnStay(other);
+    }
+
+    private bool CompareTags(string toCompare, string[] tags)
+    {
+        foreach (string tag in tags)
+        {
+            if (!tag.Equals(toCompare))
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

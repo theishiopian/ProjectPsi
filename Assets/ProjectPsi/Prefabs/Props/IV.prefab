@@ -361,6 +361,7 @@ GameObject:
   - component: {fileID: 933187219600200364}
   - component: {fileID: 8755581035984601954}
   - component: {fileID: 7715417786459188820}
+  - component: {fileID: -3202087775687418195}
   m_Layer: 13
   m_Name: IV
   m_TagString: Liftable
@@ -468,6 +469,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.3
   m_Center: {x: 0, y: 1.87, z: 0}
+--- !u!208 &-3202087775687418195
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4080964494332909178}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &4301898218306259337
 GameObject:
   m_ObjectHideFlags: 0

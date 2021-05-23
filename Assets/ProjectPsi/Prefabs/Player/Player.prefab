@@ -220,7 +220,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 4144125494508150189}
-  tag: Item
+  tags:
+  - Item
   useTag: 1
 --- !u!1 &4144125494239634577
 GameObject:
@@ -485,7 +486,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 6602711961659891669}
-  tag: Item
+  tags:
+  - Item
   useTag: 1
 --- !u!1 &6602711960317503209
 GameObject:
@@ -2230,7 +2232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  isImmortal: 0
+  isImmortal: 1
   disableOnDeath: 0
   regenRate: 10
   gracePeriod: 0.5

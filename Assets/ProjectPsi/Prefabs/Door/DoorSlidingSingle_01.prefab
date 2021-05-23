@@ -96,7 +96,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  panel: {fileID: 0}
+  panels: []
+  entryTags: []
 --- !u!1 &7498290369918074110
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,9 +143,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfd8c9100cc3744fbedcf58aa579c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 8070947059798736410}
-  tag: 
-  useTag: 0
+  target: {fileID: 0}
+  tags:
+  - Player
+  - Enemy
+  useTag: 1
 --- !u!65 &6753178247807948861
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -280,6 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 10
   isImmortal: 0
+  disableOnDeath: 1
   armor: 30
 --- !u!114 &6379306157976207379
 MonoBehaviour:

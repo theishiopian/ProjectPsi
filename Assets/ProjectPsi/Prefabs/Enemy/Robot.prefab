@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d857c4e35ece99649838484c6566450c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 75
+  startingHealth: 20
   isImmortal: 0
   disableOnDeath: 1
   gunPoint: {fileID: 9088118439799351541}
@@ -245,7 +245,7 @@ MonoBehaviour:
     type: 3}
   cleanupTime: 5
   poolSize: 5
-  armor: 20
+  armor: 60
   centerOfMass: {x: 0, y: -1, z: 0}
   stunTime: 3
   indicator: {fileID: 8963068835330227843}

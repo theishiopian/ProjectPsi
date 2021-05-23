@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6742005845138290202}
   - component: {fileID: 4787573494132563947}
   - component: {fileID: 7137182608641999190}
+  - component: {fileID: 3265608661345390849}
   m_Layer: 13
   m_Name: Forklift
   m_TagString: Liftable
@@ -90,6 +91,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.62187195, z: 1.6097946}
   m_Center: {x: 0, y: 1.911253, z: -0.15785599}
+--- !u!208 &3265608661345390849
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2521862596865991053}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2584657169781663854
 GameObject:
   m_ObjectHideFlags: 0

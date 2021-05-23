@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1757710006949063691}
   - component: {fileID: 1757710006949063688}
   - component: {fileID: 1757710006949063689}
+  - component: {fileID: 9025256296978368169}
   m_Layer: 22
   m_Name: LaserBeamCollider
   m_TagString: Untagged
@@ -5039,6 +5040,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!208 &9025256296978368169
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757710006949063694}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.10300001, y: 0.09, z: 0.095000006}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.017, y: 0.027, z: 0.013}
+  m_TimeToStationary: 0.5
 --- !u!1 &2532619544953722881
 GameObject:
   m_ObjectHideFlags: 0

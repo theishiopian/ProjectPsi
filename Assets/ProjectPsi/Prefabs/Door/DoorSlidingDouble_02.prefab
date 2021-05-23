@@ -153,9 +153,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfd8c9100cc3744fbedcf58aa579c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 957451169416247559}
-  tag: 
-  useTag: 0
+  target: {fileID: 0}
+  tags:
+  - Player
+  - Enemy
+  useTag: 1
 --- !u!65 &3610616988212074088
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -277,4 +279,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  panel: {fileID: 0}
+  panels: []
+  entryTags: []

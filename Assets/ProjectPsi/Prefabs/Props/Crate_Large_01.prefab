@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6113689064449562881}
   - component: {fileID: 1187501053015533361}
   - component: {fileID: 1201359294006641809}
+  - component: {fileID: -7678053868072038939}
   m_Layer: 13
   m_Name: Crate_Large_01
   m_TagString: Liftable
@@ -177,3 +178,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 2
+--- !u!208 &-7678053868072038939
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5948421244441685219}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.637, y: 0.642, z: 0.625}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.025, z: 0}
+  m_TimeToStationary: 0.5

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3141101541381002751}
   - component: {fileID: 897228410250764597}
   - component: {fileID: 4544261964371716949}
+  - component: {fileID: -3165022195259021716}
   m_Layer: 0
   m_Name: Cabinet_2drawer_2door
   m_TagString: Untagged
@@ -93,3 +94,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2347753, y: 0.9584979, z: 0.5936626}
   m_Center: {x: 0, y: 0.47924894, z: 0}
+--- !u!208 &-3165022195259021716
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689804289872822496}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.61700004, y: 0.54300004, z: 0.29700002}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.54300004, z: 0}
+  m_TimeToStationary: 0.5

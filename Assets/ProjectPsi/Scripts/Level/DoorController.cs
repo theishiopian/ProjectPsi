@@ -15,6 +15,7 @@ public class DoorController : MonoBehaviour, ITriggerListener
     public AnimationCurve openCurve;
     public AnimationCurve closeCurve;
     public DoorPanel[] panels;
+    public string[] entryTags;
 
     private bool detected = false;
     private float t = 0;//0-1 closed-open
@@ -111,5 +112,4 @@ public class DoorController : MonoBehaviour, ITriggerListener
     {
         detected = true;
     }
-
 }
