@@ -97,7 +97,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   panels: []
-  entryTags: []
 --- !u!1 &7498290369918074110
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,14 +35,15 @@ public class TriggerHelper : MonoBehaviour
 
     private bool CompareTags(string toCompare, string[] tags)
     {
+        bool e = false;
         foreach (string tag in tags)
         {
-            if (!tag.Equals(toCompare))
+            if (tag.Equals(toCompare))
             {
-                return false;
+                e = true;
             }
         }
 
-        return true;
+        return e;
     }
 }
