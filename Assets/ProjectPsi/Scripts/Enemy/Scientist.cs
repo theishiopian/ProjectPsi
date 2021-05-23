@@ -151,7 +151,7 @@ public class Scientist : AbstractHealth, IAttackAgent
             case SciState.STUNNED: indicator.material = stunMat; break;
         }
 
-        Debug.Log(state);
+        //Debug.Log(state);
 
         if(stunTimer <= 0 && !aiEnabled)
         {
