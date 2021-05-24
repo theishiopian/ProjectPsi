@@ -58,7 +58,7 @@ public class Teleport : MonoBehaviour
                 Debug.Log("teleporting");
 
                 //teleport with offset
-                body.position += teleportVector;
+                body.position += (teleportVector + (Vector3.up * 0.1f));
             }
             arc.gameObject.SetActive(false);
         }

@@ -23,7 +23,7 @@ public abstract class AbstractHealth : MonoBehaviour, IDamageable
         //Debug.Log("health at: " + Health);
         if (Health <= 0 && !isImmortal)
         {
-            Kill(disableOnDeath);
+            Kill();
         }
     }
 
@@ -32,7 +32,7 @@ public abstract class AbstractHealth : MonoBehaviour, IDamageable
         return isAlive;
     }
 
-    public virtual void Kill(bool disable = true)//Instantly kill (environmental hazards, etc)
+    public virtual void Kill()//Instantly kill (environmental hazards, etc)
     {
         isAlive = false;
         Health = 0;
@@ -40,6 +40,6 @@ public abstract class AbstractHealth : MonoBehaviour, IDamageable
         {
             onDeath.Invoke();
         }
-        if(disable)gameObject.SetActive(false);
+        if(disableOnDeath)gameObject.SetActive(false);
     }
 }
