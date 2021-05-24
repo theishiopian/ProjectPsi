@@ -8,6 +8,8 @@ public class LevelSaveManager : MonoBehaviour
 {
     public static LevelSaveManager currentInstance;//weak singleton
 
+    public bool enabled = true;
+
     [Header("Savable Objects")]
     public List<GameObject> enemies;
     public List<GameObject> keycards;
@@ -26,92 +28,101 @@ public class LevelSaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(ReadFile())
+        if(enabled)
         {
-            LoadGame();
-        }
-        else
-        {
-            Debug.Log("no save file detected at " + saveFilePath + ", a new one will be created upon saving");
+            if (ReadFile())
+            {
+                LoadGame();
+            }
+            else
+            {
+                Debug.Log("no save file detected at " + saveFilePath + ", a new one will be created upon saving");
+            }
         }
     }
 
     public void SaveGame()
     {
-        Debug.Log("Save Sequence Initiated");
-        data = new SaveData();
-
-        Debug.Log("Saving Player Position");
-        data.playerPosition = GlobalVars.Get("player_rig").transform.position;
-
-        Debug.Log("Saving Enemies");
-        for (int i = 0; i < enemies.Count; i++)
+        if(enabled)
         {
-            data.enemyPositions.Add(enemies[i].transform.position);
-            data.enemyLife.Add(enemies[i].activeSelf);
-        }
+            Debug.Log("Save Sequence Initiated");
+            data = new SaveData();
 
-        Debug.Log("Saving Keycard Positions");
-        for (int i = 0; i < keycards.Count; i++)
-        {
-            data.cardPositions.Add(keycards[i].transform.position);
-        }
+            Debug.Log("Saving Player Position");
+            data.playerPosition = GlobalVars.Get("player_rig").transform.position;
 
-        Debug.Log("Saving Door Lock States");
-        for (int i = 0; i < doors.Count; i++)
-        {
-            data.doorsLocked.Add(doors[i].locked);
-        }
+            Debug.Log("Saving Enemies");
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                data.enemyPositions.Add(enemies[i].transform.position);
+                data.enemyLife.Add(enemies[i].activeSelf);
+            }
 
-        Debug.Log("Saving Checkpoints");
-        for (int i = 0; i < checkpoints.Count; i++)
-        {
-            data.checkpoints.Add(checkpoints[i].enabled);
-        }
+            Debug.Log("Saving Keycard Positions");
+            for (int i = 0; i < keycards.Count; i++)
+            {
+                data.cardPositions.Add(keycards[i].transform.position);
+            }
 
-        Debug.Log("Checking for save file");
-        if (!File.Exists(saveFilePath))
-        {
-            Debug.Log("Creating new save file at " + saveFilePath);
-        }
-        else
-        {
-            Debug.Log("Saving to " + saveFilePath);
-        }
+            Debug.Log("Saving Door Lock States");
+            for (int i = 0; i < doors.Count; i++)
+            {
+                data.doorsLocked.Add(doors[i].locked);
+            }
 
-        WriteFile(data);
+            Debug.Log("Saving Checkpoints");
+            for (int i = 0; i < checkpoints.Count; i++)
+            {
+                data.checkpoints.Add(checkpoints[i].enabled);
+            }
+
+            Debug.Log("Checking for save file");
+            if (!File.Exists(saveFilePath))
+            {
+                Debug.Log("Creating new save file at " + saveFilePath);
+            }
+            else
+            {
+                Debug.Log("Saving to " + saveFilePath);
+            }
+
+            WriteFile(data);
+        }
     }
 
     public void LoadGame()
     {
-        Debug.Log("Load sequence initiated...");
-
-        Debug.Log("Loading Player");
-        GlobalVars.Get("player_rig").transform.position = data.playerPosition + Vector3.up;
-
-        Debug.Log("Loading Enemies");
-        for (int i = 0; i < enemies.Count; i++)
+        if(enabled)
         {
-            enemies[i].transform.position = data.enemyPositions[i];
-            enemies[i].SetActive(data.enemyLife[i]);
-        }
+            Debug.Log("Load sequence initiated...");
 
-        Debug.Log("Loading Keycards");
-        for (int i = 0; i < keycards.Count; i++)
-        {
-            keycards[i].transform.position = data.cardPositions[i];
-        }
+            Debug.Log("Loading Player");
+            GlobalVars.Get("player_rig").transform.position = data.playerPosition + Vector3.up;
 
-        Debug.Log("Loading Doors");
-        for (int i = 0; i < doors.Count; i++)
-        {
-            doors[i].locked = data.doorsLocked[i];
-        }
+            Debug.Log("Loading Enemies");
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                enemies[i].transform.position = data.enemyPositions[i];
+                enemies[i].SetActive(data.enemyLife[i]);
+            }
 
-        Debug.Log("Loading Checkpoints");
-        for (int i = 0; i < doors.Count; i++)
-        {
-            checkpoints[i].enabled = data.checkpoints[i];
+            Debug.Log("Loading Keycards");
+            for (int i = 0; i < keycards.Count; i++)
+            {
+                keycards[i].transform.position = data.cardPositions[i];
+            }
+
+            Debug.Log("Loading Doors");
+            for (int i = 0; i < doors.Count; i++)
+            {
+                doors[i].locked = data.doorsLocked[i];
+            }
+
+            Debug.Log("Loading Checkpoints");
+            for (int i = 0; i < doors.Count; i++)
+            {
+                checkpoints[i].enabled = data.checkpoints[i];
+            }
         }
     }
 
