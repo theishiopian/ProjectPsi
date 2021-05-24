@@ -5,23 +5,17 @@ using BehaviorDesigner.Runtime.Tactical;
 using BehaviorDesigner.Runtime;
 using UnityEngine.AI;
 
-public class Robot : AbstractHealth, IAttackAgent
+public class Robot : AbstractHealth, IAttackAgent, IGun
 {
-    [Header("Transforms")]
-    public Transform gunPoint;
-
     [Header("AI Settings")]
     public float attackAngle = 45;
     public float attackDistance = 10;
     public float reloadTime = 1;
     public float launchForce = 25;
 
-    [Header("Object Pool Settings")]
-    public GameObject projectilePrefab;//make pool
-    public float cleanupTime = 20;
-    public int poolSize = 5;
-
     [Header("Combat Settings")]
+    public ParticleSystem gun;
+    public float damage = 5;
     public float armor = 10;
     public Vector3 centerOfMass;
     public float stunTime = 2;
@@ -32,9 +26,6 @@ public class Robot : AbstractHealth, IAttackAgent
     public Material patrolMat;
     public Material chaseMat;
     public Material stunMat;
-
-    private Queue<GameObject> idlePool;
-    private Queue<GameObject> activePool;
 
     private Rigidbody body;//used for physical responses
     private BehaviorTree ai;
@@ -47,21 +38,20 @@ public class Robot : AbstractHealth, IAttackAgent
 
     public void Attack(Vector3 targPosition)
     {
-        Debug.Log("Attack");
         reloadTimer = reloadTime;
+        OneshotManager.instance.PlaySound("shotgun_fire", gun.transform.position);
+        gun.Play();
+    }
 
-        if(idlePool.Count == 0)
+    //called by teh aprticle system bridge
+    public void Fire(GameObject other)
+    {
+        if (other.CompareTag("Player"))
         {
-            Cleanup();
+            PlayerHealth health = GlobalVars.Get("player_rig").GetComponent<PlayerHealth>();
+
+            health.Damage(damage);
         }
-
-        GameObject toShoot = idlePool.Dequeue();
-        toShoot.SetActive(true);
-        toShoot.transform.parent = null;//todo master parent for robot?
-        activePool.Enqueue(toShoot);
-
-        toShoot.transform.rotation = gunPoint.rotation;
-        toShoot.GetComponent<Rigidbody>().AddForce(toShoot.transform.forward * launchForce, ForceMode.Impulse);
     }
 
     public float AttackAngle()
@@ -79,20 +69,6 @@ public class Robot : AbstractHealth, IAttackAgent
         return reloadTimer <= 0 && stunTimer <=0;
     }
 
-    void Awake()
-    {
-        //do pool stuff here
-        idlePool = new Queue<GameObject>();
-        activePool = new Queue<GameObject>();
-        GameObject p;
-        for (int i = 0; i < poolSize; i++)
-        {
-            p = Instantiate(projectilePrefab, gunPoint.position, gunPoint.rotation, gunPoint);
-            idlePool.Enqueue(p);
-            p.SetActive(false);
-        }
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -106,17 +82,6 @@ public class Robot : AbstractHealth, IAttackAgent
         agent = GetComponent<NavMeshAgent>();
 
         ai.SetVariableValue("State", 0);
-    }
-
-    void Cleanup()
-    {
-        GameObject toCleanup = activePool.Dequeue();
-
-        toCleanup.transform.parent = gunPoint;
-        toCleanup.transform.localPosition = Vector3.zero;
-        toCleanup.SetActive(false);
-
-        idlePool.Enqueue(toCleanup);
     }
 
     public enum RobotState
@@ -168,18 +133,7 @@ public class Robot : AbstractHealth, IAttackAgent
         //Debug.Log(state);
 
         reloadTimer = Mathf.Clamp(reloadTimer - Time.deltaTime, 0, reloadTime);
-        cleanupTimer = Mathf.Clamp(cleanupTimer - Time.deltaTime, 0, cleanupTime);
         stunTimer = Mathf.Clamp(stunTimer - Time.deltaTime, 0, stunTime);
-
-        if (cleanupTimer <=0)
-        {
-            cleanupTimer = cleanupTime;
-
-            if(activePool.Count > 0)
-            {
-                Cleanup();
-            }
-        }
 
         if(stunTimer <= 0 && !aiEnabled)
         {

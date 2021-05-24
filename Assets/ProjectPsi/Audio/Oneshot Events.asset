@@ -27,3 +27,6 @@ MonoBehaviour:
   - key: door_open
     clips:
     - {fileID: 8300000, guid: b65bcb47adf3c264b8bf49756b42db01, type: 3}
+  - key: shotgun_fire
+    clips:
+    - {fileID: 8300000, guid: a3e247dc2403a964c900a11a9388dbd4, type: 3}
