@@ -87,7 +87,7 @@ public class LevelSaveManager : MonoBehaviour
         Debug.Log("Load sequence initiated...");
 
         Debug.Log("Loading Player");
-        GlobalVars.Get("player_rig").transform.position = data.playerPosition;
+        GlobalVars.Get("player_rig").transform.position = data.playerPosition + Vector3.up;
 
         Debug.Log("Loading Enemies");
         for (int i = 0; i < enemies.Count; i++)
