@@ -61,11 +61,15 @@ public class Teleport : MonoBehaviour
                 body.position += (teleportVector + (Vector3.up * 0.1f));
             }
             arc.gameObject.SetActive(false);
+            downLine.SetPosition(0, Vector3.zero);
+            downLine.SetPosition(1, Vector3.zero);
         }
 
-        if(snapTurnLeft.GetState(controller) || snapTurnRight.GetState(controller))
+        if((snapTurnLeft.GetState(controller) || snapTurnRight.GetState(controller)))
         {
             arc.gameObject.SetActive(false);
+            downLine.SetPosition(0, Vector3.zero);
+            downLine.SetPosition(1, Vector3.zero);
         }
     }
 
@@ -99,6 +103,11 @@ public class Teleport : MonoBehaviour
                     downLine.SetPosition(0, oldPoint + dir * downLineOffset);
                     downLine.SetPosition(1, hit.point);
                 }
+            }
+            else
+            {
+                downLine.SetPosition(0, Vector3.zero);
+                downLine.SetPosition(1, Vector3.zero);
             }
 
             groundPos = GetGroundPoint();
