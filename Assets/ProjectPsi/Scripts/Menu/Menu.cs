@@ -21,10 +21,13 @@ public class Menu : MonoBehaviour
 
     public TextMeshPro volumeText;
 
+    public MeshRenderer smoothMoveCheck;
+
     public bool pauseMode = false;
     public bool debugMode = false;
 
     public static event MenuEvent OnLoad;
+    public static event MenuEvent OnFinishedLoad;
 
     public static event MenuEvent OnMain;
     public static event MenuEvent OnOptions;
@@ -57,6 +60,7 @@ public class Menu : MonoBehaviour
             Debug.LogError("smoothmove key not found");
             PlayerPrefs.SetInt("smoothmove", 1);
         }
+
         AudioListener.volume = PlayerPrefs.GetFloat("volume");
         MoveVolumeIndicator();
 
@@ -71,6 +75,10 @@ public class Menu : MonoBehaviour
         {
             Debug.LogWarning("No save file located");
         }
+
+        smoothMoveCheck.enabled = PlayerPrefs.GetInt("smoothmove") == 1 ? false : true;
+
+        OnFinishedLoad?.Invoke();
     }
 
     public void ChangeVolume(string input)
