@@ -7,11 +7,9 @@ using static UnityEngine.JsonUtility;
 public class LevelSaveManager : MonoBehaviour
 {
     public static LevelSaveManager currentInstance;//weak singleton
-    public static Vector3 checkpoint;
-    public static bool hasDied = false;
 
     public new bool enabled = true;
-
+    public Transform playerDefaultSpawn;
     [Header("Savable Objects")]
     public List<GameObject> enemies;
     public List<GameObject> keycards;
@@ -38,7 +36,7 @@ public class LevelSaveManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("no save file detected at " + saveFilePath + ", a new one will be created upon saving");
+                Debug.LogWarning("no save file detected at " + saveFilePath + ", a new one will be created upon saving");
             }
         }
     }
@@ -51,15 +49,7 @@ public class LevelSaveManager : MonoBehaviour
             data = new SaveData();
 
             Debug.Log("Saving Player Position");
-            if(hasDied)
-            {
-                data.playerPosition = checkpoint;
-                hasDied = false;
-            }
-            else
-            {
-                data.playerPosition = GlobalVars.Get("player_rig").transform.position;
-            }
+            data.playerPosition = GlobalVars.Get("player_rig").transform.position;    
 
             Debug.Log("Saving Enemies");
             for (int i = 0; i < enemies.Count; i++)

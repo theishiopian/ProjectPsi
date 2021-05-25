@@ -39,8 +39,7 @@ public class PlayerHealth : AbstractHealth
 
     public void Die()
     {
-        LevelSaveManager.hasDied = true;
-        LevelSaveManager.currentInstance.SaveGame();
+        //load without saving
         SceneManager.LoadScene("MainMenu");
     }
 

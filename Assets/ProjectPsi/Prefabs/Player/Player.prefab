@@ -796,7 +796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initializeSteamVROnAwake: 1
-  doNotDestroy: 1
+  doNotDestroy: 0
   steamvr_render: {fileID: 0}
 --- !u!114 &7468514020835327381
 MonoBehaviour:
@@ -2124,7 +2124,7 @@ MonoBehaviour:
   headsetOnHead:
     actionPath: /actions/default/in/HeadsetOnHead
     needsReinit: 0
-  allowToggleTo2D: 1
+  allowToggleTo2D: 0
 --- !u!54 &8133860311344099972
 Rigidbody:
   m_ObjectHideFlags: 0

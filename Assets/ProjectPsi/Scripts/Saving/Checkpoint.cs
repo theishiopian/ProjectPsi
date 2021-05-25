@@ -8,7 +8,7 @@ public class Checkpoint : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            LevelSaveManager.checkpoint = other.transform.root.position;
+            LevelSaveManager.currentInstance.SaveGame();
             enabled = false;
         }
     }
