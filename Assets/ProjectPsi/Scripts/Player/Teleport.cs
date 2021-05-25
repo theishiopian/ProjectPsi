@@ -55,7 +55,7 @@ public class Teleport : MonoBehaviour
             //teleport here
             if (canTeleport)
             {
-                Debug.Log("teleporting");
+                //Debug.Log("teleporting");
 
                 //teleport with offset
                 body.position += (teleportVector + (Vector3.up * 0.1f));
@@ -80,7 +80,7 @@ public class Teleport : MonoBehaviour
 
         if(didHit)
         {
-            Debug.Log("Arc hit: " + hit.collider);
+            //Debug.Log("Arc hit: " + hit.collider);
 
             if (!hit.collider.gameObject.layer.Equals(LayerMask.NameToLayer("NavMesh")))
             {
@@ -104,7 +104,7 @@ public class Teleport : MonoBehaviour
                 {
                     downLine.SetPosition(0, oldPoint + dir * downLineOffset);
                     downLine.SetPosition(1, hit.point);
-                    Debug.Log("Line hit: " + hit.collider);
+                    //Debug.Log("Line hit: " + hit.collider);
                 }
             }
             else

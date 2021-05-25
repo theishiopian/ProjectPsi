@@ -43,7 +43,7 @@ public class Scientist : AbstractHealth, IAttackAgent
     {
         if(waitTimer <= 0)
         {
-            Debug.Log("Sleep Attack");
+            //Debug.Log("Sleep Attack");
             attacking = true;
             killTimer = 1;
         }
