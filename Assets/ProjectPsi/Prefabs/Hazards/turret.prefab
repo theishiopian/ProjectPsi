@@ -271,7 +271,7 @@ MonoBehaviour:
   damage: 10
   losMask:
     serializedVersion: 2
-    m_Bits: 139265
+    m_Bits: 993281
 --- !u!135 &6888778643551565020
 SphereCollider:
   m_ObjectHideFlags: 0
