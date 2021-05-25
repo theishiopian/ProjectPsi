@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7341106783192742150}
   - component: {fileID: 2269563710708423419}
   - component: {fileID: 4814549641074493051}
-  m_Layer: 2
+  m_Layer: 19
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 7348875149376837822}
   - component: {fileID: 4872760386781783121}
   - component: {fileID: 8946362065545551615}
-  m_Layer: 2
+  m_Layer: 19
   m_Name: bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 6888778643551565020}
   - component: {fileID: 6888778643551565023}
   - component: {fileID: 8300396718687080598}
-  m_Layer: 2
+  m_Layer: 19
   m_Name: turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ MonoBehaviour:
   damage: 10
   losMask:
     serializedVersion: 2
-    m_Bits: 993281
+    m_Bits: 468993
 --- !u!135 &6888778643551565020
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 3494713765684902103}
   - component: {fileID: 3346279918135543086}
   - component: {fileID: 2403131162592839555}
-  m_Layer: 2
+  m_Layer: 19
   m_Name: UpDown1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 9003866409520095132}
   - component: {fileID: 9003866409520095134}
   - component: {fileID: 9003866409520095135}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: SubEmitter0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5236,7 +5236,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9003866409801239096}
-  m_Layer: 2
+  m_Layer: 19
   m_Name: GunMount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5270,7 +5270,7 @@ GameObject:
   - component: {fileID: 9003866410209914697}
   - component: {fileID: 9003866410209914702}
   - component: {fileID: 9003866410209914696}
-  m_Layer: 2
+  m_Layer: 19
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8991,7 +8991,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 468993
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -10037,7 +10037,7 @@ GameObject:
   - component: {fileID: 9003866410410161771}
   - component: {fileID: 9003866410410161781}
   - component: {fileID: 9003866410410161770}
-  m_Layer: 2
+  m_Layer: 19
   m_Name: Ejecting Shells
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13767,7 +13767,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 468993
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -14797,7 +14797,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9003866410568320412}
-  m_Layer: 2
+  m_Layer: 19
   m_Name: BracketMount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14830,7 +14830,7 @@ GameObject:
   - component: {fileID: 9003866411240838604}
   - component: {fileID: 9003866411240838606}
   - component: {fileID: 9003866411240838607}
-  m_Layer: 2
+  m_Layer: 19
   m_Name: Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}

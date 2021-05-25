@@ -21,12 +21,6 @@ public class Turret : AbstractHealth, IGun
     private bool firing = false;
     private Transform target;
 
-    //keep just in case
-    //private void Start()
-    //{
-
-    //}
-
     // Update is called once per frame
     void Update()
     {
@@ -39,8 +33,8 @@ public class Turret : AbstractHealth, IGun
 
             RaycastHit hit;
 
-            bool didHit = Physics.Raycast(shootPoint.position, shootPoint.forward, out hit, losMask);
-
+            bool didHit = Physics.SphereCast(shootPoint.position, 0.5f, shootPoint.forward, out hit, 100, losMask, QueryTriggerInteraction.Ignore);
+            Debug.Log(!didHit ? "No target" : "Target: " + hit.collider);
             if (didHit && hit.collider.CompareTag("Player"))
             {
                 if (!firing) StartFiring();
@@ -71,6 +65,14 @@ public class Turret : AbstractHealth, IGun
         {
             tracking = false;
             target = null;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.impulse.magnitude > 5)
+        {
+            Damage(collision.impulse.magnitude * 0.01f);
         }
     }
 

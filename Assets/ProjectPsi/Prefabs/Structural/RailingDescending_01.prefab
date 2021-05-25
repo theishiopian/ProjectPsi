@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3972167063324279230}
   - component: {fileID: 5711618743102170098}
   - component: {fileID: 872886656648523849}
-  m_Layer: 17
+  m_Layer: 21
   m_Name: RailingDescending_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
