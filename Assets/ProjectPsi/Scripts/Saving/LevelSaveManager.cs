@@ -7,8 +7,10 @@ using static UnityEngine.JsonUtility;
 public class LevelSaveManager : MonoBehaviour
 {
     public static LevelSaveManager currentInstance;//weak singleton
+    public static Vector3 checkpoint;
+    public static bool hasDied = false;
 
-    public bool enabled = true;
+    public new bool enabled = true;
 
     [Header("Savable Objects")]
     public List<GameObject> enemies;
@@ -49,7 +51,15 @@ public class LevelSaveManager : MonoBehaviour
             data = new SaveData();
 
             Debug.Log("Saving Player Position");
-            data.playerPosition = GlobalVars.Get("player_rig").transform.position;
+            if(hasDied)
+            {
+                data.playerPosition = checkpoint;
+                hasDied = false;
+            }
+            else
+            {
+                data.playerPosition = GlobalVars.Get("player_rig").transform.position;
+            }
 
             Debug.Log("Saving Enemies");
             for (int i = 0; i < enemies.Count; i++)

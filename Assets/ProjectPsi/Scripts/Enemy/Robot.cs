@@ -32,7 +32,6 @@ public class Robot : AbstractHealth, IAttackAgent, IGun
     private NavMeshAgent agent;
 
     private float reloadTimer = 0;
-    private float cleanupTimer = 0;
     private float stunTimer = 0;
     private bool aiEnabled = true;
 

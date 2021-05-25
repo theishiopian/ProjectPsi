@@ -39,7 +39,7 @@ public class PlayerHealth : AbstractHealth
 
     public void Die()
     {
-        if(Checkpoint.pos != null)transform.position = Checkpoint.pos;//send back to checkpoint
+        LevelSaveManager.hasDied = true;
         LevelSaveManager.currentInstance.SaveGame();
         SceneManager.LoadScene("MainMenu");
     }
