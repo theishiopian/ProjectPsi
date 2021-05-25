@@ -2196,14 +2196,13 @@ MonoBehaviour:
   teleportHand: {fileID: 7468514020824301385}
   arc: {fileID: 8457292436660777587}
   downLine: {fileID: 848394814409858778}
-  collider: {fileID: 0}
   body: {fileID: 8133860311344099972}
   arcMask:
     serializedVersion: 2
-    m_Bits: 2293761
+    m_Bits: 2555905
   sweepMask:
     serializedVersion: 2
-    m_Bits: 6430721
+    m_Bits: 6684673
   downLineOffset: 0.3
 --- !u!114 &8133860311344099978
 MonoBehaviour:

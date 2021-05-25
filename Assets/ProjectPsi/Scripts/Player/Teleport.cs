@@ -16,7 +16,6 @@ public class Teleport : MonoBehaviour
     public Transform teleportHand;
     public TeleportArc arc;
     public LineRenderer downLine;
-    public new CapsuleCollider collider;
     public Rigidbody body;
 
     [Header("Settings")]
@@ -41,6 +40,7 @@ public class Teleport : MonoBehaviour
 
     void Update()
     {
+        hit = new RaycastHit();
         if (teleportAction.GetState(controller))
         {
             if (!arc.gameObject.activeSelf) arc.gameObject.SetActive(true);
@@ -80,6 +80,8 @@ public class Teleport : MonoBehaviour
 
         if(didHit)
         {
+            Debug.Log("Arc hit: " + hit.collider);
+
             if (!hit.collider.gameObject.layer.Equals(LayerMask.NameToLayer("NavMesh")))
             {
                 groundPos = GetGroundPoint();
@@ -90,9 +92,9 @@ public class Teleport : MonoBehaviour
 
                 Vector3 dir = (groundPos - hitPoint).normalized;
                 Vector3 oldPoint = hit.point;
-                Physics.Raycast(hit.point + dir * downLineOffset, Vector3.down, out hit, arcMask);
+                didHit = Physics.Raycast(hit.point + dir * downLineOffset, Vector3.down, out hit, arcMask);
 
-                if (!hit.collider.gameObject.layer.Equals(LayerMask.NameToLayer("NavMesh")))
+                if (didHit && !hit.collider.gameObject.layer.Equals(LayerMask.NameToLayer("NavMesh")))
                 {
                     downLine.SetPosition(0, Vector3.zero);
                     downLine.SetPosition(1, Vector3.zero);
@@ -102,6 +104,7 @@ public class Teleport : MonoBehaviour
                 {
                     downLine.SetPosition(0, oldPoint + dir * downLineOffset);
                     downLine.SetPosition(1, hit.point);
+                    Debug.Log("Line hit: " + hit.collider);
                 }
             }
             else

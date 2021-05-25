@@ -34,7 +34,6 @@ public class Turret : AbstractHealth, IGun
             RaycastHit hit;
 
             bool didHit = Physics.SphereCast(shootPoint.position, 0.5f, shootPoint.forward, out hit, 100, losMask, QueryTriggerInteraction.Ignore);
-            Debug.Log(!didHit ? "No target" : "Target: " + hit.collider);
             if (didHit && hit.collider.CompareTag("Player"))
             {
                 if (!firing) StartFiring();
