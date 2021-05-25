@@ -19,8 +19,8 @@ public class Telekinesis : MonoBehaviour
 
     [Header("Objects")]
     public GameObject particles;
-    public ParticleSystem outline;
-    public SpringJoint joint;
+    
+    public Transform tkPoint;
     public AudioSource soundLoop;
 
     [Header("Physics Settings")]
@@ -39,6 +39,7 @@ public class Telekinesis : MonoBehaviour
     #endregion
 
     //internal vars
+    private ParticleSystem outline;
     private RaycastHit hit;
     private Rigidbody liftTarget;
     private Rigidbody grabTarget;
@@ -96,6 +97,11 @@ public class Telekinesis : MonoBehaviour
         {
             soundLoop.Stop();
             stopSound = false;
+        }
+
+        if(lifting)
+        {
+            liftTarget.position = Vector3.Lerp(liftTarget.position, tkPoint.position, Time.deltaTime);
         }
 
         if(lifting && !soundLoop.isPlaying)
@@ -220,8 +226,6 @@ public class Telekinesis : MonoBehaviour
 
             if (Vector3.Distance(hand.position, grabTarget.transform.position) < grabDistance)//is close enough to hand
             {
-                //attatch to hand
-                //Debug.Log("attatching");
                 lifting = false;
                 grabbing = false;
                 handScript.AttachObject(grabTarget.gameObject, GrabTypes.Grip, attachmentFlags);
@@ -234,8 +238,6 @@ public class Telekinesis : MonoBehaviour
         {
             lifting = true;
             liftTarget.useGravity = false;
-            joint.connectedBody = liftTarget;
-            joint.connectedMassScale = liftTarget.mass;
         }
     }
 
@@ -246,7 +248,6 @@ public class Telekinesis : MonoBehaviour
         lifting = false;
         liftTarget = null;
         grabTarget = null;
-        joint.connectedBody = null;
         ResetOutline();
 
         if (soundLoop.isPlaying)
