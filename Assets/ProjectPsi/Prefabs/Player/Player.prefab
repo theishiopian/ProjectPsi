@@ -2169,7 +2169,7 @@ MonoBehaviour:
     needsReinit: 0
   useHand: 0
   speed: 2
-  deadzone: 0
+  deadzone: 0.02
   collider: {fileID: 8482755062310152695}
 --- !u!114 &8457292437069270528
 MonoBehaviour:

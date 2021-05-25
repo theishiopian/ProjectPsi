@@ -23,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 joystickInput;
     private bool snapLeft, shouldTurnLeft;
     private bool snapRight, shouldTurnRight;
-    private bool teleport;
     private Vector3 moveDirection;
     
     private Rigidbody body;
@@ -50,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
             body.position = body.position + moveDirection * speed * Time.deltaTime;
         }
 
-        if(snapLeft && !teleport)
+        if(snapLeft)
         {
             shouldTurnLeft = true;
         }
@@ -61,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
             RotateRigidBodyAroundPointBy(body, collider.transform.position, Vector3.up, -15);
         }
 
-        if (snapRight && !teleport)
+        if (snapRight)
         {
             shouldTurnRight = true;
         }
@@ -99,9 +98,8 @@ public class PlayerMovement : MonoBehaviour
         //todo catch any exceptions from turning controller offf
         joystickInput = movementJoystick.GetAxis(movementHand);
 
-        snapLeft = snapLeftAction.GetState(turnHand);
-        snapRight = snapRightAction.GetState(turnHand);
-        teleport = teleportAction.GetState(turnHand);
+        snapLeft = snapLeftAction.GetState(turnHand) && !teleportAction.GetState(turnHand);
+        snapRight = snapRightAction.GetState(turnHand) && !teleportAction.GetState(turnHand);
     }
 
     //code by Sandy Gifford of the unity answers forums
