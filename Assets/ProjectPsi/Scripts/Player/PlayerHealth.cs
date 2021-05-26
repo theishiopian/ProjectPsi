@@ -5,10 +5,13 @@ using BehaviorDesigner.Runtime.Tactical;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
 
+public delegate void PlayerEvent();
+
 public class PlayerHealth : AbstractHealth
 {
     public const string stunTag = "Stun";
     public const string killTag = "Kill";
+    public static event PlayerEvent OnDeath;
 
     [Header("Player Health Settings")]
     public float regenRate = 10;//regen rate of health  per second
@@ -40,6 +43,7 @@ public class PlayerHealth : AbstractHealth
     public void Die()
     {
         //load without saving
+        OnDeath?.Invoke();
         SceneManager.LoadScene("MainMenu");
     }
 
