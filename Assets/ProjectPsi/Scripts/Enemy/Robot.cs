@@ -20,12 +20,15 @@ public class Robot : AbstractHealth, IAttackAgent, IGun
     public Vector3 centerOfMass;
     public float stunTime = 2;
 
-    [Header("State Indication")]
-    public MeshRenderer indicator;
-    public Material attackMat;
-    public Material patrolMat;
-    public Material chaseMat;
-    public Material stunMat;
+    //[Header("State Indication")]
+    //public MeshRenderer indicator;
+    //public Material attackMat;
+    //public Material patrolMat;
+    //public Material chaseMat;
+    //public Material stunMat;
+
+    [Header("Animation Setting")]
+    public Animator animator;
 
     private Rigidbody body;//used for physical responses
     private BehaviorTree ai;
@@ -121,12 +124,19 @@ public class Robot : AbstractHealth, IAttackAgent, IGun
             }
         }
 
-        switch(state)
+        //switch (state)
+        //{
+        //    case RobotState.ATTACKING: indicator.material = attackMat; break;
+        //    case RobotState.CHASING: indicator.material = chaseMat; break;
+        //    case RobotState.PATROLING: indicator.material = patrolMat; break;
+        //    case RobotState.STUNNED: indicator.material = stunMat; break;
+        //}
+
+        switch (state)
         {
-            case RobotState.ATTACKING: indicator.material = attackMat; break;
-            case RobotState.CHASING: indicator.material = chaseMat; break;
-            case RobotState.PATROLING: indicator.material = patrolMat; break;
-            case RobotState.STUNNED: indicator.material = stunMat; break;
+            case RobotState.ATTACKING: animator.SetTrigger("AimUpTrigger"); break;
+            case RobotState.PATROLING: animator.SetTrigger("WalkTrigger"); break;
+            case RobotState.STUNNED: animator.SetTrigger("AimDownTrigger"); break;
         }
 
         //Debug.Log(state);
