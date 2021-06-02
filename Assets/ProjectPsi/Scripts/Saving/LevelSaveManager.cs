@@ -9,7 +9,6 @@ public class LevelSaveManager : MonoBehaviour
     public static LevelSaveManager currentInstance;//weak singleton
 
     public new bool enabled = true;
-    public Transform playerDefaultSpawn;
     [Header("Savable Objects")]
     public List<GameObject> enemies;
     public List<GameObject> keycards;
