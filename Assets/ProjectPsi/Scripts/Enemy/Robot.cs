@@ -10,7 +10,6 @@ public class Robot : AbstractHealth, IAttackAgent, IGun
     [Header("AI Settings")]
     public float attackAngle = 45;
     public float attackDistance = 10;
-    public float reloadTime = 1;
     public float launchForce = 25;
 
     [Header("Combat Settings")]
@@ -34,18 +33,16 @@ public class Robot : AbstractHealth, IAttackAgent, IGun
     private BehaviorTree ai;
     private NavMeshAgent agent;
 
-    private float reloadTimer = 0;
     private float stunTimer = 0;
     private bool aiEnabled = true;
 
     public void Attack(Vector3 targPosition)
     {
-        reloadTimer = reloadTime;
-        OneshotManager.instance.PlaySound("shotgun_fire", gun.transform.position);
-        gun.Play();
+        //OneshotManager.instance.PlaySound("shotgun_fire", gun.transform.position);
+        //gun.Play();
     }
 
-    //called by teh aprticle system bridge
+    //called by the particle system bridge
     public void Fire(GameObject other)
     {
         if (other.CompareTag("Player"))
@@ -68,7 +65,7 @@ public class Robot : AbstractHealth, IAttackAgent, IGun
 
     public bool CanAttack()
     {
-        return reloadTimer <= 0 && stunTimer <=0;
+        return true;
     }
 
     // Start is called before the first frame update
@@ -104,6 +101,7 @@ public class Robot : AbstractHealth, IAttackAgent, IGun
         if(stunTimer > 0)
         {
             state = RobotState.STUNNED;
+            animator.SetTrigger("AimDownTrigger");
         }
         else
         {
@@ -112,6 +110,7 @@ public class Robot : AbstractHealth, IAttackAgent, IGun
                 if (Vector3.Distance(currentTarget.transform.position, transform.position) < attackDistance)
                 {
                     state = RobotState.ATTACKING;
+                    animator.SetTrigger("AimUpTrigger");
                 }
                 else
                 {
@@ -121,27 +120,10 @@ public class Robot : AbstractHealth, IAttackAgent, IGun
             else
             {
                 state = RobotState.PATROLING;
+                animator.SetTrigger("WalkTrigger");
             }
         }
 
-        //switch (state)
-        //{
-        //    case RobotState.ATTACKING: indicator.material = attackMat; break;
-        //    case RobotState.CHASING: indicator.material = chaseMat; break;
-        //    case RobotState.PATROLING: indicator.material = patrolMat; break;
-        //    case RobotState.STUNNED: indicator.material = stunMat; break;
-        //}
-
-        switch (state)
-        {
-            case RobotState.ATTACKING: animator.SetTrigger("AimUpTrigger"); break;
-            case RobotState.PATROLING: animator.SetTrigger("WalkTrigger"); break;
-            case RobotState.STUNNED: animator.SetTrigger("AimDownTrigger"); break;
-        }
-
-        //Debug.Log(state);
-
-        reloadTimer = Mathf.Clamp(reloadTimer - Time.deltaTime, 0, reloadTime);
         stunTimer = Mathf.Clamp(stunTimer - Time.deltaTime, 0, stunTime);
 
         if(stunTimer <= 0 && !aiEnabled)
