@@ -357,6 +357,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5374443700100050030, guid: dd2774866e4a7594a9e65327a45266f1,
+        type: 3}
+      propertyPath: inputTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: d581d5efee962224c98d48564accea7c, type: 3}
     - target: {fileID: 5621996330328701638, guid: dd2774866e4a7594a9e65327a45266f1,
         type: 3}
       propertyPath: m_Name
@@ -16032,7 +16037,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: -180.219, z: 0}
 --- !u!1001 &1947946746
 PrefabInstance:
@@ -16512,7 +16517,7 @@ Transform:
   m_LocalScale: {x: 0.8, y: 1, z: 0.8}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2124508510
 MonoBehaviour:
