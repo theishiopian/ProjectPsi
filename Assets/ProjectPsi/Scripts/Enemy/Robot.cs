@@ -42,6 +42,11 @@ public class Robot : AbstractHealth, IAttackAgent, IGun
         //gun.Play();
     }
 
+    public void AttackNoise()
+    {
+        OneshotManager.instance.PlaySound("shotgun_fire", gun.transform.position);
+    }
+
     //called by the particle system bridge
     public void Fire(GameObject other)
     {
