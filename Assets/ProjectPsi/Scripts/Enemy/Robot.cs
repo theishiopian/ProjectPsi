@@ -115,6 +115,7 @@ public class Robot : AbstractHealth, IAttackAgent, IGun
                 else
                 {
                     state = RobotState.CHASING;
+                    animator.SetTrigger("WalkTrigger");
                 }
             }
             else
