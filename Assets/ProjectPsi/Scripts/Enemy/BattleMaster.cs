@@ -5,7 +5,7 @@ using BehaviorDesigner.Runtime;
 
 public class BattleMaster : MonoBehaviour
 {
-    public GameObject enemyParent;
+    //public GameObject enemyParent;
     public List<GameObject> scientistCallersIn = new List<GameObject>();
 
     // Start is called before the first frame update
@@ -18,7 +18,7 @@ public class BattleMaster : MonoBehaviour
     IEnumerator startRoutine()
     {
         yield return new WaitUntil((/*haha funny empty function*/) => GlobalVars.Get("player_body") != null);
-        enemyParent.SetActive(true);
+        //enemyParent.SetActive(true);
         yield return null;
     }
 }
