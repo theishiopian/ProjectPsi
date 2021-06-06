@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2263829140676957973}
   - component: {fileID: 4075278078537540575}
   - component: {fileID: 7295350622837429008}
-  - component: {fileID: 6977234388534026362}
   m_Layer: 17
   m_Name: Stairs_Metal_2x2
   m_TagString: Walkable
@@ -96,17 +95,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7319581197757295436, guid: 82de25bb8cc5c9845b1991c6e988aaa6, type: 3}
---- !u!114 &6977234388534026362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2562187145213444618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45c576f0cc5b9fb408ba690361383217, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _priority: 0
-  _material: {fileID: 11400000, guid: 63bd650b728d9784eb0f3593d052b616, type: 2}

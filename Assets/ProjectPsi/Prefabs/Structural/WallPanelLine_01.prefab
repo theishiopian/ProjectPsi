@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8352968655761984747}
   - component: {fileID: 1878077061}
   - component: {fileID: 8330986756455157168}
-  - component: {fileID: 968427756963729349}
+  - component: {fileID: 8426162418432111621}
   m_Layer: 17
   m_Name: WallPanelLine_01
   m_TagString: Untagged
@@ -108,8 +108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _priority: 0
-  _material: {fileID: 11400000, guid: cd624dd402810544688effd49e7c48b5, type: 2}
---- !u!114 &968427756963729349
+  _material: {fileID: 11400000, guid: 83d6e79b5c3faa44a9180d5522903308, type: 2}
+--- !u!114 &8426162418432111621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7560216443636542782}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b276200d4074bb4469ce306be816a5a1, type: 3}
+  m_Script: {fileID: 11500000, guid: c6e125879df9b8949a41dabefe0f9a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _enabled: 1

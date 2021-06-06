@@ -92,8 +92,6 @@ GameObject:
   - component: {fileID: 1537121694327459160}
   - component: {fileID: 2064646280842669224}
   - component: {fileID: 4068261807556772551}
-  - component: {fileID: -7132379304936657378}
-  - component: {fileID: 1665275110912773108}
   m_Layer: 13
   m_Name: Bottle2000
   m_TagString: Liftable
@@ -159,37 +157,6 @@ CapsuleCollider:
   m_Height: 0.16503671
   m_Direction: 2
   m_Center: {x: 0, y: 0.00024747849, z: 0.000016734004}
---- !u!114 &-7132379304936657378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4735927759215040326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3203a04c7ef891c4ca38ed393c368f7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _priority: 0
-  _material: {fileID: 11400000, guid: 5cf8acf76e2f9284cba09fefd71ff9d6, type: 2}
---- !u!114 &1665275110912773108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4735927759215040326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6e125879df9b8949a41dabefe0f9a06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enabled: 1
-  _target: {fileID: -7132379304936657378}
-  _useMaterialComposition: 0
-  _contactMode: 0
-  _highPriority: 0
 --- !u!1 &6054603453141693231
 GameObject:
   m_ObjectHideFlags: 0

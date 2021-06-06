@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6996619321383450458}
   - component: {fileID: 2882473707928050009}
   - component: {fileID: 1869539823}
+  - component: {fileID: 6094435703163025051}
   m_Layer: 17
   m_Name: WallPanelLine_02
   m_TagString: Untagged
@@ -94,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _priority: 0
-  _material: {fileID: 11400000, guid: cd624dd402810544688effd49e7c48b5, type: 2}
+  _material: {fileID: 11400000, guid: 83d6e79b5c3faa44a9180d5522903308, type: 2}
 --- !u!65 &1869539823
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -108,3 +109,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0, y: 4, z: 4.000001}
   m_Center: {x: 1.7763573e-15, y: 2, z: 0}
+--- !u!114 &6094435703163025051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8797782163205281423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e125879df9b8949a41dabefe0f9a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  _target: {fileID: 2882473707928050009}
+  _useMaterialComposition: 0
+  _contactMode: 0
+  _highPriority: 0

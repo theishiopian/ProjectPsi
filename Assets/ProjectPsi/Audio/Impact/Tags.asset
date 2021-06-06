@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: Tags
   m_EditorClassIdentifier: 
   _tagNames:
-  - Crate
-  - Window
-  - Glassware
-  - MetalItem
-  - Wood
-  - MetalFixture
-  - MetalBox
+  - Metal
+  - Plastic
+  - Glass
+  - Padding
   - Concrete
-  - PlasticContainer
-  - Pipe
+  - GlassItem
+  - MetalItem
   - PlasticItem
-  - SoftPadding
-  - Ceramic
+  - Canister
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

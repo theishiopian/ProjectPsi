@@ -20,7 +20,7 @@ MonoBehaviour:
   - _name: Impact
     _includeTagsFilter:
       TagMask:
-        _value: 129
+        _value: 277
         _tagLibrary: {fileID: 0}
       ExactMatch: 0
     _excludeTagsFilter:
@@ -29,8 +29,20 @@ MonoBehaviour:
         _tagLibrary: {fileID: 0}
       ExactMatch: 0
     _interactions:
-    - {fileID: 11400000, guid: c97eaddf63eae794088497f13bac2aa6, type: 2}
-    - {fileID: 11400000, guid: a7e4df224cf103d4d9dbdf9b41d77991, type: 2}
+    - {fileID: 11400000, guid: d23ff9aa6ec9cb443b34a7c577b0a600, type: 2}
+  - _name: Sparks
+    _includeTagsFilter:
+      TagMask:
+        _value: 273
+        _tagLibrary: {fileID: 0}
+      ExactMatch: 0
+    _excludeTagsFilter:
+      TagMask:
+        _value: 0
+        _tagLibrary: {fileID: 0}
+      ExactMatch: 0
+    _interactions:
+    - {fileID: 11400000, guid: 4d09a751ae06add4c9e0ba01fefbdfdf, type: 2}
   _fallbackTagMask:
     _value: 0
     _tagLibrary: {fileID: 0}

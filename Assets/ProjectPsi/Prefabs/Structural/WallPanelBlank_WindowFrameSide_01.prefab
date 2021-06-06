@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 9049033430880556472}
   - component: {fileID: 6516823833613558130}
   - component: {fileID: 8868534695207401267}
-  - component: {fileID: -7324716644818870954}
   - component: {fileID: 1745481462025459090}
+  - component: {fileID: 5832081035151547653}
   m_Layer: 21
   m_Name: WallPanelBlank_WindowFrameSide_01
   m_TagString: Untagged
@@ -95,24 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _priority: 0
-  _material: {fileID: 11400000, guid: cd624dd402810544688effd49e7c48b5, type: 2}
---- !u!114 &-7324716644818870954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4715432430746091687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b276200d4074bb4469ce306be816a5a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enabled: 1
-  _target: {fileID: 8868534695207401267}
-  _useMaterialComposition: 0
-  _contactMode: 0
-  _highPriority: 0
+  _material: {fileID: 11400000, guid: 83d6e79b5c3faa44a9180d5522903308, type: 2}
 --- !u!64 &1745481462025459090
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -127,3 +110,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8385550974738185128, guid: bc0ecfb700312a840b52de78d615cad6, type: 3}
+--- !u!114 &5832081035151547653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4715432430746091687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e125879df9b8949a41dabefe0f9a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  _target: {fileID: 8868534695207401267}
+  _useMaterialComposition: 0
+  _contactMode: 0
+  _highPriority: 0
