@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 5281452650282496101}
   - component: {fileID: 3060539741256989617}
   - component: {fileID: -2213704904578437678}
+  - component: {fileID: 398007566414818982}
+  - component: {fileID: 7686239653201818473}
   m_Layer: 13
   m_Name: EquipmentStand
   m_TagString: Liftable
@@ -156,3 +158,34 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.047000002, y: 0.38500002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &398007566414818982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3205096346793942626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e125879df9b8949a41dabefe0f9a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  _target: {fileID: 7686239653201818473}
+  _useMaterialComposition: 0
+  _contactMode: 0
+  _highPriority: 0
+--- !u!114 &7686239653201818473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3205096346793942626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3203a04c7ef891c4ca38ed393c368f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priority: 0
+  _material: {fileID: 11400000, guid: 72050f97a453f4e4683f8af79a8ac6a5, type: 2}

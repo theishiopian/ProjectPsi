@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5248e80a89c7fa84280bb5bfc63e8fd0, type: 3}
-  m_Name: Metal
+  m_Name: MetalAudio
   m_EditorClassIdentifier: 
   _velocityRange:
     Min: 2
@@ -48,8 +48,11 @@ MonoBehaviour:
     m_RotationOrder: 4
   _collisionNormalInfluence: 1
   _slideVelocityPitchMultiplier: 0.025
-  _audioSourceTemplate: {fileID: 0}
+  _audioSourceTemplate: {fileID: 114720828026483632, guid: 3c9d2ac81a84bb142a9c87cb3574cdfe,
+    type: 3}
   _collisionAudioSelectionMode: 0
-  _collisionAudioClips: []
-  _slideAudioClip: {fileID: 0}
+  _collisionAudioClips:
+  - {fileID: 8300000, guid: f0536a38a22131146a29bd485117cc32, type: 3}
+  - {fileID: 8300000, guid: 59c27e832b137c348ba36defe68fcf10, type: 3}
+  _slideAudioClip: {fileID: 8300000, guid: 647248ff7712d53439e86bd28581fb90, type: 3}
   _rollAudioClip: {fileID: 0}
