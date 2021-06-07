@@ -21763,10 +21763,10 @@ MonoBehaviour:
   isImmortal: 0
   disableOnDeath: 1
   attackAngle: 100
-  attackDistance: 8
+  attackDistance: 10
   launchForce: 25
   gun: {fileID: 3217669024535546962}
-  damage: 20
+  damage: 45
   armor: 60
   centerOfMass: {x: 0, y: -1, z: 0}
   stunTime: 3
