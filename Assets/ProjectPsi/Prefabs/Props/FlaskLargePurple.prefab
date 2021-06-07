@@ -154,6 +154,8 @@ GameObject:
   - component: {fileID: 7316323979198149852}
   - component: {fileID: 1788258288281919739}
   - component: {fileID: 5622101265950445127}
+  - component: {fileID: 6214918585970453113}
+  - component: {fileID: 3284193811196869332}
   m_Layer: 13
   m_Name: FlaskLargePurple
   m_TagString: Liftable
@@ -222,6 +224,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.09579983, y: 0.42199498, z: 0.09986037}
   m_Center: {x: 0.0012942404, y: 0.0026385486, z: -0.0038546324}
+--- !u!114 &6214918585970453113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5860143444311944549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3203a04c7ef891c4ca38ed393c368f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priority: 0
+  _material: {fileID: 11400000, guid: 82f1e426b5fe68241ae98f91d6f19f77, type: 2}
+--- !u!114 &3284193811196869332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5860143444311944549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e125879df9b8949a41dabefe0f9a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  _target: {fileID: 6214918585970453113}
+  _useMaterialComposition: 0
+  _contactMode: 0
+  _highPriority: 0
 --- !u!1 &5879531872418312442
 GameObject:
   m_ObjectHideFlags: 0
