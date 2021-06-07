@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 5007697974629504358}
   - component: {fileID: 4217820046837409860}
   - component: {fileID: 2613696451277701080}
+  - component: {fileID: 5036679290351197127}
+  - component: {fileID: 8640150072294513940}
   m_Layer: 13
   m_Name: WasteBin
   m_TagString: Liftable
@@ -125,3 +127,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &5036679290351197127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7972089128995580790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3203a04c7ef891c4ca38ed393c368f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priority: 0
+  _material: {fileID: 11400000, guid: 63297ccb597b5074c97e75b77b53e396, type: 2}
+--- !u!114 &8640150072294513940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7972089128995580790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e125879df9b8949a41dabefe0f9a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  _target: {fileID: 5036679290351197127}
+  _useMaterialComposition: 0
+  _contactMode: 0
+  _highPriority: 0

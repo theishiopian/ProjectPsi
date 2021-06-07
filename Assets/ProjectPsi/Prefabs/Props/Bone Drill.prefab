@@ -104,6 +104,8 @@ GameObject:
   - component: {fileID: 8946458388687549717}
   - component: {fileID: 1621831751839227692}
   - component: {fileID: 8462263310879007903}
+  - component: {fileID: 4599023923802925896}
+  - component: {fileID: 7849173514337101316}
   m_Layer: 13
   m_Name: Bone Drill
   m_TagString: Liftable
@@ -171,6 +173,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.088921964, y: 0.11248529, z: 0.3996772}
   m_Center: {x: 0.0011820495, y: 0.24364829, z: 0.06474374}
+--- !u!114 &4599023923802925896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944039869395489527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3203a04c7ef891c4ca38ed393c368f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priority: 0
+  _material: {fileID: 11400000, guid: 778c1bdaca085c74a8eee6788cf71690, type: 2}
+--- !u!114 &7849173514337101316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944039869395489527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e125879df9b8949a41dabefe0f9a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  _target: {fileID: 4599023923802925896}
+  _useMaterialComposition: 0
+  _contactMode: 0
+  _highPriority: 0
 --- !u!1 &2472386814151721925
 GameObject:
   m_ObjectHideFlags: 0

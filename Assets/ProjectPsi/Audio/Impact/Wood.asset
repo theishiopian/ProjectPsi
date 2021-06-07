@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cecd4675b635efd41bcbcb0a0eeb3b6e, type: 3}
+  m_Name: Wood
+  m_EditorClassIdentifier: 
+  _tagLibrary: {fileID: 11400000, guid: e3bda70abc11ab24b9e9ee51ff5aef4e, type: 2}
+  _materialTagsMask:
+    _value: 16
+    _tagLibrary: {fileID: 0}
+  _interactionSets:
+  - _name: WoodInteratcion
+    _includeTagsFilter:
+      TagMask:
+        _value: 281
+        _tagLibrary: {fileID: 0}
+      ExactMatch: 0
+    _excludeTagsFilter:
+      TagMask:
+        _value: 0
+        _tagLibrary: {fileID: 0}
+      ExactMatch: 0
+    _interactions:
+    - {fileID: 11400000, guid: 7c903661b0102aa4599369b87a46433f, type: 2}
+  - _name: LowImpact
+    _includeTagsFilter:
+      TagMask:
+        _value: 226
+        _tagLibrary: {fileID: 0}
+      ExactMatch: 0
+    _excludeTagsFilter:
+      TagMask:
+        _value: 0
+        _tagLibrary: {fileID: 0}
+      ExactMatch: 0
+    _interactions:
+    - {fileID: 11400000, guid: 6deea1f4a1c45c64ba376940ee91d138, type: 2}
+  _fallbackTagMask:
+    _value: 0
+    _tagLibrary: {fileID: 0}
