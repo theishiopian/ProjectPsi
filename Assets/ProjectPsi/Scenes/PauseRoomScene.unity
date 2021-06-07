@@ -315,7 +315,7 @@ PrefabInstance:
     - target: {fileID: 4994077800231788668, guid: dd2774866e4a7594a9e65327a45266f1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.382
+      value: 0.92
       objectReference: {fileID: 0}
     - target: {fileID: 4994077800231788668, guid: dd2774866e4a7594a9e65327a45266f1,
         type: 3}
@@ -5629,7 +5629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _priority: 0
-  _material: {fileID: 11400000, guid: cd624dd402810544688effd49e7c48b5, type: 2}
+  _material: {fileID: 0}
 --- !u!64 &959848687
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17035,7 +17035,7 @@ PrefabInstance:
     - target: {fileID: 5407602085251101830, guid: 043f9f47ddb6ced4ea21390867711f24,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.382
+      value: 0.92
       objectReference: {fileID: 0}
     - target: {fileID: 5407602085251101830, guid: 043f9f47ddb6ced4ea21390867711f24,
         type: 3}
@@ -17329,7 +17329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _priority: 0
-  _material: {fileID: 11400000, guid: cd624dd402810544688effd49e7c48b5, type: 2}
+  _material: {fileID: 0}
 --- !u!1001 &2138993583
 PrefabInstance:
   m_ObjectHideFlags: 0
