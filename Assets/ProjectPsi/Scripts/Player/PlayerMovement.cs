@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
         {
             shouldTurnLeft = false;
             //body.rotation = body.rotation * Quaternion.Euler(0, -15,0);
-            RotateRigidBodyAroundPointBy(body, collider.transform.position, Vector3.up, -15);
+            RotateRigidBodyAroundPointBy(body, collider.transform.position, Vector3.up, -PlayerPrefs.GetInt("snapangle"));
         }
 
         if (snapRight)
@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
         {
             shouldTurnRight = false;
             //body.rotation = body.rotation * Quaternion.Euler(0, 15, 0);
-            RotateRigidBodyAroundPointBy(body, collider.transform.position, Vector3.up, 15);
+            RotateRigidBodyAroundPointBy(body, collider.transform.position, Vector3.up, PlayerPrefs.GetInt("snapangle"));
         }
     }
 

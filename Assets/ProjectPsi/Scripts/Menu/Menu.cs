@@ -253,9 +253,9 @@ public class Menu : MonoBehaviour
     {
         int i = GetIndex();
         if (i < 0) return;//bandaid, may not be needed
-        snapIndicator.localPosition = new Vector3(snapNotches[i].localPosition.x, snapIndicator.localPosition.y, snapIndicator.localPosition.z);
+        volumeIndicator.localPosition = new Vector3(volumeNotches[i].localPosition.x, volumeIndicator.localPosition.y, volumeIndicator.localPosition.z);
 
-        snapText.text = (PlayerPrefs.GetInt("snaptext")).ToString() + degreeSymbol;
+        volumeText.text = (PlayerPrefs.GetFloat("volume") * 100).ToString() + "%";
     }
 
     private void MoveSnapIndicator()
@@ -273,8 +273,8 @@ public class Menu : MonoBehaviour
 
         if (i < 0) return;//bandaid, may not be needed
 
-        volumeIndicator.localPosition = new Vector3(volumeNotches[i].localPosition.x, volumeIndicator.localPosition.y, volumeIndicator.localPosition.z);
+        snapIndicator.localPosition = new Vector3(snapNotches[i].localPosition.x, snapIndicator.localPosition.y, snapIndicator.localPosition.z);
 
-        volumeText.text = (PlayerPrefs.GetFloat("volume") * 100).ToString() + "%";
+        snapText.text = (PlayerPrefs.GetInt("snapangle")).ToString() + degreeSymbol;
     }
 }
