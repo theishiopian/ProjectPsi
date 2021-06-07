@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 5363100854173712734}
   - component: {fileID: 7892972339695891860}
   - component: {fileID: -1633485823118234540}
-  - component: {fileID: 4624118274539029434}
   - component: {fileID: 165375753535858196}
+  - component: {fileID: 4314247108892460650}
+  - component: {fileID: 8079214137713174928}
   m_Layer: 21
   m_Name: WallPanelBlank_WindowFrameCenter_01
   m_TagString: Untagged
@@ -96,20 +97,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _priority: 0
   _material: {fileID: 11400000, guid: 83d6e79b5c3faa44a9180d5522903308, type: 2}
---- !u!64 &4624118274539029434
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8541504360501285953}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8225784544305249566, guid: aa41bb4d1e21cc04b944fbacc4956ce6, type: 3}
 --- !u!114 &165375753535858196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,3 +114,29 @@ MonoBehaviour:
   _useMaterialComposition: 0
   _contactMode: 0
   _highPriority: 0
+--- !u!65 &4314247108892460650
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8541504360501285953}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25, y: 0.8967767, z: 2}
+  m_Center: {x: 0.125, y: 0.44838834, z: 0}
+--- !u!65 &8079214137713174928
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8541504360501285953}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25, y: 1.3849404, z: 2}
+  m_Center: {x: 0.125, y: 3.30753, z: 0}
