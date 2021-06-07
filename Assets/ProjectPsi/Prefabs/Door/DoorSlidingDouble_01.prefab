@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _priority: 0
-  _material: {fileID: 11400000, guid: 63bd650b728d9784eb0f3593d052b616, type: 2}
+  _material: {fileID: 11400000, guid: 21f22228636a177429d5c2b04b52bb4b, type: 2}
 --- !u!208 &7019140208837289307
 NavMeshObstacle:
   m_ObjectHideFlags: 0

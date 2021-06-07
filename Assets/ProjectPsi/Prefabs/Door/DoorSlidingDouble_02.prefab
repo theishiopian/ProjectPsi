@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _priority: 0
-  _material: {fileID: 11400000, guid: 63bd650b728d9784eb0f3593d052b616, type: 2}
+  _material: {fileID: 11400000, guid: 72050f97a453f4e4683f8af79a8ac6a5, type: 2}
 --- !u!208 &5890696863810329703
 NavMeshObstacle:
   m_ObjectHideFlags: 0
