@@ -2699,10 +2699,10 @@ MonoBehaviour:
   castDistance: 150
   rayMask:
     serializedVersion: 2
-    m_Bits: 143360
+    m_Bits: 2240512
   sphereMask:
     serializedVersion: 2
-    m_Bits: 12288
+    m_Bits: 2109440
   ignoreLayer: Items
 --- !u!82 &3540778961104194165
 AudioSource:
