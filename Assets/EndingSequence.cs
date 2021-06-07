@@ -50,7 +50,6 @@ public class EndingSequence : MonoBehaviour, ITriggerListener
         yield return new WaitForSeconds(1);
 
         //loop text
-
         for(int i = 0; i < EndTexts.Count; i++)
         {
             text.text = EndTexts[i].text;
@@ -60,7 +59,7 @@ public class EndingSequence : MonoBehaviour, ITriggerListener
 
         yield return new WaitForSeconds(1);
 
-        OnGameEndStart?.Invoke();
+        OnGameEndEnd?.Invoke();
 
         SceneManager.LoadScene(scene);
 
