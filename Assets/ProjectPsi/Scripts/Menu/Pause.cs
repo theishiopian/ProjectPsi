@@ -15,12 +15,29 @@ public class Pause : MonoBehaviour
     public float pauseDelay = 5f;
 
     private const string scene = "PauseRoomScene";
-
+    private bool canPause = true;
     float t = 0;
+
+    private void Start()
+    {
+        EndingSequence.OnGameEndStart += DisablePause;
+        EndingSequence.OnGameEndEnd += EnablePause;
+    }
+
+    public void EnablePause()
+    {
+        canPause = true;
+    }
+
+    public void DisablePause()
+    {
+        canPause = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(!paused && pauseButton.GetState(controller))
+        if(!paused && pauseButton.GetState(controller) && canPause)
         {
             t += Time.deltaTime;
 

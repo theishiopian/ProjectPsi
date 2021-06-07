@@ -17,13 +17,21 @@ public class DoorController : MonoBehaviour, ITriggerListener
     public DoorPanel[] panels;
 
     private bool detected = false;
+    private bool canOpen = true;
     private float t = 0;//0-1 closed-open
-    private DoorState state = DoorState.CLOSED;
+    DoorState state = DoorState.CLOSED;
 
     private void Start()
     {
         if (startLocked)
             state = DoorState.LOCKED;
+    }
+
+    public void Lock()
+    {
+        canOpen = false;
+        state = DoorState.CLOSING;
+        OneshotManager.instance.PlaySound("door_open", transform.position + openPos / 2);
     }
 
     // Update is called once per frame
@@ -33,7 +41,7 @@ public class DoorController : MonoBehaviour, ITriggerListener
         {
             case DoorState.CLOSED:
                 {
-                    if(detected)
+                    if(detected && canOpen)
                     {
                         state = DoorState.OPENING;
                         OneshotManager.instance.PlaySound("door_open", transform.position + openPos/2);
@@ -52,7 +60,7 @@ public class DoorController : MonoBehaviour, ITriggerListener
                 break;
             case DoorState.OPEN:
                 {
-                    if(!detected)
+                    if(!detected && canOpen)
                     {
                         state = DoorState.CLOSING;
                         OneshotManager.instance.PlaySound("door_open", transform.position + openPos / 2);
@@ -99,16 +107,16 @@ public class DoorController : MonoBehaviour, ITriggerListener
 
     public void OnEnter(Collider other)
     {
-        detected = true;
+        if(canOpen)detected = true;
     }
 
     public void OnExit(Collider other)
     {
-        detected = false;
+        if (canOpen) detected = false;
     }
 
     public void OnStay(Collider other)
     {
-        detected = true;
+        if (canOpen) detected = true;
     }
 }

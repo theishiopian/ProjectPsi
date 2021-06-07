@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class EndText
@@ -14,10 +16,19 @@ public delegate void GameEndEvent();
 
 public class EndingSequence : MonoBehaviour, ITriggerListener
 {
-    public static event GameEndEvent OnGameEnd;
+    public static event GameEndEvent OnGameEndStart;
+    public static event GameEndEvent OnGameEndEnd;
+
+    public DoorController toLock;
+    public TextMeshPro text;
+    public List<EndText> EndTexts;
+
+    private const string scene = "MainMenu";
+    bool started = false;
+
     public void OnEnter(Collider other)
     {
-        StartCoroutine(EndSequence());
+        if(!started)StartCoroutine(EndSequence());
     }
 
     public void OnExit(Collider other)
@@ -32,13 +43,28 @@ public class EndingSequence : MonoBehaviour, ITriggerListener
 
     IEnumerator EndSequence()
     {
-        //lock door
-        //disable pause
+        started = true;
+        toLock.Lock();
+        OnGameEndStart?.Invoke();
+
+        yield return new WaitForSeconds(1);
 
         //loop text
 
-        //enable pause
+        for(int i = 0; i < EndTexts.Count; i++)
+        {
+            text.text = EndTexts[i].text;
+
+            yield return new WaitForSeconds(EndTexts[i].time);
+        }
+
+        yield return new WaitForSeconds(1);
+
+        OnGameEndStart?.Invoke();
         //return to menu
+
+        SceneManager.LoadScene(scene);
+
         yield return null;
     }
 }
