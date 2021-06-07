@@ -28,7 +28,8 @@ MonoBehaviour:
         _value: 0
         _tagLibrary: {fileID: 0}
       ExactMatch: 0
-    _interactions: []
+    _interactions:
+    - {fileID: 11400000, guid: c5731a2eb355c3e4c90a744c6dca2481, type: 2}
   _fallbackTagMask:
     _value: 0
     _tagLibrary: {fileID: 0}
