@@ -97,7 +97,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5407602085251101831}
-        m_MethodName: ChangeVolume
+        m_MethodName: ChangeSnap
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -427,7 +427,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5407602085251101831}
-        m_MethodName: ChangeVolume
+        m_MethodName: ChangeSnap
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2901,6 +2901,12 @@ MonoBehaviour:
   - {fileID: 5407602084849422257}
   - {fileID: 5407602086231136949}
   volumeText: {fileID: 5407602085441942036}
+  snapIndicator: {fileID: 3970239209760868683}
+  snapNotches:
+  - {fileID: 869159354495854367}
+  - {fileID: 2853520813175457467}
+  - {fileID: 4812425253732761550}
+  snapText: {fileID: 4006734846557119848}
   smoothMoveCheck: {fileID: 5276973210446824495}
   pauseMode: 0
   debugMode: 0
@@ -3771,7 +3777,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5407602085755521485
 Transform:
   m_ObjectHideFlags: 0
@@ -4325,7 +4331,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5407602086126462692
 Transform:
   m_ObjectHideFlags: 0
@@ -5698,7 +5704,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5407602085251101831}
-        m_MethodName: ChangeVolume
+        m_MethodName: ChangeSnap
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
