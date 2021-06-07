@@ -21,6 +21,12 @@ public class Menu : MonoBehaviour
 
     public TextMeshPro volumeText;
 
+    public Transform snapIndicator;
+
+    public Transform[] snapNotches;
+
+    public TextMeshPro snapText;
+
     public MeshRenderer smoothMoveCheck;
 
     public bool pauseMode = false;
@@ -33,6 +39,7 @@ public class Menu : MonoBehaviour
     public static event MenuEvent OnOptions;
 
     public static event MenuEvent OnVolumeChanged;
+    public static event MenuEvent OnSnapChanged;
     public static event MenuEvent OnSmoothChanged;
     public static event MenuEvent OnAwesomeChanged;
 
@@ -41,6 +48,7 @@ public class Menu : MonoBehaviour
     public static event MenuEvent OnQuit;
 
     string filePath;
+    string degreeSymbol = "°";
 
     void OnEnable()
     {
@@ -59,6 +67,12 @@ public class Menu : MonoBehaviour
         {
             Debug.LogError("smoothmove key not found");
             PlayerPrefs.SetInt("smoothmove", 1);
+        }
+
+        if (!PlayerPrefs.HasKey("snapangle"))
+        {
+            PlayerPrefs.SetInt("snapangle", 15);
+            Debug.LogError("snapangle key not found");
         }
 
         AudioListener.volume = PlayerPrefs.GetFloat("volume");
@@ -109,6 +123,32 @@ public class Menu : MonoBehaviour
 
 
         MoveVolumeIndicator();
+    }
+
+    public void ChangeSnap(string input)
+    {
+        OnSnapChanged?.Invoke();
+
+        switch (input)
+        {
+            case "15":
+                {
+                    PlayerPrefs.SetInt("snapangle", 15);
+                }
+                break;
+            case "30":
+                {
+                    PlayerPrefs.SetInt("snapangle", 30);
+                }
+                break;
+            case "45":
+                {
+                    PlayerPrefs.SetInt("snapangle", 45);
+                }
+                break;
+        }
+
+        MoveSnapIndicator();
     }
 
     public void ToggleSmooth(string input)
@@ -213,6 +253,26 @@ public class Menu : MonoBehaviour
     {
         int i = GetIndex();
         if (i < 0) return;//bandaid, may not be needed
+        snapIndicator.localPosition = new Vector3(snapNotches[i].localPosition.x, snapIndicator.localPosition.y, snapIndicator.localPosition.z);
+
+        snapText.text = (PlayerPrefs.GetInt("snaptext")).ToString() + degreeSymbol;
+    }
+
+    private void MoveSnapIndicator()
+    {
+        int a = PlayerPrefs.GetInt("snapangle");
+        int i = 0;
+
+        //fuck you VS
+        switch(a)
+        {
+            case 15: i = 0;break;
+            case 30: i = 1;break;
+            case 45: i = 2;break;
+        }
+
+        if (i < 0) return;//bandaid, may not be needed
+
         volumeIndicator.localPosition = new Vector3(volumeNotches[i].localPosition.x, volumeIndicator.localPosition.y, volumeIndicator.localPosition.z);
 
         volumeText.text = (PlayerPrefs.GetFloat("volume") * 100).ToString() + "%";
