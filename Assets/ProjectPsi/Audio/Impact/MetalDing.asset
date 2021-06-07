@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cecd4675b635efd41bcbcb0a0eeb3b6e, type: 3}
-  m_Name: Metal
+  m_Name: MetalDing
   m_EditorClassIdentifier: 
   _tagLibrary: {fileID: 11400000, guid: e3bda70abc11ab24b9e9ee51ff5aef4e, type: 2}
   _materialTagsMask:
-    _value: 1
+    _value: 64
     _tagLibrary: {fileID: 0}
   _interactionSets:
-  - _name: MetalInteraction
+  - _name: MetalDingInteraction
     _includeTagsFilter:
       TagMask:
         _value: 341

@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3736168421480819073}
   - component: {fileID: 839406934957261678}
   - component: {fileID: 4543756963112538127}
+  - component: {fileID: 2778453882757219370}
+  - component: {fileID: 7461324410158055321}
   m_Layer: 13
   m_Name: Lab_Tweezers
   m_TagString: Liftable
@@ -110,3 +112,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2778453882757219370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943512553408088148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3203a04c7ef891c4ca38ed393c368f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priority: 0
+  _material: {fileID: 11400000, guid: aea4995420319914797251f6cd873f0d, type: 2}
+--- !u!114 &7461324410158055321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943512553408088148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e125879df9b8949a41dabefe0f9a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  _target: {fileID: 2778453882757219370}
+  _useMaterialComposition: 0
+  _contactMode: 0
+  _highPriority: 0

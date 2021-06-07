@@ -169,6 +169,8 @@ GameObject:
   - component: {fileID: 7223583214372431177}
   - component: {fileID: 5933923975389274187}
   - component: {fileID: 7535721180617795335}
+  - component: {fileID: 9113757770791216569}
+  - component: {fileID: 4258677526606666814}
   m_Layer: 13
   m_Name: Stapler
   m_TagString: Liftable
@@ -221,3 +223,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.19, y: 0.06, z: 0.05}
   m_Center: {x: 0, y: 0.03, z: 0}
+--- !u!114 &9113757770791216569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8031186996994310131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3203a04c7ef891c4ca38ed393c368f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priority: 0
+  _material: {fileID: 11400000, guid: aea4995420319914797251f6cd873f0d, type: 2}
+--- !u!114 &4258677526606666814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8031186996994310131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e125879df9b8949a41dabefe0f9a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  _target: {fileID: 9113757770791216569}
+  _useMaterialComposition: 0
+  _contactMode: 0
+  _highPriority: 0
