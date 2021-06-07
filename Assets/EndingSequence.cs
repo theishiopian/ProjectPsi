@@ -61,7 +61,6 @@ public class EndingSequence : MonoBehaviour, ITriggerListener
         yield return new WaitForSeconds(1);
 
         OnGameEndStart?.Invoke();
-        //return to menu
 
         SceneManager.LoadScene(scene);
 
