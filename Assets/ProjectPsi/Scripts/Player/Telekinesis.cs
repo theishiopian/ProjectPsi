@@ -64,6 +64,7 @@ public class Telekinesis : MonoBehaviour
 
     private void Update()
     {
+        //Debug.LogFormat("Lifting {0}, Grabbing {1}, LiftTarget {2}, GrabTarget{3}", lifting, grabbing, liftTarget, grabTarget);
         if(!outline)
         {
             RemakeParticles();//only calls once
@@ -79,6 +80,12 @@ public class Telekinesis : MonoBehaviour
         else if (pickupAction.GetState(controller) && !supressGrab)//use telekinesis
         {
             Grab();
+        }
+
+        if(pickupAction.GetStateUp(controller))
+        {
+            grabbing = false;
+            grabTarget = null;
         }
 
         if (throwAction.GetStateDown(controller))//throw
@@ -99,8 +106,10 @@ public class Telekinesis : MonoBehaviour
             stopSound = false;
         }
 
-        if(lifting)
+        if(lifting && liftTarget)
         {
+            //TODO fix NRE
+
             liftTarget.position = Vector3.Lerp(liftTarget.position, tkPoint.position, Time.deltaTime);
         }
 
@@ -239,6 +248,8 @@ public class Telekinesis : MonoBehaviour
             lifting = true;
             liftTarget.useGravity = false;
         }
+
+        if (!grabTarget) grabbing = false;
     }
 
     void LetGo()
