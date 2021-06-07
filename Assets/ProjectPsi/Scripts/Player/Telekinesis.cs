@@ -108,9 +108,9 @@ public class Telekinesis : MonoBehaviour
 
         if(lifting && liftTarget)
         {
-            //TODO fix NRE
-
             liftTarget.position = Vector3.Lerp(liftTarget.position, tkPoint.position, Time.deltaTime);
+
+            Debug.DrawLine(tkPoint.position, liftTarget.position);
         }
 
         if(lifting && !soundLoop.isPlaying)

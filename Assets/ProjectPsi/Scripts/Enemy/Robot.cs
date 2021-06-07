@@ -145,6 +145,7 @@ public class Robot : AbstractHealth, IAttackAgent, IGun
             if(aiEnabled)DisableAI();
             stunTimer = stunTime;
 
+            OneshotManager.instance.PlaySound("robot_damage", transform.position);
             Damage(collision.impulse.magnitude * 0.01f);
         }
     }
