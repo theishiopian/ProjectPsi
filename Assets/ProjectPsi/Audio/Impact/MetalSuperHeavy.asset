@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cecd4675b635efd41bcbcb0a0eeb3b6e, type: 3}
-  m_Name: Plastic
+  m_Name: MetalSuperHeavy
   m_EditorClassIdentifier: 
   _tagLibrary: {fileID: 11400000, guid: e3bda70abc11ab24b9e9ee51ff5aef4e, type: 2}
   _materialTagsMask:
-    _value: 2
+    _value: 1
     _tagLibrary: {fileID: 0}
   _interactionSets:
-  - _name: PlasticInteratcion
+  - _name: MetalSuperHeavynteraction
     _includeTagsFilter:
       TagMask:
-        _value: 411
+        _value: 341
         _tagLibrary: {fileID: 0}
       ExactMatch: 0
     _excludeTagsFilter:
@@ -29,20 +29,7 @@ MonoBehaviour:
         _tagLibrary: {fileID: 0}
       ExactMatch: 0
     _interactions:
-    - {fileID: 11400000, guid: 91c39a228327896469634908a42a7e06, type: 2}
-  - _name: LowImpact
-    _includeTagsFilter:
-      TagMask:
-        _value: 226
-        _tagLibrary: {fileID: 0}
-      ExactMatch: 0
-    _excludeTagsFilter:
-      TagMask:
-        _value: 0
-        _tagLibrary: {fileID: 0}
-      ExactMatch: 0
-    _interactions:
-    - {fileID: 11400000, guid: 6deea1f4a1c45c64ba376940ee91d138, type: 2}
+    - {fileID: 11400000, guid: 15ee86610453bda4396522f052de77d0, type: 2}
   _fallbackTagMask:
     _value: 0
     _tagLibrary: {fileID: 0}

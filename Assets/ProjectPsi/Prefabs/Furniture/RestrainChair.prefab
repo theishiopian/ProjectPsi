@@ -92,6 +92,8 @@ GameObject:
   - component: {fileID: 1466012587908818055}
   - component: {fileID: 2896497056687437152}
   - component: {fileID: 8771302088888002691}
+  - component: {fileID: 6884368823416869413}
+  - component: {fileID: 2571866541083124540}
   m_Layer: 13
   m_Name: RestrainChair
   m_TagString: Liftable
@@ -183,6 +185,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.683403, y: 0.013430357, z: 0.3355198}
   m_Center: {x: 0.012493849, y: 0.012814879, z: -0.47366047}
+--- !u!114 &6884368823416869413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540001436800940107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3203a04c7ef891c4ca38ed393c368f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priority: 0
+  _material: {fileID: 11400000, guid: 3c8228b0879644c478df3c13547ae776, type: 2}
+--- !u!114 &2571866541083124540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540001436800940107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e125879df9b8949a41dabefe0f9a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  _target: {fileID: 6884368823416869413}
+  _useMaterialComposition: 0
+  _contactMode: 0
+  _highPriority: 0
 --- !u!1 &2126314434345549482
 GameObject:
   m_ObjectHideFlags: 0

@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _priority: 0
-  _material: {fileID: 11400000, guid: a071361513b9bf44eab7d207adc0ce42, type: 2}
+  _material: {fileID: 11400000, guid: 3d6b1f7afb317f34b838dd677449d070, type: 2}
 --- !u!114 &516368498154606159
 MonoBehaviour:
   m_ObjectHideFlags: 0

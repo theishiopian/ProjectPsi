@@ -91,6 +91,8 @@ GameObject:
   - component: {fileID: 8325564783885129233}
   - component: {fileID: 7571677030446421290}
   - component: {fileID: -8834824738251776375}
+  - component: {fileID: 6083277169619743876}
+  - component: {fileID: 8815696747031844662}
   m_Layer: 13
   m_Name: refrigeration
   m_TagString: Liftable
@@ -158,3 +160,34 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.0428865, y: 0.8028667, z: -0.04911995}
   m_TimeToStationary: 0.5
+--- !u!114 &6083277169619743876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5683241948237657598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3203a04c7ef891c4ca38ed393c368f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priority: 0
+  _material: {fileID: 11400000, guid: 3d6b1f7afb317f34b838dd677449d070, type: 2}
+--- !u!114 &8815696747031844662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5683241948237657598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e125879df9b8949a41dabefe0f9a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: 1
+  _target: {fileID: 6083277169619743876}
+  _useMaterialComposition: 0
+  _contactMode: 0
+  _highPriority: 0
