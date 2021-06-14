@@ -28,6 +28,7 @@ public class Robot : AbstractHealth, IAttackAgent, IGun
 
     [Header("Animation Setting")]
     public Animator animator;
+    public GameObject deathFX;
 
     private Rigidbody body;//used for physical responses
     private BehaviorTree ai;
@@ -35,6 +36,12 @@ public class Robot : AbstractHealth, IAttackAgent, IGun
 
     private float stunTimer = 0;
     private bool aiEnabled = true;
+
+    public void Die()
+    {
+        deathFX.transform.parent = null;
+        deathFX.SetActive(true);
+    }
 
     public void Attack(Vector3 targPosition)
     {
@@ -83,6 +90,8 @@ public class Robot : AbstractHealth, IAttackAgent, IGun
     {
         Health = startingHealth;
         body = GetComponent<Rigidbody>();
+
+        onDeath = Die;
 
         body.centerOfMass = centerOfMass;
 
